@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>  <project>
+    <path>$WS_DIR$\pca10100\blank\iar\thread_cli_ftd_uart_pca10100.ewp</path>
+  </project>  <project>
+    <path>$WS_DIR$\pca10056\blank\iar\thread_cli_ftd_uart_pca10056.ewp</path>
+  </project>  <project>
+    <path>$WS_DIR$\pca10056\mbr_bl_uart\iar\thread_cli_ftd_uart_mbr_uart_pca10056.ewp</path>
+  </project>  <batchBuild/>
+</workspace>
