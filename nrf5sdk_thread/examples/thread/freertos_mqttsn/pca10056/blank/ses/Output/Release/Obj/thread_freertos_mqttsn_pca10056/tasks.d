@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/tasks.o: \
- C:\nrf5sdk_thread\external\freertos\source\tasks.c \
+ C:\masteroppgave\nrf5sdk_thread\external\freertos\source\tasks.c \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \

@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_cc310_platform_abort_freertos.o: \
- C:\nrf5sdk_thread\external\nrf_security\nrf_cc310_plat\src\nrf_cc310_platform_abort_freertos.c \
+ C:\masteroppgave\nrf5sdk_thread\external\nrf_security\nrf_cc310_plat\src\nrf_cc310_platform_abort_freertos.c \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \

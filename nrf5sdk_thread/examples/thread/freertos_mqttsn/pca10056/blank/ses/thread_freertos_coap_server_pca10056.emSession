@@ -59,14 +59,16 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="61" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="37" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="465" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.c" selected="0" top="426" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="225" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../../main.c" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="22" y="484" useTextEdit="1" openedFrom="C:/masteroppgave/nrf5sdk_thread/examples/thread/freertos_mqttsn/pca10056/blank/ses/thread_mqttsn.c" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.c" selected="0" top="693" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="9" y="43" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_packet_receiver.c" selected="0" top="138" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="7" y="585" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="0" top="540" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="71" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../../../../../modules/nrfx/mdk/ses_startup_nrf52840.s" selected="0" top="48" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="71" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../../../../../modules/nrfx/mdk/ses_startup_nrf52840.s" selected="0" top="48" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="21" y="56" useTextEdit="1" openedFrom="C:/nrf5sdk_thread/examples/thread/freertos_mqttsn/main.c" useBinaryEdit="0" left="0" path="../../../../../../external/freertos/source/include/FreeRTOS.h" selected="0" top="39" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="C:/nrf5sdk_thread/external/freertos/source/include/FreeRTOS.h" useBinaryEdit="0" left="0" path="../../../../../../external/freertos/source/include/projdefs.h" selected="0" top="36" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="87" y="98" useTextEdit="1" openedFrom="C:/nrf5sdk_thread/external/freertos/source/include/FreeRTOS.h" useBinaryEdit="0" left="0" path="../../../config/FreeRTOSConfig.h" selected="0" top="57" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="67" y="385" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="thread_mqttsn.c" selected="1" top="326" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="132" useTextEdit="1" openedFrom="C:/masteroppgave/nrf5sdk_thread/examples/thread/freertos_mqttsn/pca10056/blank/ses/thread_mqttsn.c" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h" selected="0" top="169" codecName="Default"/>
  </Files>
  <ARMCrossStudioWindow activeProject="thread_freertos_mqttsn_pca10056" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/nrf5sdk_thread/components/libraries/mem_manager" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

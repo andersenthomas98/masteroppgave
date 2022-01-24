@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/assert.o: \
- C:\nrf5sdk_thread\components\libraries\assert\assert.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\assert\assert.c \
  ../../../../../../components/libraries/util/nrf_assert.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \

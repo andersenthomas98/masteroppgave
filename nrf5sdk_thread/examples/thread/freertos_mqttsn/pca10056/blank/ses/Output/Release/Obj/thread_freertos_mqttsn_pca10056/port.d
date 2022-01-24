@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/port.o: \
- C:\nrf5sdk_thread\external\freertos\portable\GCC\nrf52\port.c \
+ C:\masteroppgave\nrf5sdk_thread\external\freertos\portable\GCC\nrf52\port.c \
  ../../../../../../external/freertos/source/include/FreeRTOS.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \

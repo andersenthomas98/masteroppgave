@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrfx_gpiote.o: \
- C:\nrf5sdk_thread\modules\nrfx\drivers\src\nrfx_gpiote.c \
+ C:\masteroppgave\nrf5sdk_thread\modules\nrfx\drivers\src\nrfx_gpiote.c \
  ../../../../../../modules/nrfx/nrfx.h \
  ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \
  ../../../../../../modules/nrfx/drivers/nrfx_common.h \

@@ -76,27 +76,17 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/main.o: \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
  ../../../../../../components/libraries/balloc/nrf_balloc.h \
  ../../../../../../components/libraries/log/nrf_log_default_backends.h \
- ../../../../../../components/libraries/timer/app_timer.h \
- ../../../../../../components/libraries/util/app_error.h \
  ../../../../../../components/libraries/bsp/bsp_thread.h \
  ../../../../../../components/libraries/bsp/bsp.h \
  ../../../../../../components/boards/boards.h \
  ../../../../../../modules/nrfx/hal/nrf_gpio.h \
  ../../../../../../components/boards/pca10056.h \
  ../../../../../../components/libraries/button/app_button.h \
+ ../../../../../../components/libraries/util/app_error.h \
  ../../../../../../external/openthread/include/openthread/instance.h \
  ../../../../../../external/openthread/include/openthread/error.h \
  ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
- ../../../../app_utils/thread_coap_utils.h \
- ../../../../../../external/openthread/include/openthread/coap.h \
- ../../../../../../external/openthread/include/openthread/ip6.h \
- ../../../../../../external/openthread/include/openthread/message.h \
- ../../../../../../external/openthread/include/openthread/platform/radio.h \
- ../../../../../../components/thread/utils/thread_utils.h \
- ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
- ../../../../../../external/openthread/include/openthread/thread.h \
- ../../../../../../external/openthread/include/openthread/dataset.h \
- ../../../../../../external/openthread/include/openthread/link.h \
- ../../../../../../external/openthread/include/openthread/commissioner.h
+ ../../../../../../components/libraries/timer/app_timer.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/thread_mqttsn.h

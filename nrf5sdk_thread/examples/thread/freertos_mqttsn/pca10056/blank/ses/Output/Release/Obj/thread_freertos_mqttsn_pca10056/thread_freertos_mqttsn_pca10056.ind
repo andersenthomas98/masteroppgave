@@ -48,6 +48,7 @@
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/bsp.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/bsp_thread.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/main.o"
+"Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/SEGGER_RTT.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/SEGGER_RTT_Syscalls_SES.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/SEGGER_RTT_printf.o"

@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/heap_4.o: \
- C:\nrf5sdk_thread\external\freertos\source\portable\MemMang\heap_4.c \
+ C:\masteroppgave\nrf5sdk_thread\external\freertos\source\portable\MemMang\heap_4.c \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  ../../../../../../external/freertos/source/include/FreeRTOS.h \

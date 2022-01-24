@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/stream_buffer.o: \
- C:\nrf5sdk_thread\external\freertos\source\stream_buffer.c \
+ C:\masteroppgave\nrf5sdk_thread\external\freertos\source\stream_buffer.c \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
