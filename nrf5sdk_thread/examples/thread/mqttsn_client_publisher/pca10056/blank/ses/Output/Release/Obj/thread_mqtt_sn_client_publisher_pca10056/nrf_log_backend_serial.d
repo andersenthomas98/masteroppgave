@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_log_backend_serial.o: \
- C:\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_serial.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_serial.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -28,7 +28,7 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_log_backend_seri
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_serial.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_serial.h \
  ../../../../../../components/libraries/log/nrf_log_backend_interface.h \
  ../../../../../../components/libraries/memobj/nrf_memobj.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
@@ -48,5 +48,5 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_log_backend_seri
  ../../../../../../components/libraries/log/nrf_log_ctrl.h \
  ../../../../../../components/libraries/log/src/nrf_log_ctrl_internal.h \
  ../../../../../../components/libraries/log/nrf_log_backend_interface.h \
- C:\nrf5sdk_thread\components\libraries\log\src\nrf_log_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\log\src\nrf_log_internal.h \
  ../../../../../../components/libraries/log/nrf_log_types.h

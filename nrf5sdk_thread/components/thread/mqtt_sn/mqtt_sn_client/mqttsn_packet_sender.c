@@ -441,7 +441,7 @@ uint32_t mqttsn_packet_sender_publish(mqttsn_client_t * p_client,
 
     unsigned char dup      = 0;
     unsigned char retained = 0;
-    uint8_t  qos           = 1;
+    uint8_t  qos           = 1; // Seems like the mqtt-sn client is only able to send with qos=1
 
     uint32_t  packet_len   = MQTTSN_PACKET_PUBLISH_LENGTH + payload_len;
     uint8_t * p_data       = nrf_malloc(packet_len);
@@ -482,34 +482,34 @@ uint32_t mqttsn_packet_sender_publish(mqttsn_client_t * p_client,
             err_code = NRF_ERROR_NO_MEM;
             break;
         }
+        
+          memcpy(p_packet_copy, p_data, datalen);
 
-        memcpy(p_packet_copy, p_data, datalen);
+          mqttsn_packet_t retransmission_packet;
+          memset(&retransmission_packet, 0, sizeof(mqttsn_packet_t));
+          retransmission_packet.retransmission_cnt = MQTTSN_DEFAULT_RETRANSMISSION_CNT;
+          retransmission_packet.p_data             = p_packet_copy;
+          retransmission_packet.len                = datalen;
+          retransmission_packet.id                 = p_client->message_id;
+          retransmission_packet.timeout =
+              mqttsn_platform_timer_set_in_ms(MQTTSN_DEFAULT_RETRANSMISSION_TIME_IN_MS);
+          retransmission_packet.topic = *p_topic;
 
-        mqttsn_packet_t retransmission_packet;
-        memset(&retransmission_packet, 0, sizeof(mqttsn_packet_t));
-        retransmission_packet.retransmission_cnt = MQTTSN_DEFAULT_RETRANSMISSION_CNT;
-        retransmission_packet.p_data             = p_packet_copy;
-        retransmission_packet.len                = datalen;
-        retransmission_packet.id                 = p_client->message_id;
-        retransmission_packet.timeout =
-            mqttsn_platform_timer_set_in_ms(MQTTSN_DEFAULT_RETRANSMISSION_TIME_IN_MS);
-        retransmission_packet.topic = *p_topic;
+          if (mqttsn_packet_fifo_elem_add(p_client, &retransmission_packet) != NRF_SUCCESS)
+          {
+              err_code = NRF_ERROR_NO_MEM;
+              break;
+          }
 
-        if (mqttsn_packet_fifo_elem_add(p_client, &retransmission_packet) != NRF_SUCCESS)
-        {
-            err_code = NRF_ERROR_NO_MEM;
-            break;
-        }
-
-        if (mqttsn_client_timeout_schedule(p_client) != NRF_SUCCESS)
-        {
-            uint32_t fifo_dequeue_rc = mqttsn_packet_fifo_elem_dequeue(p_client,
-                                                                       p_client->message_id,
-                                                                       MQTTSN_MESSAGE_ID);
-            ASSERT(fifo_dequeue_rc == NRF_SUCCESS);
-            err_code = NRF_ERROR_INTERNAL;
-            break;
-        }
+          if (mqttsn_client_timeout_schedule(p_client) != NRF_SUCCESS)
+          {
+              uint32_t fifo_dequeue_rc = mqttsn_packet_fifo_elem_dequeue(p_client,
+                                                                         p_client->message_id,
+                                                                         MQTTSN_MESSAGE_ID);
+              ASSERT(fifo_dequeue_rc == NRF_SUCCESS);
+              err_code = NRF_ERROR_INTERNAL;
+              break;
+          }
 
             err_code = mqttsn_packet_sender_send(p_client, &(p_client->gateway_info.addr), p_data, datalen);
 

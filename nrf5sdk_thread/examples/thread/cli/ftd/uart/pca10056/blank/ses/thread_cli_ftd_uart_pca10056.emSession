@@ -58,5 +58,5 @@
  <Files>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="148" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../../../../main.c" selected="1" top="125" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="thread_cli_ftd_uart_pca10056" fileDialogDefaultFilter="*.cpp;*.cxx;*.cc" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3711"/>
+ <ARMCrossStudioWindow activeProject="thread_cli_ftd_uart_pca10056" fileDialogDefaultFilter="*.cpp;*.cxx;*.cc" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>

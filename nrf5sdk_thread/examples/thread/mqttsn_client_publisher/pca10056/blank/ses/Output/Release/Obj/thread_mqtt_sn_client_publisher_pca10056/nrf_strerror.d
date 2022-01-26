@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_strerror.o: \
- C:\nrf5sdk_thread\components\libraries\strerror\nrf_strerror.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\strerror\nrf_strerror.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -28,5 +28,5 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_strerror.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:\nrf5sdk_thread\components\libraries\strerror\nrf_strerror.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\strerror\nrf_strerror.h \
  ../../../../../../components/libraries/util/sdk_errors.h

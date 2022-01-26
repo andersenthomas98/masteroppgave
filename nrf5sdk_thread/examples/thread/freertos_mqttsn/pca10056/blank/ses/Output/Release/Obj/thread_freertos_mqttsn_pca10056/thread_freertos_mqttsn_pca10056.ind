@@ -37,6 +37,7 @@
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_section_iter.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_strerror.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/mem_manager.o"
+"Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_scheduler.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_drv_clock.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_nvic.o"
 "Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_nvmc.o"

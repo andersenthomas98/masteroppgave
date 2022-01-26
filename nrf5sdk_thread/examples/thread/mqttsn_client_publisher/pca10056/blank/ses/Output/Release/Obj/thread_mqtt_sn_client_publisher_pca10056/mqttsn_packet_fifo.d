@@ -1,10 +1,11 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/mqttsn_packet_fifo.o: \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_fifo.c \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_fifo.c \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
- ../../../../../../components/libraries/mem_manager/mem_manager.h \
+ ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
+ ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
@@ -13,7 +14,6 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/mqttsn_packet_fifo.o
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_os.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
- ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  ../../../../../../components/libraries/util/app_util.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
@@ -31,7 +31,6 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/mqttsn_packet_fifo.o
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/strerror/nrf_strerror.h \

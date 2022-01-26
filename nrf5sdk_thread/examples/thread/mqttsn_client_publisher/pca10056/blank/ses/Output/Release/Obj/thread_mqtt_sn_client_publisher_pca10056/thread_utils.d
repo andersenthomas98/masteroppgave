@@ -1,6 +1,6 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/thread_utils.o: \
- C:\nrf5sdk_thread\components\thread\utils\thread_utils.c \
- C:\nrf5sdk_thread\components\thread\utils\thread_utils.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\utils\thread_utils.c \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\utils\thread_utils.h \
  ../../../../../../external/openthread/include/openthread/instance.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \

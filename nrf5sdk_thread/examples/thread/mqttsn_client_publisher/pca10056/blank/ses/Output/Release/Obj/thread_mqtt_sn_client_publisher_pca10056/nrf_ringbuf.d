@@ -1,6 +1,6 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_ringbuf.o: \
- C:\nrf5sdk_thread\components\libraries\ringbuf\nrf_ringbuf.c \
- C:\nrf5sdk_thread\components\libraries\ringbuf\nrf_ringbuf.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\ringbuf\nrf_ringbuf.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\ringbuf\nrf_ringbuf.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  ../../../../../../components/libraries/atomic/nrf_atomic.h \
  ../../../../../../components/libraries/util/sdk_common.h \

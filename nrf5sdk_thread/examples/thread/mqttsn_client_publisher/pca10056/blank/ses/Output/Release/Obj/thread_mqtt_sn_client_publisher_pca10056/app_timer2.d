@@ -1,6 +1,6 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_timer2.o: \
- C:\nrf5sdk_thread\components\libraries\timer\app_timer2.c \
- C:\nrf5sdk_thread\components\libraries\timer\app_timer.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\timer\app_timer2.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\timer\app_timer.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/app_error.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
@@ -62,5 +62,5 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_timer2.o: \
  ../../../../../../components/libraries/strerror/nrf_strerror.h \
  ../../../../../../components/libraries/log/src/nrf_log_internal.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- C:\nrf5sdk_thread\components\libraries\timer\drv_rtc.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\timer\drv_rtc.h \
  ../../../../../../modules/nrfx/hal/nrf_rtc.h

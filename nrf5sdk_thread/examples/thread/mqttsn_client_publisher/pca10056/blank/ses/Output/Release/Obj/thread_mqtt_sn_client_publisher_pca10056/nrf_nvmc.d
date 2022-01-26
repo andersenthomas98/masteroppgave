@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_nvmc.o: \
- C:\nrf5sdk_thread\modules\nrfx\hal\nrf_nvmc.c \
+ C:\masteroppgave\nrf5sdk_thread\modules\nrfx\hal\nrf_nvmc.c \
  ../../../../../../modules/nrfx/nrfx.h \
  ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \
  ../../../../../../modules/nrfx/drivers/nrfx_common.h \
@@ -43,4 +43,4 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_nvmc.o: \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/libraries/util/sdk_resources.h \
  ../../../../../../modules/nrfx/drivers/nrfx_errors.h \
- C:\nrf5sdk_thread\modules\nrfx\hal\nrf_nvmc.h
+ C:\masteroppgave\nrf5sdk_thread\modules\nrfx\hal\nrf_nvmc.h

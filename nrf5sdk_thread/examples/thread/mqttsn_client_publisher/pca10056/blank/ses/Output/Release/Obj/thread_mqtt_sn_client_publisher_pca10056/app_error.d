@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_error.o: \
- C:\nrf5sdk_thread\components\libraries\util\app_error.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error.c \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \
@@ -16,9 +16,9 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_error.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
- C:\nrf5sdk_thread\components\libraries\util\app_error.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
- C:\nrf5sdk_thread\components\libraries\util\sdk_errors.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\sdk_errors.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
- C:\nrf5sdk_thread\components\libraries\util\nordic_common.h \
- C:\nrf5sdk_thread\components\libraries\util\app_error_weak.h
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\nordic_common.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error_weak.h

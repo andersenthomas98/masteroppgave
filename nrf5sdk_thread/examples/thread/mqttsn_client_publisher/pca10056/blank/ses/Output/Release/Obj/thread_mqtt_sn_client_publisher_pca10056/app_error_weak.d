@@ -1,6 +1,6 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_error_weak.o: \
- C:\nrf5sdk_thread\components\libraries\util\app_error_weak.c \
- C:\nrf5sdk_thread\components\libraries\util\app_error.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error_weak.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
@@ -18,10 +18,10 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_error_weak.o: \
  ../../../../../../modules/nrfx/mdk/nrf51_to_nrf52840.h \
  ../../../../../../modules/nrfx/mdk/nrf52_to_nrf52840.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
- C:\nrf5sdk_thread\components\libraries\util\sdk_errors.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\sdk_errors.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
- C:\nrf5sdk_thread\components\libraries\util\nordic_common.h \
- C:\nrf5sdk_thread\components\libraries\util\app_error_weak.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\nordic_common.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error_weak.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
@@ -51,4 +51,4 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_error_weak.o: \
  ../../../../../../components/libraries/balloc/nrf_balloc.h \
  ../../../../../../components/libraries/util/app_util_platform.h \
  ../../../../../../components/libraries/util/app_error.h \
- C:\nrf5sdk_thread\components\libraries\util\app_util_platform.h
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_util_platform.h

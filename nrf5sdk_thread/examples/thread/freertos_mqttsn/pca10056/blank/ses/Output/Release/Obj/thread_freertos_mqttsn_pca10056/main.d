@@ -57,6 +57,9 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/main.o: \
  ../../../../../../modules/nrfx/drivers/include/nrfx_power_clock.h \
  ../../../../../../external/freertos/source/include/task.h \
  ../../../../../../external/freertos/source/include/list.h \
+ ../../../../../../components/libraries/scheduler/app_scheduler.h \
+ ../../../../../../components/libraries/util/app_error.h \
+ ../../../../../../components/libraries/timer/app_timer.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
@@ -82,11 +85,9 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/main.o: \
  ../../../../../../modules/nrfx/hal/nrf_gpio.h \
  ../../../../../../components/boards/pca10056.h \
  ../../../../../../components/libraries/button/app_button.h \
- ../../../../../../components/libraries/util/app_error.h \
  ../../../../../../external/openthread/include/openthread/instance.h \
  ../../../../../../external/openthread/include/openthread/error.h \
  ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
- ../../../../../../components/libraries/timer/app_timer.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/thread_mqttsn.h

@@ -1,8 +1,8 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/SEGGER_RTT_Syscalls_SES.o: \
- C:\nrf5sdk_thread\external\segger_rtt\SEGGER_RTT_Syscalls_SES.c \
+ C:\masteroppgave\nrf5sdk_thread\external\segger_rtt\SEGGER_RTT_Syscalls_SES.c \
  ../config/sdk_config.h \
- C:\nrf5sdk_thread\external\segger_rtt\SEGGER_RTT.h \
- C:\nrf5sdk_thread\external\segger_rtt\SEGGER_RTT_Conf.h \
+ C:\masteroppgave\nrf5sdk_thread\external\segger_rtt\SEGGER_RTT.h \
+ C:\masteroppgave\nrf5sdk_thread\external\segger_rtt\SEGGER_RTT_Conf.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/app_util_platform.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \

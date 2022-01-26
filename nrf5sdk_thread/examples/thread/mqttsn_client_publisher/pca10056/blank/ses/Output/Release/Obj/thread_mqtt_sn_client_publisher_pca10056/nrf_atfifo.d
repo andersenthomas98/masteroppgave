@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_atfifo.o: \
- C:\nrf5sdk_thread\components\libraries\atomic_fifo\nrf_atfifo.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\atomic_fifo\nrf_atfifo.c \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
@@ -21,7 +21,7 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_atfifo.o: \
  ../../../../../../modules/nrfx/mdk/nrf51_to_nrf52840.h \
  ../../../../../../modules/nrfx/mdk/nrf52_to_nrf52840.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
- C:\nrf5sdk_thread\components\libraries\atomic_fifo\nrf_atfifo.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\atomic_fifo\nrf_atfifo.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
@@ -30,7 +30,7 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/nrf_atfifo.o: \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- C:\nrf5sdk_thread\components\libraries\atomic_fifo\nrf_atfifo_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\atomic_fifo\nrf_atfifo_internal.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  ../../../../../../components/libraries/util/sdk_os.h \

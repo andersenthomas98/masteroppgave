@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_button.o: \
- C:\nrf5sdk_thread\components\libraries\button\app_button.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\button\app_button.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -28,7 +28,7 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/app_button.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:\nrf5sdk_thread\components\libraries\button\app_button.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\button\app_button.h \
  ../../../../../../components/libraries/util/app_error.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
  ../../../../../../components/libraries/util/app_error_weak.h \

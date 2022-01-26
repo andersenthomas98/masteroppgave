@@ -1,10 +1,10 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/mqttsn_transport_ot.o: \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport_ot.c \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport_ot.c \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
  ../../../../../../components/libraries/mem_manager/mem_manager.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \

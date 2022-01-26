@@ -1,17 +1,23 @@
 #include "thread_mqttsn.h"
-
 #include "mqttsn_client.h"
 #include "thread_utils.h"
 #include "bsp_thread.h"
 #include "FreeRTOS.h"
+#include "task.h"
 #include "nrf_log.h"
+#include "app_scheduler.h"
+#include "app_timer.h"
 #include <openthread/thread.h>
+
+#define SCHED_QUEUE_SIZE       32                                           /**< Maximum number of events in the scheduler queue. */
+#define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
 
 #define LED_ON_REQUEST                49                                     /**< LED ON command. */
 #define LED_OFF_REQUEST               48                                    /**< LED OFF command. */
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
 #define CONNECTION_FSM_DELAY_SEC      5
 
+extern TaskHandle_t thread_stack_task_handle;
 
 static mqttsn_client_t      m_client;                                       /**< An MQTT-SN client instance. */
 static mqttsn_remote_t      m_gateway_addr;                                 /**< A gateway address. */
@@ -28,6 +34,8 @@ static mqttsn_topic_t       m_topic            =                            /**<
 };
 
 
+
+
 typedef enum 
 {
   DISCONNECTED,
@@ -40,7 +48,7 @@ mqttsn_connection_state_t mqttsn_connection_state;
 /**@brief Initializes MQTT-SN client's connection options. */
 static void connect_opt_init(void)
 {
-    m_connect_opt.alive_duration = MQTTSN_DEFAULT_ALIVE_DURATION,
+    m_connect_opt.alive_duration = 60/*MQTTSN_DEFAULT_ALIVE_DURATION*/,
     m_connect_opt.clean_session  = MQTTSN_DEFAULT_CLEAN_SESSION_FLAG,
     m_connect_opt.will_flag      = MQTTSN_DEFAULT_WILL_FLAG,
     m_connect_opt.client_id_len  = strlen(m_client_id),
@@ -188,7 +196,31 @@ void mqttsn_evt_handler(mqttsn_client_t * p_client, mqttsn_event_t * p_event)
     }
 }
 
+/***************************************************************************************************
+ * @section Signal handling
+ **************************************************************************************************/
 
+void otTaskletsSignalPending(otInstance * p_instance)
+{
+    if (thread_stack_task_handle == NULL)
+    {
+        return;
+    }
+    UNUSED_RETURN_VALUE(xTaskNotifyGive(thread_stack_task_handle));
+}
+
+
+void otSysEventSignalPending(void)
+{
+    static BaseType_t xHigherPriorityTaskWoken;
+
+    if (thread_stack_task_handle == NULL)
+    {
+        return;
+    }
+    vTaskNotifyGiveFromISR(thread_stack_task_handle, &xHigherPriorityTaskWoken);
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
 
 /***************************************************************************************************
  * @section State change handling
@@ -246,12 +278,25 @@ static void bsp_event_handler(bsp_event_t event)
 
     switch (event)
     {
+
+        case BSP_EVENT_KEY_0:
+        {
+          uint8_t payload = 1;
+          NRF_LOG_INFO("PUBLISH");
+          uint32_t err_code = mqttsn_client_publish(&m_client, m_topic.topic_id, &payload, 1, &m_msg_id);
+          if (err_code != NRF_SUCCESS)
+          {
+              NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
+          }
+          break;
+        
+        }
         case BSP_EVENT_KEY_1:
         {
             uint32_t err_code = mqttsn_client_search_gateway(&m_client, SEARCH_GATEWAY_TIMEOUT);
             if (err_code != NRF_SUCCESS)
             {
-                NRF_LOG_ERROR("SEARCH GATEWAY message could not be sent. Error: 0x%x\r\n", err_code);
+                NRF_LOG_ERROR("YOLO SEARCH GATEWAY message could not be sent. Error: 0x%x\r\n", err_code);
             }
             mqttsn_connection_state = GATEWAY_FOUND;
             break;
@@ -335,80 +380,112 @@ static void mqttsn_init(void)
     mqttsn_connection_state = DISCONNECTED;
 }
 
-void thread_mqttsn_init(void) {
-  thread_instance_init();
-  thread_bsp_init();
-  //mqttsn_init();
-
+/**@brief Function for initializing scheduler module.
+ */
+static void scheduler_init(void)
+{
+    APP_SCHED_INIT(SCHED_EVENT_DATA_SIZE, SCHED_QUEUE_SIZE);
 }
-
 
 void thread_stack_task(void * arg)
 {
     UNUSED_PARAMETER(arg);
+    thread_instance_init();
+    thread_bsp_init();
+    mqttsn_init();
+
 
     while (1)
     {
         thread_process();
+        app_sched_execute();
         UNUSED_RETURN_VALUE(ulTaskNotifyTake(pdTRUE, portMAX_DELAY));
     }
 }
 
 
+
+
+
 void mqttsn_connection_task(void *arg) {
   
   UNUSED_PARAMETER(arg);
-  mqttsn_init();
 
   TickType_t lastWakeTime;
   const TickType_t delay = CONNECTION_FSM_DELAY_SEC;
-  
-  while(1) {
-    // State machine for automatic gateway detection and connection
-    switch(mqttsn_connection_state) 
-    {
-      case DISCONNECTED: 
-      {
-        NRF_LOG_INFO("MQTT-SN state: DISCONNECTED");
-        uint32_t err_code = mqttsn_client_search_gateway(&m_client, SEARCH_GATEWAY_TIMEOUT);
+  mqttsn_client_state_t state;
+  uint32_t err_code;
 
-        if (err_code != NRF_SUCCESS) {
-        
-          NRF_LOG_ERROR("SEARCH GATEWAY message could not be sent. Error: 0x%x\r\n", err_code);
-        } else {
-          mqttsn_connection_state = GATEWAY_FOUND;
-        }
-        break;
-      } 
-      case GATEWAY_FOUND: 
+  static char                 m_topic_name[]     = "nRF52840_resources/led3"; /**< Name of the topic corresponding to subscriber's BSP_LED_2. */
+  static mqttsn_topic_t       m_topic            =                            /**< Topic corresponding to subscriber's BSP_LED_2. */
+  {
+      .p_topic_name = (unsigned char *)m_topic_name,
+      .topic_id     = 0,
+  };
+
+  do {
+    err_code = mqttsn_client_search_gateway(&m_client, SEARCH_GATEWAY_TIMEOUT);
+  } while(err_code != NRF_SUCCESS);
+
+
+  while(1) {
+    /*MQTTSN_CLIENT_UNINITIALIZED = 0,       < Client has not been initialized yet. */
+    /*MQTTSN_CLIENT_ASLEEP,                  < Client is in sleep mode. */
+    /*MQTTSN_CLIENT_AWAKE,                   < Client is awake. */
+    /*MQTTSN_CLIENT_CONNECTED,               < Client is connected. */
+    /*MQTTSN_CLIENT_DISCONNECTED,            < Client is disconnected. */
+    /*MQTTSN_CLIENT_ESTABLISHING_CONNECTION, < Client is attempting to connect. */
+    /*MQTTSN_CLIENT_WAITING_FOR_SLEEP,       < Client is waiting for permission to sleep. */
+    /*MQTTSN_CLIENT_WAITING_FOR_DISCONNECT,  < Client is waiting for permission to disconnect. */
+    /*state = mqttsn_client_state_get(&m_client);
+    switch(state) 
+    {
+      case MQTTSN_CLIENT_UNINITIALIZED: 
       {
-        NRF_LOG_INFO("MQTT-SN state: GATEWAY_FOUND");
-        NRF_LOG_INFO("%d", mqttsn_client_state_get(&m_client));
-        if (mqttsn_client_state_get(&m_client) == MQTTSN_CLIENT_DISCONNECTED) {
-        
-          uint32_t err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
-        
-          if (err_code != NRF_SUCCESS) {
-        
-            NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
-            mqttsn_connection_state = DISCONNECTED;      
-          } else {
-            NRF_LOG_INFO("MQTT-SN state: CONNECTED");
-            mqttsn_connection_state = CONNECTED;
-          }
-        }
-        break;
+        NRF_LOG_INFO("MQTT-SN client is uninitialized, initializing...");
+        mqttsn_init();
       }
-      case CONNECTED:
+      case MQTTSN_CLIENT_ASLEEP: 
       {
-        if (mqttsn_client_state_get(&m_client) != MQTTSN_CLIENT_CONNECTED) {
-          mqttsn_connection_state = GATEWAY_FOUND;
-        }
-        break;
+        NRF_LOG_INFO("MQTT-SN client is asleep");
       }
+      case MQTTSN_CLIENT_AWAKE: 
+      {
+        NRF_LOG_INFO("MQTT-SN client is awake");
+      }
+      case MQTTSN_CLIENT_CONNECTED: 
+      {
+        NRF_LOG_INFO("MQTT-SN client is connected");
+      }
+      case MQTTSN_CLIENT_DISCONNECTED: 
+      {
+        NRF_LOG_INFO("MQTT-SN client is disconnected");
+      }
+    
+    }*/
+    
+    /*state = mqttsn_client_state_get(&m_client);
+    NRF_LOG_INFO("%d", state);
+    while (state != MQTTSN_CLIENT_CONNECTED) {
+      uint32_t err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
+      if (err_code != NRF_SUCCESS) {
+        NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
+        lastWakeTime = xTaskGetTickCount();
+        vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
+      }
+      state = mqttsn_client_state_get(&m_client);
     }
-    lastWakeTime = xTaskGetTickCount();
-    vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
+    
+    uint8_t payload = 0;
+    uint32_t err_code = mqttsn_client_publish(&m_client, m_topic.topic_id, &payload, 1, &m_msg_id);
+    if (err_code != NRF_SUCCESS)
+    {
+        NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
+    }
+    */
+    NRF_LOG_INFO("mqttsn connection task");
+    //lastWakeTime = xTaskGetTickCount();
+    //vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
   
   }
 

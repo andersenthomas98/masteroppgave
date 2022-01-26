@@ -327,6 +327,26 @@
 // <h> nRF_Libraries 
 
 //==========================================================
+// <e> APP_SCHEDULER_ENABLED - app_scheduler - Events scheduler
+//==========================================================
+#ifndef APP_SCHEDULER_ENABLED
+#define APP_SCHEDULER_ENABLED 1
+#endif
+// <q> APP_SCHEDULER_WITH_PAUSE  - Enabling pause feature
+ 
+
+#ifndef APP_SCHEDULER_WITH_PAUSE
+#define APP_SCHEDULER_WITH_PAUSE 0
+#endif
+
+// <q> APP_SCHEDULER_WITH_PROFILER  - Enabling scheduler profiling
+ 
+
+#ifndef APP_SCHEDULER_WITH_PROFILER
+#define APP_SCHEDULER_WITH_PROFILER 0
+#endif
+
+//==========================================================
 // <e> APP_TIMER_ENABLED - app_timer - Application timer functionality
 //==========================================================
 #ifndef APP_TIMER_ENABLED
@@ -376,7 +396,7 @@
  
 
 #ifndef APP_TIMER_CONFIG_USE_SCHEDULER
-#define APP_TIMER_CONFIG_USE_SCHEDULER 0
+#define APP_TIMER_CONFIG_USE_SCHEDULER 1
 #endif
 
 // <q> APP_TIMER_KEEPS_RTC_ACTIVE  - Enable RTC always on

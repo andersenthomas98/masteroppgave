@@ -1,8 +1,8 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/bsp_thread.o: \
- C:\nrf5sdk_thread\components\libraries\bsp\bsp_thread.c \
- C:\nrf5sdk_thread\components\libraries\bsp\bsp_thread.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\bsp\bsp_thread.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\bsp\bsp_thread.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
- C:\nrf5sdk_thread\components\libraries\bsp\bsp.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\bsp\bsp.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../components/boards/boards.h \
  ../../../../../../modules/nrfx/hal/nrf_gpio.h \
@@ -57,7 +57,7 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/bsp_thread.o: \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
- C:\nrf5sdk_thread\components\libraries\bsp\bsp_config.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\bsp\bsp_config.h \
  ../../../../../../external/openthread/include/openthread/icmp6.h \
  ../../../../../../external/openthread/include/openthread/ip6.h \
  ../../../../../../external/openthread/include/openthread/message.h \

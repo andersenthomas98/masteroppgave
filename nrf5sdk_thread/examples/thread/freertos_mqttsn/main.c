@@ -48,10 +48,13 @@
  * This file contains the source code for a sample application using Thread CoAP server and FreeRTOS.
  *
  */
+
+
 #include "FreeRTOS.h"
 #include "nrf_drv_clock.h"
 #include "task.h"
-
+#include "app_scheduler.h"
+#include "app_timer.h"
 #define NRF_LOG_MODULE_NAME APP
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
@@ -60,9 +63,10 @@ NRF_LOG_MODULE_REGISTER();
 #include "bsp_thread.h"
 #include <openthread/instance.h>
 
-#include "app_timer.h"
-
 #include "thread_mqttsn.h"
+
+//#define SCHED_QUEUE_SIZE       32                                          /**< Maximum number of events in the scheduler queue. */
+//#define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
 
 #define THREAD_STACK_TASK_STACK_SIZE     (( 1024 * 8 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define LOG_TASK_STACK_SIZE              ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
@@ -76,69 +80,28 @@ NRF_LOG_MODULE_REGISTER();
 #define LED2_BLINK_INTERVAL              472
 #define LOG_TASK_INTERVAL                10
 
-typedef struct
-{
-    TaskHandle_t thread_stack_task;   /**< Thread stack task handle */
-    TaskHandle_t mqtt_connection_task; /**< MQTT connection task handle */
-    TaskHandle_t led1_task;           /**< LED1 task handle*/
-    TaskHandle_t led2_task;           /**< LED2 task handle*/
+
+TaskHandle_t thread_stack_task_handle = NULL;   /**< Thread stack task handle */
+TaskHandle_t mqtt_connection_task_handle = NULL; /**< MQTT connection task handle */
+TaskHandle_t led1_task_handle = NULL;           /**< LED1 task handle*/
+TaskHandle_t led2_task_handle = NULL;           /**< LED2 task handle*/
 #if NRF_LOG_ENABLED
-    TaskHandle_t logger_task;         /**< Definition of Logger thread. */
+  TaskHandle_t logger_task_handle = NULL;         /**< Definition of Logger thread. */
 #endif
-} application_t;
-
-application_t m_app =
-{
-    .thread_stack_task    = NULL,
-    .mqtt_connection_task = NULL,
-    .led1_task            = NULL,
-    .led2_task            = NULL,
-#if NRF_LOG_ENABLED
-    .logger_task          = NULL,
-#endif
-};
-
-/***************************************************************************************************
- * @section Signal handling
- **************************************************************************************************/
-
-void otTaskletsSignalPending(otInstance * p_instance)
-{
-    if (m_app.thread_stack_task == NULL)
-    {
-        return;
-    }
-
-    UNUSED_RETURN_VALUE(xTaskNotifyGive(m_app.thread_stack_task));
-}
-
-
-void otSysEventSignalPending(void)
-{
-    static BaseType_t xHigherPriorityTaskWoken;
-
-    if (m_app.thread_stack_task == NULL)
-    {
-        return;
-    }
-
-    vTaskNotifyGiveFromISR(m_app.thread_stack_task, &xHigherPriorityTaskWoken);
-    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-}
 
 static inline void light_on(void)
 {
-    vTaskResume(m_app.led1_task);
-    vTaskResume(m_app.led2_task);
+    vTaskResume(led1_task_handle);
+    vTaskResume(led2_task_handle);
 }
 
 
 static inline void light_off(void)
 {
-    vTaskSuspend(m_app.led1_task);
+    vTaskSuspend(led1_task_handle);
     LEDS_OFF(BSP_LED_2_MASK);
 
-    vTaskSuspend(m_app.led2_task);
+    vTaskSuspend(led2_task_handle);
     LEDS_OFF(BSP_LED_3_MASK);
 }
 
@@ -173,6 +136,14 @@ static void clock_init(void)
     ret_code_t err_code = nrf_drv_clock_init();
     APP_ERROR_CHECK(err_code);
 }
+
+/**@brief Function for initializing scheduler module.
+ */
+/*static void scheduler_init(void)
+{
+    APP_SCHED_INIT(SCHED_EVENT_DATA_SIZE, SCHED_QUEUE_SIZE);
+}*/
+
 
 
 /***************************************************************************************************
@@ -225,36 +196,35 @@ static void logger_thread(void * pvParameter)
 int main(void)
 {
     log_init();
-    clock_init();
+    //scheduler_init();
+    clock_init(); // is this used?
     timer_init();
 
-    thread_mqttsn_init();
-
     // Start thread stack execution.
-    if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &m_app.thread_stack_task))
+    if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &thread_stack_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
     
     // MQTT connection execution.
-    if (pdPASS != xTaskCreate(mqttsn_connection_task, "MQTT", MQTT_CONNECTION_TASK_STACK_SIZE, NULL, MQTT_CONNECTION_TASK_PRIORITY, &m_app.mqtt_connection_task))
+   /* if (pdPASS != xTaskCreate(mqttsn_connection_task, "MQTT", MQTT_CONNECTION_TASK_STACK_SIZE, NULL, MQTT_CONNECTION_TASK_PRIORITY, &mqtt_connection_task_handle))
+    {
+        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }*/
+
+    if (pdPASS != xTaskCreate(led1_task, "LED1", configMINIMAL_STACK_SIZE, NULL, LED1_TASK_PRIORITY, &led1_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
-    if (pdPASS != xTaskCreate(led1_task, "LED1", configMINIMAL_STACK_SIZE, NULL, LED1_TASK_PRIORITY, &m_app.led1_task))
-    {
-        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
-
-    if (pdPASS != xTaskCreate(led2_task, "LED2", configMINIMAL_STACK_SIZE, NULL, LED2_TASK_PRIORITY, &m_app.led2_task))
+    if (pdPASS != xTaskCreate(led2_task, "LED2", configMINIMAL_STACK_SIZE, NULL, LED2_TASK_PRIORITY, &led2_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
 #if NRF_LOG_ENABLED
     // Start execution.
-    if (pdPASS != xTaskCreate(logger_thread, "LOGGER", LOG_TASK_STACK_SIZE, NULL, LOG_TASK_PRIORITY, &m_app.logger_task))
+    if (pdPASS != xTaskCreate(logger_thread, "LOGGER", LOG_TASK_STACK_SIZE, NULL, LOG_TASK_PRIORITY, &logger_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }

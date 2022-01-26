@@ -67,6 +67,8 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  ../../../../../../external/freertos/portable/GCC/nrf52/portmacro.h \
  ../../../../../../external/freertos/portable/CMSIS/nrf52/portmacro_cmsis.h \
  ../../../../../../external/freertos/source/include/mpu_wrappers.h \
+ ../../../../../../external/freertos/source/include/task.h \
+ ../../../../../../external/freertos/source/include/list.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
@@ -79,6 +81,8 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
+ ../../../../../../components/libraries/scheduler/app_scheduler.h \
+ ../../../../../../components/libraries/timer/app_timer.h \
  ../../../../../../external/openthread/include/openthread/thread.h \
  ../../../../../../external/openthread/include/openthread/dataset.h \
  ../../../../../../external/openthread/include/openthread/ip6.h \

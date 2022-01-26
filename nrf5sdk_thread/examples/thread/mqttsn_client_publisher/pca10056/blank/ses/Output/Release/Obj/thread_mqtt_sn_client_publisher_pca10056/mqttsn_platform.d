@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/mqttsn_platform.o: \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.c \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.c \
  ../../../../../../components/libraries/timer/app_timer.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/app_error.h \
@@ -32,9 +32,9 @@ Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/mqttsn_platform.o: \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
  ../../../../../../components/libraries/sortlist/nrf_sortlist.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
  ../../../../../../external/openthread/include/openthread/random_noncrypto.h \
  ../../../../../../external/openthread/include/openthread/platform/alarm-milli.h \
  ../../../../../../external/openthread/include/openthread/instance.h \

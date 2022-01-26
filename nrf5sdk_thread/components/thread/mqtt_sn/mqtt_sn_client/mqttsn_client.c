@@ -820,6 +820,7 @@ uint32_t mqttsn_client_timeout_schedule(mqttsn_client_t * p_client)
 void mqttsn_client_timeout_handle(mqttsn_client_t * p_client)
 {
     uint32_t timer_value = mqttsn_platform_timer_cnt_get();
+    NRF_LOG_INFO("timer: %d", timer_value);
 
     /* Gateway discovery procedure handler. */
     if (p_client->gateway_discovery.pending)
@@ -842,6 +843,7 @@ void mqttsn_client_timeout_handle(mqttsn_client_t * p_client)
     {
         if (is_earlier(p_client->packet_queue.packet[i].timeout, timer_value))
         {
+            NRF_LOG_INFO("Resending packet");
             message_retransmission_attempt(p_client, i);
         }
     }
@@ -851,6 +853,7 @@ void mqttsn_client_timeout_handle(mqttsn_client_t * p_client)
     {
         if (is_earlier(p_client->keep_alive.timeout, timer_value))
         {
+            NRF_LOG_INFO("Keepalive");
             keep_alive_transmission_attempt(p_client);
         }
     }

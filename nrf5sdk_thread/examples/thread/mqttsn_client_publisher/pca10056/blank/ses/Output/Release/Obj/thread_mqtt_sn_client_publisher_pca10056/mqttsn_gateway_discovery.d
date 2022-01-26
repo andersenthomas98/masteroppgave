@@ -1,10 +1,10 @@
 Output/Release/Obj/thread_mqtt_sn_client_publisher_pca10056/mqttsn_gateway_discovery.o: \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_gateway_discovery.c \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_gateway_discovery.c \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
