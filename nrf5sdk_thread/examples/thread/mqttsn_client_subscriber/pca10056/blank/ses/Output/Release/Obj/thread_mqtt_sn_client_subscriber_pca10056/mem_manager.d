@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/mem_manager.o: \
- C:\nrf5sdk_thread\components\libraries\mem_manager\mem_manager.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\mem_manager\mem_manager.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -28,7 +28,7 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/mem_manager.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:\nrf5sdk_thread\components\libraries\mem_manager\mem_manager.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\mem_manager\mem_manager.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \

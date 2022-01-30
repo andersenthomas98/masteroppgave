@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_fprintf.o: \
- C:\nrf5sdk_thread\external\fprintf\nrf_fprintf.c \
+ C:\masteroppgave\nrf5sdk_thread\external\fprintf\nrf_fprintf.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -30,5 +30,5 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_fprintf.o: \
  ../../../../../../components/libraries/util/nrf_assert.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:\nrf5sdk_thread\external\fprintf\nrf_fprintf_format.h \
- C:\nrf5sdk_thread\external\fprintf\nrf_fprintf.h
+ C:\masteroppgave\nrf5sdk_thread\external\fprintf\nrf_fprintf_format.h \
+ C:\masteroppgave\nrf5sdk_thread\external\fprintf\nrf_fprintf.h

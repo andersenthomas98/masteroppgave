@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/mqttsn_packet_sender.o: \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_sender.c \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_sender.c \
  ../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNConnect.h \
  ../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNPacket.h \
  ../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNConnect.h \
@@ -8,12 +8,12 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/mqttsn_packet_sende
  ../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNUnsubscribe.h \
  ../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNSearch.h \
  ../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNPacket.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport.h \
- C:\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport.h \
+ C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_platform.h \
  ../../../../../../components/libraries/mem_manager/mem_manager.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \

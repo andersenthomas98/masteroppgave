@@ -1,7 +1,7 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_drv_clock.o: \
- C:\nrf5sdk_thread\integration\nrfx\legacy\nrf_drv_clock.c \
+ C:\masteroppgave\nrf5sdk_thread\integration\nrfx\legacy\nrf_drv_clock.c \
  ../../../../../../components/libraries/util/nordic_common.h \
- C:\nrf5sdk_thread\integration\nrfx\legacy\nrf_drv_clock.h \
+ C:\masteroppgave\nrf5sdk_thread\integration\nrfx\legacy\nrf_drv_clock.h \
  ../../../../../../modules/nrfx/drivers/include/nrfx_clock.h \
  ../../../../../../modules/nrfx/nrfx.h \
  ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \

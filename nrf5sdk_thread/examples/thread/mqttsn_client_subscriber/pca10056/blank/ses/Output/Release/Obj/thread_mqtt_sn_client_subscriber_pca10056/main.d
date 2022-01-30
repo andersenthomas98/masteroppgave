@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/main.o: \
- C:\nrf5sdk_thread\examples\thread\mqttsn_client_subscriber\main.c \
+ C:\masteroppgave\nrf5sdk_thread\examples\thread\mqttsn_client_subscriber\main.c \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
@@ -80,6 +80,9 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/main.o: \
  ../../../../../../components/libraries/log/nrf_log_default_backends.h \
  ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
  ../../../../../../components/thread/utils/thread_utils.h \
+ ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_platform.h \
+ ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
+ C:/v1.8.0/toolchain/segger_embedded_studio/include/inttypes.h \
  ../../../../../../external/openthread/include/openthread/thread.h \
  ../../../../../../external/openthread/include/openthread/dataset.h \
  ../../../../../../external/openthread/include/openthread/ip6.h \

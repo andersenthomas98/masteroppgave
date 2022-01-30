@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_log_backend_rtt.o: \
- C:\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_rtt.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_rtt.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -43,13 +43,13 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_log_backend_rtt
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- C:\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_serial.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\log\src\nrf_log_backend_serial.h \
  ../../../../../../components/libraries/log/nrf_log_backend_interface.h \
  ../../../../../../external/fprintf/nrf_fprintf.h \
  ../../../../../../components/libraries/log/nrf_log_str_formatter.h \
  ../../../../../../components/libraries/log/nrf_log_ctrl.h \
  ../../../../../../components/libraries/log/src/nrf_log_ctrl_internal.h \
- C:\nrf5sdk_thread\components\libraries\log\src\nrf_log_internal.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\log\src\nrf_log_internal.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
  ../../../../../../components/libraries/delay/nrf_delay.h \
  ../../../../../../modules/nrfx/nrfx.h \

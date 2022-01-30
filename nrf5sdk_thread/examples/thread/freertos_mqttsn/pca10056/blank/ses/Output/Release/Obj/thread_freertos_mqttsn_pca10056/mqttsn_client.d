@@ -43,4 +43,5 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/mqttsn_client.o: \
  ../../../../../../components/libraries/util/app_util.h \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- ../../../../../../components/libraries/log/nrf_log_types.h
+ ../../../../../../components/libraries/log/nrf_log_types.h \
+ C:/v1.8.0/toolchain/segger_embedded_studio/include/inttypes.h

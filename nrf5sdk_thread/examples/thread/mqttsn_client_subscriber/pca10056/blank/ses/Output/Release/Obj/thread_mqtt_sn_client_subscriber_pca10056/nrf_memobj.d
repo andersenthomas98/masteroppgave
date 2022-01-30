@@ -1,6 +1,6 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_memobj.o: \
- C:\nrf5sdk_thread\components\libraries\memobj\nrf_memobj.c \
- C:\nrf5sdk_thread\components\libraries\memobj\nrf_memobj.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\memobj\nrf_memobj.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\memobj\nrf_memobj.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \

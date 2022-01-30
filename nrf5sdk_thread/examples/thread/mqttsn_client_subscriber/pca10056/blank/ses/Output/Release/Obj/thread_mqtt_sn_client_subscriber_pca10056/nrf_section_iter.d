@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_section_iter.o: \
- C:\nrf5sdk_thread\components\libraries\experimental_section_vars\nrf_section_iter.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\experimental_section_vars\nrf_section_iter.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -28,8 +28,8 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_section_iter.o:
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:\nrf5sdk_thread\components\libraries\experimental_section_vars\nrf_section_iter.h \
- C:\nrf5sdk_thread\components\libraries\experimental_section_vars\nrf_section.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\experimental_section_vars\nrf_section_iter.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\experimental_section_vars\nrf_section.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
  ../../../../../../components/libraries/util/app_util.h

@@ -63,6 +63,8 @@
 
 #include "mqttsn_client.h"
 #include "thread_utils.h"
+#include "mqttsn_platform.h"
+#include <inttypes.h>
 
 #include <openthread/thread.h>
 
@@ -474,11 +476,16 @@ int main(int argc, char *argv[])
     thread_bsp_init();
     mqttsn_init();
 
+    uint32_t last_time = 0;
     while (true)
     {
         thread_process();
         app_sched_execute();
-
+        uint32_t timer_value = mqttsn_platform_timer_cnt_get();
+        if (timer_value > last_time + 1000) {
+          last_time = timer_value + 1000;
+          NRF_LOG_INFO("%" PRIu32, timer_value);
+        }
         if (NRF_LOG_PROCESS() == false)
         {
             thread_sleep();

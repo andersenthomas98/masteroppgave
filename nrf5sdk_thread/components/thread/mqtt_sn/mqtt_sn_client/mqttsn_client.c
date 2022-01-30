@@ -48,6 +48,7 @@
 #include "nrf_log.h"
 #include <stdint.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 /**@brief Stores whether a gateway discovery procedure has started. */
 static bool m_gateway_discovery_started;
@@ -813,14 +814,15 @@ uint32_t mqttsn_client_timeout_schedule(mqttsn_client_t * p_client)
 
         } while (0);
     }
-
+    NRF_LOG_INFO("next timeout: %" PRIu32, next_timeout + timer_value);
     return err_code;
 }
 
 void mqttsn_client_timeout_handle(mqttsn_client_t * p_client)
 {
     uint32_t timer_value = mqttsn_platform_timer_cnt_get();
-    NRF_LOG_INFO("timer: %d", timer_value);
+
+    NRF_LOG_INFO("timeout handle");
 
     /* Gateway discovery procedure handler. */
     if (p_client->gateway_discovery.pending)

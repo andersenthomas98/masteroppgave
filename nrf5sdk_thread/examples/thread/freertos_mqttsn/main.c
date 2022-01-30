@@ -145,34 +145,6 @@ static void clock_init(void)
 }*/
 
 
-
-/***************************************************************************************************
- * @section Leds
- **************************************************************************************************/
-
-static void led1_task(void * pvParameter)
-{
-    UNUSED_PARAMETER(pvParameter);
-
-    while (1)
-    {
-        LEDS_INVERT(BSP_LED_2_MASK);
-        vTaskDelay(LED1_BLINK_INTERVAL);
-    }
-}
-
-
-static void led2_task(void * pvParameter)
-{
-    UNUSED_PARAMETER(pvParameter);
-
-    while (1)
-    {
-        LEDS_INVERT(BSP_LED_3_MASK);
-        vTaskDelay(LED2_BLINK_INTERVAL);
-    }
-}
-
 #if NRF_LOG_ENABLED
 static void logger_thread(void * pvParameter)
 {
@@ -197,7 +169,7 @@ int main(void)
 {
     log_init();
     //scheduler_init();
-    clock_init(); // is this used?
+    clock_init();
     timer_init();
 
     // Start thread stack execution.
@@ -207,17 +179,7 @@ int main(void)
     }
     
     // MQTT connection execution.
-   /* if (pdPASS != xTaskCreate(mqttsn_connection_task, "MQTT", MQTT_CONNECTION_TASK_STACK_SIZE, NULL, MQTT_CONNECTION_TASK_PRIORITY, &mqtt_connection_task_handle))
-    {
-        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }*/
-
-    if (pdPASS != xTaskCreate(led1_task, "LED1", configMINIMAL_STACK_SIZE, NULL, LED1_TASK_PRIORITY, &led1_task_handle))
-    {
-        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
-
-    if (pdPASS != xTaskCreate(led2_task, "LED2", configMINIMAL_STACK_SIZE, NULL, LED2_TASK_PRIORITY, &led2_task_handle))
+    if (pdPASS != xTaskCreate(mqttsn_connection_task, "MQTT", MQTT_CONNECTION_TASK_STACK_SIZE, NULL, MQTT_CONNECTION_TASK_PRIORITY, &mqtt_connection_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }

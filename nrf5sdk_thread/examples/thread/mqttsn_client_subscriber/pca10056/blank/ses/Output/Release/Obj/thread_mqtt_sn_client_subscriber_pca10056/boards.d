@@ -1,6 +1,6 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/boards.o: \
- C:\nrf5sdk_thread\components\boards\boards.c \
- C:\nrf5sdk_thread\components\boards\boards.h \
+ C:\masteroppgave\nrf5sdk_thread\components\boards\boards.c \
+ C:\masteroppgave\nrf5sdk_thread\components\boards\boards.h \
  ../../../../../../modules/nrfx/hal/nrf_gpio.h \
  ../../../../../../modules/nrfx/nrfx.h \
  ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \
@@ -45,4 +45,4 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/boards.o: \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/libraries/util/sdk_resources.h \
  ../../../../../../modules/nrfx/drivers/nrfx_errors.h \
- C:\nrf5sdk_thread\components\boards\pca10056.h
+ C:\masteroppgave\nrf5sdk_thread\components\boards\pca10056.h

@@ -1,5 +1,5 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_pwr_mgmt.o: \
- C:\nrf5sdk_thread\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
@@ -28,7 +28,7 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/nrf_pwr_mgmt.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:\nrf5sdk_thread\components\libraries\pwr_mgmt\nrf_pwr_mgmt.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\pwr_mgmt\nrf_pwr_mgmt.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section_iter.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \

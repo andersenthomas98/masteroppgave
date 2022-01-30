@@ -1,6 +1,6 @@
 Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/bsp.o: \
- C:\nrf5sdk_thread\components\libraries\bsp\bsp.c \
- C:\nrf5sdk_thread\components\libraries\bsp\bsp.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\bsp\bsp.c \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\bsp\bsp.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../components/boards/boards.h \
@@ -49,7 +49,7 @@ Output/Release/Obj/thread_mqtt_sn_client_subscriber_pca10056/bsp.o: \
  ../../../../../../components/boards/pca10056.h \
  ../../../../../../components/libraries/button/app_button.h \
  ../../../../../../components/libraries/util/app_error.h \
- C:\nrf5sdk_thread\components\libraries\bsp\bsp_config.h \
+ C:\masteroppgave\nrf5sdk_thread\components\libraries\bsp\bsp_config.h \
  ../../../../../../components/libraries/timer/app_timer.h \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
