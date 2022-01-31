@@ -1,8 +1,8 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\thread_mqttsn.c \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\thread_mqttsn.h \
- ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../components/thread/utils/thread_utils.h \
  ../../../../../../external/openthread/include/openthread/instance.h \
@@ -92,4 +92,6 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  ../../../../../../external/openthread/include/openthread/platform/radio.h \
  ../../../../../../external/openthread/include/openthread/link.h \
  ../../../../../../external/openthread/include/openthread/commissioner.h \
+ ../../../../../../external/freertos/source/include/message_buffer.h \
+ ../../../../../../external/freertos/source/include/stream_buffer.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/inttypes.h

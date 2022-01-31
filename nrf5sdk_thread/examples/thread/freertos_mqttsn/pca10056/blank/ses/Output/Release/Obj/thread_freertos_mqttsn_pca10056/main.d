@@ -90,4 +90,5 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/main.o: \
  ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
  C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
- ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/thread_mqttsn.h
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/thread_mqttsn.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/example_task.h

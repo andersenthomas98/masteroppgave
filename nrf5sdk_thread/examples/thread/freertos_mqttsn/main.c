@@ -64,15 +64,18 @@ NRF_LOG_MODULE_REGISTER();
 #include <openthread/instance.h>
 
 #include "thread_mqttsn.h"
+#include "example_task.h"
 
 //#define SCHED_QUEUE_SIZE       32                                          /**< Maximum number of events in the scheduler queue. */
 //#define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
 
 #define THREAD_STACK_TASK_STACK_SIZE     (( 1024 * 8 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define LOG_TASK_STACK_SIZE              ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
-#define MQTT_CONNECTION_TASK_STACK_SIZE  ((1024 * 8) / sizeof(StackType_t))
+#define MQTTSN_TASK_STACK_SIZE           ((1024 * 10) / sizeof(StackType_t))
+#define EXAMPLE_TASK_STACK_SIZE           (1024 / sizeof(StackType_t))
 #define THREAD_STACK_TASK_PRIORITY       2
-#define MQTT_CONNECTION_TASK_PRIORITY    1
+#define MQTTSN_TASK_PRIORITY             1
+#define EXAMPLE_TASK_PRIORITY            1
 #define LOG_TASK_PRIORITY                1
 #define LED1_TASK_PRIORITY               1
 #define LED2_TASK_PRIORITY               1
@@ -82,7 +85,8 @@ NRF_LOG_MODULE_REGISTER();
 
 
 TaskHandle_t thread_stack_task_handle = NULL;   /**< Thread stack task handle */
-TaskHandle_t mqtt_connection_task_handle = NULL; /**< MQTT connection task handle */
+TaskHandle_t mqttsn_task_handle = NULL;         /**< MQTT-SN task handle */
+TaskHandle_t example_task_handle = NULL;
 TaskHandle_t led1_task_handle = NULL;           /**< LED1 task handle*/
 TaskHandle_t led2_task_handle = NULL;           /**< LED2 task handle*/
 #if NRF_LOG_ENABLED
@@ -179,7 +183,12 @@ int main(void)
     }
     
     // MQTT connection execution.
-    if (pdPASS != xTaskCreate(mqttsn_connection_task, "MQTT", MQTT_CONNECTION_TASK_STACK_SIZE, NULL, MQTT_CONNECTION_TASK_PRIORITY, &mqtt_connection_task_handle))
+    if (pdPASS != xTaskCreate(mqttsn_task, "MQTT", MQTTSN_TASK_STACK_SIZE, NULL, MQTTSN_TASK_PRIORITY, &mqttsn_task_handle))
+    {
+        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
+
+    if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
