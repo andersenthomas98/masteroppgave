@@ -3,7 +3,9 @@
 #include "thread_utils.h"
 #include "bsp_thread.h"
 #include "FreeRTOS.h"
+#include "queue.h"
 #include "task.h"
+#include "semphr.h"
 #include "nrf_log.h"
 #include "app_scheduler.h"
 #include "app_timer.h"
@@ -22,6 +24,8 @@
 
 extern TaskHandle_t thread_stack_task_handle, mqttsn_task_handle;
 
+SemaphoreHandle_t registerTopicSemaphore;
+
 static mqttsn_client_t      m_client;                                       /**< An MQTT-SN client instance. */
 static mqttsn_remote_t      m_gateway_addr;                                 /**< A gateway address. */
 static uint8_t              m_gateway_id;                                   /**< A gateway ID. */
@@ -37,17 +41,12 @@ static mqttsn_topic_t       m_topic            =                            /**<
 };
 static uint8_t found_active_gateway = 0;
 
-typedef struct mqttsn_msg {
-  mqttsn_topic_t topic;
-  void* payload;
-} mqttsn_msg;
-
-MessageBufferHandle_t mqttsn_outgoing_message_buffer;
+QueueHandle_t mqttsn_outgoing_message_queue, mqttsn_register_topic_queue;
 
 /**@brief Initializes MQTT-SN client's connection options. */
 static void connect_opt_init(void)
 {
-    m_connect_opt.alive_duration = 60/*MQTTSN_DEFAULT_ALIVE_DURATION*/,
+    m_connect_opt.alive_duration = MQTTSN_DEFAULT_ALIVE_DURATION,
     m_connect_opt.clean_session  = MQTTSN_DEFAULT_CLEAN_SESSION_FLAG,
     m_connect_opt.will_flag      = MQTTSN_DEFAULT_WILL_FLAG,
     m_connect_opt.client_id_len  = strlen(m_client_id),
@@ -69,6 +68,7 @@ static void gateway_info_callback(mqttsn_event_t * p_event)
 {
     m_gateway_addr  = *(p_event->event_data.connected.p_gateway_addr);
     m_gateway_id    = p_event->event_data.connected.gateway_id;
+    found_active_gateway = 1;
 }
 
 
@@ -78,15 +78,19 @@ static void gateway_info_callback(mqttsn_event_t * p_event)
  */
 static void connected_callback(void)
 {
-
-    uint32_t err_code = mqttsn_client_topic_register(&m_client,
-                                                     m_topic.p_topic_name,
-                                                     strlen(m_topic_name),
-                                                     &m_msg_id);
-    if (err_code != NRF_SUCCESS)
-    {
-        NRF_LOG_ERROR("REGISTER message could not be sent. Error code: 0x%x\r\n", err_code);
+    for (uint8_t i=0; i<NUM_TOPICS; i++) {
+      mqttsn_topic_t topic = topics_to_register[i];
+      uint32_t err_code = mqttsn_client_topic_register(&m_client,
+                                                       topic.p_topic_name,
+                                                       strlen(topic.p_topic_name),
+                                                       &i);
+      if (err_code != NRF_SUCCESS)
+      {
+          NRF_LOG_ERROR("REGISTER message could not be sent. Error code: 0x%x\r\n", err_code);
+      }
     }
+
+    UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
 }
 
 
@@ -139,6 +143,8 @@ static void timeout_callback(mqttsn_event_t * p_event)
 static void searchgw_timeout_callback(mqttsn_event_t * p_event)
 {
     NRF_LOG_INFO("MQTT-SN event: Gateway discovery result: 0x%x.\r\n", p_event->event_data.discovery);
+    // Notify mqttsn task
+    UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
 }
 
 
@@ -150,13 +156,11 @@ void mqttsn_evt_handler(mqttsn_client_t * p_client, mqttsn_event_t * p_event)
         case MQTTSN_EVENT_GATEWAY_FOUND:
             NRF_LOG_INFO("MQTT-SN event: Client has found an active gateway.\r\n");
             gateway_info_callback(p_event);
-            found_active_gateway = 1;
             break;
 
         case MQTTSN_EVENT_CONNECTED:
             NRF_LOG_INFO("MQTT-SN event: Client connected.\r\n");
             connected_callback();
-            UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
             break;
 
         case MQTTSN_EVENT_DISCONNECT_PERMIT:
@@ -190,8 +194,6 @@ void mqttsn_evt_handler(mqttsn_client_t * p_client, mqttsn_event_t * p_event)
         case MQTTSN_EVENT_SEARCHGW_TIMEOUT:
             NRF_LOG_INFO("MQTT-SN event: Gateway discovery procedure has finished.\r\n");
             searchgw_timeout_callback(p_event);
-            // Notify mqttsn task
-            UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
 
             break;
 
@@ -222,8 +224,6 @@ void otSysEventSignalPending(void)
     {
         return;
     }
-    //vTaskGetInfo(xHigherPriorityTaskWoken, &xTaskDetails, pdTRUE, eInvalid);
-    //NRF_LOG_INFO("Higher priority task woken: %s", NRF_LOG_PUSH(xTaskDetails.pcTaskName));
 
     vTaskNotifyGiveFromISR(thread_stack_task_handle, &xHigherPriorityTaskWoken);
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
@@ -411,15 +411,26 @@ void thread_stack_task(void * arg)
 }
 
 
-void publish(uint16_t topic_id, uint8_t payload, uint16_t msg_id) {
-  // Multiple writers to message buffer, thus wrap in critical section
- // taskENTER_CRITICAL();
-  // Add payload to message buffer
-  size_t xBytesSent = xMessageBufferSend(mqttsn_outgoing_message_buffer, (void*)payload, sizeof(payload), pdMS_TO_TICKS(100));
-  //taskEXIT_CRITICAL();
-  if (xBytesSent != sizeof(payload)) {
-    NRF_LOG_ERROR("Appending payload to outgoing message buffer timed out before there was enough space in the buffer for the data to be written");
+void publish(mqttsn_msg_queue_element_t msg) {
+
+  if (mqttsn_outgoing_message_queue != NULL && xQueueSend(mqttsn_outgoing_message_queue, &msg, 0) != pdPASS) {
+    
+    NRF_LOG_ERROR("Failed to post mqttsn message to outgoing message queue");
+  
   }
+
+}
+
+void register_topic(TaskHandle_t task, mqttsn_register_topic_queue_element_t topic) {
+
+
+  if (mqttsn_register_topic_queue != NULL && xQueueSend(mqttsn_register_topic_queue, &topic, 0) != pdPASS) {
+
+    NRF_LOG_ERROR("Failed to post mqttsn register topic message to queue");
+  
+  }
+  
+  ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 }
 
 
@@ -431,13 +442,13 @@ void mqttsn_task(void *arg) {
   // Wait for thread stack task to initialize
   UNUSED_RETURN_VALUE(ulTaskNotifyTake(pdTRUE, portMAX_DELAY));
 
-  const size_t message_buffer_size_bytes = 100;
-
-  mqttsn_outgoing_message_buffer = xMessageBufferCreate(message_buffer_size_bytes);
-  if (mqttsn_outgoing_message_buffer == NULL) {
-    NRF_LOG_ERROR("Not enough heap memory available to create the message buffer");
+  mqttsn_outgoing_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_msg_queue_element_t));
+  mqttsn_register_topic_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_register_topic_queue_element_t));
+  registerTopicSemaphore = xSemaphoreCreateBinary();
+  if (mqttsn_outgoing_message_queue == NULL || mqttsn_register_topic_queue == NULL || registerTopicSemaphore == NULL) {
+    NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
   }
-
+  
   thread_bsp_init();
   mqttsn_init();
 
@@ -445,11 +456,6 @@ void mqttsn_task(void *arg) {
   const TickType_t delay = MQTTSN_TASK_DELAY_SEC;
   mqttsn_client_state_t state = mqttsn_client_state_get(&m_client);
   uint32_t err_code;
-
-
-  /*do {
-    err_code = mqttsn_client_search_gateway(&m_client, SEARCH_GATEWAY_TIMEOUT);
-  } while(err_code != NRF_SUCCESS);*/
 
   while(1) {
     /*MQTTSN_CLIENT_UNINITIALIZED = 0,       < Client has not been initialized yet. */
@@ -479,18 +485,31 @@ void mqttsn_task(void *arg) {
       }
       state = mqttsn_client_state_get(&m_client);
     }
-
     
-    uint8_t payload;
-    size_t recvBytes = xMessageBufferReceive(mqttsn_outgoing_message_buffer, (void*) payload, sizeof(payload), pdMS_TO_TICKS(100));
-    if (recvBytes > 0) {
-      uint32_t err_code = mqttsn_client_publish(&m_client, m_topic.topic_id, &payload, 1, &m_msg_id);
-      if (err_code != NRF_SUCCESS)
-      {
+    mqttsn_msg_queue_element_t rx_msg;
+    if (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
+
+      uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic.topic_id, &rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
+
+      if (err_code != NRF_SUCCESS) {
         NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
       }
-    }
 
+    }
+    
+    /*mqttsn_register_topic_queue_element_t rx_register;
+    if (mqttsn_register_topic_queue != NULL && xQueueReceive(mqttsn_register_topic_queue, &rx_register, 0) == pdPASS) {
+
+      uint32_t err_code = mqttsn_client_topic_register(&m_client, rx_register.topic.p_topic_name, strlen(rx_register.topic.p_topic_name), &rx_register.msg_id);
+
+      if (err_code != NRF_SUCCESS) {
+            NRF_LOG_ERROR("REGISTER message could not be sent. Error code: 0x%x\r\n", err_code);
+      }
+      
+
+    }*/
+    
+    
     
     uint32_t timer_value = mqttsn_platform_timer_cnt_get();
     NRF_LOG_INFO("time: %" PRIu32, timer_value);
