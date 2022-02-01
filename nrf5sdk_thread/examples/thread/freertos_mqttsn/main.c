@@ -71,7 +71,7 @@ NRF_LOG_MODULE_REGISTER();
 
 #define THREAD_STACK_TASK_STACK_SIZE     (( 1024 * 8 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define LOG_TASK_STACK_SIZE              ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
-#define MQTTSN_TASK_STACK_SIZE           ((1024 * 12) / sizeof(StackType_t))
+#define MQTTSN_TASK_STACK_SIZE           ((1024 * 14) / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE           (1024 / sizeof(StackType_t))
 #define THREAD_STACK_TASK_PRIORITY       2
 #define MQTTSN_TASK_PRIORITY             1

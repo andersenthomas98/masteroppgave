@@ -78,19 +78,18 @@ static void gateway_info_callback(mqttsn_event_t * p_event)
  */
 static void connected_callback(void)
 {
-    for (uint8_t i=0; i<NUM_TOPICS; i++) {
-      mqttsn_topic_t topic = topics_to_register[i];
+    //for (uint8_t i=0; i<NUM_TOPICS; i++) {
+      //mqttsn_topic_t topic = topics_to_register[i];
       uint32_t err_code = mqttsn_client_topic_register(&m_client,
-                                                       topic.p_topic_name,
-                                                       strlen(topic.p_topic_name),
-                                                       &i);
+                                                       m_topic.p_topic_name,
+                                                       strlen(m_topic.p_topic_name),
+                                                       &m_msg_id);
       if (err_code != NRF_SUCCESS)
       {
           NRF_LOG_ERROR("REGISTER message could not be sent. Error code: 0x%x\r\n", err_code);
       }
-    }
+    //}
 
-    UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
 }
 
 
@@ -110,6 +109,8 @@ static void regack_callback(mqttsn_event_t * p_event)
     m_topic.topic_id = p_event->event_data.registered.packet.topic.topic_id;
     NRF_LOG_INFO("MQTT-SN event: Topic has been registered with ID: %d.\r\n",
                  p_event->event_data.registered.packet.topic.topic_id);
+
+    UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
 }
 
 
@@ -444,8 +445,8 @@ void mqttsn_task(void *arg) {
 
   mqttsn_outgoing_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_msg_queue_element_t));
   mqttsn_register_topic_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_register_topic_queue_element_t));
-  registerTopicSemaphore = xSemaphoreCreateBinary();
-  if (mqttsn_outgoing_message_queue == NULL || mqttsn_register_topic_queue == NULL || registerTopicSemaphore == NULL) {
+  //registerTopicSemaphore = xSemaphoreCreateBinary();
+  if (mqttsn_outgoing_message_queue == NULL || mqttsn_register_topic_queue == NULL) {
     NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
   }
   
@@ -488,8 +489,12 @@ void mqttsn_task(void *arg) {
     
     mqttsn_msg_queue_element_t rx_msg;
     if (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
-
-      uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic.topic_id, &rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
+      
+      // TODO: need to associate a certain topic with the registered topic id given by broker
+      char payload[] = "{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 7.0, 8.0, 9.0, 10.0}";
+      //float p[13] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0};
+      uint8_t p_payload = &payload;
+      uint32_t err_code = mqttsn_client_publish(&m_client, m_topic.topic_id/*rx_msg.topic.topic_id*/, &payload/*&rx_msg.payload*/, sizeof(payload)/*rx_msg.payload_size*/, &rx_msg.msg_id);
 
       if (err_code != NRF_SUCCESS) {
         NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)

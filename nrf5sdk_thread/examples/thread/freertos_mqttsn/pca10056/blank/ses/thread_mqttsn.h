@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "mqttsn_client.h"
+#define NUM_TOPICS 1
 
 typedef struct mqttsn_msg_queue_element {
   mqttsn_topic_t topic;
@@ -14,16 +15,15 @@ typedef struct mqttsn_register_topic_queue_element {
 } mqttsn_register_topic_queue_element_t;
 
 
-mqttsn_topic_t test_topic = {
+/*mqttsn_topic_t test_topic = {
   .p_topic_name = "test",
   .topic_id     = 0
-}
+};*/
 
 
-#define NUM_TOPICS 1
-mqttsn_topic_t topics_to_register[NUM_TOPICS] = {
+/*mqttsn_topic_t topics_to_register[NUM_TOPICS] = {
   test_topic
-};
+};*/
 
 
 

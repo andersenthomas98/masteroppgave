@@ -9,7 +9,7 @@ void example_task(void *arg) {
   TickType_t lastWakeTime;
   const TickType_t delay = 5;
   uint16_t             m_msg_id           = 0;                         /**< Message ID thrown with MQTTSN_EVENT_TIMEOUT. */
-  char                 m_topic_name[]     = "t1"; /**< Name of the topic corresponding to subscriber's BSP_LED_2. */
+  char                 m_topic_name[]     = "nRF52840_resources/led3"; /**< Name of the topic corresponding to subscriber's BSP_LED_2. */
   mqttsn_topic_t       m_topic            =                            /**< Topic corresponding to subscriber's BSP_LED_2. */
   {
       .p_topic_name = (unsigned char *)m_topic_name,
