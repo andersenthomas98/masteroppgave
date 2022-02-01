@@ -127,14 +127,8 @@
       </folder>
       <file file_name="defines.h" />
       <folder Name="drivers">
-        <file file_name="ir.c" />
-        <file file_name="ir.h" />
-        <file file_name="servo.c" />
-        <file file_name="servo.h" />
         <file file_name="functions.c" />
         <file file_name="functions.h" />
-        <file file_name="i2c.c" />
-        <file file_name="i2c.h" />
         <folder Name="ICM_20948">
           <file file_name="ICM_20948.c" />
           <file file_name="ICM_20948.h" />
@@ -146,6 +140,18 @@
           <file file_name="encoder_with_counter.h" />
           <file file_name="encoder.c" />
           <file file_name="encoder.h" />
+        </folder>
+        <folder Name="i2c">
+          <file file_name="i2c.c" />
+          <file file_name="i2c.h" />
+        </folder>
+        <folder Name="ir">
+          <file file_name="ir.c" />
+          <file file_name="ir.h" />
+        </folder>
+        <folder Name="servo">
+          <file file_name="servo.c" />
+          <file file_name="servo.h" />
         </folder>
       </folder>
       <file file_name="globals.h" />
