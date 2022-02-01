@@ -123,6 +123,7 @@ static void received_callback(mqttsn_event_t * p_event)
     if (p_event->event_data.published.packet.topic.topic_id == m_topic.topic_id)
     {
         NRF_LOG_INFO("MQTT-SN event: Content to subscribed topic received.\r\n");
+        NRF_LOG_INFO("%s", NRF_LOG_PUSH(p_event->event_data.published.p_payload));
     }
     else
     {
