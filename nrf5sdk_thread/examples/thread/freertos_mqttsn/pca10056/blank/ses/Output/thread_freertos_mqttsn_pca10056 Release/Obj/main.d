@@ -92,4 +92,5 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/main.o: \
  C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 3.34a/include/stdarg.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/thread_mqttsn.h \
  ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
- ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/example_task.h
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/example_task.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/SensorTowerTask.h

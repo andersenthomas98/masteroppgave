@@ -65,6 +65,7 @@ NRF_LOG_MODULE_REGISTER();
 
 #include "thread_mqttsn.h"
 #include "example_task.h"
+#include "SensorTowerTask.h"
 
 //#define SCHED_QUEUE_SIZE       32                                          /**< Maximum number of events in the scheduler queue. */
 //#define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
@@ -72,9 +73,11 @@ NRF_LOG_MODULE_REGISTER();
 #define THREAD_STACK_TASK_STACK_SIZE     (( 1024 * 8 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define LOG_TASK_STACK_SIZE              ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define MQTTSN_TASK_STACK_SIZE           ((1024 * 14) / sizeof(StackType_t))
+#define SENSOR_TOWER_TASK_STACK_SIZE     ( 1024 / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE           (1024 / sizeof(StackType_t))
 #define THREAD_STACK_TASK_PRIORITY       2
 #define MQTTSN_TASK_PRIORITY             1
+#define SENSOR_TOWER_TASK_PRIORITY       1
 #define EXAMPLE_TASK_PRIORITY            1
 #define LOG_TASK_PRIORITY                1
 #define LED1_TASK_PRIORITY               1
@@ -89,6 +92,7 @@ TaskHandle_t mqttsn_task_handle = NULL;         /**< MQTT-SN task handle */
 TaskHandle_t example_task_handle = NULL;
 TaskHandle_t led1_task_handle = NULL;           /**< LED1 task handle*/
 TaskHandle_t led2_task_handle = NULL;           /**< LED2 task handle*/
+TaskHandle_t sensor_tower_task_handle = NULL;
 #if NRF_LOG_ENABLED
   TaskHandle_t logger_task_handle = NULL;         /**< Definition of Logger thread. */
 #endif
@@ -191,6 +195,11 @@ int main(void)
     if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
+
+    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    {
+      APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
 #if NRF_LOG_ENABLED
