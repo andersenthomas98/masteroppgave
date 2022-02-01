@@ -86,7 +86,7 @@
 #endif
 // <o> GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS - Number of lower power input pins 
 #ifndef GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS
-#define GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS 4
+#define GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS 6 // Was 4
 #endif
 
 // <o> GPIOTE_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -114,9 +114,76 @@
 #define NRFX_TIMER_ENABLED 1
 #endif
 
+// <q> NRFX_TIMER1_ENABLED  - Enable TIMER1 instance (for openthread, defined in nrf_802154_peripherals.h)
+//#ifndef NRFX_TIMER1_ENABLED
+//#define NRFX_TIMER1_ENABLED 1 // Encoder and openthread cannot use same timer instance
+//#endif
+
 // <q> NRFX_TIMER2_ENABLED  - Enable TIMER2 instance
 #ifndef NRFX_TIMER2_ENABLED
 #define NRFX_TIMER2_ENABLED 1
+#endif
+
+// <q> NRFX_TIMER3_ENABLED  - Enable TIMER3 instance (for encoder)
+#ifndef NRFX_TIMER3_ENABLED
+#define NRFX_TIMER3_ENABLED 1
+#endif
+
+// <q> NRFX_TIMER4_ENABLED  - Enable TIMER4 instance (for encoder)
+#ifndef NRFX_TIMER4_ENABLED
+#define NRFX_TIMER4_ENABLED 1
+#endif
+// <o> NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY  - Timer frequency if in Timer mode
+ 
+// <0=> 16 MHz 
+// <1=> 8 MHz 
+// <2=> 4 MHz 
+// <3=> 2 MHz 
+// <4=> 1 MHz 
+// <5=> 500 kHz 
+// <6=> 250 kHz 
+// <7=> 125 kHz 
+// <8=> 62.5 kHz 
+// <9=> 31.25 kHz 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY
+#define NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY 0
+#endif
+
+// <o> NRFX_TIMER_DEFAULT_CONFIG_MODE  - Timer mode or operation
+ 
+// <0=> Timer 
+// <1=> Counter 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_MODE
+#define NRFX_TIMER_DEFAULT_CONFIG_MODE 0
+#endif
+
+// <o> NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH  - Timer counter bit width
+ 
+// <0=> 16 bit 
+// <1=> 8 bit 
+// <2=> 24 bit 
+// <3=> 32 bit 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH
+#define NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH 0
+#endif
+
+
+// <o> NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
+ 
+// <0=> 0 (highest) 
+// <1=> 1 
+// <2=> 2 
+// <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY
+#define NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 
@@ -1627,6 +1694,12 @@
 
 // </e>
 
+// <e> NRFX_PPI_ENABLED - nrfx_ppi - PPI peripheral allocator
+//==========================================================
+#ifndef NRFX_PPI_ENABLED
+#define NRFX_PPI_ENABLED 1
+#endif
+
 // <e> PPI_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 #ifndef PPI_CONFIG_LOG_ENABLED
@@ -2210,6 +2283,13 @@
 
 // </e>
 
+// <e> NRF_QUEUE_ENABLED - nrf_queue - Queue module
+//==========================================================
+#ifndef NRF_QUEUE_ENABLED
+#define NRF_QUEUE_ENABLED 1
+#endif
+
+
 // <e> NRFX_TWI_ENABLED - nrfx_twi - TWI peripheral driver
 //==========================================================
 #ifndef NRFX_TWI_ENABLED
@@ -2219,6 +2299,11 @@
 // <q> NRFX_TWI1_ENABLED  - Enable TWI1 instance
 #ifndef NRFX_TWI1_ENABLED
 #define NRFX_TWI1_ENABLED 1
+#endif
+
+// <q> NRF_TWI_MNGR_ENABLED  - nrf_twi_mngr - TWI transaction manager
+#ifndef NRF_TWI_MNGR_ENABLED
+#define NRF_TWI_MNGR_ENABLED 1
 #endif
 
 

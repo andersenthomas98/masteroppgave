@@ -9,6 +9,8 @@
 #define I2C_H
 
 #include "nrf_twi_mngr.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
 
 void i2c_init();
 

@@ -2,6 +2,10 @@
 #define POSITION_ESTIMATE_H
 
 #include <stdint.h>
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+extern SemaphoreHandle_t xPoseMutex;
 
 typedef struct{
 
@@ -11,7 +15,7 @@ typedef struct{
     float vel;
 } position_estimate_t;
 
-
+void init_position_estimate();
 
 /**
  * @brief Get estimate of robot position x, y and theta

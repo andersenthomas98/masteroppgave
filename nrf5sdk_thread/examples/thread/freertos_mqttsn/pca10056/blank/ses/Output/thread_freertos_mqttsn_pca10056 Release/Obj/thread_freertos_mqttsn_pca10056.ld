@@ -133,8 +133,22 @@ SECTIONS
 
   . = ASSERT(__pwr_mgmt_data_start__ == __pwr_mgmt_data_end__ || (__pwr_mgmt_data_end__ >= __FLASH_segment_start__ && __pwr_mgmt_data_end__ <= __FLASH_segment_end__) , "error: .pwr_mgmt_data is too large to fit in FLASH memory segment");
 
-  __log_const_data_load_start__ = ALIGN(__pwr_mgmt_data_end__ , 4);
-  .log_const_data ALIGN(__pwr_mgmt_data_end__ , 4) : AT(ALIGN(__pwr_mgmt_data_end__ , 4))
+  __nrf_queue_load_start__ = ALIGN(__pwr_mgmt_data_end__ , 4);
+  .nrf_queue ALIGN(__pwr_mgmt_data_end__ , 4) : AT(ALIGN(__pwr_mgmt_data_end__ , 4))
+  {
+    __nrf_queue_start__ = .;
+    __start_nrf_queue =   __nrf_queue_start__;
+    KEEP(*(.nrf_queue*))
+  }
+  __nrf_queue_end__ = __nrf_queue_start__ + SIZEOF(.nrf_queue);
+  __nrf_queue_size__ = SIZEOF(.nrf_queue);
+  __stop_nrf_queue =   __nrf_queue_end__;
+  __nrf_queue_load_end__ = __nrf_queue_end__;
+
+  . = ASSERT(__nrf_queue_start__ == __nrf_queue_end__ || (__nrf_queue_end__ >= __FLASH_segment_start__ && __nrf_queue_end__ <= __FLASH_segment_end__) , "error: .nrf_queue is too large to fit in FLASH memory segment");
+
+  __log_const_data_load_start__ = ALIGN(__nrf_queue_end__ , 4);
+  .log_const_data ALIGN(__nrf_queue_end__ , 4) : AT(ALIGN(__nrf_queue_end__ , 4))
   {
     __log_const_data_start__ = .;
     __start_log_const_data =   __log_const_data_start__;

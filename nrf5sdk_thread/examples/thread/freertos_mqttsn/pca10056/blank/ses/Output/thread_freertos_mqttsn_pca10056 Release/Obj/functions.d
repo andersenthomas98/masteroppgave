@@ -62,7 +62,6 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/functions.o: \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\globals.h \
  ../../../../../../external/freertos/source/include/FreeRTOS.h \
  ../../../config/FreeRTOSConfig.h \
  ../../../../../../external/freertos/source/include/projdefs.h \
@@ -71,10 +70,11 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/functions.o: \
  ../../../../../../external/freertos/portable/GCC/nrf52/portmacro.h \
  ../../../../../../external/freertos/portable/CMSIS/nrf52/portmacro_cmsis.h \
  ../../../../../../external/freertos/source/include/mpu_wrappers.h \
- ../../../../../../external/freertos/source/include/task.h \
- ../../../../../../external/freertos/source/include/list.h \
  ../../../../../../external/freertos/source/include/semphr.h \
  ../../../../../../external/freertos/source/include/queue.h \
+ C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\globals.h \
+ ../../../../../../external/freertos/source/include/task.h \
+ ../../../../../../external/freertos/source/include/list.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  ../../../../../../components/libraries/util/sdk_os.h \

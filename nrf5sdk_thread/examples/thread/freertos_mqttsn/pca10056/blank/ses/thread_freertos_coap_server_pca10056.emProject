@@ -83,6 +83,9 @@
       <file file_name="../../../../../../components/libraries/strerror/nrf_strerror.c" />
       <file file_name="../../../../../../components/libraries/mem_manager/mem_manager.c" />
       <file file_name="../../../../../../components/libraries/scheduler/app_scheduler.c" />
+      <file file_name="../../../../../../components/libraries/twi_mngr/nrf_twi_mngr.c" />
+      <file file_name="../../../../../../components/libraries/queue/nrf_queue.c" />
+      <file file_name="../../../../../../components/libraries/pwm/app_pwm.c" />
     </folder>
     <folder Name="nRF_Drivers">
       <file file_name="../../../../../../integration/nrfx/legacy/nrf_drv_clock.c" />
@@ -95,6 +98,12 @@
       <file file_name="../../../../../../modules/nrfx/drivers/src/nrfx_nvmc.c" />
       <file file_name="../../../../../../modules/nrfx/drivers/src/nrfx_saadc.c" />
       <file file_name="../../../../../../modules/nrfx/drivers/src/nrfx_pwm.c" />
+      <file file_name="../../../../../../modules/nrfx/drivers/src/nrfx_twi.c" />
+      <file file_name="../../../../../../modules/nrfx/drivers/src/nrfx_twim.c" />
+      <file file_name="../../../../../../integration/nrfx/legacy/nrf_drv_twi.c" />
+      <file file_name="../../../../../../modules/nrfx/drivers/src/nrfx_timer.c" />
+      <file file_name="../../../../../../modules/nrfx/drivers/src/nrfx_ppi.c" />
+      <file file_name="../../../../../../integration/nrfx/legacy/nrf_drv_ppi.c" />
     </folder>
     <folder Name="Board Support">
       <file file_name="../../../../../../components/libraries/bsp/bsp.c" />
@@ -126,11 +135,31 @@
         <file file_name="functions.h" />
         <file file_name="i2c.c" />
         <file file_name="i2c.h" />
+        <folder Name="ICM_20948">
+          <file file_name="ICM_20948.c" />
+          <file file_name="ICM_20948.h" />
+          <file file_name="ICM_20948_ENUMERATIONS.h" />
+          <file file_name="ICM_20948_REGISTERS.h" />
+        </folder>
+        <folder Name="encoder">
+          <file file_name="encoder_with_counter.c" />
+          <file file_name="encoder_with_counter.h" />
+          <file file_name="encoder.c" />
+          <file file_name="encoder.h" />
+        </folder>
       </folder>
       <file file_name="globals.h" />
       <folder Name="NewEstimator">
         <file file_name="positionEstimate.h" />
         <file file_name="positionEstimate.c" />
+        <file file_name="NewEstimatorTask.c" />
+        <file file_name="NewEstimatorTask.h" />
+        <file file_name="ExtendedKalmanFilter.c" />
+        <file file_name="ExtendedKalmanFilter.h" />
+      </folder>
+      <folder Name="math">
+        <file file_name="matrix_operations.c" />
+        <file file_name="matrix_operations.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

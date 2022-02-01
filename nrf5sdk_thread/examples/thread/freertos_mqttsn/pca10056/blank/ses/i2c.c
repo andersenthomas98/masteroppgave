@@ -21,7 +21,7 @@
 #define PIN_I2C_SCL 27
 
 
-SemaphoreHandle_t i2cSemaphore;
+SemaphoreHandle_t i2cSemaphore = NULL;
 
 
 static const nrf_twi_mngr_t m_nrf_twi_mngr;
@@ -44,8 +44,8 @@ void i2c_callback(long unsigned int,  void *)
 
 void i2c_init(){
       i2cSemaphore = xSemaphoreCreateMutex();
-        if(nrf_twi_mngr_init(&m_nrf_twi_mngr,&bus_config) != NRF_SUCCESS){
-            NRF_LOG_WARNING("I2c INIT FAILED!\n");
+        if(nrf_twi_mngr_init(&m_nrf_twi_mngr,&bus_config) != NRF_SUCCESS || i2cSemaphore == NULL){
+            NRF_LOG_ERROR("I2c INIT FAILED!\n");
         }
 }
 

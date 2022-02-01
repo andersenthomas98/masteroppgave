@@ -56,7 +56,7 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/i2c.o: \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- ../../../../../../external/freertos/source/include/freeRTOS.h \
+ ../../../../../../external/freertos/source/include/FreeRTOS.h \
  ../../../config/FreeRTOSConfig.h \
  ../../../../../../external/freertos/source/include/projdefs.h \
  ../../../../../../external/freertos/source/include/portable.h \
@@ -66,6 +66,7 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/i2c.o: \
  ../../../../../../external/freertos/source/include/mpu_wrappers.h \
  ../../../../../../external/freertos/source/include/semphr.h \
  ../../../../../../external/freertos/source/include/queue.h \
+ ../../../../../../external/freertos/source/include/freeRTOS.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  ../../../../../../components/libraries/util/sdk_os.h \

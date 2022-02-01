@@ -1,7 +1,16 @@
 #include "positionEstimate.h"
+#include "nrf_log.h"
 
 position_estimate_t position_estimate;
 
+SemaphoreHandle_t xPoseMutex = NULL;
+
+void init_position_estimate() {
+  xPoseMutex = xSemaphoreCreateMutex();
+  if (xPoseMutex == NULL) {
+    NRF_LOG_ERROR("Not enough heap memory for pose mutex");
+  }
+}
 
 void get_position_estimate(position_estimate_t* pos_est)
 {
