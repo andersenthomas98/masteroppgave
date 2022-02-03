@@ -153,6 +153,10 @@
           <file file_name="servo.c" />
           <file file_name="servo.h" />
         </folder>
+        <folder Name="motor">
+          <file file_name="motor.h" />
+          <file file_name="motor.c" />
+        </folder>
       </folder>
       <file file_name="globals.h" />
       <folder Name="NewEstimator">
@@ -166,6 +170,14 @@
       <folder Name="math">
         <file file_name="matrix_operations.c" />
         <file file_name="matrix_operations.h" />
+      </folder>
+      <folder Name="Controller">
+        <file file_name="ControllerTask.c" />
+        <file file_name="ControllerTask.h" />
+        <file file_name="MotorSpeedControllerTask.c" />
+        <file file_name="MotorSpeedControllerTask.h" />
+        <file file_name="PID_controller.c" />
+        <file file_name="PID_controller.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

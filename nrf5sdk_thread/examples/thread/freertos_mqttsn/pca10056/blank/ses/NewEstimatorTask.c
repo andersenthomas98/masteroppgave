@@ -31,7 +31,7 @@
 
 #include "globals.h"
 
-// TODO #include "ControllerTask.h"
+#include "ControllerTask.h"
 
 #include <string.h>
 
@@ -42,6 +42,8 @@
 #include "encoder_with_counter.h"
  //#include "encoder.h"
 #include "positionEstimate.h"
+
+extern SemaphoreHandle_t xControllerBSem;
 
 int8_t gyroCalib = 1;
 int8_t finished_calibration = 0;
@@ -228,7 +230,7 @@ void vNewMainPoseEstimatorTask(void * pvParameters) {
       }*/
       
       // Send semaphore to controller
-      // TODO xSemaphoreGive(xControllerBSem);
+      xSemaphoreGive(xControllerBSem);
 
     } else if (gyroCalib && !finished_calibration) {
       // IMU calibration

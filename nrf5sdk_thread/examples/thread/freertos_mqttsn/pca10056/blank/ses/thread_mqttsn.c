@@ -42,35 +42,19 @@ static mqttsn_topic_t       led3_topic            =                            /
     .topic_id     = 0
 };
 
-/*static mqttsn_topic_t topic_led1 = {
-  .p_topic_name = "nRF52840_resources/led1",
-  .topic_id     = 0
-};
-static mqttsn_topic_t topic_led2 = {
-  .p_topic_name = "nRF52840_resources/led2",
-  .topic_id     = 0
-};
-static mqttsn_topic_t topic_led3 = {
-  .p_topic_name = "nRF52840_resources/led3",
-  .topic_id     = 0
-};
-
-mqttsn_topic_t* arr_p_topic[1] = {&topic_led1, &topic_led2, &topic_led3};*/
-
-
 mqttsn_topic_t topic_arr[NUM_TOPICS] = 
 {
   {
     .p_topic_name = "nRF52840_resources/led1", 
-    .topic_id     = 0
+    .topic_id     = NULL
   },
   {
     .p_topic_name = "nRF52840_resources/led2", 
-    .topic_id     = 0
+    .topic_id     = NULL
   },
   {
     .p_topic_name = "nRF52840_resources/led3", 
-    .topic_id     = 0
+    .topic_id     = NULL
   }
 };
 

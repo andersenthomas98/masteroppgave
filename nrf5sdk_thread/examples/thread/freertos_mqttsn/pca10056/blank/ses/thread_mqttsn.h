@@ -1,3 +1,11 @@
+/************************************************************************/
+// File:            thread_mqttsn.h                                     //
+// Author:                                                              //
+// Purpose:         Implements a multithreaded mqttsn client.           //
+//                                                                      //
+/************************************************************************/
+
+
 #include <stdint.h>
 #include "mqttsn_client.h"
 #define NUM_TOPICS 1

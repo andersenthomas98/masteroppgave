@@ -397,6 +397,7 @@ uint32_t mqttsn_packet_sender_regack(mqttsn_client_t * p_client,
   return err_code;
 }
 
+// TODO: Add qos as parameter to function
 uint32_t mqttsn_packet_sender_publish(mqttsn_client_t * p_client,
   mqttsn_topic_t * p_topic,
   const uint8_t * payload,

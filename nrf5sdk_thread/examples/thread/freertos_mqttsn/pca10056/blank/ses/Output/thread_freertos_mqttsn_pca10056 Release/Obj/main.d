@@ -94,4 +94,9 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/main.o: \
  ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/example_task.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/SensorTowerTask.h \
- ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/NewEstimatorTask.h
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/NewEstimatorTask.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/ControllerTask.h \
+ ../../../../../../external/freertos/source/include/semphr.h \
+ ../../../../../../external/freertos/source/include/queue.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/MotorSpeedControllerTask.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/globals.h

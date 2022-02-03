@@ -38,8 +38,8 @@ extern QueueHandle_t encoderTicksToMotorPositionControllerQ;
 extern QueueHandle_t encoderTicksToEstimatorTaskQ;
 
 // Flag to indicate connection status. Interrupt can change handshook status
-extern uint8_t gHandshook;
-extern uint8_t gPaused;
+//extern uint8_t gHandshook;
+//extern uint8_t gPaused;
 
 
 //Globals for direction

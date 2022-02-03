@@ -114,12 +114,17 @@
 #define NRFX_TIMER_ENABLED 1
 #endif
 
+// <q> NRFX_TIMER0_ENABLED  - Enable TIMER0 instance
+#ifndef NRFX_TIMER0_ENABLED
+#define NRFX_TIMER0_ENABLED 1
+#endif
+
 // <q> NRFX_TIMER1_ENABLED  - Enable TIMER1 instance (for openthread, defined in nrf_802154_peripherals.h)
 //#ifndef NRFX_TIMER1_ENABLED
-//#define NRFX_TIMER1_ENABLED 1 // Encoder and openthread cannot use same timer instance
+//#define NRFX_TIMER1_ENABLED 1
 //#endif
 
-// <q> NRFX_TIMER2_ENABLED  - Enable TIMER2 instance
+// <q> NRFX_TIMER2_ENABLED  - Enable TIMER2 instance (for motor pwm-signal generation)
 #ifndef NRFX_TIMER2_ENABLED
 #define NRFX_TIMER2_ENABLED 1
 #endif
@@ -1761,6 +1766,11 @@
 // <q> NRFX_PWM0_ENABLED  - Enable PWM0 instance
 #ifndef NRFX_PWM0_ENABLED
 #define NRFX_PWM0_ENABLED 1
+#endif
+
+// <q> NRFX_PWM2_ENABLED  - Enable PWM2 instance
+#ifndef NRFX_PWM2_ENABLED
+#define NRFX_PWM2_ENABLED 1
 #endif
 
 // <e> PWM_CONFIG_LOG_ENABLED - Enables logging in the module.

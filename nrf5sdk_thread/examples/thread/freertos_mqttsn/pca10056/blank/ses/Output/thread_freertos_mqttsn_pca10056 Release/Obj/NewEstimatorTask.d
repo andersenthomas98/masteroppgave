@@ -84,6 +84,7 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/NewEstimatorTask.o: \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\NewEstimatorTask.h \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\globals.h \
  ../../../../../../external/freertos/source/include/task.h \
+ C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\ControllerTask.h \
  C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 3.34a/include/stdarg.h \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\encoder_with_counter.h \
  ../../../../../../modules/nrfx/drivers/include/nrfx_gpiote.h \

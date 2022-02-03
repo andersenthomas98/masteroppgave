@@ -67,56 +67,45 @@ NRF_LOG_MODULE_REGISTER();
 #include "example_task.h"
 #include "SensorTowerTask.h"
 #include "NewEstimatorTask.h"
+#include "ControllerTask.h"
+#include "MotorSpeedControllerTask.h"
+
 
 //#define SCHED_QUEUE_SIZE       32                                          /**< Maximum number of events in the scheduler queue. */
 //#define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
 
-#define THREAD_STACK_TASK_STACK_SIZE     (( 1024 * 6 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
-#define LOG_TASK_STACK_SIZE              ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
-#define MQTTSN_TASK_STACK_SIZE           ((1024 * 2) / sizeof(StackType_t))
-#define SENSOR_TOWER_TASK_STACK_SIZE     ( 1024 / sizeof(StackType_t))
-#define NEW_ESTIMATOR_TASK_STACK_SIZE    ( 1024 * 4 / sizeof(StackType_t))
-#define EXAMPLE_TASK_STACK_SIZE          ( 1024 / sizeof(StackType_t))
-#define THREAD_STACK_TASK_PRIORITY       2
-#define MQTTSN_TASK_PRIORITY             1
-#define SENSOR_TOWER_TASK_PRIORITY       1
-#define NEW_ESTIMATOR_TASK_PRIORITY      1
-#define EXAMPLE_TASK_PRIORITY            1
-#define LOG_TASK_PRIORITY                1
-#define LED1_TASK_PRIORITY               1
-#define LED2_TASK_PRIORITY               1
-#define LED1_BLINK_INTERVAL              427
-#define LED2_BLINK_INTERVAL              472
-#define LOG_TASK_INTERVAL                10
+#define THREAD_STACK_TASK_STACK_SIZE            (( 1024 * 6 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
+#define LOG_TASK_STACK_SIZE                     ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
+#define MQTTSN_TASK_STACK_SIZE                  ((1024 * 2) / sizeof(StackType_t))
+#define SENSOR_TOWER_TASK_STACK_SIZE            ( 1024 / sizeof(StackType_t))
+#define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 4 / sizeof(StackType_t))
+#define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
+#define POSE_CONTROLLER_TASK_STACK_SIZE         ((1024 * 2) / sizeof(StackType_t))
+#define EXAMPLE_TASK_STACK_SIZE                 ( 1024 / sizeof(StackType_t))
+
+#define THREAD_STACK_TASK_PRIORITY            2
+#define MQTTSN_TASK_PRIORITY                  1
+#define SENSOR_TOWER_TASK_PRIORITY            1
+#define NEW_ESTIMATOR_TASK_PRIORITY           1
+#define MOTOR_SPEED_CONTROLLER_TASK_PRIORITY  1
+#define POSE_CONTROLLER_TASK_PRIORITY         1
+#define EXAMPLE_TASK_PRIORITY                 1
+#define LOG_TASK_PRIORITY                     1
+
+#define LOG_TASK_INTERVAL                     10
 
 
-TaskHandle_t thread_stack_task_handle = NULL;   /**< Thread stack task handle */
-TaskHandle_t mqttsn_task_handle = NULL;         /**< MQTT-SN task handle */
-TaskHandle_t example_task_handle = NULL;
-TaskHandle_t example_task_B_handle = NULL;
-TaskHandle_t led1_task_handle = NULL;           /**< LED1 task handle*/
-TaskHandle_t led2_task_handle = NULL;           /**< LED2 task handle*/
-TaskHandle_t sensor_tower_task_handle = NULL;
-TaskHandle_t new_estimator_task_handle = NULL;
+TaskHandle_t thread_stack_task_handle           = NULL;   /**< Thread stack task handle */
+TaskHandle_t mqttsn_task_handle                 = NULL;         /**< MQTT-SN task handle */
+TaskHandle_t example_task_handle                = NULL;
+TaskHandle_t example_task_B_handle              = NULL;
+TaskHandle_t sensor_tower_task_handle           = NULL;
+TaskHandle_t new_estimator_task_handle          = NULL;
+TaskHandle_t motor_speed_controller_task_handle = NULL;
+TaskHandle_t pose_controller_task_handle        = NULL;
 #if NRF_LOG_ENABLED
   TaskHandle_t logger_task_handle = NULL;         /**< Definition of Logger thread. */
 #endif
-
-static inline void light_on(void)
-{
-    vTaskResume(led1_task_handle);
-    vTaskResume(led2_task_handle);
-}
-
-
-static inline void light_off(void)
-{
-    vTaskSuspend(led1_task_handle);
-    LEDS_OFF(BSP_LED_2_MASK);
-
-    vTaskSuspend(led2_task_handle);
-    LEDS_OFF(BSP_LED_3_MASK);
-}
 
 
 /***************************************************************************************************
@@ -186,7 +175,7 @@ int main(void)
     timer_init();
 
     // Start thread stack execution.
-    if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &thread_stack_task_handle))
+    /*if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &thread_stack_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -200,26 +189,37 @@ int main(void)
     if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
     /*if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
     
-    /*if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
   
-    if (pdPASS != xTaskCreate(vNewMainPoseEstimatorTask, "POSE", NEW_ESTIMATOR_TASK_STACK_SIZE, NULL, NEW_ESTIMATOR_TASK_PRIORITY, &new_estimator_task_handle)) 
+    /*if (pdPASS != xTaskCreate(vNewMainPoseEstimatorTask, "POSE", NEW_ESTIMATOR_TASK_STACK_SIZE, NULL, NEW_ESTIMATOR_TASK_PRIORITY, &new_estimator_task_handle)) 
+    {
+      APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
+
+    if (pdPASS != xTaskCreate(vMotorSpeedControllerTask, "SPDC", MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE, NULL, MOTOR_SPEED_CONTROLLER_TASK_PRIORITY, &motor_speed_controller_task_handle)) 
+    {
+      APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
+
+    if (pdPASS != xTaskCreate(vMainPoseControllerTask, "POSC", POSE_CONTROLLER_TASK_STACK_SIZE, NULL, POSE_CONTROLLER_TASK_PRIORITY, &pose_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
 
+
 #if NRF_LOG_ENABLED
     // Start execution.
-    if (pdPASS != xTaskCreate(logger_thread, "LOGGER", LOG_TASK_STACK_SIZE, NULL, LOG_TASK_PRIORITY, &logger_task_handle))
+    if (pdPASS != xTaskCreate(logger_thread, "LOGG", LOG_TASK_STACK_SIZE, NULL, LOG_TASK_PRIORITY, &logger_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
