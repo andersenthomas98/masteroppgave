@@ -93,6 +93,7 @@ NRF_LOG_MODULE_REGISTER();
 TaskHandle_t thread_stack_task_handle = NULL;   /**< Thread stack task handle */
 TaskHandle_t mqttsn_task_handle = NULL;         /**< MQTT-SN task handle */
 TaskHandle_t example_task_handle = NULL;
+TaskHandle_t example_task_B_handle = NULL;
 TaskHandle_t led1_task_handle = NULL;           /**< LED1 task handle*/
 TaskHandle_t led2_task_handle = NULL;           /**< LED2 task handle*/
 TaskHandle_t sensor_tower_task_handle = NULL;
@@ -200,8 +201,13 @@ int main(void)
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
+
+    if (pdPASS != xTaskCreate(example_task_B, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
+    {
+        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
     
-    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    /*if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -209,7 +215,7 @@ int main(void)
     if (pdPASS != xTaskCreate(vNewMainPoseEstimatorTask, "POSE", NEW_ESTIMATOR_TASK_STACK_SIZE, NULL, NEW_ESTIMATOR_TASK_PRIORITY, &new_estimator_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
 #if NRF_LOG_ENABLED
     // Start execution.

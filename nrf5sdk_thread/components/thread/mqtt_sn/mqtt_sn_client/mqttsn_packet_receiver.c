@@ -365,19 +365,25 @@ static uint32_t regack_handle(mqttsn_client_t * p_client,
                 return NRF_ERROR_INTERNAL;
             }
 
-            uint32_t fifo_dequeue_rc = mqttsn_packet_fifo_elem_dequeue(p_client, packet_id, MQTTSN_MESSAGE_ID);
-            ASSERT(fifo_dequeue_rc == NRF_SUCCESS);
+            //uint32_t fifo_dequeue_rc = mqttsn_packet_fifo_elem_dequeue(p_client, packet_id, MQTTSN_MESSAGE_ID);
+            //ASSERT(fifo_dequeue_rc == NRF_SUCCESS);
+            // should be moved below, otherwise the packet won't exist when we read from it
 
             mqttsn_topic_t topic;
             memset(&topic, 0, sizeof(mqttsn_topic_t));
             topic.topic_id     = topic_id;
             topic.p_topic_name = p_client->packet_queue.packet[index].topic.p_topic_name;
 
+            // Moved here
+            uint32_t fifo_dequeue_rc = mqttsn_packet_fifo_elem_dequeue(p_client, packet_id, MQTTSN_MESSAGE_ID);
+            ASSERT(fifo_dequeue_rc == NRF_SUCCESS);
+
             mqttsn_event_t evt_acc;
             memset(&evt_acc, 0, sizeof(mqttsn_event_t));
             evt_acc.event_id                           = MQTTSN_EVENT_REGISTERED;
             evt_acc.event_data.registered.packet.id    = packet_id;
             evt_acc.event_data.registered.packet.topic = topic;
+
 
             p_client->evt_handler(p_client, &evt_acc);
 
