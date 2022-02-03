@@ -140,10 +140,10 @@ void vMainSensorTowerTask(void * pvParameters) {
       // Java server message
       if (USEBLUETOOTH) {
         //send_update((int16_t) round(xhat / 10.0), (int16_t) round(yhat / 10.0), thetahat * RAD2DEG, servoAngle, sensorDataCM[0], sensorDataCM[1], sensorDataCM[2], sensorDataCM[3]);
-        if (PRINT_DEBUG_IR) printf("sensor1 %d\t", sensorDataCM[0]);
-        if (PRINT_DEBUG_IR) printf("sensor2 %d\t", sensorDataCM[1]);
-        if (PRINT_DEBUG_IR) printf("sensor3 %d\t", sensorDataCM[2]);
-        if (PRINT_DEBUG_IR) printf("sensor4 %d\n\r", sensorDataCM[3]);
+        if (PRINT_DEBUG_IR) NRF_LOG_INFO("sensor1 %d\t", sensorDataCM[0]);
+        if (PRINT_DEBUG_IR) NRF_LOG_INFO("sensor2 %d\t", sensorDataCM[1]);
+        if (PRINT_DEBUG_IR) NRF_LOG_INFO("sensor3 %d\t", sensorDataCM[2]);
+        if (PRINT_DEBUG_IR) NRF_LOG_INFO("sensor4 %d\n\r", sensorDataCM[3]);
 
       } else // C++ server message
       {

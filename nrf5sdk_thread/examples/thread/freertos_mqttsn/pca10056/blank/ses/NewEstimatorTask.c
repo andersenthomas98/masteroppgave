@@ -122,8 +122,8 @@ void vNewMainPoseEstimatorTask(void * pvParameters) {
       float dLeft = (float)(encoder_ticks.left * 1.0 * WHEEL_FACTOR_MM); // Distance left wheel has traveled since last sample
       float dRight = (float)(encoder_ticks.right * 1.0 * WHEEL_FACTOR_MM); // Distance right wheel has traveled since last sample
 
-      NRF_LOG_INFO("dLeft: " NRF_LOG_FLOAT_MARKER "\n\r", NRF_LOG_FLOAT(dLeft));
-      NRF_LOG_INFO("dRight: " NRF_LOG_FLOAT_MARKER "\n\r", NRF_LOG_FLOAT(dRight));
+      //NRF_LOG_INFO("dLeft: " NRF_LOG_FLOAT_MARKER "\n\r", NRF_LOG_FLOAT(dLeft));
+      //NRF_LOG_INFO("dRight: " NRF_LOG_FLOAT_MARKER "\n\r", NRF_LOG_FLOAT(dRight));
 
       //float dLeft_total = (float)(encoder_ticks_total.left * 1.0*WHEEL_FACTOR_MM);	// Distance left wheel has traveled since last sample
       //float dRight_total = (float)(encoder_ticks_total.right * 1.0*WHEEL_FACTOR_MM);	// Distance right wheel has traveled since last sample
