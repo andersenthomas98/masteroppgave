@@ -10,7 +10,7 @@
 
 #include "nrf_drv_clock.h"
 
-APP_PWM_INSTANCE(PWM2, 2);
+//TODO: Is this used? APP_PWM_INSTANCE(PWM2, 2);
 
 #define PIN_SERVO 41
 

@@ -178,7 +178,8 @@ void vMotorSpeedControllerTask(void * pvParameters) {
      *************************************************/
     if (LOG_MOTOR_SPEED_CONTROLLER) {
       double time_since_startup = ticks_since_startup * 1.0 / configTICK_RATE_HZ;
-      printf("%.5f;%.5f;%.5f;%.5f;%.5f;%.5f;%.5f;%.f;%.f\n\r", time_since_startup, left_motor_reference, right_motor_reference, left_motor_speed, right_motor_speed, raw_speed_left, raw_speed_right, left_u, right_u);
+      NRF_LOG_INFO("Speed controller");
+      //NRF_LOG_INFO(NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER, time_since_startup, left_motor_reference, right_motor_reference, left_motor_speed, right_motor_speed, raw_speed_left, raw_speed_right, left_u, right_u);
     }
 
     /************************************************

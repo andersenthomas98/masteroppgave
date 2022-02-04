@@ -34,7 +34,7 @@
  ****************************************************************************************************************/
 #define LOG_MEASUREMENT_DATA 0
 #define PRINT_DEBUG 0
-#define PRINT_DEBUG_IR 1
+#define PRINT_DEBUG_IR 0
 #define LOG_MOTOR_SPEED_CONTROLLER 0
 #define LOG_ROBOT_POSITION_CONTROLLER 0
 

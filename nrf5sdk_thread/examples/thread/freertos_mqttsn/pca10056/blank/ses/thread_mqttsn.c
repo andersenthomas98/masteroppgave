@@ -21,7 +21,7 @@
 #define LED_ON_REQUEST                49                                    /**< LED ON command. */
 #define LED_OFF_REQUEST               48                                    /**< LED OFF command. */
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
-#define MQTTSN_TASK_DELAY_SEC         1                                     /**< MQTTSN task delay */ 
+#define MQTTSN_TASK_DELAY_SEC         1                                     /**< MQTTSN task delay in seconds */ 
 #define NUM_TOPICS                    3
 
 extern TaskHandle_t thread_stack_task_handle, mqttsn_task_handle;
@@ -128,8 +128,6 @@ static void connected_callback(void)
       }
     }
 
-    UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle)); // Start main loop of mqttsn task
-
 }
 
 
@@ -137,6 +135,18 @@ static void connected_callback(void)
 static void disconnected_callback(void)
 {
     NRF_LOG_INFO("MQTT-SN event: Disconnected");
+}
+
+uint8_t all_topics_registered() {
+  for (uint8_t i=0; i<NUM_TOPICS; i++) {
+    if (topic_arr[i].topic_id == NULL) {
+      // Not all topics have been registered
+      return 0;
+    }
+  }
+  // All topics have been registered
+  return 1;
+
 }
 
 
@@ -157,7 +167,11 @@ static void regack_callback(mqttsn_event_t * p_event)
     }
     NRF_LOG_INFO("MQTT-SN event: Topic %s has been registered with ID: %d.\r\n", 
                   NRF_LOG_PUSH(p_event->event_data.registered.packet.topic.p_topic_name),
-                  p_event->event_data.registered.packet.topic.topic_id);
+                  p_event->event_data.registered.packet.topic.topic_id); 
+    if (all_topics_registered()) {
+      // Start main loop of mqttsn task
+      UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
+    }
 
 }
 
@@ -543,8 +557,8 @@ void mqttsn_task(void *arg) {
     
     
     
-    uint32_t timer_value = mqttsn_platform_timer_cnt_get();
-    NRF_LOG_INFO("time: %" PRIu32, timer_value);
+    /*uint32_t timer_value = mqttsn_platform_timer_cnt_get();
+    NRF_LOG_INFO("time: %" PRIu32, timer_value);*/
     lastWakeTime = xTaskGetTickCount();
     vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
   

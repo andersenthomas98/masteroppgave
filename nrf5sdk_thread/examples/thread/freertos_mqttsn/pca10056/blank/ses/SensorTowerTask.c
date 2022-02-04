@@ -104,7 +104,7 @@ void vMainSensorTowerTask(void * pvParameters) {
       }*/
 
       vServo_setAngle(servoAngle);
-      NRF_LOG_INFO("SENSOR TOWER TASK: %d", servoAngle);
+      if (PRINT_DEBUG_IR) NRF_LOG_INFO("Servo angle: %d", servoAngle);
       vTaskDelayUntil( & xLastWakeTime, ROBOT_DEADLINE_MS);
       taskYIELD();
 

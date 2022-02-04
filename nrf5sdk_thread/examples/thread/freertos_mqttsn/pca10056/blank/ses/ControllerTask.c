@@ -182,7 +182,7 @@ void vMainPoseControllerTask(void * pvParameters) {
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
   NRF_LOG_INFO("mainPoseControllerTask: init complete");
-  if (LOG_ROBOT_POSITION_CONTROLLER) printf("Time;Reference X;Reference Y;Reference heading;Estimated X;Estimated Y; Estimated heading;Left u; Right u\n\r");
+  if (LOG_ROBOT_POSITION_CONTROLLER) NRF_LOG_INFO("Time;Reference X;Reference Y;Reference heading;Estimated X;Estimated Y; Estimated heading;Left u; Right u\n\r");
 
   while (1) {
     /*  Used to check timing
@@ -379,7 +379,8 @@ void vMainPoseControllerTask(void * pvParameters) {
          *************************************************/
         if (LOG_ROBOT_POSITION_CONTROLLER) {
           double time_since_startup = ticks_since_startup * 1.0 / configTICK_RATE_HZ;
-          printf("%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f\n\r", time_since_startup, xTargt, yTargt, thetaTargt, (double) xhat, (double) yhat, thetahat, left_u, right_u, theta_correction, thetaError);
+          NRF_LOG_INFO("Pose controller");
+          //NRF_LOG_INFO(""NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER, time_since_startup, xTargt, yTargt, thetaTargt, (double) xhat, (double) yhat, thetahat, left_u, right_u, theta_correction, thetaError);
 
         }
 
