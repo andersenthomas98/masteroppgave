@@ -8,7 +8,9 @@
 
 #include <stdint.h>
 #include "mqttsn_client.h"
-#define NUM_TOPICS 1
+#include "FreeRTOS.h"
+#include "queue.h"
+
 
 typedef struct mqttsn_msg_queue_element {
   mqttsn_topic_t topic;
@@ -23,3 +25,5 @@ void thread_stack_task(void * arg);
 void mqttsn_task(void * arg);
 
 void publish(mqttsn_msg_queue_element_t msg);
+
+QueueHandle_t get_queue_handle(char* topic_name);

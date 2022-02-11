@@ -25,8 +25,8 @@
 //#define NRF_ROBOT_2
 //#define NRF_ROBOT_3
 //#define NRF_ROBOT_4
-//#define NRF_ROBOT_5
-#define NRF_ROBOT_6
+#define NRF_ROBOT_5
+//#define NRF_ROBOT_6
 
 /* **************************************************************************************************************
  * Logging via printf

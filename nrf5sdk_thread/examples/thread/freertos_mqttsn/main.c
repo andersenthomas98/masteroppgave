@@ -74,9 +74,9 @@ NRF_LOG_MODULE_REGISTER();
 //#define SCHED_QUEUE_SIZE       32                                          /**< Maximum number of events in the scheduler queue. */
 //#define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
 
-#define THREAD_STACK_TASK_STACK_SIZE            (( 1024 * 10 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
+#define THREAD_STACK_TASK_STACK_SIZE            (( 1024 * 6 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define LOG_TASK_STACK_SIZE                     ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
-#define MQTTSN_TASK_STACK_SIZE                  ((1024 * 2) / sizeof(StackType_t))
+#define MQTTSN_TASK_STACK_SIZE                  ((1024 * 4) / sizeof(StackType_t))
 #define SENSOR_TOWER_TASK_STACK_SIZE            ( 1024 / sizeof(StackType_t))
 #define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 4 / sizeof(StackType_t))
 #define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
@@ -196,7 +196,7 @@ int main(void)
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
     
-    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    /*if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -214,7 +214,7 @@ int main(void)
     if (pdPASS != xTaskCreate(vMainPoseControllerTask, "POSC", POSE_CONTROLLER_TASK_STACK_SIZE, NULL, POSE_CONTROLLER_TASK_PRIORITY, &pose_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    } */
 
 
 #if NRF_LOG_ENABLED

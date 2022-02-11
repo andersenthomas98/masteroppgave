@@ -14,6 +14,7 @@
 #include "message_buffer.h"
 #include <string.h>
 #include <inttypes.h>
+#include "robot_config.h"
 
 #define SCHED_QUEUE_SIZE       32                                           /**< Maximum number of events in the scheduler queue. */
 #define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
@@ -22,7 +23,8 @@
 #define LED_OFF_REQUEST               48                                    /**< LED OFF command. */
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
 #define MQTTSN_TASK_DELAY_SEC         1                                     /**< MQTTSN task delay in seconds */ 
-#define NUM_TOPICS                    3
+#define NUM_TOPICS                    2
+#define NUM_SUB_TOPICS                1
 
 extern TaskHandle_t thread_stack_task_handle, mqttsn_task_handle;
 
@@ -34,7 +36,7 @@ static uint8_t              m_gateway_id;                                   /**<
 static mqttsn_connect_opt_t m_connect_opt;                                  /**< Connect options for the MQTT-SN client. */
 static bool                 m_subscribed       = 0;                         /**< Current subscription state. */
 static uint16_t             m_msg_id           = 0;                         /**< Message ID thrown with MQTTSN_EVENT_TIMEOUT. */
-static char                 m_client_id[]      = "nRF52840_subscriber";     /**< The MQTT-SN Client's ID. */
+static char                 m_client_id[]      = ROBOT_NAME;     /**< The MQTT-SN Client's ID. */
 static char                 m_topic_name[]     = "nRF52840_resources/led3"; /**< Name of the topic corresponding to subscriber's BSP_LED_2. */
 static mqttsn_topic_t       led3_topic            =                            /**< Topic corresponding to subscriber's BSP_LED_2. */
 {
@@ -45,29 +47,46 @@ static mqttsn_topic_t       led3_topic            =                            /
 mqttsn_topic_t topic_arr[NUM_TOPICS] = 
 {
   {
-    .p_topic_name = "nRF52840_resources/led1", 
+    .p_topic_name = "v2/robot/NRF_5/adv", 
     .topic_id     = NULL
   },
   {
-    .p_topic_name = "nRF52840_resources/led2", 
-    .topic_id     = NULL
-  },
-  {
-    .p_topic_name = "nRF52840_resources/led3", 
+    .p_topic_name = "v2/server/NRF_5/#", 
     .topic_id     = NULL
   }
 };
 
+typedef struct mqttsn_subscribe_topic {
+  QueueHandle_t queue;
+  uint8_t queue_size;
+  mqttsn_topic_t* p_topic;
+}mqttsn_subscribe_topic_t;
+
+mqttsn_subscribe_topic_t sub_topic_arr[NUM_SUB_TOPICS] = {
+  {
+    .queue = NULL,
+    .queue_size = 4,
+    .p_topic = &topic_arr[1] // pointer to v2/server/<ROBOT_NAME>/#
+  }
+};
 
 static uint8_t found_active_gateway = 0;
 
-QueueHandle_t mqttsn_outgoing_message_queue, mqttsn_register_topic_queue;
+QueueHandle_t mqttsn_outgoing_message_queue;
 SemaphoreHandle_t publish_semaphore;
 
+QueueHandle_t get_queue_handle(char* topic_name) {
+  for (uint8_t i=0; i<NUM_SUB_TOPICS; i++) {
+    if (!strcmp(sub_topic_arr[i].p_topic->p_topic_name, topic_name)) {
+      return sub_topic_arr[i].queue;
+    }
+  }
+}
 
 /***************************************************************************************************
  * @section MQTT-SN
  **************************************************************************************************/
+
 
  /**@brief Get topic id for given topic name. 
  * @param[in]    p_topic_name  Pointer to topic name.
@@ -115,6 +134,7 @@ static void gateway_info_callback(mqttsn_event_t * p_event)
 static void connected_callback(void)
 {
     
+    // Register topics, i.e. bind long topic name to id specified by broker
     for (uint8_t i=0; i<NUM_TOPICS; i++) {
       mqttsn_topic_t topic = topic_arr[i];
       NRF_LOG_INFO("Request to register topic %s", NRF_LOG_PUSH(topic.p_topic_name));
@@ -125,6 +145,15 @@ static void connected_callback(void)
       if (err_code != NRF_SUCCESS)
       {
           NRF_LOG_ERROR("REGISTER message could not be sent. Error code: 0x%x\r\n", err_code);
+      }
+    }
+
+    // Subscribe to topics
+    for (uint8_t i=0; i<NUM_SUB_TOPICS; i++) {
+      mqttsn_topic_t* p_topic = sub_topic_arr[i].p_topic;
+      uint32_t err_code = mqttsn_client_subscribe(&m_client, p_topic->p_topic_name, strlen(p_topic->p_topic_name), &m_msg_id);
+      if (err_code != NRF_SUCCESS) {
+        NRF_LOG_ERROR("SUBSCRIBE message could not be sent.\r\n");
       }
     }
 
@@ -176,13 +205,23 @@ static void regack_callback(mqttsn_event_t * p_event)
 }
 
 
-/**@brief Processes data published by a broker.
- *
- * @details This function processes LED command.
- */
+/**@brief Processes data published by a broker. */
 static void received_callback(mqttsn_event_t * p_event)
 {
-    if (p_event->event_data.published.packet.topic.topic_id == led3_topic.topic_id)
+    for (uint8_t i=0; i<NUM_SUB_TOPICS; i++) {
+      mqttsn_subscribe_topic_t sub_topic = sub_topic_arr[i];
+      if (p_event->event_data.published.packet.topic.topic_id == sub_topic.p_topic->topic_id) {
+        NRF_LOG_INFO("RECEIVED CALLBACK");
+        NRF_LOG_INFO("%s", NRF_LOG_PUSH(sub_topic.p_topic->p_topic_name));
+        NRF_LOG_INFO("%s", NRF_LOG_PUSH(p_event->event_data.published.p_payload));
+        // Push payload to queue
+        //if (xQueueSend(sub_topic.queue, (void*)p_event->event_data.published.p_payload, 0) != pdPASS) {
+        //  NRF_LOG_ERROR("Failed to post received payload from topic %s to queue", NRF_LOG_PUSH(sub_topic.p_topic->p_topic_name));
+        //}
+      }
+    
+    }
+    /*if (p_event->event_data.published.packet.topic.topic_id == led3_topic.topic_id)
     {
         NRF_LOG_INFO("MQTT-SN event: Content to subscribed topic received.\r\n");
         NRF_LOG_INFO("%s", NRF_LOG_PUSH(p_event->event_data.published.p_payload));
@@ -190,7 +229,7 @@ static void received_callback(mqttsn_event_t * p_event)
     else
     {
         NRF_LOG_INFO("MQTT-SN event: Content to unsubscribed topic received. Dropping packet.\r\n");
-    }
+    }*/
 }
 
 
@@ -500,8 +539,18 @@ void mqttsn_task(void *arg) {
 
   mqttsn_outgoing_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_msg_queue_element_t));
   publish_semaphore = xSemaphoreCreateBinary();
+
   if (mqttsn_outgoing_message_queue == NULL || publish_semaphore == NULL) {
     NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
+  }
+
+  for (uint8_t i=0; i<NUM_SUB_TOPICS; i++) {
+    mqttsn_subscribe_topic_t* p_sub_topic = &sub_topic_arr[i];
+    p_sub_topic->queue = xQueueCreate(p_sub_topic->queue_size, sizeof(char*));
+    if (p_sub_topic->queue == NULL) {
+       NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
+    }
+
   }
   
   thread_bsp_init();

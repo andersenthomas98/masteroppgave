@@ -252,7 +252,7 @@ typedef union mqttsn_event_data_t
     mqttsn_event_register_t registered; /**< Data forwarded to the application when a topic is registered. */
     mqttsn_event_publish_t  published;  /**< Data forwarded to the application when PUBLISH message is received. */
     mqttsn_event_error_t    error;      /**< Data forwarded to the application when a retransmission error occurred. */
-    mqttsn_event_searchgw_t discovery;  /**< Data forwarded to the applitcaion when SEARCH GATEWAY message fails. */
+    mqttsn_event_searchgw_t discovery;  /**< Data forwarded to the application when SEARCH GATEWAY message fails. */
 } mqttsn_event_data_t;
 
 /**@brief MQTT-SN event. */
