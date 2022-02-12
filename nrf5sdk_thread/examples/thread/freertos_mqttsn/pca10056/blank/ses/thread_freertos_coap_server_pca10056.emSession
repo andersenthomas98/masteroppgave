@@ -9,7 +9,7 @@
   <FrameBufferWindow bufferHeight="-1" addressSpace="" addressText="" bufferWidth="-1"/>
  </FrameBufferWindow>
  <Memory1>
-  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="thread_freertos_mqttsn_pca10056" radix="16" sizeText="0" addressText=""/>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="thread_freertos_mqttsn_pca10056" radix="16" sizeText="1" addressText="0x00002440"/>
  </Memory1>
  <Memory2>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="thread_freertos_mqttsn_pca10056" radix="16" sizeText="" addressText=""/>
@@ -59,6 +59,9 @@
    <Watchpoint numelements="0" expression="p_payload" evalMode="0" name="p_payload" radix="16" linenumber="449" filename="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_packet_receiver.c" list=""/>
    <Watchpoint numelements="0" expression="event_data" evalMode="0" name="event_data" radix="16" linenumber="449" filename="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_packet_receiver.c" list=""/>
    <Watchpoint numelements="0" expression="evt" evalMode="0" name="evt" radix="16" linenumber="445" filename="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_packet_receiver.c" list=""/>
+   <Watchpoint numelements="0" expression="mqttsn_outgoing_message_queue" evalMode="0" name="mqttsn_outgoing_message_queue" radix="-1" linenumber="523" filename="thread_mqttsn.c" list=""/>
+   <Watchpoint numelements="0" expression="topic" evalMode="0" name="topic" radix="16" linenumber="523" filename="thread_mqttsn.c" list=""/>
+   <Watchpoint numelements="0" expression="msg" evalMode="0" name="msg" radix="-1" linenumber="523" filename="thread_mqttsn.c" list=""/>
   </Watches>
  </Watch1>
  <Watch2>
@@ -71,14 +74,14 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="170" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" debugPath="../../../main.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="60" useTextEdit="1" useBinaryEdit="0" left="0" path="thread_mqttsn.c" debugPath="thread_mqttsn.c" selected="1" top="37" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="170" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" debugPath="../../../main.c" selected="0" top="176" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="135" y="597" useTextEdit="1" useBinaryEdit="0" left="0" path="thread_mqttsn.c" debugPath="thread_mqttsn.c" selected="1" top="500" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="app.inc" debugPath="app.inc" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="33" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../external/freertos/source/include/task.h" debugPath="../../../../../../external/freertos/source/include/task.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="28" useTextEdit="1" useBinaryEdit="0" left="0" path="thread_mqttsn.h" debugPath="thread_mqttsn.h" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="18" useTextEdit="1" useBinaryEdit="0" left="0" path="thread_mqttsn.h" debugPath="thread_mqttsn.h" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="96" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/thread/utils/thread_utils.h" debugPath="../../../../../../components/thread/utils/thread_utils.h" selected="0" top="73" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="228" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h" debugPath="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h" selected="0" top="219" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="240" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.c" debugPath="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.c" selected="0" top="225" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="9" y="576" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.c" debugPath="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.c" selected="0" top="555" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_packet_internal.h" debugPath="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_packet_internal.h" selected="0" top="306" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="71" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_platform.c" debugPath="../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_platform.c" selected="0" top="73" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/libraries/timer/app_timer.h" debugPath="../../../../../../components/libraries/timer/app_timer.h" selected="0" top="108" codecName="Default"/>
@@ -120,7 +123,7 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="71" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../modules/nrfx/mdk/ses_startup_nrf52840.s" debugPath="../../../../../../modules/nrfx/mdk/ses_startup_nrf52840.s" selected="0" top="46" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../modules/nrfx/mdk/system_nrf52840.c" debugPath="../../../../../../modules/nrfx/mdk/system_nrf52840.c" selected="0" top="39" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/libraries/util/app_error_weak.c" debugPath="../../../../../../components/libraries/util/app_error_weak.c" selected="0" top="67" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="34" useTextEdit="1" useBinaryEdit="0" left="0" path="example_task.c" debugPath="example_task.c" selected="0" top="24" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="25" y="21" useTextEdit="1" useBinaryEdit="0" left="0" path="example_task.c" debugPath="example_task.c" selected="0" top="15" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="33" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../external/freertos/source/include/queue.h" debugPath="../../../../../../external/freertos/source/include/queue.h" selected="0" top="33" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="54" useTextEdit="1" useBinaryEdit="0" left="0" path="NewEstimatorTask.c" debugPath="NewEstimatorTask.c" selected="0" top="203" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="9" useTextEdit="1" useBinaryEdit="0" left="0" path="positionEstimate.c" debugPath="positionEstimate.c" selected="0" top="0" codecName="Default"/>
@@ -145,5 +148,5 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNPublish.h" debugPath="../../../../../../external/paho/mqtt-sn/mqttsn_packet/MQTTSNPublish.h" selected="0" top="12" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="motor.h" debugPath="motor.h" selected="0" top="0" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="thread_freertos_mqttsn_pca10056" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="../../../../openthread/examples/platforms/nrf528xx/src/alarm.c&#xa;&#xa;../../../../openthread/src/core/common/tlvs.hpp&#xa;&#xa;../../../../openthread/src/core/thread/mle.cpp&#xa;&#xa;../../../../openthread/src/core/thread/mle_router.cpp&#xa;&#xa;../../../../openthread/third_party/NordicSemiconductor/drivers/radio/nrf_802154_core.c&#xa;C:/masteroppgave/nrf5sdk_thread/external/nRF-IEEE-802.15.4-radio-driver/src/nrf_802154_core.c" fileDialogInitialDirectory="C:/masteroppgave/nrf5sdk_thread/external/nRF-IEEE-802.15.4-radio-driver/src" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <ARMCrossStudioWindow activeProject="thread_freertos_mqttsn_pca10056" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="../../../../openthread/examples/platforms/nrf528xx/src/alarm.c&#xa;&#xa;../../../../openthread/src/core/common/tlvs.hpp&#xa;&#xa;../../../../openthread/src/core/thread/mle.cpp&#xa;&#xa;../../../../openthread/src/core/thread/mle_router.cpp&#xa;&#xa;../../../../openthread/third_party/NordicSemiconductor/drivers/radio/nrf_802154_core.c&#xa;C:/masteroppgave/nrf5sdk_thread/external/nRF-IEEE-802.15.4-radio-driver/src/nrf_802154_core.c" fileDialogInitialDirectory="C:/masteroppgave/nrf5sdk_thread/external/nRF-IEEE-802.15.4-radio-driver/src" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

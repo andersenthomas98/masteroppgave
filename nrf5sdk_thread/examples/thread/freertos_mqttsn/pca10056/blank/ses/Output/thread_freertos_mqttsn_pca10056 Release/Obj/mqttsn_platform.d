@@ -43,4 +43,17 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/mqttsn_platform.o: \
  ../../../../../../external/openthread/include/openthread/error.h \
  ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
- C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 3.34a/include/stdarg.h
+ C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 3.34a/include/stdarg.h \
+ ../../../../../../components/libraries/log/nrf_log.h \
+ ../../../../../../components/libraries/util/sdk_common.h \
+ C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 3.34a/include/string.h \
+ ../../../../../../components/libraries/util/sdk_os.h \
+ ../../../../../../components/libraries/util/app_util.h \
+ ../../../../../../components/libraries/util/sdk_macros.h \
+ ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
+ ../../../../../../components/libraries/strerror/nrf_strerror.h \
+ ../../../../../../components/libraries/util/sdk_errors.h \
+ ../../../../../../components/libraries/log/src/nrf_log_internal.h \
+ ../../../../../../components/libraries/log/nrf_log_instance.h \
+ ../../../../../../components/libraries/log/nrf_log_types.h \
+ ../../../../../../components/libraries/log/nrf_log_types.h

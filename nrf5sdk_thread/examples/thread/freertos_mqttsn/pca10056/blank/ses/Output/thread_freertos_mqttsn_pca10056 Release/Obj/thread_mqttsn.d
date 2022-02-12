@@ -72,6 +72,9 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/thread_mqttsn.o: \
  ../../../../../../external/freertos/source/include/list.h \
  ../../../../../../external/freertos/source/include/semphr.h \
  ../../../../../../external/freertos/source/include/queue.h \
+ ../../../../../../external/freertos/source/include/event_groups.h \
+ ../../../../../../external/freertos/source/include/timers.h \
+ ../../../../../../external/freertos/source/include/task.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 3.34a/include/string.h \

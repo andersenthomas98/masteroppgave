@@ -6,6 +6,7 @@
 #include "queue.h"
 #include "task.h"
 #include "semphr.h"
+#include "event_groups.h"
 #include "nrf_log.h"
 #include "app_scheduler.h"
 #include "app_timer.h"
@@ -19,8 +20,8 @@
 #define SCHED_QUEUE_SIZE       32                                           /**< Maximum number of events in the scheduler queue. */
 #define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
 
-#define LED_ON_REQUEST                49                                    /**< LED ON command. */
-#define LED_OFF_REQUEST               48                                    /**< LED OFF command. */
+#define ROBOT_TOPIC_NAME              "v2/robot/NRF_5/adv"
+#define SERVER_TOPIC_NAME             "v2/server/NRF_5/adv"
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
 #define MQTTSN_TASK_DELAY_SEC         1                                     /**< MQTTSN task delay in seconds */ 
 #define NUM_TOPICS                    2
@@ -29,29 +30,23 @@
 extern TaskHandle_t thread_stack_task_handle, mqttsn_task_handle;
 
 SemaphoreHandle_t registerTopicSemaphore;
+EventGroupHandle_t connectEventGroup;
 
 static mqttsn_client_t      m_client;                                       /**< An MQTT-SN client instance. */
 static mqttsn_remote_t      m_gateway_addr;                                 /**< A gateway address. */
 static uint8_t              m_gateway_id;                                   /**< A gateway ID. */
 static mqttsn_connect_opt_t m_connect_opt;                                  /**< Connect options for the MQTT-SN client. */
-static bool                 m_subscribed       = 0;                         /**< Current subscription state. */
 static uint16_t             m_msg_id           = 0;                         /**< Message ID thrown with MQTTSN_EVENT_TIMEOUT. */
-static char                 m_client_id[]      = ROBOT_NAME;     /**< The MQTT-SN Client's ID. */
-static char                 m_topic_name[]     = "nRF52840_resources/led3"; /**< Name of the topic corresponding to subscriber's BSP_LED_2. */
-static mqttsn_topic_t       led3_topic            =                            /**< Topic corresponding to subscriber's BSP_LED_2. */
-{
-    .p_topic_name = "nRF52840_resources/led3",
-    .topic_id     = 0
-};
+static char                 m_client_id[]      = ROBOT_NAME;                /**< The MQTT-SN Client's ID. */
 
-mqttsn_topic_t topic_arr[NUM_TOPICS] = 
+static mqttsn_topic_t topic_arr[NUM_TOPICS] = 
 {
   {
-    .p_topic_name = "v2/robot/NRF_5/adv", 
+    .p_topic_name = ROBOT_TOPIC_NAME, 
     .topic_id     = NULL
   },
   {
-    .p_topic_name = "v2/server/NRF_5/#", 
+    .p_topic_name = SERVER_TOPIC_NAME, 
     .topic_id     = NULL
   }
 };
@@ -62,11 +57,11 @@ typedef struct mqttsn_subscribe_topic {
   mqttsn_topic_t* p_topic;
 }mqttsn_subscribe_topic_t;
 
-mqttsn_subscribe_topic_t sub_topic_arr[NUM_SUB_TOPICS] = {
+static mqttsn_subscribe_topic_t sub_topic_arr[NUM_SUB_TOPICS] = {
   {
     .queue = NULL,
-    .queue_size = 4,
-    .p_topic = &topic_arr[1] // pointer to v2/server/<ROBOT_NAME>/#
+    .queue_size = MQTTSN_PACKET_FIFO_MAX_LENGTH,
+    .p_topic = &topic_arr[1] // pointer to v2/server/<ROBOT_NAME>/# topic
   }
 };
 
@@ -198,8 +193,10 @@ static void regack_callback(mqttsn_event_t * p_event)
                   NRF_LOG_PUSH(p_event->event_data.registered.packet.topic.p_topic_name),
                   p_event->event_data.registered.packet.topic.topic_id); 
     if (all_topics_registered()) {
+
       // Start main loop of mqttsn task
       UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
+    
     }
 
 }
@@ -213,11 +210,12 @@ static void received_callback(mqttsn_event_t * p_event)
       if (p_event->event_data.published.packet.topic.topic_id == sub_topic.p_topic->topic_id) {
         NRF_LOG_INFO("RECEIVED CALLBACK");
         NRF_LOG_INFO("%s", NRF_LOG_PUSH(sub_topic.p_topic->p_topic_name));
-        NRF_LOG_INFO("%s", NRF_LOG_PUSH(p_event->event_data.published.p_payload));
+        uint8_t* p_payload = p_event->event_data.published.p_payload;
+        NRF_LOG_INFO("0x%X", (uint8_t)*p_payload);
         // Push payload to queue
-        //if (xQueueSend(sub_topic.queue, (void*)p_event->event_data.published.p_payload, 0) != pdPASS) {
-        //  NRF_LOG_ERROR("Failed to post received payload from topic %s to queue", NRF_LOG_PUSH(sub_topic.p_topic->p_topic_name));
-        //}
+        if (xQueueSend(sub_topic.queue, (void*)p_event->event_data.published.p_payload, 0) != pdPASS) {
+          NRF_LOG_ERROR("Failed to post received payload from topic %s to queue", NRF_LOG_PUSH(sub_topic.p_topic->p_topic_name));
+        }
       }
     
     }
@@ -239,6 +237,17 @@ static void timeout_callback(mqttsn_event_t * p_event)
     NRF_LOG_INFO("MQTT-SN event: Timed-out message: %d. Message ID: %d.\r\n",
                   p_event->event_data.error.msg_type,
                   p_event->event_data.error.msg_id);
+
+   switch(p_event->event_data.error.msg_type) {
+    case MQTTSN_PACKET_CONNACK:
+      NRF_LOG_WARNING("CONNACK not received, retrying connect...");
+      uint32_t err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
+      if (err_code != NRF_SUCCESS) {
+        NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
+      }
+      break;
+   
+   }
 }
 
 
@@ -247,7 +256,36 @@ static void searchgw_timeout_callback(mqttsn_event_t * p_event)
 {
     NRF_LOG_INFO("MQTT-SN event: Gateway discovery result: 0x%x.\r\n", p_event->event_data.discovery);
     // Notify mqttsn task
-    UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
+    //UNUSED_RETURN_VALUE(xTaskNotifyGive(mqttsn_task_handle));
+    uint32_t err_code;
+
+    switch(p_event->event_data.discovery) {
+      
+      case MQTTSN_SEARCH_GATEWAY_FINISHED:
+        err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
+        if (err_code != NRF_SUCCESS) {
+          NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
+        }
+        break;
+      
+      case MQTTSN_SEARCH_GATEWAY_NO_GATEWAY_FOUND:
+        NRF_LOG_INFO("Retrying gateway search...\n\r");
+        err_code = mqttsn_client_search_gateway(&m_client, SEARCH_GATEWAY_TIMEOUT);
+        if (err_code != NRF_SUCCESS) {
+          NRF_LOG_ERROR("SEARCH GATEWAY message could not be sent. Error: 0x%x\r\n", err_code);
+        }
+        break;
+
+      case MQTTSN_SEARCH_GATEWAY_PLATFORM_FAILED:
+        NRF_LOG_ERROR("Search gateway platform failed\n\r");
+        // TODO
+        break;
+
+      case MQTTSN_SEARCH_GATEWAY_TRANSPORT_FAILED:
+        NRF_LOG_ERROR("Search gateway transport failed");
+        // TODO
+        break;
+    }
 }
 
 
@@ -345,38 +383,6 @@ void otSysEventSignalPending(void)
  * @section Buttons
  **************************************************************************************************/
 
-static void subscribe(void)
-{
-    uint8_t  topic_name_len = strlen(m_topic_name);
-    uint32_t err_code       = NRF_SUCCESS;
-
-    if (m_subscribed)
-    {
-        err_code = mqttsn_client_unsubscribe(&m_client, led3_topic.p_topic_name, topic_name_len, &m_msg_id);
-        if (err_code != NRF_SUCCESS)
-        {
-            NRF_LOG_ERROR("UNSUBSCRIBE message could not be sent.\r\n");
-        }
-        else
-        {
-            m_subscribed = false;
-        }
-    }
-    else
-    {
-        err_code = mqttsn_client_subscribe(&m_client, led3_topic.p_topic_name, topic_name_len, &m_msg_id);
-        if (err_code != NRF_SUCCESS)
-        {
-            NRF_LOG_ERROR("SUBSCRIBE message could not be sent.\r\n");
-        }
-        else
-        {
-            m_subscribed = true;
-        }
-    }
-}
-
-
 // Manually search for gateway and connect/disconnect
 static void bsp_event_handler(bsp_event_t event)
 {
@@ -391,9 +397,8 @@ static void bsp_event_handler(bsp_event_t event)
 
         case BSP_EVENT_KEY_0:
         {
-          uint8_t payload = 1;
-          NRF_LOG_INFO("PUBLISH");
-          uint32_t err_code = mqttsn_client_publish(&m_client, led3_topic.topic_id, &payload, 1, &m_msg_id);
+          uint8_t payload = 0x01;
+          uint32_t err_code = publish(ROBOT_TOPIC_NAME, &payload, sizeof(uint8_t), 0, 0);
           if (err_code != NRF_SUCCESS)
           {
               NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
@@ -437,7 +442,7 @@ static void bsp_event_handler(bsp_event_t event)
 
         case BSP_EVENT_KEY_3:
         {
-            subscribe();
+            NRF_LOG_INFO("BSP EVENT KEY 3");
             break;
         }
 
@@ -513,12 +518,22 @@ void thread_stack_task(void * arg)
     }
 }
 
-void publish(mqttsn_msg_queue_element_t msg) {
+int publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id) {
   
   xSemaphoreTake(publish_semaphore, (TickType_t)portMAX_DELAY);
   
+  mqttsn_msg_queue_element_t msg;
+  
   // find topic_id from topic_name
-  msg.topic.topic_id = get_topic_id(msg.topic.p_topic_name);
+  msg.topic_id = get_topic_id(topic_name);
+  if (msg.topic_id == NULL) {
+    xSemaphoreGive(publish_semaphore);
+    return NRF_ERROR_NULL;
+  }
+  msg.payload = p_payload;
+  msg.payload_size = payload_size;
+  msg.qos = 0;
+  msg.msg_id = msg_id;
 
   if (mqttsn_outgoing_message_queue != NULL && xQueueSend(mqttsn_outgoing_message_queue, &msg, 0) != pdPASS) {
     
@@ -526,6 +541,41 @@ void publish(mqttsn_msg_queue_element_t msg) {
   
   }
   xSemaphoreGive(publish_semaphore);
+  return NRF_SUCCESS;
+}
+
+int publish_fromISR(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id) {
+  
+  xSemaphoreTake(publish_semaphore, (TickType_t)portMAX_DELAY);
+
+  BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+  
+  mqttsn_msg_queue_element_t msg;
+  
+  // find topic_id from topic_name
+  msg.topic_id = get_topic_id(topic_name);
+  if (msg.topic_id == NULL) {
+    xSemaphoreGive(publish_semaphore);
+    return NRF_ERROR_NULL;
+  }
+  msg.payload = p_payload;
+  msg.payload_size = payload_size;
+  msg.qos = 0;
+  msg.msg_id = msg_id;
+
+  if (mqttsn_outgoing_message_queue != NULL && xQueueSendFromISR(mqttsn_outgoing_message_queue, &msg, &xHigherPriorityTaskWoken) != pdPASS) {
+    
+    NRF_LOG_ERROR("Failed to post mqttsn message to outgoing message queue");
+  
+  }
+  xSemaphoreGive(publish_semaphore);
+  return NRF_SUCCESS;
+}
+
+int publish_scan_border(char* topic_name) {
+  uint8_t payload = SCAN_BORDER_IDENTIFIER;
+  uint32_t err_code = publish(topic_name, &payload, sizeof(uint8_t), 0, 0);
+  return err_code;
 }
 
 
@@ -539,16 +589,20 @@ void mqttsn_task(void *arg) {
 
   mqttsn_outgoing_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_msg_queue_element_t));
   publish_semaphore = xSemaphoreCreateBinary();
+  connectEventGroup = xEventGroupCreate();
 
-  if (mqttsn_outgoing_message_queue == NULL || publish_semaphore == NULL) {
+  if (mqttsn_outgoing_message_queue == NULL || publish_semaphore == NULL || connectEventGroup == NULL) {
     NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
   }
 
   for (uint8_t i=0; i<NUM_SUB_TOPICS; i++) {
     mqttsn_subscribe_topic_t* p_sub_topic = &sub_topic_arr[i];
-    p_sub_topic->queue = xQueueCreate(p_sub_topic->queue_size, sizeof(char*));
+    //p_sub_topic->queue = xQueueCreate(p_sub_topic->queue_size, sizeof(void*));
+    p_sub_topic->queue = xQueueCreate(p_sub_topic->queue_size, sizeof(void*));
     if (p_sub_topic->queue == NULL) {
        NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
+    } else {
+      vQueueAddToRegistry(p_sub_topic->queue, p_sub_topic->p_topic->p_topic_name);
     }
 
   }
@@ -574,37 +628,28 @@ void mqttsn_task(void *arg) {
     /*MQTTSN_CLIENT_WAITING_FOR_DISCONNECT,  < Client is waiting for permission to disconnect. */
 
     while (state == MQTTSN_CLIENT_DISCONNECTED) {
+
       uint32_t err_code = mqttsn_client_search_gateway(&m_client, SEARCH_GATEWAY_TIMEOUT);
       if (err_code != NRF_SUCCESS) {
         NRF_LOG_ERROR("SEARCH GATEWAY message could not be sent. Error: 0x%x\r\n", err_code);
       }
-      
-      // Wait here until callback for gateway search is executed
-      if (ulTaskNotifyTake(pdTRUE, portMAX_DELAY) == pdTRUE && found_active_gateway) {
-        // Connect to broker
-        err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
-        if (err_code != NRF_SUCCESS) {
-          NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
-        }
-        // Wait here until connect callback is executed
-        UNUSED_RETURN_VALUE(ulTaskNotifyTake(pdTRUE, portMAX_DELAY)); 
-      }
+
+      // Wait here until connect callback is executed
+      UNUSED_RETURN_VALUE(ulTaskNotifyTake(pdTRUE, portMAX_DELAY)); 
+
       state = mqttsn_client_state_get(&m_client);
     }
     
     mqttsn_msg_queue_element_t rx_msg;
     if (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
       
-      uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic.topic_id, rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
+      uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic_id, rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
 
       if (err_code != NRF_SUCCESS) {
         NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
       }
 
     }
-    
-    
-    
     
     /*uint32_t timer_value = mqttsn_platform_timer_cnt_get();
     NRF_LOG_INFO("time: %" PRIu32, timer_value);*/

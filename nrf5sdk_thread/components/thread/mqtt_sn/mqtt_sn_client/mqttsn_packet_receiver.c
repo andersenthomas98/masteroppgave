@@ -396,15 +396,6 @@ static uint32_t regack_handle(mqttsn_client_t * p_client,
     }
 }
 
-void slice_str(const char * str, char * buffer, size_t start, size_t end)
-{
-    size_t j = 0;
-    for ( size_t i = start; i <= end; ++i ) {
-        buffer[j++] = str[i];
-    }
-    buffer[j] = 0;
-}
-
 /**@brief Handles PUBLISH message received from the gateway.  
  *
  * @param[inout] p_client    Pointer to an MQTT-SN client instance. 
@@ -451,17 +442,13 @@ static uint32_t publish_handle(mqttsn_client_t * p_client,
 
     mqttsn_event_t evt;
     memset(&evt, 0, sizeof(mqttsn_event_t));
-    
-    // Need to slice the received payload since it is not null terminated
-    //char payload_buffer[payload_len+1];
-    //slice_str(p_payload, payload_buffer, 0, payload_len-1);
 
     evt.event_id                          = MQTTSN_EVENT_RECEIVED;
     evt.event_data.published.packet.id    = packet_id;
     evt.event_data.published.packet.topic = topic;
     evt.event_data.published.p_payload    = p_payload;
-    NRF_LOG_INFO("0x%X", p_payload);
-    NRF_LOG_INFO("%d", payload_len);
+    //NRF_LOG_INFO("0x%X", p_payload);
+    //NRF_LOG_INFO("%d", payload_len);
 
     p_client->evt_handler(p_client, &evt);
 
