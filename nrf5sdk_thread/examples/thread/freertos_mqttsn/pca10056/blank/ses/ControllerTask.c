@@ -225,18 +225,17 @@ void vMainPoseControllerTask(void * pvParameters) {
         /************************************************
          * Update waypoint if new waypoint is given
          *************************************************/
-        //TODO: if (xQueueReceive(poseControllerQ, & Setpoint, 0) == pdTRUE) /* poseControllerQueue is filled from SensorTowerTask and from MainCommunicationTask */ {
-          //xQueueReceive(poseControllerQ, &Setpoint, 20 / portTICK_PERIOD_MS); // Receive theta and radius set points from com task, wait for 20ms if necessary
-        //  xTargt = Setpoint.x / 100.0; //Distance is received in cm, convert to m for continuity
-        //  yTargt = Setpoint.y / 100.0; //Distance is received in cm, convert to m for continuity
+        if (xQueueReceive(poseControllerQ, & Setpoint, 0) == pdTRUE)  {
+          xTargt = Setpoint.x / 100.0; //Distance is received in cm, convert to m for continuity
+          yTargt = Setpoint.y / 100.0; //Distance is received in cm, convert to m for continuity
           //thetahatStart = thetahat;
-        //  xhatStart = xhat;
-        //  yhatStart = yhat;
+          xhatStart = xhat;
+          yhatStart = yhat;
           //newOrder = true;
-        //  controllerStop = false;
-        //  doneTurning = false;
-        //  collisionDetected = false;
-        //}
+          controllerStop = false;
+          doneTurning = false;
+          collisionDetected = false;
+        }
 
         /************************************************
          * Find error

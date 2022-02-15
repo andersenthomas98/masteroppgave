@@ -50,7 +50,7 @@
  **************************************************************************************************/
 
 /**@brief Default maximum number of elements in packet queue. */
-#define MQTTSN_PACKET_FIFO_MAX_LENGTH            4
+#define MQTTSN_PACKET_FIFO_MAX_LENGTH            10// was 4
 
 /**@brief Maximum length of Client ID according to the protocol spec in bytes. */
 #define MQTTSN_CLIENT_ID_MAX_LENGTH              23

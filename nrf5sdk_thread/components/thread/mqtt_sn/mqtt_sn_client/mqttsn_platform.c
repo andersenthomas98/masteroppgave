@@ -43,7 +43,6 @@
 #include "mqttsn_packet_internal.h"
 #include "openthread/random_noncrypto.h"
 #include "openthread/platform/alarm-milli.h"
-#include "nrf_log.h"
 
 /* Available timer is 32-bit. */
 #define MQTTSN_PLATFORM_TIMER_MAX_MS UINT32_MAX
@@ -56,7 +55,6 @@ static void timer_timeout_handler(void * p_context)
 {
     mqttsn_client_t * p_client = (mqttsn_client_t *)p_context;
     mqttsn_client_timeout_handle(p_client);
-    NRF_LOG_INFO("calling mqttsn client timeout handle from mqttsn_plattform.c\n\r");
 }
 
 uint32_t mqttsn_platform_init()

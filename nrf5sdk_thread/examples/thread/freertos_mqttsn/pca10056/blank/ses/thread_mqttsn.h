@@ -11,9 +11,35 @@
 #include "FreeRTOS.h"
 #include "queue.h"
 
+/* Incomming message identifiers (robot <- server) */
+#define INIT_IDENTIFIER                 0x01
+#define TARGET_IDENTIFIER               0x02
+
+/* Outgoing message identifiers (robot -> server)*/
 #define SCAN_BORDER_IDENTIFIER          0x01
 #define UPDATE_IDENTIFIER               0x02
 #define COLLISION_DETECTED_IDENTIFIER   0x03
+
+typedef struct mqttsn_init_msg {
+  uint8_t identifier;
+  int16_t init_x;
+  int16_t init_y;
+  int16_t init_theta;
+} __attribute__((packed)) mqttsn_init_msg_t;
+
+typedef struct mqttsn_target_msg {
+  uint8_t identifier;
+  int16_t target_x;
+  int16_t target_y;
+} __attribute__((packed)) mqttsn_target_msg_t;
+
+typedef struct mqttsn_scan_border_msg {
+  uint8_t identifier;
+} __attribute__((packed)) mqttsn_scan_border_msg_t;
+
+typedef struct mqttsn_collision_detection_msg {
+  uint8_t identifier;
+} __attribute__((packed)) mqttsn_collision_detection_msg_t;
 
 
 typedef struct coordinate {
@@ -47,10 +73,10 @@ void thread_stack_task(void * arg);
 
 void mqttsn_task(void * arg);
 
-int publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
+uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
 
-int publish_fromISR(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
+uint32_t publish_scan_border(char* topic_name);
 
-int publish_scan_border(char* topic_name);
+uint8_t mqttsn_client_is_connected(void);
 
 QueueHandle_t get_queue_handle(char* topic_name);
