@@ -1,0 +1,14 @@
+[19:48:34] info: ...
+[19:48:34] warning: ...
+[19:48:34] error: ...
+[19:48:34] critical: ...
+[19:48:34] info: test
+[19:48:34] info: start
+[19:48:35] info: MQTT connection respone successfull
+[19:48:35] error: Could not connect!
+[19:48:35] info: Subsribe response v2/server/simulated/cmd
+[19:48:35] warning: Invalid size of payload!
+[19:48:35] error: Received invalid SLAM message!
+[19:48:35] error: Could not put into slam channel!
+[19:48:35] error: Got invalid SLAM message!
+[19:48:35] info: Subsribe response v2/server/simulated/cmd

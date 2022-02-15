@@ -1,0 +1,12 @@
+[18:11:14] info: 15_Feb_2022_18.11
+[18:11:15] info: MQTT connection respone successfull
+[18:11:15] info: Subsribe response v2/server/simulated/cmd
+[18:11:15] info: Subsribe response v2/server/simulated/cmd
+[18:11:31] info: Init pose selected: -20, 56, 69
+[18:11:31] info: x: 0, y: 0, theta: 0
+[18:11:31] info: x: 0, y: 0, theta: 0
+[18:11:31] info: Got a request to publish to: v2/server/NRF_5/init
+[18:11:34] info: x: 0, y: 0, theta: 0
+[18:11:39] info: x: 0, y: 0, theta: 0
+[18:11:44] info: x: 0, y: 0, theta: 0
+[18:11:49] info: x: 0, y: 0, theta: 0

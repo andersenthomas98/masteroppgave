@@ -1,0 +1,133 @@
+[15:29:46] info:  8_Feb_2022_15.29
+[15:29:46] info: MQTT connection respone successfull
+[15:29:46] info: Subsribe response v2/server/simulated/cmd
+[15:29:46] info: Subsribe response v2/server/simulated/cmd
+[15:38:55] warning: Invalid size of payload!
+[15:38:55] error: Received invalid SLAM message!
+[15:38:55] error: Got invalid SLAM message!
+[15:39:28] warning: Invalid size of payload!
+[15:39:28] error: Received invalid SLAM message!
+[15:39:28] error: Got invalid SLAM message!
+[15:42:19] warning: Invalid size of payload!
+[15:42:19] error: Received invalid SLAM message!
+[15:42:19] error: Got invalid SLAM message!
+[15:50:57] warning: Invalid size of payload!
+[15:50:57] error: Received invalid SLAM message!
+[15:50:57] error: Got invalid SLAM message!
+[15:55:33] warning: Invalid size of payload!
+[15:55:33] error: Received invalid SLAM message!
+[15:55:33] error: Got invalid SLAM message!
+[15:57:54] warning: Invalid size of payload!
+[15:57:54] error: Received invalid SLAM message!
+[15:57:54] error: Got invalid SLAM message!
+[15:59:28] warning: Invalid size of payload!
+[15:59:28] error: Received invalid SLAM message!
+[15:59:28] error: Got invalid SLAM message!
+[16:00:31] warning: Invalid size of payload!
+[16:00:31] error: Received invalid SLAM message!
+[16:00:31] error: Got invalid SLAM message!
+[16:03:42] warning: Invalid size of payload!
+[16:03:42] error: Received invalid SLAM message!
+[16:03:42] error: Got invalid SLAM message!
+[16:07:50] warning: Invalid size of payload!
+[16:07:50] error: Received invalid SLAM message!
+[16:07:50] error: Got invalid SLAM message!
+[16:08:15] warning: Invalid size of payload!
+[16:08:15] error: Received invalid SLAM message!
+[16:08:15] error: Got invalid SLAM message!
+[16:08:33] warning: Invalid size of payload!
+[16:08:33] error: Received invalid SLAM message!
+[16:08:33] error: Got invalid SLAM message!
+[16:09:38] warning: Invalid size of payload!
+[16:09:38] error: Received invalid SLAM message!
+[16:09:38] error: Got invalid SLAM message!
+[16:12:40] warning: Invalid size of payload!
+[16:12:40] error: Received invalid SLAM message!
+[16:12:40] error: Got invalid SLAM message!
+[16:14:02] warning: Invalid size of payload!
+[16:14:02] error: Received invalid SLAM message!
+[16:14:02] error: Got invalid SLAM message!
+[16:14:21] warning: Invalid size of payload!
+[16:14:21] error: Received invalid SLAM message!
+[16:14:21] error: Got invalid SLAM message!
+[16:14:54] warning: Invalid size of payload!
+[16:14:54] error: Received invalid SLAM message!
+[16:14:54] error: Got invalid SLAM message!
+[16:15:10] warning: Invalid size of payload!
+[16:15:10] error: Received invalid SLAM message!
+[16:15:10] error: Got invalid SLAM message!
+[16:15:37] warning: Invalid size of payload!
+[16:15:37] error: Received invalid SLAM message!
+[16:15:37] error: Got invalid SLAM message!
+[16:16:57] warning: Invalid size of payload!
+[16:16:57] error: Received invalid SLAM message!
+[16:16:57] error: Got invalid SLAM message!
+[16:17:06] warning: Invalid size of payload!
+[16:17:06] error: Received invalid SLAM message!
+[16:17:06] error: Got invalid SLAM message!
+[16:25:38] warning: Invalid size of payload!
+[16:25:38] error: Received invalid SLAM message!
+[16:25:38] error: Got invalid SLAM message!
+[16:26:33] warning: Invalid size of payload!
+[16:26:33] error: Received invalid SLAM message!
+[16:26:33] error: Got invalid SLAM message!
+[16:27:44] warning: Invalid size of payload!
+[16:27:44] error: Received invalid SLAM message!
+[16:27:44] error: Got invalid SLAM message!
+[16:28:37] warning: Bad topic parse?
+[16:35:19] warning: Bad topic parse?
+[16:35:19] warning: Bad topic parse?
+[16:35:20] warning: Bad topic parse?
+[16:35:21] warning: Bad topic parse?
+[16:35:21] warning: Bad topic parse?
+[16:35:22] warning: Bad topic parse?
+[16:35:23] warning: Bad topic parse?
+[16:35:23] warning: Bad topic parse?
+[16:35:24] warning: Bad topic parse?
+[16:35:24] warning: Bad topic parse?
+[16:35:25] warning: Bad topic parse?
+[16:35:26] warning: Bad topic parse?
+[16:35:26] warning: Bad topic parse?
+[16:35:27] warning: Bad topic parse?
+[16:35:28] warning: Bad topic parse?
+[16:35:28] warning: Bad topic parse?
+[16:35:29] warning: Bad topic parse?
+[16:35:29] warning: Bad topic parse?
+[16:35:30] warning: Bad topic parse?
+[16:35:31] warning: Bad topic parse?
+[16:35:31] warning: Bad topic parse?
+[16:35:32] warning: Bad topic parse?
+[16:35:32] warning: Bad topic parse?
+[16:35:33] warning: Bad topic parse?
+[16:35:34] warning: Bad topic parse?
+[16:35:34] warning: Bad topic parse?
+[16:35:35] warning: Bad topic parse?
+[16:35:36] warning: Bad topic parse?
+[16:35:36] warning: Bad topic parse?
+[16:35:37] warning: Bad topic parse?
+[16:35:37] warning: Bad topic parse?
+[16:35:38] warning: Bad topic parse?
+[16:35:39] warning: Bad topic parse?
+[16:35:39] warning: Bad topic parse?
+[16:35:40] warning: Bad topic parse?
+[16:35:40] warning: Bad topic parse?
+[16:35:41] warning: Bad topic parse?
+[16:35:42] warning: Bad topic parse?
+[16:35:42] warning: Bad topic parse?
+[16:35:43] warning: Bad topic parse?
+[16:35:44] warning: Bad topic parse?
+[16:35:44] warning: Bad topic parse?
+[16:35:45] warning: Bad topic parse?
+[16:35:45] warning: Bad topic parse?
+[16:35:46] warning: Bad topic parse?
+[16:35:46] error: Bad any_cast
+[16:35:47] warning: Bad topic parse?
+[16:35:47] warning: Bad topic parse?
+[16:35:48] warning: Bad topic parse?
+[16:35:49] warning: Bad topic parse?
+[16:35:49] warning: Bad topic parse?
+[16:35:50] warning: Bad topic parse?
+[16:35:50] warning: Bad topic parse?
+[16:35:51] warning: Bad topic parse?
+[16:35:52] warning: Bad topic parse?
+[16:35:52] warning: Bad topic parse?

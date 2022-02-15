@@ -1,0 +1,7 @@
+[17:24:09] info:  4_Feb_2022_17.24
+[17:25:09] error: Connection failure
+[17:25:09] error: Connection failure
+[17:25:09] error: MQTT connection response failed
+[17:25:09] error: Could not connect!
+[17:25:09] error: Subsribe to robot error!
+[17:25:09] error: Subscribe to simulator error!

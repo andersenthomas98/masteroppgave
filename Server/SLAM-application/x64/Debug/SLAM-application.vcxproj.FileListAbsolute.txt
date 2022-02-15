@@ -1,0 +1,4 @@
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\x64\Debug\SLAM-application.vcxproj.CopyComplete
+C:\Users\asgeirhu\Desktop\serverstuff\Mullins\TTK4900-ssnar_cpp\SLAM-application\x64\Debug\SLAM-application.vcxproj.CopyComplete
+C:\Users\asgeirhu\Desktop\server\SLAM-application\x64\Debug\SLAM-application.vcxproj.CopyComplete
+C:\Users\asgeirhu\Desktop\33\Server\SLAM-application\x64\Debug\SLAM-application.vcxproj.CopyComplete

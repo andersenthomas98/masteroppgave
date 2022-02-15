@@ -1,0 +1,4 @@
+[15:16:24] info:  8_Feb_2022_15.16
+[15:16:24] info: MQTT connection respone successfull
+[15:16:24] info: Subsribe response v2/server/simulated/cmd
+[15:16:24] info: Subsribe response v2/server/simulated/cmd

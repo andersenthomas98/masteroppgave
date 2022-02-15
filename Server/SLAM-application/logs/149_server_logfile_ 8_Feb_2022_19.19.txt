@@ -1,0 +1,8 @@
+[19:19:20] info:  8_Feb_2022_19.19
+[19:19:20] info: MQTT connection respone successfull
+[19:19:20] info: Subsribe response v2/server/simulated/cmd
+[19:19:20] info: Subsribe response v2/server/simulated/cmd
+[19:19:27] info: Init pose selected: 0, 0, 0
+[19:19:27] info: Got a request to publish to: v2/server/thomas/cmd
+[19:20:41] info: Init pose selected: 0, 0, 0
+[19:20:42] info: Got a request to publish to: v2/server/thomas/cmd

@@ -1,0 +1,14 @@
+[15:29:12] info: 10_Feb_2022_15.29
+[15:29:13] info: MQTT connection respone successfull
+[15:29:13] info: Subsribe response v2/server/simulated/cmd
+[15:29:13] info: Subsribe response v2/server/simulated/cmd
+[15:29:37] info: Init pose selected: 0, 0, 0
+[15:29:37] info: Got a request to publish to: v2/server/thomas/cmd
+[15:30:44] info: x: 500, y: 0, theta: 0
+[15:31:28] warning: Invalid size of payload!
+[15:31:28] error: Received invalid SLAM message!
+[15:31:28] error: Got invalid SLAM message!
+[15:31:42] warning: Invalid size of payload!
+[15:31:42] error: Received invalid SLAM message!
+[15:31:42] error: Got invalid SLAM message!
+[15:33:45] info: x: 500, y: 0, theta: 0

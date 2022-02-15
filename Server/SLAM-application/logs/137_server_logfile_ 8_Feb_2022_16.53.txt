@@ -1,0 +1,6 @@
+[16:53:21] info:  8_Feb_2022_16.53
+[16:53:21] info: MQTT connection respone successfull
+[16:53:21] info: Subsribe response v2/server/simulated/cmd
+[16:53:21] info: Subsribe response v2/server/simulated/cmd
+[16:53:35] warning: Bad topic parse?
+[16:54:37] warning: Bad topic parse?

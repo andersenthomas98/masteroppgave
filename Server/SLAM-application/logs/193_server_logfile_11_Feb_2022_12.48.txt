@@ -1,0 +1,77 @@
+[12:48:29] info: 11_Feb_2022_12.48
+[12:48:29] info: MQTT connection respone successfull
+[12:48:29] info: Subsribe response v2/server/simulated/cmd
+[12:48:29] info: Subsribe response v2/server/simulated/cmd
+[12:48:29] warning: Invalid size of payload!
+[12:48:29] error: Received invalid SLAM message!
+[12:48:29] error: Got invalid SLAM message!
+[12:48:34] warning: Invalid size of payload!
+[12:48:34] error: Received invalid SLAM message!
+[12:48:34] error: Got invalid SLAM message!
+[12:48:39] warning: Invalid size of payload!
+[12:48:39] error: Received invalid SLAM message!
+[12:48:39] error: Got invalid SLAM message!
+[12:48:44] warning: Invalid size of payload!
+[12:48:44] error: Received invalid SLAM message!
+[12:48:44] error: Got invalid SLAM message!
+[12:48:45] info: Sub request
+[12:48:45] error: Could not put onto pub ch!
+[12:48:46] info: Got a request to subscribe to: v2/robot/NRF_5/adv
+[12:48:46] info: Subsribe response v2/robot/NRF_5/adv
+[12:48:49] warning: Invalid size of payload!
+[12:48:49] error: Received invalid SLAM message!
+[12:48:49] error: Got invalid SLAM message!
+[12:48:54] warning: Invalid size of payload!
+[12:48:54] error: Received invalid SLAM message!
+[12:48:54] error: Got invalid SLAM message!
+[12:48:59] warning: Invalid size of payload!
+[12:48:59] error: Received invalid SLAM message!
+[12:48:59] error: Got invalid SLAM message!
+[12:49:04] warning: Invalid size of payload!
+[12:49:04] error: Received invalid SLAM message!
+[12:49:04] error: Got invalid SLAM message!
+[12:49:09] warning: Invalid size of payload!
+[12:49:09] error: Received invalid SLAM message!
+[12:49:09] error: Got invalid SLAM message!
+[12:49:14] warning: Invalid size of payload!
+[12:49:14] error: Received invalid SLAM message!
+[12:49:14] error: Got invalid SLAM message!
+[12:49:19] warning: Invalid size of payload!
+[12:49:19] error: Received invalid SLAM message!
+[12:49:19] error: Got invalid SLAM message!
+[12:49:24] warning: Invalid size of payload!
+[12:49:24] error: Received invalid SLAM message!
+[12:49:24] error: Got invalid SLAM message!
+[12:49:29] warning: Invalid size of payload!
+[12:49:29] error: Received invalid SLAM message!
+[12:49:29] error: Got invalid SLAM message!
+[12:49:34] warning: Invalid size of payload!
+[12:49:34] error: Received invalid SLAM message!
+[12:49:34] error: Got invalid SLAM message!
+[12:49:39] warning: Invalid size of payload!
+[12:49:39] error: Received invalid SLAM message!
+[12:49:39] error: Got invalid SLAM message!
+[12:49:44] warning: Invalid size of payload!
+[12:49:44] error: Received invalid SLAM message!
+[12:49:44] error: Got invalid SLAM message!
+[12:49:49] warning: Invalid size of payload!
+[12:49:49] error: Received invalid SLAM message!
+[12:49:49] error: Got invalid SLAM message!
+[12:49:54] warning: Invalid size of payload!
+[12:49:54] error: Received invalid SLAM message!
+[12:49:54] error: Got invalid SLAM message!
+[12:49:59] warning: Invalid size of payload!
+[12:49:59] error: Received invalid SLAM message!
+[12:49:59] error: Got invalid SLAM message!
+[12:50:04] warning: Invalid size of payload!
+[12:50:04] error: Received invalid SLAM message!
+[12:50:04] error: Got invalid SLAM message!
+[12:50:09] warning: Invalid size of payload!
+[12:50:09] error: Received invalid SLAM message!
+[12:50:09] error: Got invalid SLAM message!
+[12:50:14] warning: Invalid size of payload!
+[12:50:14] error: Received invalid SLAM message!
+[12:50:14] error: Got invalid SLAM message!
+[12:50:19] warning: Invalid size of payload!
+[12:50:19] error: Received invalid SLAM message!
+[12:50:19] error: Got invalid SLAM message!

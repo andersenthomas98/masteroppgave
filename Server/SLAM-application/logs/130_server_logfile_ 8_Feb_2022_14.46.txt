@@ -1,0 +1,45 @@
+[14:46:55] info:  8_Feb_2022_14.46
+[14:47:36] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:37] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:38] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:39] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:40] warning: Simulation bad publish?
+[14:47:41] warning: Simulation bad publish?
+[14:47:55] error: Connection failure
+[14:47:55] error: MQTT connection response failed
+[14:47:55] error: Could not connect!
+[14:47:55] error: Connection failure
+[14:47:55] error: Subsribe to robot error!
+[14:47:55] error: Subscribe to simulator error!

@@ -1,0 +1,53 @@
+[15:14:45] info: 14_Feb_2022_15.14
+[15:14:45] info: MQTT connection respone successfull
+[15:14:45] info: Subsribe response v2/server/simulated/cmd
+[15:14:45] info: Subsribe response v2/server/simulated/cmd
+[15:15:08] info: Init pose selected: 0, -20, 0
+[15:15:08] info: x: 0, y: 0, theta: 0
+[15:15:08] info: x: 0, y: 0, theta: 0
+[15:15:08] info: x: 0, y: 0, theta: 0
+[15:15:08] info: x: 0, y: 0, theta: 0
+[15:15:09] info: Got a request to publish to: v2/server/NRF_5/init
+[15:15:12] info: x: 0, y: 0, theta: 0
+[15:15:17] info: x: 0, y: 0, theta: 0
+[15:15:22] info: x: 0, y: 0, theta: 0
+[15:15:27] info: x: 0, y: 0, theta: 0
+[15:15:32] info: x: 0, y: 0, theta: 0
+[15:15:37] info: x: 0, y: 0, theta: 0
+[15:15:42] info: x: 0, y: 0, theta: 0
+[15:15:47] info: x: 0, y: 0, theta: 0
+[15:15:52] info: x: 0, y: 0, theta: 0
+[15:15:57] info: x: 0, y: 0, theta: 0
+[15:16:02] info: x: 0, y: 0, theta: 0
+[15:16:07] info: x: 0, y: 0, theta: 0
+[15:16:12] info: x: 0, y: 0, theta: 0
+[15:16:17] info: x: 0, y: 0, theta: 0
+[15:16:22] info: x: 0, y: 0, theta: 0
+[15:16:27] info: x: 0, y: 0, theta: 0
+[15:16:32] info: x: 0, y: 0, theta: 0
+[15:16:37] info: x: 0, y: 0, theta: 0
+[15:16:42] info: x: 0, y: 0, theta: 0
+[15:16:47] info: x: 0, y: 0, theta: 0
+[15:16:52] info: x: 0, y: 0, theta: 0
+[15:16:57] info: x: 0, y: 0, theta: 0
+[15:17:02] info: x: 0, y: 0, theta: 0
+[15:17:07] info: x: 0, y: 0, theta: 0
+[15:17:12] info: x: 0, y: 0, theta: 0
+[15:17:17] info: x: 0, y: 0, theta: 0
+[15:17:22] info: x: 0, y: 0, theta: 0
+[15:17:27] info: x: 0, y: 0, theta: 0
+[15:17:32] info: x: 0, y: 0, theta: 0
+[15:17:37] info: x: 0, y: 0, theta: 0
+[15:17:42] info: x: 0, y: 0, theta: 0
+[15:17:47] info: x: 0, y: 0, theta: 0
+[15:17:52] info: x: 0, y: 0, theta: 0
+[15:17:57] info: x: 0, y: 0, theta: 0
+[15:18:02] info: x: 0, y: 0, theta: 0
+[15:18:07] info: x: 0, y: 0, theta: 0
+[15:18:12] info: x: 0, y: 0, theta: 0
+[15:18:17] info: x: 0, y: 0, theta: 0
+[15:18:22] info: x: 0, y: 0, theta: 0
+[15:18:27] info: x: 0, y: 0, theta: 0
+[15:18:32] info: x: 0, y: 0, theta: 0
+[15:18:37] info: x: 0, y: 0, theta: 0
+[15:18:42] info: x: 0, y: 0, theta: 0

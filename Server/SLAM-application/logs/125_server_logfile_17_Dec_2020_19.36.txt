@@ -1,0 +1,79 @@
+[19:36:03] info: 17_Dec_2020_19.36
+[19:36:05] info: MQTT connection respone successfull
+[19:36:05] info: Subsribe response v2/server/simulated/cmd
+[19:36:05] warning: Invalid size of payload!
+[19:36:05] error: Received invalid SLAM message!
+[19:36:05] error: Got invalid SLAM message!
+[19:36:05] info: Subsribe response v2/server/simulated/cmd
+[19:36:25] info: Got a request to publish to: v2/server/simulated/cmd
+[19:36:25] info: Init set to : x:          0, y:          0, theta:          0
+[19:36:25] info: New target  : x:          0, y:          0, theta:        0.0
+[19:36:25] info: Real pos    : x:          0, y:          0, theta:          0
+[19:36:25] info: Odom        : x:        0.0, y:        0.0, theta:        0.0
+[19:36:25] info: New position: x:  0.0005396, y:  9.019e-08, theta:     0.1242 weight:   1
+[19:36:25] info: New position: x:  0.0005396, y:  9.019e-08, theta:     0.1242 weight:   1
+[19:36:26] info: New position: x: -8.016e-05, y:  3.125e-08, theta:   -0.02067 weight:   1
+[19:36:26] info: New position: x: -8.016e-05, y:  3.125e-08, theta:   -0.02067 weight:   1
+[19:36:26] info: New position: x:   0.001702, y:  1.635e-06, theta:    0.07363 weight:   1
+[19:36:26] info: New position: x:   0.001702, y:  1.635e-06, theta:    0.07363 weight:   1
+[19:36:26] info: New position: x: -0.0002971, y:   1.36e-07, theta:   -0.04994 weight:   1
+[19:36:26] info: New position: x: -0.0002971, y:   1.36e-07, theta:   -0.04994 weight:   1
+[19:36:27] info: New position: x:  0.0003859, y:  3.963e-07, theta:    0.03043 weight:   1
+[19:36:27] info: New position: x:  0.0003859, y:  3.963e-07, theta:    0.03043 weight:   1
+[19:36:27] info: New position: x: -2.446e-05, y:  3.476e-08, theta:  -0.007142 weight:   1
+[19:36:27] info: New position: x: -2.446e-05, y:  3.476e-08, theta:  -0.007142 weight:   1
+[19:36:27] info: New position: x: -0.0005814, y:  1.451e-07, theta:     0.1017 weight:   1
+[19:36:27] info: New position: x: -0.0005814, y:  1.451e-07, theta:     0.1017 weight:   1
+[19:36:28] info: New position: x:  0.0006463, y:  1.573e-06, theta:     0.1118 weight:   1
+[19:36:28] info: New position: x:  0.0006463, y:  1.573e-06, theta:     0.1118 weight:   1
+[19:36:28] info: New position: x:  0.0001239, y:  1.858e-07, theta:     0.1351 weight:   1
+[19:36:28] info: New position: x:  0.0001239, y:  1.858e-07, theta:     0.1351 weight:   1
+[19:36:28] info: New position: x:  -0.001307, y:  4.444e-07, theta:   0.002236 weight:   1
+[19:36:28] info: New position: x:  -0.001307, y:  4.444e-07, theta:   0.002236 weight:   1
+[19:36:29] info: New position: x: -0.0001412, y:  -7.76e-08, theta:   -0.03943 weight:   1
+[19:36:29] info: New position: x: -0.0001412, y:  -7.76e-08, theta:   -0.03943 weight:   1
+[19:36:29] info: New position: x:  0.0007158, y: -7.233e-07, theta:   -0.02542 weight:   1
+[19:36:29] info: New position: x:  0.0007158, y: -7.233e-07, theta:   -0.02542 weight:   1
+[19:36:29] info: New position: x:  0.0003475, y:  -3.17e-07, theta:   -0.04749 weight:   1
+[19:36:29] info: New position: x:  0.0003475, y:  -3.17e-07, theta:   -0.04749 weight:   1
+[19:36:30] info: New position: x: -0.0007585, y:  3.988e-07, theta:   -0.07472 weight:   1
+[19:36:30] info: New position: x: -0.0007585, y:  3.988e-07, theta:   -0.07472 weight:   1
+[19:36:30] info: New position: x: -0.0004129, y: -5.016e-07, theta:     0.1129 weight:   1
+[19:36:30] info: New position: x: -0.0004129, y: -5.016e-07, theta:     0.1129 weight:   1
+[19:36:30] info: New position: x:   0.000585, y:  6.158e-07, theta:    0.06061 weight:   1
+[19:36:30] info: New position: x:   0.000585, y:  6.158e-07, theta:    0.06061 weight:   1
+[19:36:31] info: Outbox next point, x: 400 y: 0
+[19:36:31] info: Got a request to publish to: v2/server/simulated/cmd
+[19:36:31] info: New position: x:  0.0001882, y: -2.629e-08, theta:    0.01605 weight:   1
+[19:36:31] info: New position: x:  0.0001882, y: -2.629e-08, theta:    0.01605 weight:   1
+[19:36:31] info: New target  : x:        400, y:          0, theta:        0.0
+[19:36:31] info: Real pos    : x:        399, y:        -18, theta:         -4
+[19:36:31] info: New position: x:  0.0004971, y: -3.597e-07, theta:    -0.1537 weight:   1
+[19:36:31] info: New position: x:  0.0004971, y: -3.597e-07, theta:    -0.1537 weight:   1
+[19:36:31] info: New position: x:  -0.001248, y: -9.653e-07, theta:     0.1251 weight:   1
+[19:36:31] info: New position: x:  -0.001248, y: -9.653e-07, theta:     0.1251 weight:   1
+[19:36:32] info: New position: x: -6.542e-06, y: -1.571e-09, theta:   -0.07402 weight:   1
+[19:36:32] info: New position: x: -6.542e-06, y: -1.571e-09, theta:   -0.07402 weight:   1
+[19:36:32] info: New position: x:  0.0001832, y:  7.796e-08, theta:   -0.07145 weight:   1
+[19:36:32] info: New position: x:  0.0001832, y:  7.796e-08, theta:   -0.07145 weight:   1
+[19:36:32] info: New position: x: -0.0002987, y: -1.547e-08, theta:     0.0516 weight:   1
+[19:36:32] info: New position: x: -0.0002987, y: -1.547e-08, theta:     0.0516 weight:   1
+[19:36:33] info: New position: x:  0.0007128, y:  3.938e-08, theta:    0.01869 weight:   1
+[19:36:33] info: New position: x:  0.0007128, y:  3.938e-08, theta:    0.01869 weight:   1
+[19:36:33] info: New position: x:  -0.000219, y: -2.148e-07, theta:    0.05582 weight:   1
+[19:36:33] info: New position: x:  -0.000219, y: -2.148e-07, theta:    0.05582 weight:   1
+[19:36:33] info: New position: x: -3.867e-05, y:  2.478e-08, theta:   -0.03862 weight:   1
+[19:36:33] info: New position: x: -3.867e-05, y:  2.478e-08, theta:   -0.03862 weight:   1
+[19:36:34] info: New position: x:   0.001486, y:  3.412e-06, theta:     0.1107 weight:   1
+[19:36:34] info: New position: x:   0.001486, y:  3.412e-06, theta:     0.1107 weight:   1
+[19:36:34] info: New position: x:  0.0006515, y:  5.977e-07, theta:    0.08093 weight:   1
+[19:36:34] info: New position: x:  0.0006515, y:  5.977e-07, theta:    0.08093 weight:   1
+[19:36:34] info: New position: x:   -0.00259, y:  2.251e-06, theta:   -0.02016 weight:   1
+[19:36:34] info: New position: x:   -0.00259, y:  2.251e-06, theta:   -0.02016 weight:   1
+[19:36:35] info: New position: x:  -0.001793, y: -2.242e-06, theta:    0.09021 weight:   1
+[19:36:35] info: New position: x:  -0.001793, y: -2.242e-06, theta:    0.09021 weight:   1
+[19:36:35] info: New position: x:   -0.00103, y:  2.586e-07, theta:   -0.05484 weight:   1
+[19:36:35] info: New position: x:   -0.00103, y:  2.586e-07, theta:   -0.05484 weight:   1
+[19:36:35] info: New mean pose: x: -6.873e-05, y:  2.301e-07, theta:    0.02081
+[19:36:35] info: Average raster array size: 3
+[19:36:36] info: Time of update: 0

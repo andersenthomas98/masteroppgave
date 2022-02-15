@@ -1,0 +1,8 @@
+[12:18:49] info: 10_Feb_2022_12.18
+[12:18:49] info: MQTT connection respone successfull
+[12:18:49] info: Subsribe response v2/server/simulated/cmd
+[12:18:49] info: Subsribe response v2/server/simulated/cmd
+[12:19:02] info: Init pose selected: 0, 0, 0
+[12:19:02] warning: Bad topic parse?
+[12:23:15] warning: Connection lost
+[12:23:15] warning: Connection lost

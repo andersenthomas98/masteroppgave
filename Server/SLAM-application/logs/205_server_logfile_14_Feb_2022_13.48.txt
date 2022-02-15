@@ -1,0 +1,48 @@
+[13:48:34] info: 14_Feb_2022_13.48
+[13:48:34] info: MQTT connection respone successfull
+[13:48:34] info: Subsribe response v2/server/simulated/cmd
+[13:48:34] info: Subsribe response v2/server/simulated/cmd
+[13:49:18] info: Init pose selected: 0, 0, 0
+[13:49:18] info: x: 0, y: 0, theta: 0
+[13:49:18] info: Got a request to publish to: v2/server/NRF_5/init
+[13:49:23] info: x: 0, y: 0, theta: 0
+[13:49:28] info: x: 0, y: 0, theta: 0
+[13:49:33] info: x: 0, y: 0, theta: 0
+[13:49:38] info: x: 0, y: 0, theta: 0
+[13:49:43] info: x: 0, y: 0, theta: 0
+[13:49:48] info: x: 0, y: 0, theta: 0
+[13:49:53] info: x: 0, y: 0, theta: 0
+[13:49:57] info: Outbox next point, x: 810 y: 10
+[13:49:58] info: Got a request to publish to: v2/server/NRF_5/cmd
+[13:49:58] info: x: 0, y: 0, theta: 0
+[13:50:03] info: x: 0, y: 0, theta: 0
+[13:50:08] info: x: 0, y: 0, theta: 0
+[13:50:13] info: x: 0, y: 0, theta: 0
+[13:50:18] info: x: 0, y: 0, theta: 0
+[13:50:23] info: x: 0, y: 0, theta: 0
+[13:50:28] info: x: 0, y: 0, theta: 0
+[13:50:33] info: x: 0, y: 0, theta: 0
+[13:50:38] info: x: 0, y: 0, theta: 0
+[13:50:43] info: x: 0, y: 0, theta: 0
+[13:50:48] info: x: 0, y: 0, theta: 0
+[13:50:53] info: x: 0, y: 0, theta: 0
+[13:50:58] info: x: 0, y: 0, theta: 0
+[13:51:03] info: x: 0, y: 0, theta: 0
+[13:51:08] info: x: 0, y: 0, theta: 0
+[13:51:13] info: x: 0, y: 0, theta: 0
+[13:51:18] info: x: 0, y: 0, theta: 0
+[13:51:23] info: x: 0, y: 0, theta: 0
+[13:51:28] info: x: 0, y: 0, theta: 0
+[13:51:33] info: x: 0, y: 0, theta: 0
+[13:51:38] info: x: 0, y: 0, theta: 0
+[13:51:43] info: x: 0, y: 0, theta: 0
+[13:51:48] info: x: 0, y: 0, theta: 0
+[13:51:53] info: x: 0, y: 0, theta: 0
+[13:51:58] info: x: 0, y: 0, theta: 0
+[13:52:03] info: x: 0, y: 0, theta: 0
+[13:52:08] info: x: 0, y: 0, theta: 0
+[13:52:13] info: x: 0, y: 0, theta: 0
+[13:52:18] info: x: 0, y: 0, theta: 0
+[13:52:23] info: x: 0, y: 0, theta: 0
+[15:07:14] warning: Connection lost
+[15:07:14] warning: Connection lost

@@ -1,0 +1,29 @@
+[19:17:50] info: 17_Dec_2020_19.17
+[19:17:51] info: MQTT connection respone successfull
+[19:17:51] info: Subsribe response v2/server/simulated/cmd
+[19:17:51] warning: Invalid size of payload!
+[19:17:51] error: Received invalid SLAM message!
+[19:17:51] error: Got invalid SLAM message!
+[19:17:51] info: Subsribe response v2/server/simulated/cmd
+[19:28:26] info: 17_Dec_2020_19.28
+[19:28:28] info: MQTT connection respone successfull
+[19:28:28] error: Could not connect!
+[19:28:28] info: Subsribe response v2/server/simulated/cmd
+[19:28:28] warning: Invalid size of payload!
+[19:28:28] error: Received invalid SLAM message!
+[19:28:28] error: Got invalid SLAM message!
+[19:28:28] info: Subsribe response v2/server/simulated/cmd
+[19:30:17] info: 17_Dec_2020_19.30
+[19:30:18] info: MQTT connection respone successfull
+[19:30:18] info: Subsribe response v2/server/simulated/cmd
+[19:30:18] warning: Invalid size of payload!
+[19:30:18] error: Received invalid SLAM message!
+[19:30:18] error: Got invalid SLAM message!
+[19:30:18] info: Subsribe response v2/server/simulated/cmd
+[19:32:43] info: 17_Dec_2020_19.32
+[19:32:45] info: MQTT connection respone successfull
+[19:32:45] info: Subsribe response v2/server/simulated/cmd
+[19:32:45] warning: Invalid size of payload!
+[19:32:45] error: Received invalid SLAM message!
+[19:32:45] error: Got invalid SLAM message!
+[19:32:45] info: Subsribe response v2/server/simulated/cmd

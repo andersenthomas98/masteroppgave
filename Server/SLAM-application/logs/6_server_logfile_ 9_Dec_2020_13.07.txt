@@ -1,0 +1,212 @@
+[13:07:16] info:  9_Dec_2020_13.07
+[13:07:17] info: MQTT connection respone successfull
+[13:07:17] info: Subsribe response v2/server/simulated/cmd
+[13:07:17] warning: Invalid size of payload!
+[13:07:17] error: Received invalid SLAM message!
+[13:07:17] error: Got invalid SLAM message!
+[13:07:17] info: Subsribe response v2/server/simulated/cmd
+[13:07:26] info: Got a request to publish to: v2/server/simulated/cmd
+[13:07:26] info: Init set to : x:          0, y:          0, theta:          0
+[13:07:27] info: New target  : x:          0, y:          0, theta:        0.0
+[13:07:27] info: Real pos    : x:          0, y:          0, theta:          0
+[13:07:27] info: Odom        : x:        0.0, y:        0.0, theta:        0.0
+[13:07:27] info: New position: x:  0.0009454, y:  4.204e-07, theta:  0.0005195 weight:   1
+[13:07:27] info: New position: x:  0.0009454, y:  4.204e-07, theta:  0.0005195 weight:   1
+[13:07:27] info: New position: x: -0.0001674, y:  3.014e-08, theta:    -0.1053 weight:   1
+[13:07:27] info: New position: x: -0.0001674, y:  3.014e-08, theta:    -0.1053 weight:   1
+[13:07:27] info: New position: x:   0.000805, y: -1.518e-06, theta:    -0.1478 weight:   1
+[13:07:27] info: New position: x:   0.000805, y: -1.518e-06, theta:    -0.1478 weight:   1
+[13:07:27] info: New position: x:   0.001114, y: -3.235e-07, theta: -0.0003348 weight:   1
+[13:07:27] info: New position: x:   0.001114, y: -3.235e-07, theta: -0.0003348 weight:   1
+[13:07:27] info: New position: x:  0.0004577, y: -1.179e-07, theta:    0.02843 weight:   1
+[13:07:27] info: New position: x:  0.0004577, y: -1.179e-07, theta:    0.02843 weight:   1
+[13:07:27] info: New position: x: -0.0007679, y: -1.123e-07, theta:   0.002596 weight:   1
+[13:07:27] info: New position: x: -0.0007679, y: -1.123e-07, theta:   0.002596 weight:   1
+[13:07:27] info: New position: x:  -0.000158, y:  -1.33e-07, theta:   -0.04284 weight:   1
+[13:07:27] info: New position: x:  -0.000158, y:  -1.33e-07, theta:   -0.04284 weight:   1
+[13:07:27] info: New position: x: -0.0005562, y:  -1.08e-07, theta:   0.000956 weight:   1
+[13:07:27] info: New position: x: -0.0005562, y:  -1.08e-07, theta:   0.000956 weight:   1
+[13:07:27] info: New position: x: -0.0002064, y: -5.725e-08, theta:    0.02159 weight:   1
+[13:07:27] info: New position: x: -0.0002064, y: -5.725e-08, theta:    0.02159 weight:   1
+[13:07:27] info: New position: x:  0.0003658, y: -4.081e-07, theta:   -0.09315 weight:   1
+[13:07:27] info: New position: x:  0.0003658, y: -4.081e-07, theta:   -0.09315 weight:   1
+[13:07:27] info: New position: x:   -0.00115, y: -5.718e-07, theta:    0.03253 weight:   1
+[13:07:27] info: New position: x:   -0.00115, y: -5.718e-07, theta:    0.03253 weight:   1
+[13:07:27] info: New position: x:  -0.001403, y: -4.032e-06, theta:     0.2077 weight:   1
+[13:07:27] info: New position: x:  -0.001403, y: -4.032e-06, theta:     0.2077 weight:   1
+[13:07:27] info: New position: x:  0.0006958, y: -3.702e-07, theta:   -0.06413 weight:   1
+[13:07:27] info: New position: x:  0.0006958, y: -3.702e-07, theta:   -0.06413 weight:   1
+[13:07:28] info: New position: x:  -0.000308, y: -1.378e-07, theta:    0.03588 weight:   1
+[13:07:28] info: New position: x:  -0.000308, y: -1.378e-07, theta:    0.03588 weight:   1
+[13:07:28] info: New position: x:   0.001708, y: -1.306e-06, theta:  -0.009624 weight:   1
+[13:07:28] info: New position: x:   0.001708, y: -1.306e-06, theta:  -0.009624 weight:   1
+[13:07:28] info: New position: x:  -0.001941, y: -3.008e-06, theta:     0.1124 weight:   1
+[13:07:28] info: New position: x:  -0.001941, y: -3.008e-06, theta:     0.1124 weight:   1
+[13:07:28] info: New position: x:  -0.001701, y:  7.762e-07, theta:    0.02562 weight:   1
+[13:07:28] info: New position: x:  -0.001701, y:  7.762e-07, theta:    0.02562 weight:   1
+[13:07:28] info: New position: x:   0.001341, y:  3.502e-06, theta:     0.2117 weight:   1
+[13:07:28] info: New position: x:   0.001341, y:  3.502e-06, theta:     0.2117 weight:   1
+[13:07:28] info: New position: x:  0.0008544, y: -6.803e-07, theta:   -0.08424 weight:   1
+[13:07:28] info: New position: x:  0.0008544, y: -6.803e-07, theta:   -0.08424 weight:   1
+[13:07:28] info: New position: x:   0.001602, y: -1.902e-07, theta:   -0.05267 weight:   1
+[13:07:28] info: New position: x:   0.001602, y: -1.902e-07, theta:   -0.05267 weight:   1
+[13:07:28] info: New position: x:  -0.001835, y: -1.567e-06, theta:     -0.011 weight:   1
+[13:07:28] info: New position: x:  -0.001835, y: -1.567e-06, theta:     -0.011 weight:   1
+[13:07:28] info: New position: x: -0.0007659, y:  1.941e-06, theta:   -0.08212 weight:   1
+[13:07:28] info: New position: x: -0.0007659, y:  1.941e-06, theta:   -0.08212 weight:   1
+[13:07:28] info: New position: x:   0.001031, y:  1.739e-06, theta:     0.1265 weight:   1
+[13:07:28] info: New position: x:   0.001031, y:  1.739e-06, theta:     0.1265 weight:   1
+[13:07:28] info: New position: x:  0.0001334, y:   1.78e-07, theta:   0.006578 weight:   1
+[13:07:28] info: New position: x:  0.0001334, y:   1.78e-07, theta:   0.006578 weight:   1
+[13:07:28] info: New position: x:  -0.001566, y:   2.11e-06, theta:    -0.0369 weight:   1
+[13:07:28] info: New position: x:  -0.001566, y:   2.11e-06, theta:    -0.0369 weight:   1
+[13:07:28] info: New position: x: -0.0003751, y:  1.969e-07, theta:     -0.155 weight:   1
+[13:07:28] info: New position: x: -0.0003751, y:  1.969e-07, theta:     -0.155 weight:   1
+[13:07:28] info: New position: x: -0.0003073, y: -1.979e-07, theta:   -0.04502 weight:   1
+[13:07:28] info: New position: x: -0.0003073, y: -1.979e-07, theta:   -0.04502 weight:   1
+[13:07:28] info: New position: x:  -0.001644, y: -5.814e-07, theta:  -0.005339 weight:   1
+[13:07:28] info: New position: x:  -0.001644, y: -5.814e-07, theta:  -0.005339 weight:   1
+[13:07:28] info: New position: x:   0.001429, y: -2.202e-06, theta:   -0.09613 weight:   1
+[13:07:28] info: New position: x:   0.001429, y: -2.202e-06, theta:   -0.09613 weight:   1
+[13:07:28] info: New position: x:  0.0007901, y:  4.612e-07, theta:   -0.09094 weight:   1
+[13:07:28] info: New position: x:  0.0007901, y:  4.612e-07, theta:   -0.09094 weight:   1
+[13:07:29] info: New mean pose: x: -5.265e-05, y: -2.089e-07, theta:   -0.01032
+[13:07:29] info: Average raster array size: 3
+[13:07:29] info: Time of update: 0
+[13:07:34] info: Outbox next point, x: 400 y: 0
+[13:07:34] info: Got a request to publish to: v2/server/simulated/cmd
+[13:07:34] info: New target  : x:        400, y:          0, theta:        0.0
+[13:07:34] info: Real pos    : x:        397, y:         42, theta:          8
+[13:07:35] info: Odom        : x:      400.0, y:        0.0, theta:        0.0
+[13:07:44] info: New mean pose: x:      383.9, y:      48.52, theta:      7.988
+[13:07:44] info: Average raster array size: 4
+[13:07:44] info: Time of update: 0
+[13:07:44] info: Outbox next point, x: 800 y: 0
+[13:07:44] info: Got a request to publish to: v2/server/simulated/cmd
+[13:07:45] info: New target  : x:        800, y:          0, theta: -5.949793184865548
+[13:07:45] info: Real pos    : x:        799, y:         -5, theta:         -8
+[13:07:45] info: Odom        : x:      403.0, y:      -42.0, theta:      -13.0
+[13:07:52] info: New mean pose: x:      780.5, y:     -9.271, theta:     -8.873
+[13:07:52] info: Average raster array size: 6
+[13:07:52] info: Outbox next point, x: 800 y: -400
+[13:07:52] info: Time of update: 0
+[13:07:53] info: Got a request to publish to: v2/server/simulated/cmd
+[13:07:53] info: New target  : x:        800, y:       -400, theta: -89.85494770352837
+[13:07:53] info: Real pos    : x:        796, y:       -400, theta:        -83
+[13:07:54] info: Odom        : x:        1.0, y:     -395.0, theta:      -81.0
+[13:08:06] info: New mean pose: x:      782.4, y:     -400.6, theta:     -83.61
+[13:08:06] info: Average raster array size: 8
+[13:08:06] info: Time of update: 0
+[13:08:06] info: Outbox next point, x: 800 y: -800
+[13:08:06] info: Got a request to publish to: v2/server/simulated/cmd
+[13:08:06] info: New target  : x:        800, y:       -800, theta: -89.42706130231653
+[13:08:06] info: Real pos    : x:        785, y:       -799, theta:        -89
+[13:08:07] info: Odom        : x:        4.0, y:     -400.0, theta:       -6.0
+[13:08:14] info: New mean pose: x:      793.3, y:     -799.2, theta:     -89.28
+[13:08:14] info: Average raster array size: 9
+[13:08:14] info: Time of update: 0
+[13:08:14] info: Outbox next point, x: 400 y: -800
+[13:08:15] info: Got a request to publish to: v2/server/simulated/cmd
+[13:08:15] info: New target  : x:        400, y:       -800, theta: -179.85118012814303
+[13:08:15] info: Real pos    : x:        400, y:       -793, theta:       -177
+[13:08:15] info: Odom        : x:     -385.0, y:       -1.0, theta:      -90.0
+[13:08:21] info: New mean pose: x:      396.3, y:     -794.2, theta:     -177.3
+[13:08:21] info: Average raster array size: 10
+[13:08:21] info: Outbox next point, x: 0 y: -800
+[13:08:21] info: Time of update: 1
+[13:08:22] info: Got a request to publish to: v2/server/simulated/cmd
+[13:08:22] info: New target  : x:          0, y:       -800, theta: -178.99742619623996
+[13:08:22] info: Real pos    : x:          0, y:       -809, theta:       -180
+[13:08:22] info: Odom        : x:     -400.0, y:       -7.0, theta:       -1.0
+[13:08:28] info: New mean pose: x:     -6.374, y:     -803.3, theta:       -180
+[13:08:28] info: Average raster array size: 11
+[13:08:28] info: Time of update: 1
+[13:08:28] info: Outbox next point, x: 400 y: -800
+[13:08:29] info: Got a request to publish to: v2/server/simulated/cmd
+[13:08:29] info: New target  : x:        400, y:       -800, theta: 1.2889375601868953
+[13:08:29] info: Real pos    : x:        399, y:       -784, theta:          5
+[13:08:29] info: Odom        : x:      400.0, y:        9.0, theta:      181.0
+[13:08:38] info: New mean pose: x:      380.4, y:     -782.2, theta:      5.117
+[13:08:38] info: Average raster array size: 13
+[13:08:38] info: Time of update: 1
+[13:08:39] info: Outbox next point, x: 800 y: -800
+[13:08:39] info: Got a request to publish to: v2/server/simulated/cmd
+[13:08:39] info: New target  : x:        800, y:       -800, theta: -2.284903860054758
+[13:08:39] info: Real pos    : x:        799, y:       -811, theta:          0
+[13:08:40] info: Odom        : x:      401.0, y:      -16.0, theta:       -7.0
+[13:08:45] info: New mean pose: x:      786.6, y:     -810.8, theta:    -0.9843
+[13:08:45] info: Average raster array size: 13
+[13:08:45] info: Time of update: 1
+[13:08:45] info: Outbox next point, x: 1200 y: -800
+[13:08:45] info: Got a request to publish to: v2/server/simulated/cmd
+[13:08:45] info: New target  : x:       1200, y:       -800, theta: 1.57131062586149
+[13:08:45] info: Real pos    : x:       1196, y:       -859, theta:          0
+[13:08:46] info: Odom        : x:      401.0, y:       11.0, theta:        1.0
+[13:08:46] info: Obstacle: row 217, column 310
+[13:08:46] info: New position: x:       1168, y:     -826.5, theta:    -0.6834 weight:  3.61732e+32
+[13:08:46] info: New position: x:       1168, y:     -826.5, theta:    -0.6834 weight:  3.61732e+32
+[13:08:46] info: New position: x:       1192, y:     -760.7, theta:      3.361 weight:  7.45975e+32
+[13:08:46] info: New position: x:       1192, y:     -760.7, theta:      3.361 weight:  7.45975e+32
+[13:08:46] info: Obstacle: row 212, column 314
+[13:08:47] info: Obstacle: row 201, column 316
+[13:08:47] info: Obstacle: row 198, column 316
+[13:08:47] info: Obstacle: row 196, column 314
+[13:08:47] info: Obstacle: row 202, column 311
+[13:08:47] info: Obstacle: row 214, column 306
+[13:08:47] info: Obstacle: row 221, column 301
+[13:08:48] info: Obstacle: row 221, column 300
+[13:08:48] info: New position: x:       1255, y:     -812.1, theta:     -5.264 weight:  1.10104e+33
+[13:08:48] info: New position: x:       1255, y:     -812.1, theta:     -5.264 weight:  1.10104e+33
+[13:08:48] info: Obstacle: row 221, column 294
+[13:08:48] info: New position: x:       1198, y:     -808.2, theta:      5.896 weight:  5.13059e+32
+[13:08:48] info: New position: x:       1198, y:     -808.2, theta:      5.896 weight:  5.13059e+32
+[13:08:48] info: Obstacle: row 221, column 286
+[13:08:48] info: Obstacle: row 221, column 283
+[13:08:48] info: New position: x:       1192, y:       -854, theta:     -5.427 weight:  4.95602e+33
+[13:08:48] info: New position: x:       1192, y:       -854, theta:     -5.427 weight:  4.95602e+33
+[13:08:48] info: Obstacle: row 217, column 280
+[13:08:48] info: New position: x:       1172, y:     -827.7, theta:     -5.817 weight:  1.01327e+33
+[13:08:48] info: New position: x:       1172, y:     -827.7, theta:     -5.817 weight:  1.01327e+33
+[13:08:48] info: Obstacle: row 207, column 276
+[13:08:48] info: Obstacle: row 203, column 276
+[13:08:49] info: New position: x:       1155, y:     -726.7, theta:       6.88 weight:  8.96486e+31
+[13:08:49] info: New position: x:       1155, y:     -726.7, theta:       6.88 weight:  8.96486e+31
+[13:08:49] info: Obstacle: row 206, column 276
+[13:08:49] info: Obstacle: row 214, column 292
+[13:08:49] info: Obstacle: row 217, column 299
+[13:08:49] info: Obstacle: row 218, column 300
+[13:08:49] info: Obstacle: row 210, column 321
+[13:08:49] info: New position: x:       1226, y:     -869.6, theta:     -8.616 weight:  8.56918e+32
+[13:08:49] info: New position: x:       1226, y:     -869.6, theta:     -8.616 weight:  8.56918e+32
+[13:08:50] info: Obstacle: row 202, column 320
+[13:08:50] info: New position: x:       1172, y:     -809.7, theta:      1.927 weight:  7.21435e+32
+[13:08:50] info: New position: x:       1172, y:     -809.7, theta:      1.927 weight:  7.21435e+32
+[13:08:50] info: Obstacle: row 204, column 312
+[13:08:50] info: New position: x:       1175, y:     -807.7, theta:     -2.889 weight:  3.36891e+32
+[13:08:50] info: New position: x:       1175, y:     -807.7, theta:     -2.889 weight:  3.36891e+32
+[13:08:50] info: New position: x:       1196, y:     -778.3, theta:     -3.369 weight:  9.03185e+32
+[13:08:50] info: New position: x:       1196, y:     -778.3, theta:     -3.369 weight:  9.03185e+32
+[13:08:50] info: Obstacle: row 215, column 279
+[13:08:50] info: Obstacle: row 211, column 269
+[13:08:50] info: New position: x:       1251, y:     -738.2, theta:      11.22 weight:  7.04121e+32
+[13:08:50] info: New position: x:       1251, y:     -738.2, theta:      11.22 weight:  7.04121e+32
+[13:08:50] info: New position: x:       1158, y:     -814.3, theta:     -7.789 weight:  1.0099e+33
+[13:08:50] info: New position: x:       1158, y:     -814.3, theta:     -7.789 weight:  1.0099e+33
+[13:08:50] info: New position: x:       1165, y:     -800.1, theta:      3.417 weight:  2.00826e+33
+[13:08:50] info: New position: x:       1165, y:     -800.1, theta:      3.417 weight:  2.00826e+33
+[13:08:51] info: New position: x:       1163, y:     -813.3, theta:     0.6285 weight:  1.29439e+33
+[13:08:51] info: New position: x:       1163, y:     -813.3, theta:     0.6285 weight:  1.29439e+33
+[13:08:51] info: New position: x:       1190, y:     -809.4, theta:      3.627 weight:  9.27349e+32
+[13:08:51] info: New position: x:       1190, y:     -809.4, theta:      3.627 weight:  9.27349e+32
+[13:08:51] info: New position: x:       1177, y:     -807.2, theta:      1.252 weight:  1.08123e+33
+[13:08:51] info: New position: x:       1177, y:     -807.2, theta:      1.252 weight:  1.08123e+33
+[13:08:51] info: New position: x:       1185, y:     -802.7, theta:      6.193 weight:  2.78866e+33
+[13:08:51] info: New position: x:       1185, y:     -802.7, theta:      6.193 weight:  2.78866e+33
+[13:08:51] info: ---------------------------------------------Resampling---------------------------------------------
+[13:08:52] info: New mean pose: x:       1199, y:       -842, theta:     -1.924
+[13:08:52] info: Average raster array size: 13
+[13:08:52] info: Time of update: 1
+[13:08:52] info: Outbox next point, x: 1600 y: -800
+[13:08:53] info: Got a request to publish to: v2/server/simulated/cmd
+[13:08:53] info: New target  : x:       1600, y:       -800, theta: 8.308716952413803
+[13:08:53] info: Real pos    : x:    

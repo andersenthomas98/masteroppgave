@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gui.h" />
+    <ClInclude Include="Include\eigenmvn.h" />
+    <ClInclude Include="Include\init_robot_panel.h" />
+    <ClInclude Include="Include\log.h" />
+    <ClInclude Include="Include\particle.h" />
+    <ClInclude Include="Include\animated_line.h" />
+    <ClInclude Include="Include\callbacks.h" />
+    <ClInclude Include="Include\simulation_panel.h" />
+    <ClInclude Include="Include\squares.h" />
+    <ClInclude Include="Include\square_grid.h" />
+    <ClInclude Include="Include\clicks.h" />
+    <ClInclude Include="Include\control_panel.h" />
+    <ClInclude Include="Include\grid.h" />
+    <ClInclude Include="Include\grid_common.h" />
+    <ClInclude Include="Include\grid_path_solver.h" />
+    <ClInclude Include="Include\grid_util.h" />
+    <ClInclude Include="Include\imconfig-SFML.h" />
+    <ClInclude Include="Include\imgui-SFML.h" />
+    <ClInclude Include="Include\lines.h" />
+    <ClInclude Include="Include\MQTT.h" />
+    <ClInclude Include="Include\MQTT_panel.h" />
+    <ClInclude Include="Include\MQTT_utility.h" />
+    <ClInclude Include="Include\obstructable_grid.h" />
+    <ClInclude Include="Include\panel.h" />
+    <ClInclude Include="Include\panel_base.h" />
+    <ClInclude Include="Include\path.h" />
+    <ClInclude Include="Include\robot.h" />
+    <ClInclude Include="Include\robots.h" />
+    <ClInclude Include="Include\robot_simulation.h" />
+    <ClInclude Include="Include\slam_grid.h" />
+    <ClInclude Include="Include\slam_message.h" />
+    <ClInclude Include="Include\slam_utility.h" />
+    <ClInclude Include="Include\target_panel.h" />
+    <ClInclude Include="Include\updatable.h" />
+    <ClInclude Include="Include\vertex_hash.h" />
+    <ClInclude Include="Include\window.h" />
+    <ClInclude Include="mqtt_handler.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="robots_inbox_handler.h" />
+    <ClInclude Include="robots_outbox_handler.h" />
+    <ClInclude Include="robot_connection_panel.h" />
+    <ClInclude Include="simulation_handler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Src\animated_line.cpp" />
+    <ClCompile Include="Src\gui.cpp" />
+    <ClCompile Include="Src\init_robot_panel.cpp" />
+    <ClCompile Include="Src\log.cpp" />
+    <ClCompile Include="Src\mqtt_handler.cpp" />
+    <ClCompile Include="Src\particle.cpp" />
+    <ClCompile Include="Src\robots_inbox_handler.cpp" />
+    <ClCompile Include="Src\robots_outbox_handler.cpp" />
+    <ClCompile Include="Src\robot_connection_panel.cpp" />
+    <ClCompile Include="Src\simulation_handler.cpp" />
+    <ClCompile Include="Src\simulation_panel.cpp" />
+    <ClCompile Include="Src\squares.cpp" />
+    <ClCompile Include="Src\square_grid.cpp" />
+    <ClCompile Include="Src\clicks.cpp" />
+    <ClCompile Include="Src\control_panel.cpp" />
+    <ClCompile Include="Src\grid.cpp" />
+    <ClCompile Include="Src\grid_path_solver.cpp" />
+    <ClCompile Include="Src\grid_util.cpp" />
+    <ClCompile Include="Src\imgui-SFML.cpp" />
+    <ClCompile Include="Src\lines.cpp" />
+    <ClCompile Include="Src\MQTT.cpp" />
+    <ClCompile Include="Src\MQTT_panel.cpp" />
+    <ClCompile Include="Src\MQTT_utility.cpp" />
+    <ClCompile Include="Src\obstructable_grid.cpp" />
+    <ClCompile Include="Src\panel.cpp" />
+    <ClCompile Include="Src\panel_base.cpp" />
+    <ClCompile Include="Src\path.cpp" />
+    <ClCompile Include="Src\robot.cpp" />
+    <ClCompile Include="Src\robots.cpp" />
+    <ClCompile Include="Src\robot_simulation.cpp" />
+    <ClCompile Include="Src\slam_grid.cpp" />
+    <ClCompile Include="Src\slam_message.cpp" />
+    <ClCompile Include="Src\slam_utility.cpp" />
+    <ClCompile Include="Src\target_panel.cpp" />
+    <ClCompile Include="Src\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SLAM-application.rc" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{687B3B5A-2018-4A0B-9C97-B76245C5781A}</ProjectGuid>
+    <RootNamespace>SLAMapplication</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\build\lib\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions);_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\build\lib\Debug;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\random\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\nanoflann\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\img\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\config\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\system\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\containers\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\rtti\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\serialization\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\typemeta\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\core\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\math\include;C:\Users\michasm\vcpkg\buildtrees\eigen3\src\3.3.7-c0bebf7460;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\poses\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\build\include\mrpt-configuration;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\vision\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\topography\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\tfest\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\slam\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\pbmap\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\opengl\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\obs\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\nav\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\maps\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\kinematics\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\hwdrivers\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\hmtslam\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\gui\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\graphslam\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\graphs\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\detectors\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\bayes\include;C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\libs\base\include;C:\Users\michasm\vcpkg\packages\paho-mqtt_x86-windows\include;C:\temp\vcpkg\installed\x86-windows\include\paho-mqtt;./Include;C:\Users\michasm\vcpkg\buildtrees\paho-mqtt\src\bf6a6a0675-958c0762e3\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;bcrypt.lib;%(AdditionalDependencies);assimp-mrpt-vc140-mt-dbg.lib;IrrXML-dbg.lib;libmrpt-apps199_msvc142_x32-dbg.lib;libmrpt-bayes199_msvc142_x32-dbg.lib;libmrpt-comms199_msvc142_x32-dbg.lib;libmrpt-config199_msvc142_x32-dbg.lib;libmrpt-containers199_msvc142_x32-dbg.lib;libmrpt-core199_msvc142_x32-dbg.lib;libmrpt-detectors199_msvc142_x32-dbg.lib;libmrpt-expr199_msvc142_x32-dbg.lib;libmrpt-graphs199_msvc142_x32-dbg.lib;libmrpt-graphslam199_msvc142_x32-dbg.lib;libmrpt-gui199_msvc142_x32-dbg.lib;libmrpt-hmtslam199_msvc142_x32-dbg.lib;libmrpt-hwdrivers199_msvc142_x32-dbg.lib;libmrpt-img199_msvc142_x32-dbg.lib;libmrpt-io199_msvc142_x32-dbg.lib;libmrpt-kinematics199_msvc142_x32-dbg.lib;libmrpt-maps199_msvc142_x32-dbg.lib;libmrpt-math199_msvc142_x32-dbg.lib;libmrpt-nav199_msvc142_x32-dbg.lib;libmrpt-obs199_msvc142_x32-dbg.lib;libmrpt-opengl199_msvc142_x32-dbg.lib;libmrpt-poses199_msvc142_x32-dbg.lib;libmrpt-random199_msvc142_x32-dbg.lib;libmrpt-rtti199_msvc142_x32-dbg.lib;libmrpt-serialization199_msvc142_x32-dbg.lib;libmrpt-slam199_msvc142_x32-dbg.lib;libmrpt-system199_msvc142_x32-dbg.lib;libmrpt-tfest199_msvc142_x32-dbg.lib;libmrpt-topography199_msvc142_x32-dbg.lib;libmrpt-vision199_msvc142_x32-dbg.lib;mrpt_freeglut-dbg.lib;mrpt_glew-dbg.lib;mrpt_rplidar-dbg.lib;mrptgtest-dbg.lib;zlibd.lib;zlibstaticd.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);C:\Users\michasm\Downloads\mrpt-develop\mrpt-develop\build\lib\Debug</AdditionalLibraryDirectories>
+      <ShowProgress>NotSet</ShowProgress>
+    </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\vcpkg\packages\imgui_x64-windows\include;C:\vcpkg\packages\paho-mqtt_x64-windows\include\paho-mqtt;./Include;C:\vcpkg\packages\eigen3_x64-windows\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\vcpkg\packages\openssl-windows_x64-windows\lib;%(AdditionalLibraryDirectories);C:\packages\paho-mqtt_x64-windows\lib;C:\vcpkg\packages\sfml_x64-windows\debug\lib\manual-link;C:\vcpkg\packages\imgui_x64-windows\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcrypto.lib;libssl.lib;paho-mqtt3a.lib;paho-mqtt3as.lib;paho-mqtt3c.lib;paho-mqtt3cs.lib;imgui.lib;sfml-main-d.lib;opengl32.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\michasm\vcpkg\packages\paho-mqtt_x86-windows\include;C:\Program Files\mrpt-1.5.7\include\mrpt\mrpt-config;C:\Program Files\mrpt-1.5.7\libs\vision\include;C:\Program Files\mrpt-1.5.7\libs\topography\include;C:\Program Files\mrpt-1.5.7\libs\tfest\include;C:\Program Files\mrpt-1.5.7\libs\pbmap\include;C:\Program Files\mrpt-1.5.7\libs\opengl\include;C:\Program Files\mrpt-1.5.7\libs\obs\include;C:\Program Files\mrpt-1.5.7\libs\nav\include;C:\Program Files\mrpt-1.5.7\libs\kinematics\include;C:\Program Files\mrpt-1.5.7\libs\hwdrivers\include;C:\Program Files\mrpt-1.5.7\libs\hmtslam\include;C:\Program Files\mrpt-1.5.7\libs\gui\include;C:\Program Files\mrpt-1.5.7\libs\graphslam\include;C:\Program Files\mrpt-1.5.7\libs\graphs\include;C:\Program Files\mrpt-1.5.7\libs\detectors\include;C:\Program Files\mrpt-1.5.7\libs\bayes\include;C:\Program Files\mrpt-1.5.7\libs\base\include;C:\Program Files\mrpt-1.5.7\libs\maps\include;C:\Program Files\mrpt-1.5.7\libs\slam\include;C:\temp\vcpkg\installed\x86-windows\include\paho-mqtt;./Include;C:\Users\michasm\vcpkg\buildtrees\paho-mqtt\src\bf6a6a0675-958c0762e3\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions); _SILENCE_CXX17_NEGATORS_DEPRECATION_WARNING;_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING;_SILENCE_CXX17_ADAPTOR_TYPEDEFS_DEPRECATION_WARNING</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>OpenGL32.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\mrpt-1.5.7\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

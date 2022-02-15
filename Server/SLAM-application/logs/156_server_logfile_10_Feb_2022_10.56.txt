@@ -1,0 +1,52 @@
+[10:56:11] info: 10_Feb_2022_10.56
+[10:56:12] info: MQTT connection respone successfull
+[10:56:12] info: Subsribe response v2/server/simulated/cmd
+[10:56:12] info: Subsribe response v2/server/simulated/cmd
+[10:56:19] info: Init pose selected: 0, 0, 0
+[10:56:20] info: Got a request to publish to: v2/server/thomas/cmd
+[10:56:24] info: Init pose selected: 0, 0, 0
+[10:56:25] info: Got a request to publish to: v2/server/thomas/cmd
+[10:56:28] info: x: 500, y: 0, theta: 0
+[10:56:34] info: x: 1000, y: 0, theta: 0
+[10:56:40] info: x: 1500, y: 0, theta: 0
+[10:56:46] info: x: 2000, y: 0, theta: 0
+[10:56:52] info: x: 2500, y: 0, theta: 0
+[10:56:58] info: x: 3000, y: 0, theta: 0
+[10:57:04] info: x: 3500, y: 0, theta: 0
+[10:57:10] info: x: 4000, y: 0, theta: 0
+[10:57:16] info: x: 4500, y: 0, theta: 0
+[10:57:22] info: x: 5000, y: 0, theta: 0
+[10:57:28] info: x: 5500, y: 0, theta: 0
+[10:57:34] info: x: 6000, y: 0, theta: 0
+[10:57:40] info: x: 6500, y: 0, theta: 0
+[10:57:46] info: x: 7000, y: 0, theta: 0
+[10:57:52] info: x: 7500, y: 0, theta: 0
+[10:57:58] info: x: 8000, y: 0, theta: 0
+[10:58:04] info: x: 8500, y: 0, theta: 0
+[10:58:10] info: x: 9000, y: 0, theta: 0
+[10:58:16] info: x: 9500, y: 0, theta: 0
+[10:58:22] info: x: 10000, y: 0, theta: 0
+[10:58:28] info: x: 10500, y: 0, theta: 0
+[10:58:34] info: x: 11000, y: 0, theta: 0
+[10:58:40] info: x: 11500, y: 0, theta: 0
+[10:58:46] info: x: 12000, y: 0, theta: 0
+[10:58:52] info: x: 12500, y: 0, theta: 0
+[10:58:58] info: x: 13000, y: 0, theta: 0
+[10:59:04] info: x: 13500, y: 0, theta: 0
+[10:59:10] info: x: 14000, y: 0, theta: 0
+[10:59:16] info: x: 14500, y: 0, theta: 0
+[10:59:22] info: x: 15000, y: 0, theta: 0
+[10:59:28] info: x: 15500, y: 0, theta: 0
+[10:59:34] info: x: 16000, y: 0, theta: 0
+[10:59:40] info: x: 16500, y: 0, theta: 0
+[10:59:46] info: x: 17000, y: 0, theta: 0
+[10:59:52] info: x: 17500, y: 0, theta: 0
+[10:59:58] info: x: 18000, y: 0, theta: 0
+[11:00:04] info: x: 18500, y: 0, theta: 0
+[11:00:10] info: x: 19000, y: 0, theta: 0
+[11:00:16] info: x: 19500, y: 0, theta: 0
+[11:00:22] info: x: 20000, y: 0, theta: 0
+[11:00:36] info: x: 20500, y: 0, theta: 0
+[11:00:42] info: x: 21000, y: 0, theta: 0
+[11:00:48] info: x: 21500, y: 0, theta: 0
+[11:00:54] info: x: 22000, y: 0, theta: 0

@@ -1,0 +1,13 @@
+[15:14:12] info: 14_Feb_2022_15.14
+[15:14:12] info: MQTT connection respone successfull
+[15:14:12] error: Could not connect!
+[15:14:12] info: Subsribe response v2/server/simulated/cmd
+[15:14:12] info: Subsribe response v2/server/simulated/cmd
+[15:14:30] info: Init pose selected: -20, 0, 0
+[15:14:30] info: x: 0, y: 0, theta: 0
+[15:14:30] info: x: 0, y: 0, theta: 0
+[15:14:30] info: x: 0, y: 0, theta: 0
+[15:14:31] info: Got a request to publish to: v2/server/NRF_5/init
+[15:14:32] info: x: 0, y: 0, theta: 0
+[15:14:37] info: x: 0, y: 0, theta: 0
+[15:14:42] info: x: 0, y: 0, theta: 0

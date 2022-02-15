@@ -1,0 +1,29 @@
+[15:11:50] info: 14_Feb_2022_15.11
+[15:11:50] info: MQTT connection respone successfull
+[15:11:50] info: Subsribe response v2/server/simulated/cmd
+[15:11:50] info: Subsribe response v2/server/simulated/cmd
+[15:12:21] info: Init pose selected: 100, -150, 0
+[15:12:21] info: x: 0, y: 0, theta: 0
+[15:12:21] info: x: 0, y: 0, theta: 0
+[15:12:21] info: x: 0, y: 0, theta: 0
+[15:12:21] info: x: 0, y: 0, theta: 0
+[15:12:21] info: x: 0, y: 0, theta: 0
+[15:12:21] info: Got a request to publish to: v2/server/NRF_5/init
+[15:12:22] info: x: 0, y: 0, theta: 0
+[15:12:27] info: x: 0, y: 0, theta: 0
+[15:12:32] info: x: 0, y: 0, theta: 0
+[15:12:37] info: x: 0, y: 0, theta: 0
+[15:12:42] info: x: 0, y: 0, theta: 0
+[15:12:47] info: x: 0, y: 0, theta: 0
+[15:12:52] info: x: 0, y: 0, theta: 0
+[15:12:54] info: Outbox next point, x: -1050 y: 70
+[15:12:55] info: Got a request to publish to: v2/server/NRF_5/cmd
+[15:12:57] info: x: 0, y: 0, theta: 0
+[15:13:02] info: x: 0, y: 0, theta: 0
+[15:13:07] info: x: 0, y: 0, theta: 0
+[15:13:12] info: x: 0, y: 0, theta: 0
+[15:13:17] info: x: 0, y: 0, theta: 0
+[15:13:22] info: x: 0, y: 0, theta: 0
+[15:13:27] info: x: 0, y: 0, theta: 0
+[15:13:32] info: x: 0, y: 0, theta: 0
+[15:13:37] info: x: 0, y: 0, theta: 0

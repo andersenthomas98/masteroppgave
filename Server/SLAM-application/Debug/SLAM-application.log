@@ -1,0 +1,29 @@
+﻿  particle.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(152,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(162,66): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(213,36): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(222,128): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(222,112): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(223,124): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(223,110): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(241,44): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(354,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(359,116): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(359,106): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(360,107): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(360,100): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(588,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(597,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(606,118): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(606,102): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(607,114): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(607,100): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(628,112): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(628,102): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(629,104): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(629,96): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(812,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(817,36): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(854,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(137): warning C4715: 'NTNU::application::SLAM::collinearityCheck': not all control paths return a value
+  SLAM-application.vcxproj -> C:\Users\michasm\TTK4900-ssnar_cpp\Debug\SLAM-application.exe

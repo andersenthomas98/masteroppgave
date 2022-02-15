@@ -1,0 +1,309 @@
+[14:53:20] info:  8_Feb_2022_14.53
+[14:53:20] info: MQTT connection respone successfull
+[14:53:20] info: Subsribe response v2/server/simulated/cmd
+[14:53:20] info: Subsribe response v2/server/simulated/cmd
+[14:54:12] info: Got a request to publish to: v2/server/simulated/cmd
+[14:54:12] info: Init set to : x:          0, y:          0, theta:          0
+[14:54:12] info: New target  : x:          0, y:          0, theta:          0
+[14:54:12] info: Real pos    : x:          0, y:          0, theta:          0
+[14:54:12] info: Odom        : x:          0, y:          0, theta:          0
+[14:54:12] info: New position: x: -0.0001964, y:  -8.03e-08, theta: -0.0001449 weight:   1
+[14:54:12] info: New position: x: -0.0001964, y:  -8.03e-08, theta: -0.0001449 weight:   1
+[14:54:12] info: New position: x:  -0.001277, y:  8.398e-07, theta:   -0.04017 weight:   1
+[14:54:12] info: New position: x:  -0.001277, y:  8.398e-07, theta:   -0.04017 weight:   1
+[14:54:12] info: New position: x: -0.0006634, y:  1.405e-06, theta:    -0.2095 weight:   1
+[14:54:12] info: New position: x: -0.0006634, y:  1.405e-06, theta:    -0.2095 weight:   1
+[14:54:12] info: New position: x:  0.0003433, y:  2.317e-07, theta:   -0.04859 weight:   1
+[14:54:12] info: New position: x:  0.0003433, y:  2.317e-07, theta:   -0.04859 weight:   1
+[14:54:12] info: New position: x:   0.001989, y:  3.186e-06, theta:     0.1703 weight:   1
+[14:54:12] info: New position: x:   0.001989, y:  3.186e-06, theta:     0.1703 weight:   1
+[14:54:12] info: New position: x:  0.0009179, y: -6.709e-08, theta:   0.003208 weight:   1
+[14:54:12] info: New position: x:  0.0009179, y: -6.709e-08, theta:   0.003208 weight:   1
+[14:54:12] info: New position: x:  0.0002713, y: -6.346e-07, theta:     -0.076 weight:   1
+[14:54:12] info: New position: x:  0.0002713, y: -6.346e-07, theta:     -0.076 weight:   1
+[14:54:12] info: New position: x:   -0.00235, y:    8.3e-07, theta:    0.03182 weight:   1
+[14:54:12] info: New position: x:   -0.00235, y:    8.3e-07, theta:    0.03182 weight:   1
+[14:54:12] info: New position: x:   0.001446, y:  3.266e-06, theta:     0.1805 weight:   1
+[14:54:12] info: New position: x:   0.001446, y:  3.266e-06, theta:     0.1805 weight:   1
+[14:54:12] info: New position: x:  0.0006121, y: -1.789e-06, theta:    -0.1467 weight:   1
+[14:54:12] info: New position: x:  0.0006121, y: -1.789e-06, theta:    -0.1467 weight:   1
+[14:54:12] info: New position: x:  -0.001622, y:  7.364e-08, theta:     0.0181 weight:   1
+[14:54:12] info: New position: x:  -0.001622, y:  7.364e-08, theta:     0.0181 weight:   1
+[14:54:12] info: New position: x: -0.0001994, y: -9.924e-09, theta:   0.007753 weight:   1
+[14:54:12] info: New position: x: -0.0001994, y: -9.924e-09, theta:   0.007753 weight:   1
+[14:54:12] info: New position: x:  0.0001752, y: -7.302e-08, theta:    0.02079 weight:   1
+[14:54:12] info: New position: x:  0.0001752, y: -7.302e-08, theta:    0.02079 weight:   1
+[14:54:12] info: New position: x:  0.0007262, y:  2.694e-07, theta:    0.02216 weight:   1
+[14:54:12] info: New position: x:  0.0007262, y:  2.694e-07, theta:    0.02216 weight:   1
+[14:54:12] info: New position: x:  0.0006671, y: -6.784e-07, theta:   -0.04144 weight:   1
+[14:54:12] info: New position: x:  0.0006671, y: -6.784e-07, theta:   -0.04144 weight:   1
+[14:54:12] info: New position: x:  4.391e-05, y:  -2.82e-09, theta:    -0.0262 weight:   1
+[14:54:12] info: New position: x:  4.391e-05, y:  -2.82e-09, theta:    -0.0262 weight:   1
+[14:54:12] info: New position: x:  0.0001247, y:  6.866e-08, theta:     0.1382 weight:   1
+[14:54:12] info: New position: x:  0.0001247, y:  6.866e-08, theta:     0.1382 weight:   1
+[14:54:12] info: New position: x: -6.068e-05, y:  8.576e-09, theta:    0.01261 weight:   1
+[14:54:12] info: New position: x: -6.068e-05, y:  8.576e-09, theta:    0.01261 weight:   1
+[14:54:12] info: New position: x: -0.0006398, y: -2.432e-07, theta:     0.1249 weight:   1
+[14:54:12] info: New position: x: -0.0006398, y: -2.432e-07, theta:     0.1249 weight:   1
+[14:54:12] info: New position: x:  -0.002311, y: -1.564e-06, theta:   -0.05067 weight:   1
+[14:54:12] info: New position: x:  -0.002311, y: -1.564e-06, theta:   -0.05067 weight:   1
+[14:54:12] info: New position: x:   -0.00239, y:  2.566e-06, theta:   -0.03483 weight:   1
+[14:54:12] info: New position: x:   -0.00239, y:  2.566e-06, theta:   -0.03483 weight:   1
+[14:54:12] info: New position: x:  0.0007506, y: -9.707e-07, theta:   -0.03882 weight:   1
+[14:54:12] info: New position: x:  0.0007506, y: -9.707e-07, theta:   -0.03882 weight:   1
+[14:54:12] info: New position: x:   0.002447, y:  2.451e-06, theta:    0.01292 weight:   1
+[14:54:12] info: New position: x:   0.002447, y:  2.451e-06, theta:    0.01292 weight:   1
+[14:54:12] info: New position: x: -0.0006471, y:  4.095e-07, theta:    0.01882 weight:   1
+[14:54:12] info: New position: x: -0.0006471, y:  4.095e-07, theta:    0.01882 weight:   1
+[14:54:12] info: New position: x: -0.0002997, y: -3.424e-07, theta:    0.07656 weight:   1
+[14:54:12] info: New position: x: -0.0002997, y: -3.424e-07, theta:    0.07656 weight:   1
+[14:54:13] info: New position: x:  -0.001265, y:  2.559e-06, theta:   -0.06657 weight:   1
+[14:54:13] info: New position: x:  -0.001265, y:  2.559e-06, theta:   -0.06657 weight:   1
+[14:54:13] info: New position: x:  8.288e-05, y: -5.578e-08, theta:    0.01342 weight:   1
+[14:54:13] info: New position: x:  8.288e-05, y: -5.578e-08, theta:    0.01342 weight:   1
+[14:54:13] info: New position: x: -1.641e-05, y:  1.992e-09, theta:   -0.02739 weight:   1
+[14:54:13] info: New position: x: -1.641e-05, y:  1.992e-09, theta:   -0.02739 weight:   1
+[14:54:13] info: New position: x:  0.0005898, y:  1.416e-07, theta:   0.009261 weight:   1
+[14:54:13] info: New position: x:  0.0005898, y:  1.416e-07, theta:   0.009261 weight:   1
+[14:54:13] info: New position: x:   0.001618, y:  1.217e-06, theta:     0.1433 weight:   1
+[14:54:13] info: New position: x:   0.001618, y:  1.217e-06, theta:     0.1433 weight:   1
+[14:54:13] info: New mean pose: x:  -3.78e-05, y:  4.338e-07, theta:   0.006582
+[14:54:13] info: Average raster array size: 3
+[14:54:13] info: Time of update: 0
+[14:56:17] info: Outbox next point, x: 1030 y: 510
+[14:56:18] info: Got a request to publish to: v2/server/simulated/cmd
+[14:56:18] info: New target  : x:       1030, y:        510, theta: 26.34211152588047
+[14:56:18] info: Real pos    : x:        809, y:        383, theta:         23
+[14:56:18] info: Odom        : x:        780, y:        440, theta:         26
+[14:56:18] info: New position: x:      860.4, y:      246.8, theta:       14.2 weight:   5
+[14:56:18] info: New position: x:      860.4, y:      246.8, theta:       14.2 weight:   5
+[14:56:20] info: New mean pose: x:      774.4, y:      386.3, theta:      23.68
+[14:56:20] info: Average raster array size: 4
+[14:56:20] info: Time of update: 2
+[14:56:26] info: Outbox next point, x: 530 y: -90
+[14:56:27] info: Got a request to publish to: v2/server/simulated/cmd
+[14:56:27] info: New target  : x:        530, y:        -90, theta: -120.5343146337975
+[14:56:27] info: Real pos    : x:        489, y:        -63, theta:       -128
+[14:56:27] info: Odom        : x:       -279, y:       -473, theta:       -143
+[14:56:32] info: New mean pose: x:      478.2, y:     -65.22, theta:     -128.5
+[14:56:32] info: Average raster array size: 7
+[14:56:32] info: Time of update: 3
+[14:56:36] info: Outbox next point, x: 1490 y: -50
+[14:56:37] info: Got a request to publish to: v2/server/simulated/cmd
+[14:56:37] info: New target  : x:       1490, y:        -50, theta: 0.7440592028887094
+[14:56:37] info: Real pos    : x:       1485, y:         30, theta:         12
+[14:56:37] info: Odom        : x:       1001, y:         13, theta:        128
+[14:56:37] info: New position: x:       1520, y:     -174.2, theta:      -10.1 weight:  12515
+[14:56:37] info: New position: x:       1520, y:     -174.2, theta:      -10.1 weight:  12515
+[14:56:39] info: New position: x:       1525, y:     -51.91, theta:     0.1096 weight:  4.78266e+07
+[14:56:39] info: New position: x:       1525, y:     -51.91, theta:     0.1096 weight:  4.78266e+07
+[14:56:40] info: New position: x:       1524, y:       20.3, theta:    0.06697 weight:  1.57805e+08
+[14:56:40] info: New position: x:       1524, y:       20.3, theta:    0.06697 weight:  1.57805e+08
+[14:56:41] info: New position: x:       1514, y:     -205.6, theta:     -7.172 weight:  5.02407e+07
+[14:56:41] info: New position: x:       1514, y:     -205.6, theta:     -7.172 weight:  5.02407e+07
+[14:56:41] info: New mean pose: x:       1448, y:     -81.34, theta:      7.172
+[14:56:41] info: Average raster array size: 12
+[14:56:41] info: Time of update: 3
+[14:56:44] info: Outbox next point, x: 1490 y: 1950
+[14:56:45] info: Got a request to publish to: v2/server/simulated/cmd
+[14:56:45] info: New target  : x:       1490, y:       1950, theta: 89.85079257814328
+[14:56:45] info: Real pos    : x:       1021, y:       1841, theta:        102
+[14:56:45] info: Odom        : x:        -45, y:       1870, theta:         77
+[14:56:45] info: New position: x:       1317, y:       1686, theta:      71.35 weight:  12515
+[14:56:45] info: New position: x:       1317, y:       1686, theta:      71.35 weight:  12515
+[14:56:45] info: New position: x:       1476, y:       1783, theta:      71.69 weight:  1.46204e+11
+[14:56:45] info: New position: x:       1476, y:       1783, theta:      71.69 weight:  1.46204e+11
+[14:56:45] info: New position: x:      955.3, y:       1736, theta:      95.35 weight:  1.95915e+11
+[14:56:45] info: New position: x:      955.3, y:       1736, theta:      95.35 weight:  1.95915e+11
+[14:56:45] info: New position: x:       1374, y:       1782, theta:      102.1 weight:  1.20127e+11
+[14:56:45] info: New position: x:       1374, y:       1782, theta:      102.1 weight:  1.20127e+11
+[14:56:45] info: New position: x:       1098, y:       1806, theta:      100.8 weight:  1.8217e+11
+[14:56:45] info: New position: x:       1098, y:       1806, theta:      100.8 weight:  1.8217e+11
+[14:56:46] info: New position: x:       1624, y:       1797, theta:      86.32 weight:  2.32297e+11
+[14:56:46] info: New position: x:       1624, y:       1797, theta:      86.32 weight:  2.32297e+11
+[14:56:46] info: New position: x:       1404, y:       1751, theta:       84.5 weight:  1.09833e+11
+[14:56:46] info: New position: x:       1404, y:       1751, theta:       84.5 weight:  1.09833e+11
+[14:56:46] info: New position: x:       1014, y:       1749, theta:      93.94 weight:  7.60332e+10
+[14:56:46] info: New position: x:       1014, y:       1749, theta:      93.94 weight:  7.60332e+10
+[14:56:46] info: New position: x:       1470, y:       1810, theta:       85.5 weight:  9.07972e+10
+[14:56:46] info: New position: x:       1470, y:       1810, theta:       85.5 weight:  9.07972e+10
+[14:56:46] info: New position: x:       1097, y:       1718, theta:      94.25 weight:  1.76994e+11
+[14:56:46] info: New position: x:       1097, y:       1718, theta:      94.25 weight:  1.76994e+11
+[14:56:46] info: New position: x:       1306, y:       1790, theta:      74.01 weight:  4.25157e+10
+[14:56:46] info: New position: x:       1306, y:       1790, theta:      74.01 weight:  4.25157e+10
+[14:56:46] info: New position: x:       1350, y:       1809, theta:      78.38 weight:  9.43541e+10
+[14:56:46] info: New position: x:       1350, y:       1809, theta:      78.38 weight:  9.43541e+10
+[14:56:46] info: New position: x:       1554, y:       1818, theta:      76.27 weight:  4.78266e+07
+[14:56:46] info: New position: x:       1554, y:       1818, theta:      76.27 weight:  4.78266e+07
+[14:56:46] info: New position: x:       1449, y:       1772, theta:      81.62 weight:  2.21851e+11
+[14:56:46] info: New position: x:       1449, y:       1772, theta:      81.62 weight:  2.21851e+11
+[14:56:46] info: New position: x:       1467, y:       1827, theta:      78.96 weight:  3.03548e+11
+[14:56:46] info: New position: x:       1467, y:       1827, theta:      78.96 weight:  3.03548e+11
+[14:56:46] info: New position: x:       1555, y:       1748, theta:      74.14 weight:  7.91061e+10
+[14:56:46] info: New position: x:       1555, y:       1748, theta:      74.14 weight:  7.91061e+10
+[14:56:47] info: New position: x:       1302, y:       1802, theta:      79.51 weight:  8.31075e+10
+[14:56:47] info: New position: x:       1302, y:       1802, theta:      79.51 weight:  8.31075e+10
+[14:56:47] info: New position: x:      991.6, y:       1782, theta:      109.6 weight:  1.46459e+11
+[14:56:47] info: New position: x:      991.6, y:       1782, theta:      109.6 weight:  1.46459e+11
+[14:56:47] info: New position: x:       1286, y:       1765, theta:      81.15 weight:  1.45667e+11
+[14:56:47] info: New position: x:       1286, y:       1765, theta:      81.15 weight:  1.45667e+11
+[14:56:47] info: New position: x:       1633, y:       1773, theta:      85.01 weight:  2.33003e+11
+[14:56:47] info: New position: x:       1633, y:       1773, theta:      85.01 weight:  2.33003e+11
+[14:56:47] info: New position: x:       1127, y:       1720, theta:      101.1 weight:  1.94449e+11
+[14:56:47] info: New position: x:       1127, y:       1720, theta:      101.1 weight:  1.94449e+11
+[14:56:47] info: New position: x:       1292, y:       1767, theta:      70.81 weight:  1.15224e+11
+[14:56:47] info: New position: x:       1292, y:       1767, theta:      70.81 weight:  1.15224e+11
+[14:56:47] info: New position: x:       1460, y:       1889, theta:      88.46 weight:  1.57805e+08
+[14:56:47] info: New position: x:       1460, y:       1889, theta:      88.46 weight:  1.57805e+08
+[14:56:47] info: New position: x:        913, y:       1741, theta:      108.9 weight:  1.00243e+11
+[14:56:47] info: New position: x:        913, y:       1741, theta:      108.9 weight:  1.00243e+11
+[14:56:47] info: New position: x:       1267, y:       1804, theta:      90.91 weight:  1.72687e+11
+[14:56:47] info: New position: x:       1267, y:       1804, theta:      90.91 weight:  1.72687e+11
+[14:56:48] info: New position: x:       1211, y:       1780, theta:      95.93 weight:  9.43366e+10
+[14:56:48] info: New position: x:       1211, y:       1780, theta:      95.93 weight:  9.43366e+10
+[14:56:48] info: New position: x:       1381, y:       1661, theta:      69.57 weight:  5.02407e+07
+[14:56:48] info: New position: x:       1381, y:       1661, theta:      69.57 weight:  5.02407e+07
+[14:56:48] info: New position: x:       1270, y:       1742, theta:      90.66 weight:  9.9346e+10
+[14:56:48] info: New position: x:       1270, y:       1742, theta:      90.66 weight:  9.9346e+10
+[14:56:48] info: New position: x:       1413, y:       1808, theta:      75.71 weight:  1.10289e+11
+[14:56:48] info: New position: x:       1413, y:       1808, theta:      75.71 weight:  1.10289e+11
+[14:56:48] info: New position: x:      900.7, y:       1765, theta:      89.15 weight:  1.76588e+11
+[14:56:48] info: New position: x:      900.7, y:       1765, theta:      89.15 weight:  1.76588e+11
+[14:56:48] info: New mean pose: x:       1299, y:       1773, theta:      86.19
+[14:56:48] info: Average raster array size: 15
+[14:56:48] info: Time of update: 3
+[14:56:51] info: Outbox next point, x: -450 y: 2770
+[14:56:52] info: Got a request to publish to: v2/server/simulated/cmd
+[14:56:52] info: New target  : x:       -450, y:       2770, theta: 147.72582116306774
+[14:56:52] info: Real pos    : x:         29, y:       2234, theta:        156
+[14:56:52] info: Odom        : x:       -921, y:        539, theta:         45
+[14:56:52] info: New position: x:        538, y:       2415, theta:      97.34 weight:  12515
+[14:56:52] info: New position: x:        538, y:       2415, theta:      97.34 weight:  12515
+[14:56:52] info: New position: x:      566.6, y:       2340, theta:      105.6 weight:  1.46204e+11
+[14:56:52] info: New position: x:      566.6, y:       2340, theta:      105.6 weight:  1.46204e+11
+[14:56:53] info: New position: x:      35.24, y:       2277, theta:      143.5 weight:  5.87744e+11
+[14:56:53] info: New position: x:      35.24, y:       2277, theta:      143.5 weight:  5.87744e+11
+[14:56:53] info: New position: x:      382.7, y:       2176, theta:      156.7 weight:  1.20127e+11
+[14:56:53] info: New position: x:      382.7, y:       2176, theta:      156.7 weight:  1.20127e+11
+[14:56:53] info: New position: x:      278.9, y:       2490, theta:      132.3 weight:  3.64339e+11
+[14:56:53] info: New position: x:      278.9, y:       2490, theta:      132.3 weight:  3.64339e+11
+[14:56:53] info: New position: x:      781.3, y:       2451, theta:      120.8 weight:  2.32297e+11
+[14:56:53] info: New position: x:      781.3, y:       2451, theta:      120.8 weight:  2.32297e+11
+[14:56:53] info: New position: x:      532.4, y:       2366, theta:      106.2 weight:  1.09833e+11
+[14:56:53] info: New position: x:      532.4, y:       2366, theta:      106.2 weight:  1.09833e+11
+[14:56:53] info: New position: x:      85.11, y:       2274, theta:      136.7 weight:  7.60332e+10
+[14:56:53] info: New position: x:      85.11, y:       2274, theta:      136.7 weight:  7.60332e+10
+[14:56:53] info: New position: x:      584.2, y:       2404, theta:      127.2 weight:  9.07972e+10
+[14:56:53] info: New position: x:      584.2, y:       2404, theta:      127.2 weight:  9.07972e+10
+[14:56:54] info: New position: x:        149, y:       2206, theta:      140.5 weight:  1.76994e+11
+[14:56:54] info: New position: x:        149, y:       2206, theta:      140.5 weight:  1.76994e+11
+[14:56:54] info: New position: x:      453.4, y:       2432, theta:      114.4 weight:  4.25157e+10
+[14:56:54] info: New position: x:      453.4, y:       2432, theta:      114.4 weight:  4.25157e+10
+[14:56:54] info: New position: x:      431.8, y:       2353, theta:      120.4 weight:  9.43541e+10
+[14:56:54] info: New position: x:      431.8, y:       2353, theta:      120.4 weight:  9.43541e+10
+[14:56:54] info: New position: x:      657.5, y:       2397, theta:      121.6 weight:  4.78266e+07
+[14:56:54] info: New position: x:      657.5, y:       2397, theta:      121.6 weight:  4.78266e+07
+[14:56:54] info: New position: x:      559.4, y:       2361, theta:      126.6 weight:  2.21851e+11
+[14:56:54] info: New position: x:      559.4, y:       2361, theta:      126.6 weight:  2.21851e+11
+[14:56:54] info: New position: x:      640.3, y:       2502, theta:      111.5 weight:  3.03548e+11
+[14:56:54] info: New position: x:      640.3, y:       2502, theta:      111.5 weight:  3.03548e+11
+[14:56:55] info: New position: x:      648.6, y:       2312, theta:      107.6 weight:  7.91061e+10
+[14:56:55] info: New position: x:      648.6, y:       2312, theta:      107.6 weight:  7.91061e+10
+[14:56:55] info: New position: x:      372.4, y:       2328, theta:      122.5 weight:  8.31075e+10
+[14:56:55] info: New position: x:      372.4, y:       2328, theta:      122.5 weight:  8.31075e+10
+[14:56:55] info: New position: x:      8.843, y:       2197, theta:      162.3 weight:  1.46459e+11
+[14:56:55] info: New position: x:      8.843, y:       2197, theta:      162.3 weight:  1.46459e+11
+[14:56:55] info: New position: x:      412.9, y:       2380, theta:      130.8 weight:  1.45667e+11
+[14:56:55] info: New position: x:      412.9, y:       2380, theta:      130.8 weight:  1.45667e+11
+[14:56:55] info: New position: x:      711.3, y:       2311, theta:      128.4 weight:  2.33003e+11
+[14:56:55] info: New position: x:      711.3, y:       2311, theta:      128.4 weight:  2.33003e+11
+[14:56:55] info: New position: x:      272.2, y:       2359, theta:      137.6 weight:  3.88899e+11
+[14:56:55] info: New position: x:      272.2, y:       2359, theta:      137.6 weight:  3.88899e+11
+[14:56:56] info: New position: x:      341.9, y:       2253, theta:      117.5 weight:  1.15224e+11
+[14:56:56] info: New position: x:      341.9, y:       2253, theta:      117.5 weight:  1.15224e+11
+[14:56:56] info: New position: x:      484.1, y:       2318, theta:      141.9 weight:  1.57805e+08
+[14:56:56] info: New position: x:      484.1, y:       2318, theta:      141.9 weight:  1.57805e+08
+[14:56:56] info: New position: x:      69.31, y:       2394, theta:      148.3 weight:  1.00243e+11
+[14:56:56] info: New position: x:      69.31, y:       2394, theta:      148.3 weight:  1.00243e+11
+[14:56:56] info: New position: x:      367.4, y:       2378, theta:      125.4 weight:  1.72687e+11
+[14:56:56] info: New position: x:      367.4, y:       2378, theta:      125.4 weight:  1.72687e+11
+[14:56:56] info: New position: x:      403.3, y:       2477, theta:      134.8 weight:  1.88673e+11
+[14:56:56] info: New position: x:      403.3, y:       2477, theta:      134.8 weight:  1.88673e+11
+[14:56:56] info: New position: x:      397.9, y:       2075, theta:      127.3 weight:  5.02407e+07
+[14:56:56] info: New position: x:      397.9, y:       2075, theta:      127.3 weight:  5.02407e+07
+[14:56:56] info: New position: x:      281.6, y:       2145, theta:      143.5 weight:  9.9346e+10
+[14:56:56] info: New position: x:      281.6, y:       2145, theta:      143.5 weight:  9.9346e+10
+[14:56:57] info: New position: x:        443, y:       2252, theta:      128.6 weight:  1.10289e+11
+[14:56:57] info: New position: x:        443, y:       2252, theta:      128.6 weight:  1.10289e+11
+[14:56:57] info: New position: x:     -13.58, y:       2316, theta:      124.2 weight:  1.76588e+11
+[14:56:57] info: New position: x:     -13.58, y:       2316, theta:      124.2 weight:  1.76588e+11
+[14:56:57] info: New mean pose: x:      395.9, y:       2331, theta:      128.1
+[14:56:57] info: Average raster array size: 19
+[14:56:57] info: Time of update: 3
+[14:57:01] info: Outbox next point, x: -170 y: 1550
+[14:57:01] info: Got a request to publish to: v2/server/simulated/cmd
+[14:57:01] info: New target  : x:       -170, y:       1550, theta: -106.22159786626013
+[14:57:01] info: Odom        : x:          0, y:          0, theta:          0
+[14:57:01] info: New position: x:      538.1, y:       2415, theta:      93.95 weight:  2.3403e+06
+[14:57:01] info: New position: x:      538.1, y:       2415, theta:      93.95 weight:  2.3403e+06
+[14:57:02] info: New position: x:      566.7, y:       2340, theta:      108.3 weight:  2.45622e+13
+[14:57:02] info: New position: x:      566.7, y:       2340, theta:      108.3 weight:  2.45622e+13
+[14:57:02] info: New position: x:      35.32, y:       2277, theta:      149.3 weight:  1.01092e+14
+[14:57:02] info: New position: x:      35.32, y:       2277, theta:      149.3 weight:  1.01092e+14
+[14:57:02] info: New position: x:      382.6, y:       2176, theta:      153.6 weight:  2.41455e+13
+[14:57:02] info: New position: x:      382.6, y:       2176, theta:      153.6 weight:  2.41455e+13
+[14:57:02] info: New position: x:      278.9, y:       2490, theta:      135.7 weight:  5.86586e+13
+[14:57:02] info: New position: x:      278.9, y:       2490, theta:      135.7 weight:  5.86586e+13
+[14:57:02] info: New position: x:      781.3, y:       2451, theta:      123.8 weight:  4.69241e+13
+[14:57:02] info: New position: x:      781.3, y:       2451, theta:      123.8 weight:  4.69241e+13
+[14:57:02] info: New position: x:      532.3, y:       2366, theta:      106.3 weight:  2.61402e+13
+[14:57:02] info: New position: x:      532.3, y:       2366, theta:      106.3 weight:  2.61402e+13
+[14:57:03] info: New position: x:      85.12, y:       2274, theta:      131.3 weight:  1.30777e+13
+[14:57:03] info: New position: x:      85.12, y:       2274, theta:      131.3 weight:  1.30777e+13
+[14:57:03] info: New position: x:      584.2, y:       2404, theta:        119 weight:  1.50723e+13
+[14:57:03] info: New position: x:      584.2, y:       2404, theta:        119 weight:  1.50723e+13
+[14:57:03] info: New position: x:      149.1, y:       2206, theta:      141.2 weight:  3.98236e+13
+[14:57:03] info: New position: x:      149.1, y:       2206, theta:      141.2 weight:  3.98236e+13
+[14:57:03] info: New position: x:      453.5, y:       2432, theta:      114.8 weight:  7.48277e+12
+[14:57:03] info: New position: x:      453.5, y:       2432, theta:      114.8 weight:  7.48277e+12
+[14:57:03] info: New position: x:      431.8, y:       2353, theta:      123.4 weight:  1.50023e+13
+[14:57:03] info: New position: x:      431.8, y:       2353, theta:      123.4 weight:  1.50023e+13
+[14:57:03] info: New position: x:      657.5, y:       2397, theta:      124.9 weight:  6.98268e+09
+[14:57:03] info: New position: x:      657.5, y:       2397, theta:      124.9 weight:  6.98268e+09
+[14:57:04] info: New position: x:      559.5, y:       2361, theta:      125.8 weight:  5.10256e+13
+[14:57:04] info: New position: x:      559.5, y:       2361, theta:      125.8 weight:  5.10256e+13
+[14:57:04] info: New position: x:      640.3, y:       2502, theta:      116.6 weight:  5.19068e+13
+[14:57:04] info: New position: x:      640.3, y:       2502, theta:      116.6 weight:  5.19068e+13
+[14:57:04] info: New position: x:      648.5, y:       2312, theta:      102.5 weight:  1.36854e+13
+[14:57:04] info: New position: x:      648.5, y:       2312, theta:      102.5 weight:  1.36854e+13
+[14:57:04] info: New position: x:      372.5, y:       2328, theta:      121.2 weight:  1.80343e+13
+[14:57:04] info: New position: x:      372.5, y:       2328, theta:      121.2 weight:  1.80343e+13
+[14:57:04] info: New position: x:       8.84, y:       2197, theta:        159 weight:  2.98777e+13
+[14:57:04] info: New position: x:       8.84, y:       2197, theta:        159 weight:  2.98777e+13
+[14:57:04] info: New position: x:        413, y:       2380, theta:      122.3 weight:  2.19957e+13
+[14:57:04] info: New position: x:        413, y:       2380, theta:      122.3 weight:  2.19957e+13
+[14:57:05] info: New position: x:      711.2, y:       2311, theta:      126.2 weight:  4.52026e+13
+[14:57:05] info: New position: x:      711.2, y:       2311, theta:      126.2 weight:  4.52026e+13
+[14:57:05] info: New position: x:      272.1, y:       2359, theta:      138.4 weight:  8.51689e+13
+[14:57:05] info: New position: x:      272.1, y:       2359, theta:      138.4 weight:  8.51689e+13
+[14:57:05] info: New position: x:      341.8, y:       2253, theta:      116.9 weight:  1.94728e+13
+[14:57:05] info: New position: x:      341.8, y:       2253, theta:      116.9 weight:  1.94728e+13
+[14:57:05] info: New position: x:      484.2, y:       2318, theta:      142.3 weight:  3.75576e+10
+[14:57:05] info: New position: x:      484.2, y:       2318, theta:      142.3 weight:  3.75576e+10
+[14:57:05] info: New position: x:      69.21, y:       2394, theta:      141.1 weight:  1.78432e+13
+[14:57:05] info: New position: x:      69.21, y:       2394, theta:      141.1 weight:  1.78432e+13
+[14:57:06] info: New position: x:      367.4, y:       2378, theta:        130 weight:  3.21197e+13
+[14:57:06] info: New position: x:      367.4, y:       2378, theta:        130 weight:  3.21197e+13
+[14:57:06] info: New position: x:      403.3, y:       2477, theta:      131.7 weight:  3.05651e+13
+[14:57:06] info: New position: x:      403.3, y:       2477, theta:      131.7 weight:  3.05651e+13
+[14:57:06] info: New position: x:      397.9, y:       2075, theta:      122.8 weight:  7.68683e+09
+[14:57:06] info: New position: x:      397.9, y:       2075, theta:      122.8 weight:  7.68683e+09
+[14:57:06] info: New position: x:      281.6, y:       2145, theta:      142.3 weight:  2.16574e+13
+[14:57:06] info: New position: x:      281.6, y:       2145, theta:      142.3 weight:  2.16574e+13
+[14:57:06] info: New position: x:      442.9, y:       2252, theta:      127.5 weight:  2.54768e+13
+[14:57:06] info: New position: x:      442.9, y:       2252, theta:      127.5 weight:  2.54768e+13
+[14:57:06] info: New position: x:     -13.62, y:       2316, theta:      125.3 weight:  4.02621e+13
+[14:57:06] info: New position: x:     -13.62, y:       2316, theta:      125.3 weight:  4.02621e+13
+[14:57:06] info: New mean pose: x:      395.9, y:       2331, theta:      127.2
+[14:57:06] info: Average raster array size: 22
+[14:57:06] info: Time of update: 3

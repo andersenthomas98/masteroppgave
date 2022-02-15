@@ -1,0 +1,19 @@
+[19:59:10] info:  8_Feb_2022_19.59
+[19:59:10] info: MQTT connection respone successfull
+[19:59:10] info: Subsribe response v2/server/simulated/cmd
+[19:59:10] info: Subsribe response v2/server/simulated/cmd
+[19:59:17] info: Init pose selected: 0, 0, 0
+[19:59:18] info: Got a request to publish to: v2/server/thomas/cmd
+[19:59:23] info: Init pose selected: 0, 0, 0
+[19:59:23] info: Got a request to publish to: v2/server/thomas/cmd
+[19:59:26] info: x: 500, y: 0, theta: 0
+[19:59:32] info: x: 1000, y: 0, theta: 0
+[19:59:38] info: x: 1500, y: 0, theta: 0
+[19:59:44] info: x: 2000, y: 0, theta: 0
+[19:59:50] info: x: 2500, y: 0, theta: 0
+[19:59:56] info: x: 3000, y: 0, theta: 0
+[20:00:02] info: x: 3500, y: 0, theta: 0
+[20:00:08] info: x: 4000, y: 0, theta: 0
+[20:00:14] info: x: 4500, y: 0, theta: 0
+[20:00:20] info: x: 5000, y: 0, theta: 0
+[20:00:26] info: x: 5500, y: 0, theta: 0

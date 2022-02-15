@@ -1,0 +1,186 @@
+﻿  main.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\main.cpp(226,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\main.cpp(360,59): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\main.cpp(360,72): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\main.cpp(360,85): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\main.cpp(695,54): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\main.cpp(695,58): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+  animated_line.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\animated_line.cpp(83,20): warning C4018: '<': signed/unsigned mismatch
+  init_robot_panel.cpp
+  particle.cpp
+C:\Users\michasm\vcpkg\installed\x86-windows\include\boost\config\helper_macros.hpp(33,1): warning C4005: 'BOOST_JOIN': macro redefinition
+C:\Program Files\mrpt-1.5.7\libs\base\include\mrpt\utils\boost_join.h(23): message : see previous definition of 'BOOST_JOIN'
+C:\Program Files\mrpt-1.5.7\libs\base\include\mrpt\base.h(18): warning : Including <mrpt/base.h> makes compilation much slower, consider including only what you need (define MRPT_NO_WARN_BIG_HDR to disable this warning)
+C:\Program Files\mrpt-1.5.7\libs\slam\include\mrpt\slam.h(14): warning : Including <mrpt/slam.h> makes compilation much slower, consider including only what you need (define MRPT_NO_WARN_BIG_HDR to disable this warning)
+C:\Program Files\mrpt-1.5.7\libs\maps\include\mrpt\maps.h(15): warning : Including <mrpt/maps.h> makes compilation much slower, consider including only what you need (define MRPT_NO_WARN_BIG_HDR to disable this warning)
+C:\Program Files\mrpt-1.5.7\libs\obs\include\mrpt\obs.h(14): warning : Including <mrpt/obs.h> makes compilation much slower, consider including only what you need (define MRPT_NO_WARN_BIG_HDR to disable this warning)
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(63,35): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(63,65): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(63,95): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(421,25): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(421,30): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\particle.cpp(421,35): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+  simulation_panel.cpp
+  squares.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\squares.cpp(18,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\squares.cpp(18,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\squares.cpp(51,12): warning C4018: '<': signed/unsigned mismatch
+  square_grid.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(22,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(62,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(63,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(76,55): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(76,38): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(77,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(77,44): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(78,67): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(78,44): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(79,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\square_grid.cpp(79,38): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  clicks.cpp
+  control_panel.cpp
+  grid.cpp
+  grid_path_solver.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\grid_path_solver.cpp(61,31): warning C4838: conversion from '_Ty1' to 'T' requires a narrowing conversion
+          with
+          [
+              _Ty1=int
+          ]
+          and
+          [
+              T=size_t
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\grid_path_solver.cpp(61,43): warning C4838: conversion from '_Ty2' to 'T' requires a narrowing conversion
+          with
+          [
+              _Ty2=int
+          ]
+          and
+          [
+              T=size_t
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\grid_path_solver.cpp(62,29): warning C4838: conversion from '_Ty1' to 'T' requires a narrowing conversion
+          with
+          [
+              _Ty1=int
+          ]
+          and
+          [
+              T=size_t
+          ]
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\grid_path_solver.cpp(62,39): warning C4838: conversion from '_Ty2' to 'T' requires a narrowing conversion
+          with
+          [
+              _Ty2=int
+          ]
+          and
+          [
+              T=size_t
+          ]
+  grid_util.cpp
+  imgui-SFML.cpp
+  lines.cpp
+  MQTT.cpp
+  MQTT_panel.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(76,63): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(76,71): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(76,79): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(77,67): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(77,75): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(82,63): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(82,71): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(82,79): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(187,26): warning C4018: '>': signed/unsigned mismatch
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\MQTT_panel.cpp(195,27): warning C4018: '>': signed/unsigned mismatch
+  MQTT_utility.cpp
+  obstructable_grid.cpp
+  panel.cpp
+  panel_base.cpp
+  Compiling...
+  path.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\path.cpp(14,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  robot.cpp
+C:\Users\michasm\vcpkg\installed\x86-windows\include\boost\config\helper_macros.hpp(33,1): warning C4005: 'BOOST_JOIN': macro redefinition
+C:\Program Files\mrpt-1.5.7\libs\base\include\mrpt\utils\boost_join.h(23): message : see previous definition of 'BOOST_JOIN'
+  robots.cpp
+C:\Users\michasm\vcpkg\installed\x86-windows\include\boost\config\helper_macros.hpp(33,1): warning C4005: 'BOOST_JOIN': macro redefinition
+C:\Program Files\mrpt-1.5.7\libs\base\include\mrpt\utils\boost_join.h(23): message : see previous definition of 'BOOST_JOIN'
+  robot_simulation.cpp
+C:\Users\michasm\vcpkg\installed\x86-windows\include\boost\config\helper_macros.hpp(33,1): warning C4005: 'BOOST_JOIN': macro redefinition
+C:\Program Files\mrpt-1.5.7\libs\base\include\mrpt\utils\boost_join.h(23): message : see previous definition of 'BOOST_JOIN'
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(270,46): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(270,50): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(270,55): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(271,50): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(271,58): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(272,51): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(272,60): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(273,51): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(273,60): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(274,51): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\robot_simulation.cpp(274,60): warning C4838: conversion from 'int' to 'int16_t' requires a narrowing conversion
+  slam_grid.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\slam_grid.cpp(29,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\slam_grid.cpp(106,22): warning C4244: '=': conversion from 'double' to 'sf::Uint8', possible loss of data
+  slam_message.cpp
+  slam_utility.cpp
+C:\Users\michasm\TTK4900-ssnar_cpp\SLAM-application\Src\slam_utility.cpp(253,21): warning C4018: '<': signed/unsigned mismatch
+  target_panel.cpp
+  window.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.rh(1437): warning RC4005: 'IDOK' : redefinition
+  
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: void __thiscall mrpt::utils::CLoadableOptions::dumpToConsole(void)const " (__imp_?dumpToConsole@CLoadableOptions@utils@mrpt@@QBEXXZ)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual void __thiscall mrpt::maps::CSimplePointsMap::insertPointFast(float,float,float)" (__imp_?insertPointFast@CSimplePointsMap@maps@mrpt@@UAEXMMM@Z)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall mrpt::maps::CSimplePointsMap::~CSimplePointsMap(void)" (__imp_??1CSimplePointsMap@maps@mrpt@@UAE@XZ)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall mrpt::maps::CSimplePointsMap::CSimplePointsMap(void)" (__imp_??0CSimplePointsMap@maps@mrpt@@QAE@XZ)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl mrpt::poses::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class mrpt::poses::CPose2D const &)" (__imp_??6poses@mrpt@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV23@ABVCPose2D@01@@Z)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall mrpt::poses::CPose2D::CPose2D(double,double,double)" (__imp_??0CPose2D@poses@mrpt@@QAE@NNN@Z)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: struct mrpt::poses::CPosePDFPtr __thiscall mrpt::slam::CMetricMapsAlignmentAlgorithm::Align(class mrpt::maps::CMetricMap const *,class mrpt::maps::CMetricMap const *,class mrpt::poses::CPose2D const &,float *,void *)" (__imp_?Align@CMetricMapsAlignmentAlgorithm@slam@mrpt@@QAE?AUCPosePDFPtr@poses@3@PBVCMetricMap@maps@3@0ABVCPose2D@53@PAMPAX@Z)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: class mrpt::poses::CPose2D __thiscall mrpt::utils::CProbabilityDensityFunction<class mrpt::poses::CPose2D,3>::getMeanVal(void)const " (__imp_?getMeanVal@?$CProbabilityDensityFunction@VCPose2D@poses@mrpt@@$02@utils@mrpt@@QBE?AVCPose2D@poses@3@XZ)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall mrpt::slam::CICP::~CICP(void)" (__imp_??1CICP@slam@mrpt@@UAE@XZ)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall mrpt::slam::CICP::CICP(void)" (__imp_??0CICP@slam@mrpt@@QAE@XZ)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall mrpt::poses::CPosePDFPtr::~CPosePDFPtr(void)" (__imp_??1CPosePDFPtr@poses@mrpt@@QAE@XZ)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall mrpt::poses::CPose2D::CPose2D(class mrpt::poses::CPose2D &&)" (__imp_??0CPose2D@poses@mrpt@@QAE@$$QAV012@@Z)
+particle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall mrpt::poses::CPose2D::~CPose2D(void)" (__imp_??1CPose2D@poses@mrpt@@UAE@XZ)
+C:\Users\michasm\TTK4900-ssnar_cpp\Release\SLAM-application.exe : fatal error LNK1120: 13 unresolved externals
