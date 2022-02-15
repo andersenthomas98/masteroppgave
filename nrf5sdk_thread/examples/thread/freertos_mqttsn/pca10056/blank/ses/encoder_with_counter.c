@@ -46,10 +46,6 @@ static
 const nrf_drv_timer_t m_timer_count_right = NRF_DRV_TIMER_INSTANCE(4);
 nrf_ppi_channel_t ppi_channel_1, ppi_channel_2;
 
-QueueHandle_t encoderTicksToMotorSpeedControllerQ = NULL;
-QueueHandle_t encoderTicksToEstimatorTaskQ = NULL;
-SemaphoreHandle_t xTickBSem = NULL;
-
 MOTOR_DIRECTION left_direction, right_direction;
 uint32_t left_counter_value, right_counter_value;
 
@@ -98,19 +94,6 @@ void timer_handler_count_right(nrf_timer_event_t event_type, void * p_context) {
 }
 
 void encoder_with_counter_init() {
-
-  // Semaphore for protecting tick values
-  xTickBSem = xSemaphoreCreateBinary();
-  // Create queue for estimator task
-  encoderTicksToEstimatorTaskQ = xQueueCreate(100, sizeof(encoderTicks)); 
-  // Create queue for speed controller task
-  encoderTicksToMotorSpeedControllerQ = xQueueCreate(100, sizeof(encoderTicks));
-
-  if (encoderTicksToEstimatorTaskQ == NULL || xTickBSem == NULL) {
-    NRF_LOG_ERROR("Not enough heap memory available for encoder driver");
-  }
-  
-  xSemaphoreGive(xTickBSem);
 
   left_direction = right_direction = FORWARD;
 

@@ -70,6 +70,9 @@ NRF_LOG_MODULE_REGISTER();
 #include "ControllerTask.h"
 #include "MotorSpeedControllerTask.h"
 
+#include "globals.h"
+#include "encoder.h"
+#include "robot_config.h"
 
 //#define SCHED_QUEUE_SIZE       32                                          /**< Maximum number of events in the scheduler queue. */
 //#define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
@@ -106,6 +109,33 @@ TaskHandle_t pose_controller_task_handle        = NULL;
 #if NRF_LOG_ENABLED
   TaskHandle_t logger_task_handle = NULL;         /**< Definition of Logger thread. */
 #endif
+
+
+/* Semaphore handles */
+SemaphoreHandle_t xScanLock;
+SemaphoreHandle_t xPoseMutex;
+SemaphoreHandle_t xTickBSem;
+SemaphoreHandle_t xControllerBSem;
+SemaphoreHandle_t xCommandReadyBSem;
+//SemaphoreHandle_t xCollisionMutex;
+
+
+/* Queues */
+QueueHandle_t poseControllerQ = 0;
+QueueHandle_t scanStatusQ = 0;
+QueueHandle_t queue_microsd = 0;
+QueueHandle_t queue_display = 0;
+
+QueueHandle_t encoderTicksToMotorSpeedControllerQ = 0;
+QueueHandle_t encoderTicksToMotorPositionControllerQ = 0;
+QueueHandle_t encoderTicksToEstimatorTaskQ = 0;
+
+
+
+//globals for encoder
+int RightMotorDirection = 1;
+int LeftMotorDirection = 1;
+
 
 
 /***************************************************************************************************
@@ -169,6 +199,21 @@ static void logger_thread(void * pvParameter)
 
 int main(void)
 {
+    
+    // Initialize global queues
+    poseControllerQ = xQueueCreate(1, sizeof(struct sCartesian));       // For setpoints to controller
+    scanStatusQ = xQueueCreate(1, sizeof(uint8_t));                     // For robot status
+    encoderTicksToMotorSpeedControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
+    encoderTicksToMotorPositionControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
+    encoderTicksToEstimatorTaskQ = xQueueCreate(100, sizeof(encoderTicks)); 
+
+    // Initialize global semaphores
+    xPoseMutex = xSemaphoreCreateMutex();         // Global variables for robot pose. Only updated from estimator, accessed from many
+    xTickBSem = xSemaphoreCreateBinary();         // Global variable to hold robot tick values
+    xSemaphoreGive(xTickBSem);
+    xControllerBSem = xSemaphoreCreateBinary();   // Estimator to Controller synchronization
+    xCommandReadyBSem = xSemaphoreCreateBinary();
+    
     log_init();
     //scheduler_init();
     clock_init();
@@ -186,7 +231,7 @@ int main(void)
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
-    if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
+    /*if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -194,9 +239,9 @@ int main(void)
     if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
     
-    /*if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -214,7 +259,7 @@ int main(void)
     if (pdPASS != xTaskCreate(vMainPoseControllerTask, "POSC", POSE_CONTROLLER_TASK_STACK_SIZE, NULL, POSE_CONTROLLER_TASK_PRIORITY, &pose_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }*/
+    }
 
 
 #if NRF_LOG_ENABLED

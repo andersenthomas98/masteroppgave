@@ -100,4 +100,14 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/main.o: \
  ../../../../../../external/freertos/source/include/semphr.h \
  ../../../../../../external/freertos/source/include/queue.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/MotorSpeedControllerTask.h \
- ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/globals.h
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/globals.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/globals.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/encoder.h \
+ ../../../../../../modules/nrfx/drivers/include/nrfx_gpiote.h \
+ ../../../../../../modules/nrfx/hal/nrf_gpiote.h \
+ ../../../../../../modules/nrfx/hal/nrf_gpio.h \
+ ../../../../../../modules/nrfx/drivers/include/nrfx_timer.h \
+ ../../../../../../modules/nrfx/hal/nrf_timer.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/robot_config.h \
+ ../../../../../../modules/nrfx/drivers/include/nrfx_saadc.h \
+ ../../../../../../modules/nrfx/hal/nrf_saadc.h

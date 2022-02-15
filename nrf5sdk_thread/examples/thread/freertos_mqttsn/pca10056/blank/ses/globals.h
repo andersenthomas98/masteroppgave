@@ -20,8 +20,6 @@ extern SemaphoreHandle_t xPoseMutex;
 extern SemaphoreHandle_t xTickBSem;
 extern SemaphoreHandle_t xControllerBSem;
 extern SemaphoreHandle_t xCommandReadyBSem;
-extern SemaphoreHandle_t mutex_spi;
-extern SemaphoreHandle_t mutex_i2c;
 //extern SemaphoreHandle_t xCollisionMutex;
 
 /* Queues */
@@ -30,8 +28,6 @@ extern QueueHandle_t poseControllerQ;
 extern QueueHandle_t scanStatusQ;
 extern QueueHandle_t queue_microsd;
 extern QueueHandle_t queue_display;
-
-extern QueueHandle_t targetReachedQ;
 
 extern QueueHandle_t encoderTicksToMotorSpeedControllerQ;
 extern QueueHandle_t encoderTicksToMotorPositionControllerQ;
@@ -57,7 +53,6 @@ typedef struct sCartesian {
     float x;
     float y;
 } cartesian;
-
 
 
 

@@ -3,10 +3,8 @@
 
 position_estimate_t position_estimate;
 
-SemaphoreHandle_t xPoseMutex = NULL;
-
 void init_position_estimate() {
-  xPoseMutex = xSemaphoreCreateMutex();
+  //xPoseMutex = xSemaphoreCreateMutex();
   if (xPoseMutex == NULL) {
     NRF_LOG_ERROR("Not enough heap memory for pose mutex");
   }

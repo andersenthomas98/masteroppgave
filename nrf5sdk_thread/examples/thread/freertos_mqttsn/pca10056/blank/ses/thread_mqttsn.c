@@ -655,8 +655,6 @@ void mqttsn_task(void *arg) {
 
     }
     
-    //uint32_t timer_value = mqttsn_platform_timer_cnt_get();
-    //NRF_LOG_INFO("time: %" PRIu32, timer_value);
     lastWakeTime = xTaskGetTickCount();
     vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
   

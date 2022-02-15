@@ -79,7 +79,7 @@ void vMainSensorTowerTask(void * pvParameters) {
 
       xLastWakeTime = xTaskGetTickCount(); // xLastWakeTime variable with the current time.
 
-      /*if (xQueueReceive(scanStatusQ, & robotMovement, 150) == pdTRUE) {
+      if (xQueueReceive(scanStatusQ, & robotMovement, 150) == pdTRUE) {
         // Note that the iterations are skipped while robot is rotating (see further downbelow)
         switch (robotMovement) {
         case moveStop:
@@ -101,18 +101,17 @@ void vMainSensorTowerTask(void * pvParameters) {
           idleCounter = 0;
           break;
         }
-      }*/
+      }
 
       vServo_setAngle(servoAngle);
       if (PRINT_DEBUG_IR) NRF_LOG_INFO("Servo angle: %d", servoAngle);
       vTaskDelayUntil( & xLastWakeTime, ROBOT_DEADLINE_MS);
-      taskYIELD();
 
-      /*xSemaphoreTake(xPoseMutex, 40);
+      xSemaphoreTake(xPoseMutex, 40);
       thetahat = get_position_estimate_heading();
       xhat = get_position_estimate_x() * 1000; //m to mm
       yhat = get_position_estimate_y() * 1000; //m to mm
-      xSemaphoreGive(xPoseMutex); */
+      xSemaphoreGive(xPoseMutex);
 
       /* Collect sensor values and adjust collision sectors when necessary */
       for (uint8_t i = 0; i < NUM_DIST_SENSORS; i++) {
@@ -159,13 +158,13 @@ void vMainSensorTowerTask(void * pvParameters) {
       }
 
       // Experimental
-      if ((idleCounter > 10) && (robotMovement == moveStop)) {
+      /*if ((idleCounter > 10) && (robotMovement == moveStop)) {
         // If the robot stands idle for 1 second, send 'status:idle' in case the server missed it.
         //send_idle();
         idleCounter = 1; //TODO IDLE FUNCTION
       } else if ((idleCounter >= 1) && (robotMovement == moveStop)) {
         idleCounter++;
-      }
+      }*/
 
       // Iterate in a increasing/decreasign manner and depending on the robots movement
       if ((servoAngle <= 90) && (servoDirection == moveCounterClockwise) && (robotMovement < moveClockwise)) {

@@ -40,8 +40,6 @@
 #include "robot_config.h"
 
 
-SemaphoreHandle_t xControllerBSem;
-
 TickType_t ticks_since_startup;
 
 /* Added 12.05.2020 */
@@ -71,15 +69,8 @@ bool executingOrder = false;
 
 /*  Calculates new settings for the movement task */
 void vMainPoseControllerTask(void * pvParameters) {
+
   NRF_LOG_INFO("mainPoseControllerTask: initializing");
-
-  xControllerBSem = xSemaphoreCreateBinary(); // Estimator to Controller synchronization
-  if (xControllerBSem == NULL) {
-    NRF_LOG_ERROR("Not able to allocate enough heap memory for controller task");
-  }
-
-  //int count = 0;
-
   /* Task init */
   struct sCartesian Setpoint = {
     0,
@@ -201,7 +192,7 @@ void vMainPoseControllerTask(void * pvParameters) {
       if (xSemaphoreTake(xControllerBSem, portMAX_DELAY) == pdTRUE) // Wait for synchronization from estimator
       {
         if (USE_SPEED_CONTROLLER) {
-          // Pose controller period should be larger than speed controller period in order for successive loop closure to work
+          // TODO: Pose controller period should be larger than speed controller period in order for successive loop closure to work
           int POSE_CTRL_TASK_DELAY_TIME = MOTOR_SPEED_CTRL_TASK_DELAY_TIME * 4;
           vTaskDelayUntil( & xLastWakeTime, POSE_CTRL_TASK_DELAY_TIME);
         }
