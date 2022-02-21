@@ -1,0 +1,103 @@
+[15:15:52] info: 18_Feb_2022_15.15
+[15:15:52] info: MQTT connection respone successfull
+[15:15:52] info: Subsribe response v2/server/simulated/cmd
+[15:15:52] info: Subsribe response v2/server/simulated/cmd
+[15:15:54] warning: Invalid size of payload!
+[15:15:54] error: Received invalid SLAM message!
+[15:16:03] info: Init pose selected: 0, 0, 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] error: Panels error: bad function call
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] error: Got invalid SLAM message!
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0, y: 0, theta: 0
+[15:16:03] info: x: 0

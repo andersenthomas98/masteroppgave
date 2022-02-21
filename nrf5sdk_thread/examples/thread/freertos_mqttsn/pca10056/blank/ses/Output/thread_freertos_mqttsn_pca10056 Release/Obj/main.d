@@ -108,6 +108,7 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/main.o: \
  ../../../../../../modules/nrfx/hal/nrf_gpio.h \
  ../../../../../../modules/nrfx/drivers/include/nrfx_timer.h \
  ../../../../../../modules/nrfx/hal/nrf_timer.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/positionEstimate.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/robot_config.h \
  ../../../../../../modules/nrfx/drivers/include/nrfx_saadc.h \
  ../../../../../../modules/nrfx/hal/nrf_saadc.h

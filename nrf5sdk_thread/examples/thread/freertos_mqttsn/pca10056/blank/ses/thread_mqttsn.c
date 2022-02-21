@@ -27,7 +27,7 @@
 #define NUM_SUB_TOPICS                2
 
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
-#define MQTTSN_TASK_DELAY_SEC         1                                     /**< MQTTSN task delay in seconds */ 
+#define MQTTSN_TASK_DELAY_S           0.1                                   /**< MQTTSN task delay in milliseconds */ 
 
 extern TaskHandle_t thread_stack_task_handle, mqttsn_task_handle;
 
@@ -68,13 +68,13 @@ typedef struct mqttsn_subscribe_topic {
 static mqttsn_subscribe_topic_t sub_topic_arr[NUM_SUB_TOPICS] = {
   {
     .queue = NULL,
-    .queue_size = MQTTSN_PACKET_FIFO_MAX_LENGTH,
+    .queue_size = 1,
     .p_topic = &topic_arr[1], // pointer to v2/server/<ROBOT_NAME>/cmd topic
     .identifier = TARGET_IDENTIFIER
   }, 
   {
     .queue = NULL,
-    .queue_size = MQTTSN_PACKET_FIFO_MAX_LENGTH,
+    .queue_size = 1,
     .p_topic = &topic_arr[2], // pointer to v2/server/ROBOT_NAME>/init topic
     .identifier = INIT_IDENTIFIER
   }
@@ -269,8 +269,25 @@ static void timeout_callback(mqttsn_event_t * p_event)
         NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
       }
       break;
-   
+    case MQTTSN_PACKET_PUBACK:
+      switch(p_event->event_data.error.error) {
+        case MQTTSN_ERROR_REJECTED_CONGESTION:
+          NRF_LOG_WARNING("PUBACK not received due to network congestion");
+          // TODO
+          break;
+        case MQTTSN_ERROR_TIMEOUT:
+          NRF_LOG_WARNING("PUBACK not received due to timeout");
+          // TODO
+          break;
+      }
+      break;
+    case MQTTSN_PACKET_PINGREQ:
+      NRF_LOG_ERROR("PINGREQ not received, trying to reconnect...");
+      mqttsn_client_disconnect(&m_client); // main loop of mqttsn task will try to reconnect
+      break;
    }
+   
+
 }
 
 
@@ -574,13 +591,6 @@ uint8_t mqttsn_client_is_connected() {
   return 0;
 }
 
-uint32_t publish_scan_border(char* topic_name) {
-  uint8_t payload = SCAN_BORDER_IDENTIFIER;
-  uint32_t err_code = publish(topic_name, &payload, sizeof(uint8_t), 0, 0);
-  return err_code;
-}
-
-
 
 void mqttsn_task(void *arg) {
   
@@ -617,8 +627,6 @@ void mqttsn_task(void *arg) {
   mqttsn_init();
 
   TickType_t lastWakeTime;
-  const TickType_t delay = MQTTSN_TASK_DELAY_SEC;
-  mqttsn_client_state_t state = mqttsn_client_state_get(&m_client);
   uint32_t err_code;
 
   while(1) {
@@ -630,6 +638,8 @@ void mqttsn_task(void *arg) {
     /*MQTTSN_CLIENT_ESTABLISHING_CONNECTION, < Client is attempting to connect. */
     /*MQTTSN_CLIENT_WAITING_FOR_SLEEP,       < Client is waiting for permission to sleep. */
     /*MQTTSN_CLIENT_WAITING_FOR_DISCONNECT,  < Client is waiting for permission to disconnect. */
+
+    mqttsn_client_state_t state = mqttsn_client_state_get(&m_client);
 
     while (state == MQTTSN_CLIENT_DISCONNECTED) {
 
@@ -643,9 +653,8 @@ void mqttsn_task(void *arg) {
 
       state = mqttsn_client_state_get(&m_client);
     }
-    
     mqttsn_msg_queue_element_t rx_msg;
-    if (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
+    /*if (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
       
       uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic_id, rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
 
@@ -653,10 +662,23 @@ void mqttsn_task(void *arg) {
         NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
       }
 
+    } else {
+      taskYIELD();
+    }*/
+    
+    while (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
+
+      uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic_id, rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
+    
+      if (err_code != NRF_SUCCESS) {
+        NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
+      }
+
     }
     
-    lastWakeTime = xTaskGetTickCount();
-    vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
+    //lastWakeTime = xTaskGetTickCount();
+    //vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*1);
+    taskYIELD();
   
   }
 

@@ -72,6 +72,7 @@ NRF_LOG_MODULE_REGISTER();
 
 #include "globals.h"
 #include "encoder.h"
+#include "positionEstimate.h"
 #include "robot_config.h"
 
 //#define SCHED_QUEUE_SIZE       32                                          /**< Maximum number of events in the scheduler queue. */
@@ -81,17 +82,17 @@ NRF_LOG_MODULE_REGISTER();
 #define LOG_TASK_STACK_SIZE                     ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define MQTTSN_TASK_STACK_SIZE                  ((1024 * 4) / sizeof(StackType_t))
 #define SENSOR_TOWER_TASK_STACK_SIZE            ( 1024 / sizeof(StackType_t))
-#define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 4 / sizeof(StackType_t))
+#define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 6 / sizeof(StackType_t))
 #define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
 #define POSE_CONTROLLER_TASK_STACK_SIZE         ((1024 * 2) / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE                 ( 1024 / sizeof(StackType_t))
 
 #define THREAD_STACK_TASK_PRIORITY            2
 #define MQTTSN_TASK_PRIORITY                  2
-#define SENSOR_TOWER_TASK_PRIORITY            1
-#define NEW_ESTIMATOR_TASK_PRIORITY           1
-#define MOTOR_SPEED_CONTROLLER_TASK_PRIORITY  1
-#define POSE_CONTROLLER_TASK_PRIORITY         1
+#define SENSOR_TOWER_TASK_PRIORITY            3
+#define NEW_ESTIMATOR_TASK_PRIORITY           3
+#define MOTOR_SPEED_CONTROLLER_TASK_PRIORITY  3
+#define POSE_CONTROLLER_TASK_PRIORITY         3
 #define EXAMPLE_TASK_PRIORITY                 1
 #define LOG_TASK_PRIORITY                     1
 
@@ -184,6 +185,7 @@ static void logger_thread(void * pvParameter)
 
     while (true)
     {
+        NRF_LOG_FLUSH();
         if (!(NRF_LOG_PROCESS()))
         {
             /* No more logs, let's sleep and wait for any */
@@ -213,6 +215,9 @@ int main(void)
     xSemaphoreGive(xTickBSem);
     xControllerBSem = xSemaphoreCreateBinary();   // Estimator to Controller synchronization
     xCommandReadyBSem = xSemaphoreCreateBinary();
+
+    position_estimate_t pos_est = {0,0,0};
+    set_position_estimate(&pos_est);
     
     log_init();
     //scheduler_init();

@@ -1756,6 +1756,11 @@
 
 // </e>
 
+// <q> PPI_ENABLED  - nrf_drv_ppi - PPI peripheral driver - legacy layer
+#ifndef PPI_ENABLED
+#define PPI_ENABLED 1
+#endif
+
 
 // <e> NRFX_PWM_ENABLED - nrfx_pwm - PWM peripheral driver
 //==========================================================

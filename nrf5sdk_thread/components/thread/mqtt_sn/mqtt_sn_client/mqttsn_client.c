@@ -582,7 +582,7 @@ uint32_t mqttsn_client_publish(mqttsn_client_t * p_client,
 {
     NULL_PARAM_CHECK(p_client);
     NULL_PARAM_CHECK(p_payload);
-    NRF_LOG_INFO("topic id: %d\t payload len: %d", topic_id, payload_len);
+    //NRF_LOG_INFO("topic id: %d\t payload len: %d", topic_id, payload_len);
     if(topic_id == 0 || payload_len == 0)
     {
         return NRF_ERROR_NULL;

@@ -1,0 +1,77 @@
+[16:03:50] info: 18_Feb_2022_16.03
+[16:03:50] info: MQTT connection respone successfull
+[16:03:50] info: Subsribe response v2/server/simulated/cmd
+[16:03:50] info: Subsribe response v2/server/simulated/cmd
+[16:04:00] info: Init pose selected: 0, 0, 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: x: 0, y: 0, theta: 0
+[16:04:00] info: Odom        : x:          0, y:          0, theta:          0
+[16:04:00] info: New position: x: -0.0002588, y: -1.284e-07, theta:    0.05482 weight:   1
+[16:04:00] info: New position: x: -0.0002588, y: -1.284e-07, theta:    0.05482 weight:   1
+[16:04:00] info: New position: x:  0.0003169, y:  2.762e-07, theta:    0.06589 weight:   1
+[16:04:00] info: New position: x:  0.0003169, y:  2.762e-07, theta:    0.06589 weight:   1
+[16:04:00] info: Got a request to publish to: v2/server/NRF_5/init
+[16:04:00] info: New position: x: -6.555e-05, y:  3.382e-08, theta:   -0.06004 weight:   1
+[16:04:00] info: New position: x: -6.555e-05, y:  3.382e-08, theta:   -0.06004 weight:   1
+[16:04:00] info: New position: x:  0.0002434, y: -2.909e-07, theta:   -0.01758 weight:   1
+[16:04:00] info: New position: x:  0.0002434, y: -2.909e-07, theta:   -0.01758 weight:   1
+[16:04:00] info: New position: x: -0.0003686, y: -1.931e-07, theta:     0.1341 weight:   1
+[16:04:00] info: New position: x: -0.0003686, y: -1.931e-07, theta:     0.1341 weight:   1
+[16:04:00] info: New position: x: -0.0005339, y: -7.026e-07, theta:     0.1078 weight:   1
+[16:04:00] info: New position: x: -0.0005339, y: -7.026e-07, theta:     0.1078 weight:   1
+[16:04:00] info: New position: x: -0.0004568, y:  6.373e-07, theta:   -0.05497 weight:   1
+[16:04:00] info: New position: x: -0.0004568, y:  6.373e-07, theta:   -0.05497 weight:   1
+[16:04:00] info: New position: x:  0.0003576, y: -3.393e-08, theta:   -0.08261 weight:   1
+[16:04:00] info: New position: x:  0.0003576, y: -3.393e-08, theta:   -0.08261 weight:   1
+[16:04:00] info: New position: x:   0.001536, y: -9.217e-07, theta:   -0.07374 weight:   1
+[16:04:00] info: New position: x:   0.001536, y: -9.217e-07, theta:   -0.07374 weight:   1
+[16:04:00] info: New position: x:   0.001892, y

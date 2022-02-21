@@ -30,6 +30,7 @@
 #include "positionEstimate.h"
 
 // TODO: #include "server_communication.h"
+#include "thread_mqttsn.h"
 
 #include "MotorSpeedControllerTask.h"
 
@@ -78,6 +79,8 @@ void vMainPoseControllerTask(void * pvParameters) {
   }; // Updates from server
   float radiusEpsilon = 0.015; //[m]The acceptable radius from goal for completion
   uint8_t lastMovement = 0;
+
+  mqttsn_target_msg_t target_msg;
 
   //uint8_t maxDriveActuation = 90; //The max speed the motors will run at during drive max is 100, check also MAX_DUTY in motor.c.
 
@@ -204,30 +207,28 @@ void vMainPoseControllerTask(void * pvParameters) {
         float delta_t = (ticks_since_startup - ticks_since_startup_prev) * 1.0 / configTICK_RATE_HZ;
 
         previousThetahat = thetahat;
+        
         // Get robot pose
-
         xSemaphoreTake(xPoseMutex, portMAX_DELAY);
         thetahat = get_position_estimate_heading();
         xhat = (get_position_estimate_x()); //m to mm
         yhat = (get_position_estimate_y());
-
         xSemaphoreGive(xPoseMutex);
 
         /************************************************
          * Update waypoint if new waypoint is given
          *************************************************/
-        if (xQueueReceive(poseControllerQ, & Setpoint, 0) == pdTRUE)  {
-          xTargt = Setpoint.x / 100.0; //Distance is received in cm, convert to m for continuity
-          yTargt = Setpoint.y / 100.0; //Distance is received in cm, convert to m for continuity
-          //thetahatStart = thetahat;
+        if (xQueueReceive(get_queue_handle("v2/server/NRF_5/cmd"), &target_msg, (TickType_t) 0) == pdTRUE) {
+          xTargt = target_msg.target_x / 1000.0; //Distance is received in mm, convert to m for continuity
+          yTargt = target_msg.target_y / 1000.0; //Distance is received in mm, convert to m for continuity
           xhatStart = xhat;
           yhatStart = yhat;
-          //newOrder = true;
           controllerStop = false;
           doneTurning = false;
           collisionDetected = false;
+          NRF_LOG_INFO("Received target from server: (%d, %d)", target_msg.target_x, target_msg.target_y);
         }
-
+        
         /************************************************
          * Find error
          *************************************************/
@@ -278,7 +279,7 @@ void vMainPoseControllerTask(void * pvParameters) {
           thetaErrIntegral = 0.0;
           thetaErrorInt = 0.0;
           lastMovement = moveStop;
-         //TODO: xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
+          xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
         }
 
         /************************************************
@@ -323,7 +324,7 @@ void vMainPoseControllerTask(void * pvParameters) {
             //collisionDetected = checkForCollision();
             collisionDetected = false;
             lastMovement = moveForward;
-           //TODO: xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
+            xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
 
           } else {
             if (delta_t > 0) {
@@ -333,7 +334,7 @@ void vMainPoseControllerTask(void * pvParameters) {
             }
 
             lastMovement = (thetaError < 0) ? moveClockwise : moveCounterClockwise; // let EstimatorTask and SensorTask know robot motion.
-           //TODO: xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
+            xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
 
             if (fabs(thetaError) < driveThreshold) {
               thetaDoneCounter++;
@@ -358,10 +359,8 @@ void vMainPoseControllerTask(void * pvParameters) {
             motor_brake();
           }
           lastMovement = moveStop;
-          //TODO: xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
+          xQueueSend(scanStatusQ, & lastMovement, 0); // Send the current movement to the scan task
           //display_text_on_line(4,"Reached target");
-          uint8_t targetReached = 1;
-          //TODO: xQueueSend(targetReachedQ, & targetReached, 0);
         }
 
         /************************************************
@@ -379,6 +378,7 @@ void vMainPoseControllerTask(void * pvParameters) {
         } else {
           vMotorMovementSwitch(left_u, right_u);
         }
+        //NRF_LOG_INFO("left u: %d\t right u: %d", left_u, right_u);
 
       } else {
         // No semaphore available, task is blocking

@@ -40,24 +40,20 @@
 #define ENCODER_PIN_RIGHT_1 39
 #define ENCODER_PIN_RIGHT_2 40
 
-static
-const nrf_drv_timer_t m_timer_count_left = NRF_DRV_TIMER_INSTANCE(3);
-static
-const nrf_drv_timer_t m_timer_count_right = NRF_DRV_TIMER_INSTANCE(4);
+static const nrf_drv_timer_t m_timer_count_left = NRF_DRV_TIMER_INSTANCE(3); //3
+static const nrf_drv_timer_t m_timer_count_right = NRF_DRV_TIMER_INSTANCE(4); //4
 nrf_ppi_channel_t ppi_channel_1, ppi_channel_2;
 
 MOTOR_DIRECTION left_direction, right_direction;
 uint32_t left_counter_value, right_counter_value;
 
-encoderTicks encoderCnt = {
-  .left = 0,
-  .right = 0,
-};
 
-encoderTicks encoderCnt_old = {
-  .left = 0,
-  .right = 0,
-};
+encoderTicks encoderCnt = {.right = 0, .left = 0};
+encoderTicks encoderCnt_old = {.right = 0, .left = 0};
+
+long encoder_right = 0;
+long encoder_left = 0;
+
 
 //Check which way the motor is going 
 void in_pin_handler_left(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
@@ -167,28 +163,45 @@ void encoder_with_counter_init() {
 }
 
 void update_encoder_ticks() {
-  //Get new values
-  uint32_t left_counter_value_new = nrf_drv_timer_capture( & m_timer_count_left, NRF_TIMER_CC_CHANNEL1); //nrf_drv_timer_capture_get(&m_timer_count_left, NRF_TIMER_CC_CHANNEL1); 
-  uint32_t right_counter_value_new = nrf_drv_timer_capture( & m_timer_count_right, NRF_TIMER_CC_CHANNEL1); //nrf_drv_timer_capture_get(&m_timer_count_right, NRF_TIMER_CC_CHANNEL2);
+    //Get new values
+    uint32_t left_counter_value_new = nrf_drv_timer_capture(&m_timer_count_left, NRF_TIMER_CC_CHANNEL1); //nrf_drv_timer_capture_get(&m_timer_count_left, NRF_TIMER_CC_CHANNEL1); 
+    uint32_t right_counter_value_new = nrf_drv_timer_capture(&m_timer_count_right, NRF_TIMER_CC_CHANNEL1); //nrf_drv_timer_capture_get(&m_timer_count_right, NRF_TIMER_CC_CHANNEL2);
 
-  int32_t new_steps_left;
-  int32_t new_steps_right;
+   // NRF_LOG_INFO("left counter: %ld", left_counter_value_new);
+   // NRF_LOG_INFO("right counter: %ld", right_counter_value_new);
 
-  if (left_counter_value_new > left_counter_value) new_steps_left = left_counter_value_new - left_counter_value;
-  else new_steps_left = 8589934592 - left_counter_value + left_counter_value_new; //Overflow of counter value 2^32 - prev value + new value
+    int32_t new_steps_left;
+    int32_t new_steps_right;
 
-  if (right_counter_value_new > right_counter_value) new_steps_right = right_counter_value_new - right_counter_value;
-  else new_steps_right = 8589934592 - right_counter_value + right_counter_value_new; //Overflow of counter value 2^32 - prev value + new value
+    if(left_counter_value_new > left_counter_value) new_steps_left = left_counter_value_new - left_counter_value;
+    else new_steps_left = 8589934592 - left_counter_value + left_counter_value_new; //Overflow of counter value 2^32 - prev value + new value
 
-  left_counter_value = left_counter_value_new;
-  right_counter_value = right_counter_value_new;
-  //Direction
-  if (left_direction == BACKWARD) new_steps_left = -new_steps_left;
+    if(right_counter_value_new > right_counter_value) new_steps_right = right_counter_value_new - right_counter_value;
+    else new_steps_right = 8589934592 - right_counter_value + right_counter_value_new; //Overflow of counter value 2^32 - prev value + new value
 
-  if (right_direction == BACKWARD) new_steps_right = -new_steps_right;
+    left_counter_value = left_counter_value_new;
+    right_counter_value = right_counter_value_new;
 
-  encoderCnt.left += new_steps_left;
-  encoderCnt.right += new_steps_right;
+    //Direction
+    if(left_direction == BACKWARD)  {
+      new_steps_left = -new_steps_left;
+    }
+
+    if(right_direction == BACKWARD) { 
+      new_steps_right = -new_steps_right;
+    }
+    
+    encoderCnt.left += new_steps_left;
+    encoderCnt.right += new_steps_right;
+    encoder_left += new_steps_left;
+    encoder_right += new_steps_right;
+
+    /*NRF_LOG_INFO("enc left: %ld", encoder_left);
+    NRF_LOG_INFO("enc right: %ld", encoder_right);
+    NRF_LOG_INFO("left dir: %d", left_direction);
+    NRF_LOG_INFO("right dir: %d", right_direction);
+    NRF_LOG_INFO("steps left: %ld", new_steps_left);
+    NRF_LOG_INFO("steps right: %ld", new_steps_right);*/
 }
 
 encoderTicks encoder_with_counter_get_ticks_since_last_time() {
@@ -204,8 +217,8 @@ encoderTicks encoder_with_counter_get_ticks_since_last_time() {
     ticks.left = encoderCnt_old.left;
     ticks.right = encoderCnt_old.right;
     //update old values
-    encoderCnt_old.left = encoderCnt.left; //nrf_drv_timer_capture_get(&m_timer_count_left, NRF_TIMER_CC_CHANNEL1); 
-    encoderCnt_old.right = encoderCnt.right; //nrf_drv_timer_capture_get(&m_timer_count_right, NRF_TIMER_CC_CHANNEL2);
+    encoderCnt_old.left = encoder_left;//encoderCntleft; //nrf_drv_timer_capture_get(&m_timer_count_left, NRF_TIMER_CC_CHANNEL1); 
+    encoderCnt_old.right = encoder_right;//encoderCnt.right; //nrf_drv_timer_capture_get(&m_timer_count_right, NRF_TIMER_CC_CHANNEL2);
     //calculate ticks since last call
     ticks.left = encoderCnt_old.left - ticks.left;
     ticks.right = encoderCnt_old.right - ticks.right;
@@ -229,8 +242,8 @@ encoderTicks encoder_with_counter_get_all_ticks() {
   if (xSemaphoreTake(xTickBSem, 1) == pdTRUE) {
     update_encoder_ticks();
 
-    ticks.left = encoderCnt.left;
-    ticks.right = encoderCnt.right;
+    ticks.left = encoder_left;//encoderCnt.left;
+    ticks.right = encoder_right;//encoderCnt.right;
   } else {
     printf("Semaphore not available\n\r");
 

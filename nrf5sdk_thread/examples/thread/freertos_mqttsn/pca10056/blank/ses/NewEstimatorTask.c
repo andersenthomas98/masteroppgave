@@ -56,7 +56,9 @@ position_estimate_t ekf_state;
 void vNewMainPoseEstimatorTask(void * pvParameters) {
   NRF_LOG_INFO("NewMainPoseEstimatorTask: initializing");
   
-  init_position_estimate();
+  position_estimate_t pos_est = {0, 0, 0};
+
+  init_position_estimate(&pos_est);
   encoder_with_counter_init();
   IMU_init();
 
@@ -118,6 +120,8 @@ void vNewMainPoseEstimatorTask(void * pvParameters) {
         encoder_ticks.left += encoder_ticks_temp.left;
         encoder_ticks.right += encoder_ticks_temp.right;
       }
+     // NRF_LOG_INFO("ticks left: %ld", encoder_ticks.left);
+     // NRF_LOG_INFO("ticks right: %ld", encoder_ticks.right);
       //encoder_ticks_total.left += encoder_ticks.left;
       //encoder_ticks_total.right += encoder_ticks.right;
 

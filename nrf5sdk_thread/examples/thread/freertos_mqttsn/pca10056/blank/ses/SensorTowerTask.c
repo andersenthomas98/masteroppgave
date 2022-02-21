@@ -35,6 +35,8 @@
 
 #include "robot_config.h"
 
+#include "thread_mqttsn.h"
+
 char pos[30];
 int posCounter = 0;
 
@@ -45,6 +47,9 @@ int oldTime = 0;
 char irAnalogReading[20];
 int calibrationCounter = 0;
 int distance = 125;
+int16_t lastPublishedX = 0;
+int16_t lastPublishedY = 0;
+int16_t lastPublishedTheta = 0;
 
 void vMainSensorTowerTask(void * pvParameters) {
 
@@ -72,6 +77,11 @@ void vMainSensorTowerTask(void * pvParameters) {
   servoAngle = 0;
   idleCounter = 0;
   vTaskDelay(100);
+
+  mqttsn_update_msg_t update_msg;
+  update_msg.identifier = UPDATE_IDENTIFIER;
+  mqttsn_scan_border_msg_t scan_msg;
+  scan_msg.identifier = SCAN_BORDER_IDENTIFIER;
 
   while (true) {
     calibrationCounter++;
@@ -149,6 +159,30 @@ void vMainSensorTowerTask(void * pvParameters) {
         if (USE_NEW_SERVER) {
           if (scan) {
             //sendNewPoseMessage(xhat, yhat, thetahat, servoAngle, sensorDataMM); // New  message-format from spring 2020.
+            //NRF_LOG_INFO("Send from sensor tower task!");
+            update_msg.identifier = UPDATE_IDENTIFIER;
+            update_msg.xdelta = (xhat - lastPublishedX);
+            update_msg.ydelta = (yhat - lastPublishedY);
+            update_msg.thetadelta = (thetahat - lastPublishedTheta)*RAD2DEG;
+            lastPublishedX = update_msg.xdelta;
+            lastPublishedY = update_msg.ydelta;
+            lastPublishedTheta = update_msg.thetadelta;
+            update_msg.ir1 = (coordinate_t){.x = distObjectXlocal(thetahat, servoAngle, sensorDataMM, 0), .y = distObjectYlocal(thetahat, servoAngle, sensorDataMM, 0)};
+            update_msg.ir2 = (coordinate_t){.x = distObjectXlocal(thetahat, servoAngle, sensorDataMM, 1), .y = distObjectYlocal(thetahat, servoAngle, sensorDataMM, 1)};
+            update_msg.ir3 = (coordinate_t){.x = distObjectXlocal(thetahat, servoAngle, sensorDataMM, 2), .y = distObjectYlocal(thetahat, servoAngle, sensorDataMM, 2)};
+            update_msg.ir4 = (coordinate_t){.x = distObjectXlocal(thetahat, servoAngle, sensorDataMM, 3), .y = distObjectYlocal(thetahat, servoAngle, sensorDataMM, 3)};
+            update_msg.valid = 0b00000000;
+            for (int i=0; i<NUM_DIST_SENSORS; i++) {
+              if (sensorDataMM[i] > 0 && sensorDataMM[i] <= IR_MAX_DETECT_DISTANCE_MM) {
+                update_msg.valid |= (1 << ((NUM_DIST_SENSORS-i)-1));
+              }
+            }
+            NRF_LOG_INFO("x:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.xdelta));
+            NRF_LOG_INFO("y:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.ydelta));
+            NRF_LOG_INFO("theta:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.thetadelta));
+            publish("v2/robot/NRF_5/adv", &update_msg, sizeof(update_msg), 0, 0);
+
+
           }
         } else {
 
@@ -178,12 +212,16 @@ void vMainSensorTowerTask(void * pvParameters) {
         servoDirection = moveClockwise;
         if (USE_NEW_SERVER) {
           //sendScanBorder(); // Sends a 1 to the server to indicate that one 90 degree scan is finished
+          NRF_LOG_INFO("Sending scan border message");
+          publish("v2/robot/NRF_5/adv", &scan_msg, sizeof(scan_msg), 0, 0);
         }
 
       } else if ((servoAngle <= 0) && (servoDirection == moveClockwise)) {
         servoDirection = moveCounterClockwise;
         if (USE_NEW_SERVER) {
           //sendScanBorder(); // Sends a 1 to the server to indicate that one 90 degree scan is starting
+          NRF_LOG_INFO("Sending scan border message");
+          publish("v2/robot/NRF_5/adv", &scan_msg, sizeof(scan_msg), 0, 0);
         }
 
       }

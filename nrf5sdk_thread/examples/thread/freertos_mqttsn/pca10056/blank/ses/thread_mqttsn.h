@@ -75,8 +75,6 @@ void mqttsn_task(void * arg);
 
 uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
 
-uint32_t publish_scan_border(char* topic_name);
-
 uint8_t mqttsn_client_is_connected(void);
 
 QueueHandle_t get_queue_handle(char* topic_name);

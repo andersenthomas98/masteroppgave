@@ -1,0 +1,1904 @@
+[17:56:52] info: 18_Feb_2022_17.56
+[17:56:52] info: MQTT connection respone successfull
+[17:56:52] info: Subsribe response v2/server/simulated/cmd
+[17:56:52] info: Subsribe response v2/server/simulated/cmd
+[17:56:56] info: Init pose selected: 0, 0, 0
+[17:56:56] info: x: 0, y: 0, theta: 0
+[17:56:56] info: x: 0, y: 0, theta: 0
+[17:56:56] info: x: 0, y: 0, theta: 0
+[17:56:56] info: x: 0, y: 0, theta: 0
+[17:56:56] info: x: 0, y: 0, theta: 0
+[17:56:56] info: x: 0, y: 0, theta: 0
+[17:56:56] info: Odom        : x:          0, y:          0, theta:          0
+[17:56:56] info: New position: x:  0.0001969, y: -2.241e-07, theta:    -0.0345 weight:   1
+[17:56:56] info: New position: x:  0.0001969, y: -2.241e-07, theta:    -0.0345 weight:   1
+[17:56:56] info: New position: x: -0.0007287, y: -2.053e-07, theta:   -0.08263 weight:   1
+[17:56:56] info: New position: x: -0.0007287, y: -2.053e-07, theta:   -0.08263 weight:   1
+[17:56:56] info: New position: x:  0.0008153, y:  7.855e-07, theta:    0.00944 weight:   1
+[17:56:56] info: New position: x:  0.0008153, y:  7.855e-07, theta:    0.00944 weight:   1
+[17:56:56] info: New position: x: -0.0008392, y: -1.425e-06, theta:    0.06262 weight:   1
+[17:56:56] info: New position: x: -0.0008392, y: -1.425e-06, theta:    0.06262 weight:   1
+[17:56:56] info: New position: x:  7.835e-05, y: -3.363e-08, theta:    -0.0343 weight:   1
+[17:56:56] info: New position: x:  7.835e-05, y: -3.363e-08, theta:    -0.0343 weight:   1
+[17:56:56] info: New position: x:   0.000651, y:  1.455e-07, theta:    0.03067 weight:   1
+[17:56:56] info: New position: x:   0.000651, y:  1.455e-07, theta:    0.03067 weight:   1
+[17:56:56] info: New position: x: -0.0009638, y:  1.962e-06, theta:    -0.1113 weight:   1
+[17:56:56] info: New position: x: -0.0009638, y:  1.962e-06, theta:    -0.1113 weight:   1
+[17:56:56] info: New position: x:  -0.001821, y: -4.042e-07, theta:    0.03964 weight:   1
+[17:56:56] info: New position: x:  -0.001821, y: -4.042e-07, theta:    0.03964 weight:   1
+[17:56:56] info: New position: x:  0.0006132, y: -3.168e-07, theta:   -0.07475 weight:   1
+[17:56:56] info: New position: x:  0.0006132, y: -3.168e-07, theta:   -0.07475 weight:   1
+[17:56:56] info: New position: x:  -0.001058, y: -1.615e-06, theta:     0.1125 weight:   1
+[17:56:56] info: New position: x:  -0.001058, y: -1.615e-06, theta:     0.1125 weight:   1
+[17:56:56] info: New position: x: -0.0009512, y: -6.922e-08, theta:  -0.006914 weight:   1
+[17:56:56] info: New position: x: -0.0009512, y: -6.922e-08, theta:  -0.006914 weight:   1
+[17:56:56] info: New position: x:    0.00137, y:  1.494e-06, theta:    0.03394 weight:   1
+[17:56:56] info: New position: x:    0.00137, y:  1.494e-06, theta:    0.03394 weight:   1
+[17:56:56] info: New position: x: -0.0003854, y: -5.874e-07, theta:    0.07464 weight:   1
+[17:56:56] info: New position: x: -0.0003854, y: -5.874e-07, theta:    0.07464 weight:   1
+[17:56:56] info: New position: x: -0.0004811, y:  1.579e-07, theta:    -0.0679 weight:   1
+[17:56:56] info: New position: x: -0.0004811, y:  1.579e-07, theta:    -0.0679 weight:   1
+[17:56:56] info: New position: x:  0.0006064, y: -5.434e-07, theta:   -0.08317 weight:   1
+[17:56:56] info: New position: x:  0.0006064, y: -5.434e-07, theta:   -0.08317 weight:   1
+[17:56:56] info: New position: x:  -0.000871, y:  1.879e-07, theta:    0.07877 weight:   1
+[17:56:56] info: New position: x:  -0.000871, y:  1.879e-07, theta:    0.07877 weight:   1
+[17:56:56] info: New position: x: -0.0009821, y:   3.55e-07, theta:  -0.002084 weight:   1
+[17:56:56] info: New position: x: -0.0009821, y:   3.55e-07, theta:  -0.002084 weight:   1
+[17:56:56] info: New position: x: -0.0001307, y:  1.078e-07, theta:    0.09673 weight:   1
+[17:56:56] info: New position: x: -0.0001307, y:  1.078e-07, theta:    0.09673 weight:   1
+[17:56:56] info: New position: x: -0.0002605, y:  2.977e-07, theta:   -0.04046 weight:   1
+[17:56:56] info: New position: x: -0.0002605, y:  2.977e-07, theta:   -0.04046 weight:   1
+[17:56:56] info: New position: x:  7.198e-05, y:  5.005e-08, theta:     0.1051 weight:   1
+[17:56:56] info: New position: x:  7.198e-05, y:  5.005e-08, theta:     0.1051 weight:   1
+[17:56:56] info: New position: x:  -0.001017, y: -2.008e-06, theta:    0.09066 weight:   1
+[17:56:56] info: New position: x:  -0.001017, y: -2.008e-06, theta:    0.09066 weight:   1
+[17:56:56] info: New position: x:    0.00202, y:   2.42e-06, theta:    0.07866 weight:   1
+[17:56:56] info: New position: x:    0.00202, y:   2.42e-06, theta:    0.07866 weight:   1
+[17:56:56] info: New position: x:  0.0004909, y:  7.489e-07, theta:     0.1243 weight:   1
+[17:56:56] info: New position: x:  0.0004909, y:  7.489e-07, theta:     0.1243 weight:   1
+[17:56:56] info: New position: x:   0.001005, y: -6.617e-07, theta:    -0.1054 weight:   1
+[17:56:56] info: New position: x:   0.001005, y: -6.617e-07, theta:    -0.1054 weight:   1
+[17:56:56] info: New position: x:  0.0006139, y:  6.568e-08, theta:   0.009945 weight:   1
+[17:56:56] info: New position: x:  0.0006139, y:  6.568e-08, theta:   0.009945 weight:   1
+[17:56:56] info: New position: x:  -0.002373, y: -7.187e-07, theta:    0.05575 weight:   1
+[17:56:56] info: New position: x:  -0.002373, y: -7.187e-07, theta:    0.05575 weight:   1
+[17:56:56] info: New position: x:  0.0002833, y:  1.224e-07, theta:    0.03616 weight:   1
+[17:56:56] info: New position: x:  0.0002833, y:  1.224e-07, theta:    0.03616 weight:   1
+[17:56:56] info: New position: x:  0.0003678, y:  2.836e-07, theta:      0.104 weight:   1
+[17:56:56] info: New position: x:  0.0003678, y:  2.836e-07, theta:      0.104 weight:   1
+[17:56:57] info: New position: x:  -0.001342, y: -1.938e-06, theta:    0.07699 weight:   1
+[17:56:57] info: New position: x:  -0.001342, y: -1.938e-06, theta:    0.07699 weight:   1
+[17:56:57] info: New position: x:   0.001277, y: -7.028e-07, theta:   -0.07382 weight:   1
+[17:56:57] info: New position: x:   0.001277, y: -7.028e-07, theta:   -0.07382 weight:   1
+[17:56:57] info: New mean pose: x: -0.0001248, y: -7.565e-08, theta:    0.01677
+[17:56:57] info: Average raster array size: 0
+[17:56:57] info: Time of update: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: Got a request to publish to: v2/server/NRF_5/init
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:57] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:58] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:56:59] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:00] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:01] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:02] info: x: 0, y: 0, theta: 0
+[17:57:03] info: x: 0, y: 0, theta: 0
+[17:57:03] info: x: 0, y: 0, theta: 0
+[17:57:03] info: x: 0, y: 0, theta: 0
+[17:57:03] info: x: 0, y: 0, theta: 0
+[17:57:03] info: Odom        : x:          0, y:          0, theta:          0
+[17:57:03] info: New position: x:   0.001183, y: -1.166e-06, theta:    -0.1137 weight:  16
+[17:57:03] info: New position: x:   0.001183, y: -1.166e-06, theta:    -0.1137 weight:  16
+[17:57:03] info: New position: x: -0.0001617, y:  -4.62e-07, theta:    -0.1806 weight:  16
+[17:57:03] info: New position: x: -0.0001617, y:  -4.62e-07, theta:    -0.1806 weight:  16
+[17:57:03] info: New position: x:   0.001013, y:  9.329e-07, theta:   -0.03538 weight:  16
+[17:57:03] info: New position: x:   0.001013, y:  9.329e-07, theta:   -0.03538 weight:  16
+[17:57:03] info: New position: x: -8.809e-05, y: -1.193e-06, theta:    0.05006 weight:  15
+[17:57:03] info: New position: x: -8.809e-05, y: -1.193e-06, theta:    0.05006 weight:  15
+[17:57:03] info: New position: x:  -0.002118, y:  2.353e-07, theta:    -0.0392 weight:  16
+[17:57:03] info: New position: x:  -0.002118, y:  2.353e-07, theta:    -0.0392 weight:  16
+[17:57:03] info: New position: x: -0.0005312, y:  2.709e-07, theta:   0.003829 weight:  15
+[17:57:03] info: New position: x: -0.0005312, y:  2.709e-07, theta:   0.003829 weight:  15
+[17:57:03] info: New position: x:  0.0003244, y:  6.883e-06, theta:     0.1634 weight:  14
+[17:57:03] info: New position: x:  0.0003244, y:  6.883e-06, theta:     0.1634 weight:  14
+[17:57:03] info: New position: x:  -0.003522, y:  -1.52e-06, theta:    0.05271 weight:  15
+[17:57:03] info: New position: x:  -0.003522, y:  -1.52e-06, theta:    0.05271 weight:  15
+[17:57:03] info: New position: x:   0.001911, y: -1.985e-06, theta:   -0.01329 weight:  16
+[17:57:03] info: New position: x:   0.001911, y: -1.985e-06, theta:   -0.01329 weight:  16
+[17:57:03] info: New position: x:  -0.001893, y: -2.123e-06, theta:     0.1399 weight:  15
+[17:57:03] info: New position: x:  -0.001893, y: -2.123e-06, theta:     0.1399 weight:  15
+[17:57:03] info: New position: x:  -0.001087, y: -2.118e-07, theta:    0.09071 weight:  14
+[17:57:03] info: New position: x:  -0.001087, y: -2.118e-07, theta:    0.09071 weight:  14
+[17:57:03] info: New position: x:   0.001474, y:  1.483e-06, theta:   -0.03282 weight:  16
+[17:57:03] info: New position: x:   0.001474, y:  1.483e-06, theta:   -0.03282 weight:  16
+[17:57:03] info: New position: x:   0.002568, y: -1.634e-06, theta:    0.07609 weight:  15
+[17:57:03] info: New position: x:   0.002568, y: -1.634e-06, theta:    0.07609 weight:  15
+[17:57:03] info: New position: x:  -0.001717, y: -9.866e-07, theta:  -0.004029 weight:  16
+[17:57:03] info: New position: x:  -0.001717, y: -9.866e-07, theta:  -0.004029 weight:  16
+[17:57:03] info: New position: x:   0.003121, y: -1.756e-06, theta:     -0.209 weight:  16
+[17:57:03] info: New position: x:   0.003121, y: -1.756e-06, theta:     -0.209 weight:  16
+[17:57:03] info: New position: x:  0.0005778, y:  1.506e-07, theta:    0.08455 weight:  15
+[17:57:03] info: New position: x:  0.0005778, y:  1.506e-07, theta:    0.08455 weight:  15
+[17:57:03] info: New position: x: -0.0008096, y:  3.837e-07, theta:   -0.02238 weight:  16
+[17:57:03] info: New position: x: -0.0008096, y:  3.837e-07, theta:   -0.02238 weight:  16
+[17:57:03] info: New position: x: -0.0003793, y:  -2.45e-07, theta:     0.1272 weight:  15
+[17:57:03] info: New position: x: -0.0003793, y:  -2.45e-07, theta:     0.1272 weight:  15
+[17:57:03] info: New position: x:  -0.001129, y:    1.6e-06, theta:    -0.1293 weight:  16
+[17:57:03] info: New position: x:  -0.001129, y:    1.6e-06, theta:    -0.1293 weight:  16
+[17:57:03] info: New position: x:  -0.001516, y:   3.13e-06, theta:    0.04517 weight:  14
+[17:57:03] info: New position: x:  -0.001516, y:   3.13e-06, theta:    0.04517 weight:  14
+[17:57:03] info: New position: x:  -0.001898, y:  4.223e-08, theta:     0.0306 weight:  14
+[17:57:03] info: New position: x:  -0.001898, y:  4.223e-08, theta:     0.0306 weight:  14
+[17:57:03] info: New position: x:   0.002506, y:  1.942e-06, theta:    0.05279 weight:  15
+[17:57:03] info: New position: x:   0.002506, y:  1.942e-06, theta:    0.05279 weight:  15
+[17:57:03] info: New position: x:   0.002096, y:  1.368e-06, theta:     0.2215 weight:  14
+[17:57:03] info: New position: x:   0.002096, y:  1.368e-06, theta:     0.2215 weight:  14
+[17:57:03] info: New position: x:  -0.002664, y: -5.948e-06, theta:    0.01577 weight:  15
+[17:57:03] info: New position: x:  -0.002664, y: -5.948e-06, theta:    0.01577 weight:  15
+[17:57:03] info: New position: x:   0.001219, y: -5.585e-07, theta:    0.02614 weight:  15
+[17:57:03] info: New position: x:   0.001219, y: -5.585e-07, theta:    0.02614 weight:  15
+[17:57:03] info: New position: x:  0.0004784, y:  1.323e-06, theta:    0.07806 weight:  15
+[17:57:03] info: New position: x:  0.0004784, y:  1.323e-06, theta:    0.07806 weight:  15
+[17:57:04] info: New position: x:  -0.001945, y:  1.392e-06, theta:     0.1008 weight:  14
+[17:57:04] info: New position: x:  -0.001945, y:  1.392e-06, theta:     0.1008 weight:  14
+[17:57:04] info: New position: x:  -0.001311, y:  7.596e-07, theta:    0.06565 weight:  14
+[17:57:04] info: New position: x:  -0.001311, y:  7.596e-07, theta:    0.06565 weight:  14
+[17:57:04] info: New position: x:  -0.001346, y: -1.937e-06, theta:   -0.03224 weight:  16
+[17:57:04] info: New position: x:  -0.001346, y: -1.937e-06, theta:   -0.03224 weight:  16
+[17:57:04] info: New position: x: -0.0009348, y:  5.111e-07, theta:   0.001337 weight:  15
+[17:57:04] info: New position: x: -0.0009348, y:  5.111e-07, theta:   0.001337 weight:  15
+[17:57:04] info: New mean pose: x: -0.0002193, y:  2.271e-08, theta:    0.02048
+[17:57:04] info: Average raster array size: 3
+[17:57:04] info: Time of update: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:04] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:05] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:06] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:07] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:08] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:09] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:10] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:11] info: x: 0, y: 0, theta: 0
+[17:57:12] info: x: 0, y: 0, theta: 0
+[17:57:12] info: x: 0, y: 0, theta: 0
+[17:57:12] info: x: 0, y: 0, theta: 0
+[17:57:12] info: Odom        : x:          0, y:          0, theta:          0
+[17:57:12] info: New position: x: -4.308e-05, y: -2.497e-06, theta:    -0.1753 weight:  2208
+[17:57:12] info: New position: x: -4.308e-05, y: -2.497e-06, theta:    -0.1753 weight:  2208
+[17:57:12] info: New position: x:    0.00105, y:  9.454e-07, theta:   0.009697 weight:  2128
+[17:57:12] info: New position: x:    0.00105, y:  9.454e-07, theta:   0.009697 weight:  2128
+[17:57:12] info: New position: x: -0.0002119, y:  4.266e-07, theta:   -0.04506 weight:  2256
+[17:57:12] info: New position: x: -0.0002119, y:  4.266e-07, theta:   -0.04506 weight:  2256
+[17:57:12] info: New position: x: -0.0008875, y: -2.588e-07, theta:   -0.00938 weight:  2070
+[17:57:12] info: New position: x: -0.0008875, y: -2.588e-07, theta:   -0.00938 weight:  2070
+[17:57:12] info: New position: x:  -0.001699, y:  2.884e-07, theta:   -0.05205 weight:  2224
+[17:57:12] info: New position: x:  -0.001699, y:  2.884e-07, theta:   -0.05205 weight:  2224
+[17:57:12] info: New position: x: -0.0007334, y:  4.665e-08, theta:    0.03497 weight:  2130
+[17:57:12] info: New position: x: -0.0007334, y:  4.665e-08, theta:    0.03497 weight:  2130
+[17:57:12] info: New position: x:  -0.003494, y: -9.117e-07, theta:     0.3081 weight:  1960
+[17:57:12] info: New position: x:  -0.003494, y: -9.117e-07, theta:     0.3081 weight:  1960
+[17:57:12] info: New position: x:  -0.002316, y: -1.631e-06, theta:     0.1063 weight:  2100
+[17:57:12] info: New position: x:  -0.002316, y: -1.631e-06, theta:     0.1063 weight:  2100
+[17:57:12] info: New position: x:   0.002177, y: -2.321e-06, theta:     0.0126 weight:  2128
+[17:57:12] info: New position: x:   0.002177, y: -2.321e-06, theta:     0.0126 weight:  2128
+[17:57:12] info: New position: x: -0.0007495, y: -6.518e-07, theta:     0.2664 weight:  2070
+[17:57:12] info: New position: x: -0.0007495, y: -6.518e-07, theta:     0.2664 weight:  2070
+[17:57:12] info: New position: x:  -0.001247, y: -6.518e-07, theta:     0.1404 weight:  1960
+[17:57:12] info: New position: x:  -0.001247, y: -6.518e-07, theta:     0.1404 weight:  1960
+[17:57:12] info: New position: x:   0.001596, y:   1.72e-06, theta:     0.1027 weight:  2160
+[17:57:12] info: New position: x:   0.001596, y:   1.72e-06, theta:     0.1027 weight:  2160
+[17:57:12] info: New position: x:   0.003293, y: -3.684e-06, theta:    -0.1468 weight:  2070
+[17:57:12] info: New position: x:   0.003293, y: -3.684e-06, theta:    -0.1468 weight:  2070
+[17:57:12] info: New position: x:  -0.002268, y: -6.524e-07, theta:    0.03357 weight:  2128
+[17:57:12] info: New position: x:  -0.002268, y: -6.524e-07, theta:    0.03357 weight:  2128
+[17:57:12] info: New position: x:   0.004083, y: -2.332e-06, theta:    -0.1351 weight:  2160
+[17:57:12] info: New position: x:   0.004083, y: -2.332e-06, theta:    -0.1351 weight:  2160
+[17:57:12] info: New position: x:   -0.00227, y: -1.001e-06, theta:     0.1369 weight:  2115
+[17:57:12] info: New position: x:   -0.00227, y: -1.001e-06, theta:     0.1369 weight:  2115
+[17:57:12] info: New position: x:  -0.001287, y:  4.027e-07, theta:   -0.08131 weight:  2224
+[17:57:12] info: New position: x:  -0.001287, y:  4.027e-07, theta:   -0.08131 weight:  2224
+[17:57:12] info: New position: x:  -0.001203, y: -1.902e-06, theta:     0.2024 weight:  2070
+[17:57:12] info: New position: x:  -0.001203, y: -1.902e-06, theta:     0.2024 weight:  2070
+[17:57:13] info: New position: x:  -0.000786, y:  1.687e-06, theta:   -0.03916 weight:  2192
+[17:57:13] info: New position: x:  -0.000786, y:  1.687e-06, theta:   -0.03916 weight:  2192
+[17:57:13] info: New position: x: -0.0007381, y:  3.125e-06, theta:   -0.04348 weight:  1918
+[17:57:13] info: New position: x: -0.0007381, y:  3.125e-06, theta:   -0.04348 weight:  1918
+[17:57:13] info: New position: x:  -0.002472, y:  2.341e-07, theta:   -0.04087 weight:  1932
+[17:57:13] info: New position: x:  -0.002472, y:  2.341e-07, theta:   -0.04087 weight:  1932
+[17:57:13] info: New position: x:   0.003856, y:  2.448e-06, theta:     0.1625 weight:  2115
+[17:57:13] info: New position: x:   0.003856, y:  2.448e-06, theta:     0.1625 weight:  2115
+[17:57:13] info: New position: x:  -0.000645, y:  -3.86e-06, theta:     0.0364 weight:  1960
+[17:57:13] info: New position: x:  -0.000645, y:  -3.86e-06, theta:     0.0364 weight:  1960
+[17:57:13] info: New position: x:  -0.001413, y: -4.251e-06, theta:     0.1059 weight:  2070
+[17:57:13] info: New position: x:  -0.001413, y: -4.251e-06, theta:     0.1059 weight:  2070
+[17:57:13] info: New position: x:   0.002021, y: -1.276e-06, theta:   -0.02849 weight:  2070
+[17:57:13] info: New position: x:   0.002021, y: -1.276e-06, theta:   -0.02849 weight:  2070
+[17:57:13] info: New position: x: -0.0005529, y:  1.556e-06, theta:     0.1346 weight:  2115
+[17:57:13] info: New position: x: -0.0005529, y:  1.556e-06, theta:     0.1346 weight:  2115
+[17:57:13] info: New position: x:   0.000357, y:  3.274e-06, theta:     0.1435 weight:  2002
+[17:57:13] info: New position: x:   0.000357, y:  3.274e-06, theta:     0.1435 weight:  2002
+[17:57:13] info: New position: x:  -0.002528, y:   2.08e-06, theta:   -0.02708 weight:  1918
+[17:57:13] info: New position: x:  -0.002528, y:   2.08e-06, theta:   -0.02708 weight:  1918
+[17:57:13] info: New position: x:  -0.001955, y: -1.653e-06, theta:  -0.009644 weight:  2256
+[17:57:13] info: New position: x:  -0.001955, y: -1.653e-06, theta:  -0.009644 weight:  2256
+[17:57:13] info: New position: x:  -0.001389, y:  5.901e-07, theta:   -0.08679 weight:  2040
+[17:57:13] info: New position: x:  -0.001389, y:  5.901e-07, theta:   -0.08679 weight:  2040
+[17:57:13] info: New mean pose: x: -0.0004152, y:  -3.57e-07, theta:    0.03388
+[17:57:13] info: Average raster array size: 4
+[17:57:13] info: Time of update: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:14] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:15] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:16] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:17] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:18] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:19] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:20] info: x: 0, y: 0, theta: 0
+[17:57:21] info: x: 0, y: 0, theta: 0
+[17:57:21] info: x: 0, y: 0, theta: 0
+[17:57:21] info: Odom        : x:          0, y:          0, theta:          0
+[17:57:21] info: New position: x:  -0.001101, y: -2.596e-06, theta:    -0.2711 weight:  430560
+[17:57:21] info: New position: x:  -0.001101, y: -2.596e-06, theta:    -0.2711 weight:  430560
+[17:57:21] info: New position: x:   0.002054, y:  1.135e-06, theta:    0.03095 weight:  410704
+[17:57:21] info: New position: x:   0.002054, y:  1.135e-06, theta:    0.03095 weight:  410704
+[17:57:21] info: New position: x:   0.000792, y: -1.197e-07, theta:    0.03485 weight:  421872
+[17:57:21] info: New position: x:   0.000792, y: -1.197e-07, theta:    0.03485 weight:  421872
+[17:57:21] info: Outbox next point, x: 0 y: 0
+[17:57:21] info: New position: x:  -0.001762, y: -5.727e-07, theta:     0.0632 weight:  401580
+[17:57:21] info: New position: x:  -0.001762, y: -5.727e-07, theta:     0.0632 weight:  401580
+[17:57:21] info: New position: x:  -0.002963, y:  -1.74e-07, theta:   -0.02993 weight:  451472
+[17:57:21] info: New position: x:  -0.002963, y:  -1.74e-07, theta:   -0.02993 weight:  451472
+[17:57:21] info: New position: x: -0.0001251, y:  1.082e-07, theta:    0.04674 weight:  415350
+[17:57:21] info: New position: x: -0.0001251, y:  1.082e-07, theta:    0.04674 weight:  415350
+[17:57:21] info: New position: x:  -0.007064, y: -7.035e-06, theta:     0.7279 weight:  392000
+[17:57:21] info: New position: x:  -0.007064, y: -7.035e-06, theta:     0.7279 weight:  392000
+[17:57:21] info: New position: x:  -0.004047, y:  -2.77e-06, theta:     0.1763 weight:  401100
+[17:57:21] info: New position: x:  -0.004047, y:  -2.77e-06, theta:     0.1763 weight:  401100
+[17:57:21] info: New position: x:   0.002425, y: -1.956e-06, theta:    0.07845 weight:  408576
+[17:57:21] info: New position: x:   0.002425, y: -1.956e-06, theta:    0.07845 weight:  408576
+[17:57:21] info: New position: x: -0.0005805, y: -5.676e-07, theta:     0.3291 weight:  397440
+[17:57:21] info: New position: x: -0.0005805, y: -5.676e-07, theta:     0.3291 weight:  397440
+[17:57:21] info: New position: x:  -0.001704, y: -1.602e-06, theta:     0.2159 weight:  374360
+[17:57:21] info: New position: x:  -0.001704, y: -1.602e-06, theta:     0.2159 weight:  374360
+[17:57:21] info: New position: x:   0.001619, y:  1.715e-06, theta:      0.104 weight:  410400
+[17:57:21] info: New position: x:   0.001619, y:  1.715e-06, theta:      0.104 weight:  410400
+[17:57:21] info: New position: x:   0.002705, y:  -4.06e-06, theta:    -0.1231 weight:  414000
+[17:57:21] info: New position: x:   0.002705, y:  -4.06e-06, theta:    -0.1231 weight:  414000
+[17:57:21] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:21] info: New position: x:  -0.003489, y: -2.384e-06, theta:     0.1187 weight:  406448
+[17:57:21] info: New position: x:  -0.003489, y: -2.384e-06, theta:     0.1187 weight:  406448
+[17:57:22] info: Outbox next point, x: 0 y: 0
+[17:57:22] info: New position: x:   0.002274, y: -6.564e-06, theta:   -0.03112 weight:  438480
+[17:57:22] info: New position: x:   0.002274, y: -6.564e-06, theta:   -0.03112 weight:  438480
+[17:57:22] info: New position: x: -0.0008875, y:  8.701e-07, theta:     0.3182 weight:  395505
+[17:57:22] info: New position: x: -0.0008875, y:  8.701e-07, theta:     0.3182 weight:  395505
+[17:57:22] info: New position: x:   0.003491, y:  9.686e-06, theta:      0.115 weight:  413664
+[17:57:22] info: New position: x:   0.003491, y:  9.686e-06, theta:      0.115 weight:  413664
+[17:57:22] info: New position: x:   0.002922, y:  1.207e-05, theta:     0.3452 weight:  391230
+[17:57:22] info: New position: x:   0.002922, y:  1.207e-05, theta:     0.3452 weight:  391230
+[17:57:22] info: New position: x:  -0.001572, y:  1.938e-06, theta:   -0.05632 weight:  442784
+[17:57:22] info: New position: x:  -0.001572, y:  1.938e-06, theta:   -0.05632 weight:  442784
+[17:57:22] info: New position: x:  -0.001761, y:  3.553e-06, theta:     0.0837 weight:  374010
+[17:57:22] info: New position: x:  -0.001761, y:  3.553e-06, theta:     0.0837 weight:  374010
+[17:57:22] info: New position: x:  -0.004347, y:  6.582e-07, theta:   -0.09121 weight:  394128
+[17:57:22] info: New position: x:  -0.004347, y:  6.582e-07, theta:   -0.09121 weight:  394128
+[17:57:22] info: New position: x:   0.002351, y: -6.681e-07, theta:     0.1513 weight:  408195
+[17:57:22] info: New position: x:   0.002351, y: -6.681e-07, theta:     0.1513 weight:  408195
+[17:57:22] info: New position: x: -0.0001621, y: -4.484e-06, theta:    -0.1158 weight:  392000
+[17:57:22] info: New position: x: -0.0001621, y: -4.484e-06, theta:    -0.1158 weight:  392000
+[17:57:22] info: New position: x:    -0.0036, y: -7.092e-06, theta:     0.2539 weight:  395370
+[17:57:22] info: New position: x:    -0.0036, y: -7.092e-06, theta:     0.2539 weight:  395370
+[17:57:22] info: New position: x: -0.0002711, y:  4.026e-06, theta:    -0.2178 weight:  416070
+[17:57:22] info: New position: x: -0.0002711, y:  4.026e-06, theta:    -0.2178 weight:  416070
+[17:57:22] info: New position: x:  -0.002119, y:  1.472e-06, theta:     0.2808 weight:  397620
+[17:57:22] info: Outbox next point, x: 0 y: 0
+[17:57:22] info: New position: x:  -0.002119, y:  1.472e-06, theta:     0.2808 weight:  397620
+[17:57:22] info: New position: x: -0.0007348, y:  1.602e-06, theta:     0.3467 weight:  376376
+[17:57:22] info: New position: x: -0.0007348, y:  1.602e-06, theta:     0.3467 weight:  376376
+[17:57:22] info: New position: x:   -0.00173, y:  4.197e-07, theta:    -0.1652 weight:  387436
+[17:57:22] info: New position: x:   -0.00173, y:  4.197e-07, theta:    -0.1652 weight:  387436
+[17:57:22] info: New position: x:  -0.003124, y: -9.219e-07, theta:   -0.06946 weight:  457968
+[17:57:22] info: New position: x:  -0.003124, y: -9.219e-07, theta:   -0.06946 weight:  457968
+[17:57:22] info: New position: x:  -0.001489, y:  5.372e-07, theta:    0.02141 weight:  395760
+[17:57:22] info: New position: x:  -0.001489, y:  5.372e-07, theta:    0.02141 weight:  395760
+[17:57:22] info: New mean pose: x:    -0.0008, y: -1.259e-07, theta:    0.08904
+[17:57:22] info: Average raster array size: 6
+[17:57:22] info: Time of update: 0
+[17:57:22] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:23] info: Outbox next point, x: 0 y: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:23] info: Outbox next point, x: 0 y: 0
+[17:57:23] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:23] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: Outbox next point, x: 0 y: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: x: 0, y: 0, theta: 0
+[17:57:24] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: Outbox next point, x: 0 y: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: Outbox next point, x: -190 y: 230
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:25] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:25] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: Outbox next point, x: 0 y: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:26] info: Outbox next point, x: 0 y: 0
+[17:57:26] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:26] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: Outbox next point, x: 0 y: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:27] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:27] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: Outbox next point, x: 0 y: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: Outbox next point, x: 0 y: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: x: 0, y: 0, theta: 0
+[17:57:28] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:29] info: x: 0, y: 0, theta: 0
+[17:57:29] info: x: 0, y: 0, theta: 3
+[17:57:29] info: x: 0, y: 0, theta: 17
+[17:57:29] info: x: 0, y: 0, theta: 51
+[17:57:29] info: Outbox next point, x: 0 y: 0
+[17:57:29] info: x: 0, y: 0, theta: 98
+[17:57:29] info: x: 0, y: 0, theta: 166
+[17:57:29] info: x: 0, y: 0, theta: 248
+[17:57:29] info: x: 0, y: 0, theta: 350
+[17:57:29] info: x: 0, y: 0, theta: 466
+[17:57:29] info: x: 0, y: 0, theta: 597
+[17:57:29] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:29] info: Outbox next point, x: 0 y: 0
+[17:57:30] info: x: 0, y: 0, theta: 731
+[17:57:30] info: x: 0, y: 0, theta: 865
+[17:57:30] info: x: 0, y: 0, theta: 999
+[17:57:30] info: x: 0, y: 0, theta: 1133
+[17:57:30] info: x: 0, y: 0, theta: 1267
+[17:57:30] info: x: 0, y: 0, theta: 1401
+[17:57:30] info: Outbox next point, x: 0 y: 0
+[17:57:30] info: x: 0, y: 0, theta: 1535
+[17:57:30] info: x: 0, y: 0, theta: 1669
+[17:57:30] info: x: 0, y: 0, theta: 1803
+[17:57:30] info: x: 0, y: 0, theta: 1937
+[17:57:30] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:31] info: x: 0, y: 0, theta: 2071
+[17:57:31] info: Odom        : x:          0, y:          0, theta:       2071
+[17:57:31] info: New position: x:     0.2362, y:  0.0003176, theta:       2060 weight:  1.33474e+07
+[17:57:31] info: New position: x:     0.2362, y:  0.0003176, theta:       2060 weight:  1.33474e+07
+[17:57:31] info: New position: x:    -0.2306, y:  0.0003262, theta:       2078 weight:  1.31425e+07
+[17:57:31] info: New position: x:    -0.2306, y:  0.0003262, theta:       2078 weight:  1.31425e+07
+[17:57:31] info: Outbox next point, x: 0 y: 0
+[17:57:31] info: New position: x:     0.1731, y: -0.0001274, theta:       2076 weight:  1.34999e+07
+[17:57:31] info: New position: x:     0.1731, y: -0.0001274, theta:       2076 weight:  1.34999e+07
+[17:57:31] info: New position: x:    0.04102, y:  5.928e-05, theta:       2067 weight:  1.08427e+07
+[17:57:31] info: New position: x:    0.04102, y:  5.928e-05, theta:       2067 weight:  1.08427e+07
+[17:57:31] info: New position: x:   -0.05119, y:   5.06e-05, theta:       2068 weight:  1.08353e+07
+[17:57:31] info: New position: x:   -0.05119, y:   5.06e-05, theta:       2068 weight:  1.08353e+07
+[17:57:31] info: New position: x:   -0.06404, y: -4.687e-05, theta:       2064 weight:  1.03838e+07
+[17:57:31] info: New position: x:   -0.06404, y: -4.687e-05, theta:       2064 weight:  1.03838e+07
+[17:57:31] info: New position: x:    0.09459, y: -0.0001576, theta:       2072 weight:  1.0584e+07
+[17:57:31] info: New position: x:    0.09459, y: -0.0001576, theta:       2072 weight:  1.0584e+07
+[17:57:31] info: New position: x:      0.247, y: -9.956e-05, theta:       2074 weight:  1.52418e+07
+[17:57:31] info: New position: x:      0.247, y: -9.956e-05, theta:       2074 weight:  1.52418e+07
+[17:57:31] info: New position: x:    -0.5309, y:   0.001368, theta:       2082 weight:  1.30744e+07
+[17:57:31] info: New position: x:    -0.5309, y:   0.001368, theta:       2082 weight:  1.30744e+07
+[17:57:31] info: New position: x:     0.1393, y: -0.0001855, theta:       2040 weight:  1.19232e+07
+[17:57:31] info: New position: x:     0.1393, y: -0.0001855, theta:       2040 weight:  1.19232e+07
+[17:57:31] info: Outbox next point, x: 0 y: 0
+[17:57:31] info: New position: x:     0.3051, y:  -0.000363, theta:       2061 weight:  9.73336e+06
+[17:57:31] info: New position: x:     0.3051, y:  -0.000363, theta:       2061 weight:  9.73336e+06
+[17:57:31] info: New position: x:   -0.01233, y: -7.634e-06, theta:       2073 weight:  1.19016e+07
+[17:57:31] info: New position: x:   -0.01233, y: -7.634e-06, theta:       2073 weight:  1.19016e+07
+[17:57:31] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:32] info: New position: x:     0.1933, y: -0.0006572, theta:       2049 weight:  1.3662e+07
+[17:57:32] info: New position: x:     0.1933, y: -0.0006572, theta:       2049 weight:  1.3662e+07
+[17:57:32] info: New position: x:    -0.2478, y:   0.000357, theta:       2058 weight:  9.75475e+06
+[17:57:32] info: New position: x:    -0.2478, y:   0.000357, theta:       2058 weight:  9.75475e+06
+[17:57:32] info: New position: x:   -0.08217, y: -0.0001341, theta:       2093 weight:  1.71007e+07
+[17:57:32] info: New position: x:   -0.08217, y: -0.0001341, theta:       2093 weight:  1.71007e+07
+[17:57:32] info: New position: x:     0.2903, y: -0.0008943, theta:       2078 weight:  1.18652e+07
+[17:57:32] info: New position: x:     0.2903, y: -0.0008943, theta:       2078 weight:  1.18652e+07
+[17:57:32] info: New position: x:    0.05222, y: -3.605e-05, theta:       2064 weight:  1.11689e+07
+[17:57:32] info: New position: x:    0.05222, y: -3.605e-05, theta:       2064 weight:  1.11689e+07
+[17:57:32] info: New position: x:    -0.1322, y:  2.883e-05, theta:       2066 weight:  1.0172e+07
+[17:57:32] info: New position: x:    -0.1322, y:  2.883e-05, theta:       2066 weight:  1.0172e+07
+[17:57:32] info: Outbox next point, x: 0 y: 0
+[17:57:32] info: New position: x:    0.01811, y: -1.774e-05, theta:       2063 weight:  1.2398e+07
+[17:57:32] info: New position: x:    0.01811, y: -1.774e-05, theta:       2063 weight:  1.2398e+07
+[17:57:32] info: New position: x:     0.1026, y:  3.849e-05, theta:       2060 weight:  1.08463e+07
+[17:57:32] info: New position: x:     0.1026, y:  3.849e-05, theta:       2060 weight:  1.08463e+07
+[17:57:32] info: New position: x:    -0.1606, y:  3.515e-05, theta:       2082 weight:  1.37945e+07
+[17:57:32] info: New position: x:    -0.1606, y:  3.515e-05, theta:       2082 weight:  1.37945e+07
+[17:57:32] info: New position: x:      0.061, y:  5.503e-05, theta:       2047 weight:  1.06131e+07
+[17:57:32] info: New position: x:      0.061, y:  5.503e-05, theta:       2047 weight:  1.06131e+07
+[17:57:32] info: New position: x:    -0.1086, y:  4.167e-05, theta:       2039 weight:  1.176e+07
+[17:57:32] info: New position: x:    -0.1086, y:  4.167e-05, theta:       2039 weight:  1.176e+07
+[17:57:32] info: New position: x:     0.1533, y:  -0.000327, theta:       2102 weight:  1.66055e+07
+[17:57:32] info: New position: x:     0.1533, y:  -0.000327, theta:       2102 weight:  1.66055e+07
+[17:57:32] info: New position: x:    -0.1543, y: -8.221e-05, theta:       2055 weight:  9.98568e+06
+[17:57:32] info: New position: x:    -0.1543, y: -8.221e-05, theta:       2055 weight:  9.98568e+06
+[17:57:32] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:33] info: New position: x:    0.07715, y:   0.000227, theta:       2068 weight:  9.9405e+06
+[17:57:33] info: New position: x:    0.07715, y:   0.000227, theta:       2068 weight:  9.9405e+06
+[17:57:33] info: Outbox next point, x: 0 y: 0
+[17:57:33] info: New position: x:    -0.2408, y:  0.0009007, theta:       2060 weight:  1.09149e+07
+[17:57:33] info: New position: x:    -0.2408, y:  0.0009007, theta:       2060 weight:  1.09149e+07
+[17:57:33] info: New position: x:    -0.1979, y:  0.0001485, theta:       2060 weight:  1.12356e+07
+[17:57:33] info: New position: x:    -0.1979, y:  0.0001485, theta:       2060 weight:  1.12356e+07
+[17:57:33] info: New position: x:     -0.321, y:   3.67e-05, theta:       2049 weight:  1.4655e+07
+[17:57:33] info: New position: x:     -0.321, y:   3.67e-05, theta:       2049 weight:  1.4655e+07
+[17:57:33] info: New position: x:     0.1904, y:   6.72e-05, theta:       2090 weight:  1.62262e+07
+[17:57:33] info: New position: x:     0.1904, y:   6.72e-05, theta:       2090 weight:  1.62262e+07
+[17:57:33] info: New mean pose: x:  -0.005326, y:  3.072e-05, theta:       2067
+[17:57:33] info: Average raster array size: 5
+[17:57:33] info: Time of update: 0
+[17:57:33] info: Outbox next point, x: 0 y: 0
+[17:57:33] info: x: 0, y: 0, theta: 135
+[17:57:33] info: x: 0, y: 0, theta: 269
+[17:57:33] info: x: 0, y: 0, theta: 403
+[17:57:33] info: x: 0, y: 0, theta: 537
+[17:57:33] info: x: 0, y: 0, theta: 672
+[17:57:33] info: x: 0, y: 0, theta: 807
+[17:57:33] info: x: 0, y: 0, theta: 942
+[17:57:33] info: x: 0, y: 0, theta: 1077
+[17:57:33] info: x: 0, y: 0, theta: 1212
+[17:57:33] info: x: 0, y: 0, theta: 1347
+[17:57:33] info: x: 0, y: 0, theta: 1482
+[17:57:33] info: x: 0, y: 0, theta: 1617
+[17:57:33] info: x: 0, y: 0, theta: 1752
+[17:57:33] info: x: 0, y: 0, theta: 1887
+[17:57:33] info: x: 0, y: 0, theta: 2022
+[17:57:33] info: x: 0, y: 0, theta: 2157
+[17:57:33] info: x: 0, y: 0, theta: 2292
+[17:57:33] info: x: 0, y: 0, theta: 2427
+[17:57:33] info: x: 0, y: 0, theta: 2562
+[17:57:33] info: x: 0, y: 0, theta: 2697
+[17:57:33] info: x: 0, y: 0, theta: 2832
+[17:57:33] info: x: 0, y: 0, theta: 2967
+[17:57:33] info: x: 0, y: 0, theta: 3102
+[17:57:33] info: x: 0, y: 0, theta: 3237
+[17:57:33] info: x: 0, y: 0, theta: 3372
+[17:57:33] info: x: 0, y: 0, theta: 3507
+[17:57:33] info: x: 0, y: 0, theta: 3642
+[17:57:33] info: x: 0, y: 0, theta: 3777
+[17:57:33] info: x: 0, y: 0, theta: 3912
+[17:57:33] info: x: 0, y: 0, theta: 4047
+[17:57:34] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:34] info: x: 0, y: 0, theta: 4182
+[17:57:34] info: x: 0, y: 0, theta: 4317
+[17:57:34] info: x: 0, y: 0, theta: 4452
+[17:57:34] info: Outbox next point, x: 0 y: 0
+[17:57:34] info: x: 0, y: 0, theta: 4587
+[17:57:34] info: x: 0, y: 0, theta: 4722
+[17:57:34] info: x: 0, y: 0, theta: 4857
+[17:57:34] info: x: 0, y: 0, theta: 4992
+[17:57:34] info: x: 0, y: 0, theta: 5127
+[17:57:34] info: x: 0, y: 0, theta: 5262
+[17:57:34] info: Outbox next point, x: 0 y: 0
+[17:57:34] info: x: 0, y: 0, theta: 5397
+[17:57:35] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:35] info: x: 0, y: 0, theta: 5532
+[17:57:35] info: x: 0, y: 0, theta: 5667
+[17:57:35] info: x: 0, y: 0, theta: 5802
+[17:57:35] info: x: 0, y: 0, theta: 5937
+[17:57:35] info: x: 0, y: 0, theta: 6072
+[17:57:35] info: Outbox next point, x: 0 y: 0
+[17:57:35] info: x: 0, y: 0, theta: 6207
+[17:57:35] info: x: 0, y: 0, theta: 6342
+[17:57:35] info: x: 0, y: 0, theta: 6477
+[17:57:35] info: x: 0, y: 0, theta: 6612
+[17:57:35] info: x: 0, y: 0, theta: 6747
+[17:57:36] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:36] info: x: 0, y: 0, theta: 6882
+[17:57:36] info: Outbox next point, x: 0 y: 0
+[17:57:36] info: x: 0, y: 0, theta: 7017
+[17:57:36] info: x: 0, y: 0, theta: 7152
+[17:57:36] info: x: 0, y: 0, theta: 7287
+[17:57:36] info: x: 0, y: 0, theta: 7422
+[17:57:36] info: x: 0, y: 0, theta: 7557
+[17:57:36] info: x: 0, y: 0, theta: 7692
+[17:57:36] info: x: 0, y: 0, theta: 7827
+[17:57:36] info: Outbox next point, x: 0 y: 0
+[17:57:36] info: x: 0, y: 0, theta: 7962
+[17:57:36] info: x: 0, y: 0, theta: 8097
+[17:57:37] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:37] info: x: 0, y: 0, theta: 8232
+[17:57:37] info: x: 0, y: 0, theta: 8367
+[17:57:37] info: x: 0, y: 0, theta: 8502
+[17:57:37] info: x: 0, y: 0, theta: 8637
+[17:57:37] info: Outbox next point, x: 0 y: 0
+[17:57:37] info: x: 0, y: 0, theta: 8772
+[17:57:37] info: x: 0, y: 0, theta: 8907
+[17:57:37] info: x: 0, y: 0, theta: 9042
+[17:57:37] info: x: 0, y: 0, theta: 9177
+[17:57:37] info: x: 0, y: 0, theta: 9312
+[17:57:37] info: x: 0, y: 0, theta: 9447
+[17:57:37] info: Outbox next point, x: 0 y: 0
+[17:57:38] info: x: 0, y: 0, theta: 9582
+[17:57:38] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:38] info: x: 0, y: 0, theta: 9717
+[17:57:38] info: x: 0, y: 0, theta: 9852
+[17:57:38] info: x: 0, y: 0, theta: 9987
+[17:57:38] info: x: 0, y: 0, theta: 10122
+[17:57:38] info: x: 0, y: 0, theta: 10257
+[17:57:38] info: Outbox next point, x: 0 y: 0
+[17:57:38] info: x: 0, y: 0, theta: 10392
+[17:57:38] info: x: 0, y: 0, theta: 10527
+[17:57:38] info: x: 0, y: 0, theta: 10662
+[17:57:38] info: x: 0, y: 0, theta: 10797
+[17:57:38] info: x: 0, y: 0, theta: 10932
+[17:57:39] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:39] info: x: 0, y: 0, theta: 11067
+[17:57:39] info: x: 0, y: 0, theta: 11202
+[17:57:39] info: Outbox next point, x: 0 y: 0
+[17:57:39] info: x: 0, y: 0, theta: 11337
+[17:57:39] info: x: 0, y: 0, theta: 11472
+[17:57:39] info: x: 0, y: 0, theta: 11607
+[17:57:39] info: x: 0, y: 0, theta: 11742
+[17:57:39] info: x: 0, y: 0, theta: 11877
+[17:57:39] info: x: 0, y: 0, theta: 12012
+[17:57:39] info: Outbox next point, x: 0 y: 0
+[17:57:39] info: x: 0, y: 0, theta: 12147
+[17:57:39] info: Odom        : x:          0, y:          0, theta:      12147
+[17:57:39] info: New position: x:     0.9567, y:   -0.06441, theta:  1.416e+04 weight:  8.14189e+08
+[17:57:39] info: New position: x:     0.9567, y:   -0.06441, theta:  1.416e+04 weight:  8.14189e+08
+[17:57:40] info: New position: x:    -0.5728, y:   -0.02789, theta:  1.423e+04 weight:  2.62851e+08
+[17:57:40] info: New position: x:    -0.5728, y:   -0.02789, theta:  1.423e+04 weight:  2.62851e+08
+[17:57:40] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:40] info: New position: x:     0.8367, y:   -0.01125, theta:  1.422e+04 weight:  4.58997e+08
+[17:57:40] info: New position: x:     0.8367, y:   -0.01125, theta:  1.422e+04 weight:  4.58997e+08
+[17:57:40] info: New position: x:     0.8106, y:    0.05689, theta:  1.422e+04 weight:  3.79493e+08
+[17:57:40] info: New position: x:     0.8106, y:    0.05689, theta:  1.422e+04 weight:  3.79493e+08
+[17:57:40] info: New position: x:    -0.7213, y:    -0.1492, theta:  1.425e+04 weight:  3.14225e+08
+[17:57:40] info: New position: x:    -0.7213, y:    -0.1492, theta:  1.425e+04 weight:  3.14225e+08
+[17:57:40] info: New position: x:   -0.02739, y:    0.01278, theta:  1.423e+04 weight:  2.69978e+08
+[17:57:40] info: New position: x:   -0.02739, y:    0.01278, theta:  1.423e+04 weight:  2.69978e+08
+[17:57:40] info: New position: x:     0.6197, y:   -0.07049, theta:   1.42e+04 weight:  8.57304e+08
+[17:57:40] info: New position: x:     0.6197, y:   -0.07049, theta:   1.42e+04 weight:  8.57304e+08
+[17:57:40] info: New position: x:    0.06423, y:    0.03861, theta:   1.42e+04 weight:  1.24983e+09
+[17:57:40] info: New position: x:    0.06423, y:    0.03861, theta:   1.42e+04 weight:  1.24983e+09
+[17:57:40] info: New position: x:    -0.1382, y:  -0.005317, theta:  1.426e+04 weight:  2.87638e+08
+[17:57:40] info: New position: x:    -0.1382, y:  -0.005317, theta:  1.426e+04 weight:  2.87638e+08
+[17:57:40] info: New position: x:    0.04073, y: -0.0009496, theta:  1.425e+04 weight:  5.12698e+08
+[17:57:40] info: New position: x:    0.04073, y: -0.0009496, theta:  1.425e+04 weight:  5.12698e+08
+[17:57:40] info: Outbox next point, x: 0 y: 0
+[17:57:40] info: New position: x:     0.8194, y:   -0.03777, theta:  1.419e+04 weight:  1.09014e+09
+[17:57:40] info: New position: x:     0.8194, y:   -0.03777, theta:  1.419e+04 weight:  1.09014e+09
+[17:57:40] info: New position: x:     0.4529, y:    0.02776, theta:  1.427e+04 weight:  3.92753e+08
+[17:57:40] info: New position: x:     0.4529, y:    0.02776, theta:  1.427e+04 weight:  3.92753e+08
+[17:57:40] info: New position: x:     -0.544, y:    -0.1936, theta:  1.421e+04 weight:  6.831e+08
+[17:57:40] info: New position: x:     -0.544, y:    -0.1936, theta:  1.421e+04 weight:  6.831e+08
+[17:57:40] info: New position: x:    0.01706, y:    0.01587, theta:  1.412e+04 weight:  4.48719e+08
+[17:57:40] info: New position: x:    0.01706, y:    0.01587, theta:  1.412e+04 weight:  4.48719e+08
+[17:57:40] info: New position: x:    -0.1573, y:  -0.008571, theta:   1.42e+04 weight:  1.28255e+09
+[17:57:40] info: New position: x:    -0.1573, y:  -0.008571, theta:   1.42e+04 weight:  1.28255e+09
+[17:57:40] info: New position: x:    0.04991, y:    0.04961, theta:  1.422e+04 weight:  3.55954e+08
+[17:57:40] info: New position: x:    0.04991, y:    0.04961, theta:  1.422e+04 weight:  3.55954e+08
+[17:57:40] info: New position: x:    -0.2898, y:    0.03532, theta:  1.419e+04 weight:  1.54131e+09
+[17:57:40] info: New position: x:    -0.2898, y:    0.03532, theta:  1.419e+04 weight:  1.54131e+09
+[17:57:40] info: New position: x:     0.3585, y:     0.1129, theta:  1.426e+04 weight:  3.76363e+08
+[17:57:40] info: New position: x:     0.3585, y:     0.1129, theta:  1.426e+04 weight:  3.76363e+08
+[17:57:40] info: New position: x:    -0.4009, y:    0.07654, theta:  1.419e+04 weight:  1.8101e+09
+[17:57:40] info: New position: x:    -0.4009, y:    0.07654, theta:  1.419e+04 weight:  1.8101e+09
+[17:57:40] info: New position: x:    -0.6598, y:    0.03697, theta:  1.419e+04 weight:  1.54017e+09
+[17:57:40] info: New position: x:    -0.6598, y:    0.03697, theta:  1.419e+04 weight:  1.54017e+09
+[17:57:40] info: New position: x:    -0.4458, y:  -0.005875, theta:  1.426e+04 weight:  2.7589e+08
+[17:57:40] info: New position: x:    -0.4458, y:  -0.005875, theta:  1.426e+04 weight:  2.7589e+08
+[17:57:40] info: New position: x:     0.8174, y:   -0.07637, theta:   1.42e+04 weight:  8.59659e+08
+[17:57:40] info: New position: x:     0.8174, y:   -0.07637, theta:   1.42e+04 weight:  8.59659e+08
+[17:57:40] info: New position: x:      1.341, y:   -0.09467, theta:  1.418e+04 weight:  1.49352e+09
+[17:57:40] info: New position: x:      1.341, y:   -0.09467, theta:  1.418e+04 weight:  1.49352e+09
+[17:57:41] info: New position: x:     0.9907, y:     0.1903, theta:  1.426e+04 weight:  3.32111e+08
+[17:57:41] info: New position: x:     0.9907, y:     0.1903, theta:  1.426e+04 weight:  3.32111e+08
+[17:57:41] info: Outbox next point, x: 0 y: 0
+[17:57:41] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:41] info: New position: x:    -0.6815, y:     0.2586, theta:  1.419e+04 weight:  1.02853e+09
+[17:57:41] info: New position: x:    -0.6815, y:     0.2586, theta:  1.419e+04 weight:  1.02853e+09
+[17:57:41] info: New position: x:    -0.2851, y:   -0.01996, theta:  1.419e+04 weight:  1.34197e+09
+[17:57:41] info: New position: x:    -0.2851, y:   -0.01996, theta:  1.419e+04 weight:  1.34197e+09
+[17:57:41] info: New position: x:    -0.1169, y:    0.02365, theta:  1.424e+04 weight:  3.05617e+08
+[17:57:41] info: New position: x:    -0.1169, y:    0.02365, theta:  1.424e+04 weight:  3.05617e+08
+[17:57:41] info: New position: x:    -0.3343, y:   0.002844, theta:  1.421e+04 weight:  5.28075e+08
+[17:57:41] info: New position: x:    -0.3343, y:   0.002844, theta:  1.421e+04 weight:  5.28075e+08
+[17:57:41] info: New position: x:    -0.6696, y:   0.008751, theta:  1.422e+04 weight:  6.15509e+08
+[17:57:41] info: New position: x:    -0.6696, y:   0.008751, theta:  1.422e+04 weight:  6.15509e+08
+[17:57:41] info: New position: x:   -0.04002, y:    0.01053, theta:  1.428e+04 weight:  4.70559e+08
+[17:57:41] info: New position: x:   -0.04002, y:    0.01053, theta:  1.428e+04 weight:  4.70559e+08
+[17:57:41] info: New mean pose: x:    0.06971, y:   0.006391, theta:  1.421e+04
+[17:57:41] info: Average raster array size: 7
+[17:57:41] info: Time of update: 0
+[17:57:41] info: Outbox next point, x: 0 y: 0
+[17:57:41] info: x: 0, y: 0, theta: 135
+[17:57:41] info: x: 0, y: 0, theta: 270
+[17:57:41] info: x: 0, y: 0, theta: 405
+[17:57:41] info: x: 0, y: 0, theta: 540
+[17:57:41] info: x: 0, y: 0, theta: 675
+[17:57:41] info: x: 0, y: 0, theta: 810
+[17:57:41] info: x: 0, y: 0, theta: 945
+[17:57:41] info: x: 0, y: 0, theta: 1080
+[17:57:41] info: x: 0, y: 0, theta: 1215
+[17:57:41] info: x: 0, y: 0, theta: 1350
+[17:57:41] info: x: 0, y: 0, theta: 1485
+[17:57:41] info: x: 0, y: 0, theta: 1620
+[17:57:41] info: x: 0, y: 0, theta: 1755
+[17:57:41] info: x: 0, y: 0, theta: 1890
+[17:57:41] info: x: 0, y: 0, theta: 2025
+[17:57:41] info: x: 0, y: 0, theta: 2160
+[17:57:41] info: x: 0, y: 0, theta: 2295
+[17:57:41] info: x: 0, y: 0, theta: 2430
+[17:57:41] info: x: 0, y: 0, theta: 2565
+[17:57:41] info: x: 0, y: 0, theta: 2700
+[17:57:41] info: x: 0, y: 0, theta: 2835
+[17:57:42] info: x: 0, y: 0, theta: 2970
+[17:57:42] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:42] info: x: 0, y: 0, theta: 3105
+[17:57:42] info: x: 0, y: 0, theta: 3240
+[17:57:42] info: Outbox next point, x: 0 y: 0
+[17:57:42] info: x: 0, y: 0, theta: 3375
+[17:57:42] info: x: 0, y: 0, theta: 3510
+[17:57:42] info: x: 0, y: 0, theta: 3645
+[17:57:42] info: x: 0, y: 0, theta: 3780
+[17:57:42] info: x: 0, y: 0, theta: 3915
+[17:57:42] info: x: 0, y: 0, theta: 4050
+[17:57:42] info: Outbox next point, x: 0 y: 0
+[17:57:42] info: x: 0, y: 0, theta: 4185
+[17:57:43] info: x: 0, y: 0, theta: 4320
+[17:57:43] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:43] info: x: 0, y: 0, theta: 4455
+[17:57:43] info: x: 0, y: 0, theta: 4590
+[17:57:43] info: x: 0, y: 0, theta: 4725
+[17:57:43] info: x: 0, y: 0, theta: 4860
+[17:57:43] info: Outbox next point, x: 0 y: 0
+[17:57:43] info: x: 0, y: 0, theta: 4995
+[17:57:43] info: x: 0, y: 0, theta: 5130
+[17:57:43] info: x: 0, y: 0, theta: 5264
+[17:57:43] info: x: 0, y: 0, theta: 5398
+[17:57:43] info: x: 0, y: 0, theta: 5532
+[17:57:44] info: x: 0, y: 0, theta: 5666
+[17:57:44] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:44] info: Outbox next point, x: 0 y: 0
+[17:57:44] info: x: 0, y: 0, theta: 5800
+[17:57:44] info: x: 0, y: 0, theta: 5934
+[17:57:44] info: x: 0, y: 0, theta: 6068
+[17:57:44] info: x: 0, y: 0, theta: 6202
+[17:57:44] info: x: 0, y: 0, theta: 6336
+[17:57:44] info: x: 0, y: 0, theta: 6470
+[17:57:44] info: x: 0, y: 0, theta: 6604
+[17:57:44] info: Outbox next point, x: 0 y: 0
+[17:57:44] info: x: 0, y: 0, theta: 6738
+[17:57:44] info: x: 0, y: 0, theta: 6872
+[17:57:45] info: x: 0, y: 0, theta: 7006
+[17:57:45] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:45] info: x: 0, y: 0, theta: 7140
+[17:57:45] info: x: 0, y: 0, theta: 7274
+[17:57:45] info: x: 0, y: 0, theta: 7408
+[17:57:45] info: Outbox next point, x: 0 y: 0
+[17:57:45] info: x: 0, y: 0, theta: 7542
+[17:57:45] info: x: 0, y: 0, theta: 7676
+[17:57:45] info: x: 0, y: 0, theta: 7810
+[17:57:45] info: x: 0, y: 0, theta: 7944
+[17:57:45] info: x: 0, y: 0, theta: 8078
+[17:57:45] info: x: 0, y: 0, theta: 8212
+[17:57:45] info: Outbox next point, x: 0 y: 0
+[17:57:46] info: x: 0, y: 0, theta: 8346
+[17:57:46] info: x: 0, y: 0, theta: 8480
+[17:57:46] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:46] info: x: 0, y: 0, theta: 8615
+[17:57:46] info: x: 0, y: 0, theta: 8750
+[17:57:46] info: x: 0, y: 0, theta: 8885
+[17:57:46] info: x: 0, y: 0, theta: 9020
+[17:57:46] info: Outbox next point, x: 0 y: 0
+[17:57:46] info: x: 0, y: 0, theta: 9155
+[17:57:46] info: x: 0, y: 0, theta: 9290
+[17:57:46] info: x: 0, y: 0, theta: 9425
+[17:57:46] info: x: 0, y: 0, theta: 9560
+[17:57:46] info: x: 0, y: 0, theta: 9695
+[17:57:47] info: x: 0, y: 0, theta: 9830
+[17:57:47] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:47] info: x: 0, y: 0, theta: 9965
+[17:57:47] info: Outbox next point, x: 0 y: 0
+[17:57:47] info: x: 0, y: 0, theta: 10099
+[17:57:47] info: x: 0, y: 0, theta: 10233
+[17:57:47] info: x: 0, y: 0, theta: 10367
+[17:57:47] info: x: 0, y: 0, theta: 10501
+[17:57:47] info: x: 0, y: 0, theta: 10635
+[17:57:47] info: x: 0, y: 0, theta: 10769
+[17:57:47] info: Outbox next point, x: 0 y: 0
+[17:57:47] info: x: 0, y: 0, theta: 10903
+[17:57:47] info: x: 0, y: 0, theta: 11037
+[17:57:48] info: x: 0, y: 0, theta: 11171
+[17:57:48] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:48] info: x: 0, y: 0, theta: 11305
+[17:57:48] info: x: 0, y: 0, theta: 11440
+[17:57:48] info: x: 0, y: 0, theta: 11575
+[17:57:48] info: Outbox next point, x: 0 y: 0
+[17:57:48] info: x: 0, y: 0, theta: 11709
+[17:57:48] info: x: 0, y: 0, theta: 11843
+[17:57:48] info: x: 0, y: 0, theta: 11978
+[17:57:48] info: x: 0, y: 0, theta: 12113
+[17:57:48] info: Odom        : x:          0, y:          0, theta:      12113
+[17:57:48] info: New position: x:     0.7214, y:     -0.256, theta:  2.635e+04 weight:  5.69932e+10
+[17:57:48] info: New position: x:     0.7214, y:     -0.256, theta:  2.635e+04 weight:  5.69932e+10
+[17:57:48] info: New position: x:    -0.2286, y:    0.01612, theta:  2.635e+04 weight:  2.65479e+10
+[17:57:48] info: New position: x:    -0.2286, y:    0.01612, theta:  2.635e+04 weight:  2.65479e+10
+[17:57:48] info: New position: x:      1.456, y:    -0.2723, theta:  2.639e+04 weight:  3.48838e+10
+[17:57:48] info: New position: x:      1.456, y:    -0.2723, theta:  2.639e+04 weight:  3.48838e+10
+[17:57:49] info: New position: x:      1.489, y:   -0.03938, theta:  2.628e+04 weight:  1.55592e+10
+[17:57:49] info: New position: x:      1.489, y:   -0.03938, theta:  2.628e+04 weight:  1.55592e+10
+[17:57:49] info: Outbox next point, x: 0 y: 0
+[17:57:49] info: New position: x:      -1.18, y:     0.3532, theta:  2.623e+04 weight:  1.88535e+10
+[17:57:49] info: New position: x:      -1.18, y:     0.3532, theta:  2.623e+04 weight:  1.88535e+10
+[17:57:49] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:49] info: New position: x:      1.354, y:      1.081, theta:  2.636e+04 weight:  1.51187e+10
+[17:57:49] info: New position: x:      1.354, y:      1.081, theta:  2.636e+04 weight:  1.51187e+10
+[17:57:49] info: New position: x:      1.244, y:     0.3497, theta:  2.635e+04 weight:  5.14382e+10
+[17:57:49] info: New position: x:      1.244, y:     0.3497, theta:  2.635e+04 weight:  5.14382e+10
+[17:57:49] info: New position: x:     0.7457, y:    -0.4043, theta:  2.624e+04 weight:  9.12374e+10
+[17:57:49] info: New position: x:     0.7457, y:    -0.4043, theta:  2.624e+04 weight:  9.12374e+10
+[17:57:49] info: New position: x:     0.3614, y:     0.6334, theta:  2.649e+04 weight:  3.68176e+10
+[17:57:49] info: New position: x:     0.3614, y:     0.6334, theta:  2.649e+04 weight:  3.68176e+10
+[17:57:49] info: New position: x:     0.8131, y:     0.2379, theta:   2.64e+04 weight:  3.69142e+10
+[17:57:49] info: New position: x:     0.8131, y:     0.2379, theta:   2.64e+04 weight:  3.69142e+10
+[17:57:49] info: New position: x:      1.261, y:    -0.1792, theta:  2.626e+04 weight:  7.63095e+10
+[17:57:49] info: New position: x:      1.261, y:    -0.1792, theta:  2.626e+04 weight:  7.63095e+10
+[17:57:49] info: New position: x:   0.009135, y:     0.1267, theta:  2.643e+04 weight:  5.18434e+10
+[17:57:49] info: New position: x:   0.009135, y:     0.1267, theta:  2.643e+04 weight:  5.18434e+10
+[17:57:49] info: New position: x:    -0.9708, y:     0.2271, theta:  2.628e+04 weight:  3.00564e+10
+[17:57:49] info: New position: x:    -0.9708, y:     0.2271, theta:  2.628e+04 weight:  3.00564e+10
+[17:57:49] info: New position: x:     0.7201, y:     0.2165, theta:  2.623e+04 weight:  3.27565e+10
+[17:57:49] info: New position: x:     0.7201, y:     0.2165, theta:  2.623e+04 weight:  3.27565e+10
+[17:57:49] info: Outbox next point, x: 0 y: 0
+[17:57:49] info: New position: x:    -0.4365, y:    0.05783, theta:  2.628e+04 weight:  5.13022e+10
+[17:57:49] info: New position: x:    -0.4365, y:    0.05783, theta:  2.628e+04 weight:  5.13022e+10
+[17:57:49] info: New position: x: -0.0001619, y:    0.03855, theta:  2.633e+04 weight:  2.88323e+10
+[17:57:49] info: New position: x: -0.0001619, y:    0.03855, theta:  2.633e+04 weight:  2.88323e+10
+[17:57:49] info: New position: x:    -0.4548, y:    -0.1631, theta:  2.641e+04 weight:  2.06536e+11
+[17:57:49] info: New position: x:    -0.4548, y:    -0.1631, theta:  2.641e+04 weight:  2.06536e+11
+[17:57:49] info: New position: x:   -0.06406, y:      0.114, theta:  2.634e+04 weight:  2.86036e+10
+[17:57:49] info: New position: x:   -0.06406, y:      0.114, theta:  2.634e+04 weight:  2.86036e+10
+[17:57:49] info: New position: x:    -0.9637, y:     -0.283, theta:  2.634e+04 weight:  1.14036e+11
+[17:57:49] info: New position: x:    -0.9637, y:     -0.283, theta:  2.634e+04 weight:  1.14036e+11
+[17:57:50] info: New position: x:    -0.5612, y:     0.1343, theta:  2.627e+04 weight:  1.04732e+11
+[17:57:50] info: New position: x:    -0.5612, y:     0.1343, theta:  2.627e+04 weight:  1.04732e+11
+[17:57:50] info: New position: x:     -1.814, y:     0.7747, theta:  2.632e+04 weight:  1.32427e+10
+[17:57:50] info: New position: x:     -1.814, y:     0.7747, theta:  2.632e+04 weight:  1.32427e+10
+[17:57:50] info: New position: x:      1.076, y:     0.1132, theta:  2.635e+04 weight:  3.69653e+10
+[17:57:50] info: New position: x:      1.076, y:     0.1132, theta:  2.635e+04 weight:  3.69653e+10
+[17:57:50] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:50] info: New position: x:     0.6959, y:    -0.4498, theta:  2.637e+04 weight:  8.36371e+10
+[17:57:50] info: New position: x:     0.6959, y:    -0.4498, theta:  2.637e+04 weight:  8.36371e+10
+[17:57:50] info: New position: x:     0.3452, y:     0.0704, theta:  2.639e+04 weight:  2.55725e+10
+[17:57:50] info: New position: x:     0.3452, y:     0.0704, theta:  2.639e+04 weight:  2.55725e+10
+[17:57:50] info: Outbox next point, x: 0 y: 0
+[17:57:50] info: New position: x:     -1.727, y:     0.1085, theta:  2.635e+04 weight:  4.62836e+10
+[17:57:50] info: New position: x:     -1.727, y:     0.1085, theta:  2.635e+04 weight:  4.62836e+10
+[17:57:50] info: New position: x:    -0.6421, y:     0.0989, theta:   2.63e+04 weight:  5.90466e+10
+[17:57:50] info: New position: x:    -0.6421, y:     0.0989, theta:   2.63e+04 weight:  5.90466e+10
+[17:57:50] info: New position: x:   -0.06472, y:    0.05354, theta:  2.642e+04 weight:  4.58426e+10
+[17:57:50] info: New position: x:   -0.06472, y:    0.05354, theta:  2.642e+04 weight:  4.58426e+10
+[17:57:50] info: New position: x:    -0.8477, y:     0.3735, theta:  2.626e+04 weight:  3.32687e+10
+[17:57:50] info: New position: x:    -0.8477, y:     0.3735, theta:  2.626e+04 weight:  3.32687e+10
+[17:57:50] info: New position: x:    -0.9571, y:    -0.1295, theta:  2.634e+04 weight:  3.5084e+10
+[17:57:50] info: New position: x:    -0.9571, y:    -0.1295, theta:  2.634e+04 weight:  3.5084e+10
+[17:57:50] info: New position: x:    -0.2697, y:    0.07079, theta:  2.633e+04 weight:  2.49396e+10
+[17:57:50] info: New position: x:    -0.2697, y:    0.07079, theta:  2.633e+04 weight:  2.49396e+10
+[17:57:50] info: New mean pose: x:    0.03704, y:     0.1024, theta:  2.633e+04
+[17:57:50] info: Average raster array size: 10
+[17:57:50] info: Time of update: 0
+[17:57:50] info: Outbox next point, x: 0 y: 0
+[17:57:51] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:51] info: x: 0, y: 0, theta: 135
+[17:57:51] info: x: 0, y: 0, theta: 270
+[17:57:51] info: x: 0, y: 0, theta: 405
+[17:57:51] info: x: 0, y: 0, theta: 540
+[17:57:51] info: x: 0, y: 0, theta: 675
+[17:57:51] info: x: 0, y: 0, theta: 810
+[17:57:51] info: x: 0, y: 0, theta: 945
+[17:57:51] info: x: 0, y: 0, theta: 1080
+[17:57:51] info: x: 0, y: 0, theta: 1215
+[17:57:51] info: x: 0, y: 0, theta: 1350
+[17:57:51] info: x: 0, y: 0, theta: 1485
+[17:57:51] info: x: 0, y: 0, theta: 1620
+[17:57:51] info: x: 0, y: 0, theta: 1755
+[17:57:51] info: x: 0, y: 0, theta: 1890
+[17:57:51] info: x: 0, y: 0, theta: 2024
+[17:57:51] info: x: 0, y: 0, theta: 2158
+[17:57:51] info: x: 0, y: 0, theta: 2292
+[17:57:51] info: x: 0, y: 0, theta: 2426
+[17:57:51] info: x: 0, y: 0, theta: 2560
+[17:57:51] info: x: 0, y: 0, theta: 2694
+[17:57:51] info: x: 0, y: 0, theta: 2828
+[17:57:51] info: x: 0, y: 0, theta: 2962
+[17:57:51] info: x: 0, y: 0, theta: 3096
+[17:57:51] info: x: 0, y: 0, theta: 3230
+[17:57:51] info: x: 0, y: 0, theta: 3364
+[17:57:51] info: x: 0, y: 0, theta: 3498
+[17:57:51] info: x: 0, y: 0, theta: 3632
+[17:57:51] info: Outbox next point, x: 0 y: 0
+[17:57:51] info: x: 0, y: 0, theta: 3766
+[17:57:51] info: x: 0, y: 0, theta: 3900
+[17:57:51] info: x: 0, y: 0, theta: 4034
+[17:57:51] info: x: 0, y: 0, theta: 4168
+[17:57:51] info: x: 0, y: 0, theta: 4302
+[17:57:52] info: x: 0, y: 0, theta: 4436
+[17:57:52] info: Outbox next point, x: 0 y: 0
+[17:57:52] info: x: 0, y: 0, theta: 4570
+[17:57:52] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:52] info: x: 0, y: 0, theta: 4704
+[17:57:52] info: x: 0, y: 0, theta: 4838
+[17:57:52] info: x: 0, y: 0, theta: 4972
+[17:57:52] info: x: 0, y: 0, theta: 5106
+[17:57:52] info: x: 0, y: 0, theta: 5240
+[17:57:52] info: x: 0, y: 0, theta: 5374
+[17:57:52] info: Outbox next point, x: 0 y: 0
+[17:57:52] info: x: 0, y: 0, theta: 5508
+[17:57:52] info: x: 0, y: 0, theta: 5642
+[17:57:53] info: x: 0, y: 0, theta: 5776
+[17:57:53] info: x: 0, y: 0, theta: 5910
+[17:57:53] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:53] info: x: 0, y: 0, theta: 6044
+[17:57:53] info: x: 0, y: 0, theta: 6178
+[17:57:53] info: Outbox next point, x: 0 y: 0
+[17:57:53] info: x: 0, y: 0, theta: 6312
+[17:57:53] info: x: 0, y: 0, theta: 6446
+[17:57:53] info: x: 0, y: 0, theta: 6580
+[17:57:53] info: x: 0, y: 0, theta: 6714
+[17:57:53] info: x: 0, y: 0, theta: 6848
+[17:57:53] info: x: 0, y: 0, theta: 6982
+[17:57:53] info: Outbox next point, x: 0 y: 0
+[17:57:53] info: x: 0, y: 0, theta: 7116
+[17:57:54] info: x: 0, y: 0, theta: 7250
+[17:57:54] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:54] info: x: 0, y: 0, theta: 7384
+[17:57:54] info: x: 0, y: 0, theta: 7518
+[17:57:54] info: x: 0, y: 0, theta: 7652
+[17:57:54] info: x: 0, y: 0, theta: 7786
+[17:57:54] info: Outbox next point, x: 0 y: 0
+[17:57:54] info: x: 0, y: 0, theta: 7920
+[17:57:54] info: x: 0, y: 0, theta: 8054
+[17:57:54] info: x: 0, y: 0, theta: 8188
+[17:57:54] info: x: 0, y: 0, theta: 8322
+[17:57:54] info: x: 0, y: 0, theta: 8456
+[17:57:55] info: x: 0, y: 0, theta: 8590
+[17:57:55] info: x: 0, y: 0, theta: 8724
+[17:57:55] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:55] info: Outbox next point, x: 0 y: 0
+[17:57:55] info: x: 0, y: 0, theta: 8858
+[17:57:55] info: x: 0, y: 0, theta: 8992
+[17:57:55] info: x: 0, y: 0, theta: 9126
+[17:57:55] info: x: 0, y: 0, theta: 9260
+[17:57:55] info: x: 0, y: 0, theta: 9394
+[17:57:55] info: x: 0, y: 0, theta: 9528
+[17:57:55] info: Outbox next point, x: 0 y: 0
+[17:57:55] info: x: 0, y: 0, theta: 9662
+[17:57:55] info: x: 0, y: 0, theta: 9796
+[17:57:56] info: x: 0, y: 0, theta: 9930
+[17:57:56] info: x: 0, y: 0, theta: 10064
+[17:57:56] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:56] info: x: 0, y: 0, theta: 10198
+[17:57:56] info: x: 0, y: 0, theta: 10332
+[17:57:56] info: Outbox next point, x: 0 y: 0
+[17:57:56] info: x: 0, y: 0, theta: 10466
+[17:57:56] info: x: 0, y: 0, theta: 10600
+[17:57:56] info: x: 0, y: 0, theta: 10734
+[17:57:56] info: x: 0, y: 0, theta: 10868
+[17:57:56] info: x: 0, y: 0, theta: 11002
+[17:57:56] info: x: 0, y: 0, theta: 11136
+[17:57:57] info: Outbox next point, x: 0 y: 0
+[17:57:57] info: x: 0, y: 0, theta: 11270
+[17:57:57] info: x: 0, y: 0, theta: 11404
+[17:57:57] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:57] info: x: 0, y: 0, theta: 11538
+[17:57:57] info: x: 0, y: 0, theta: 11672
+[17:57:57] info: x: 0, y: 0, theta: 11806
+[17:57:57] info: x: 0, y: 0, theta: 11940
+[17:57:57] info: Outbox next point, x: 0 y: 0
+[17:57:57] info: x: 0, y: 0, theta: 12074
+[17:57:57] info: Odom        : x:          0, y:          0, theta:      12074
+[17:57:57] info: New position: x:     0.3814, y:     0.3208, theta:  3.833e+04 weight:  3.59057e+12
+[17:57:57] info: New position: x:     0.3814, y:     0.3208, theta:  3.833e+04 weight:  3.59057e+12
+[17:57:57] info: New position: x:    -0.2119, y:     0.4397, theta:  3.849e+04 weight:  1.51323e+12
+[17:57:57] info: New position: x:    -0.2119, y:     0.4397, theta:  3.849e+04 weight:  1.51323e+12
+[17:57:57] info: New position: x:      3.905, y:      0.729, theta:  3.847e+04 weight:  2.51163e+12
+[17:57:57] info: New position: x:      3.905, y:      0.729, theta:  3.847e+04 weight:  2.51163e+12
+[17:57:57] info: New position: x:      3.171, y:    -0.4711, theta:  3.832e+04 weight:  1.6026e+12
+[17:57:57] info: New position: x:      3.171, y:    -0.4711, theta:  3.832e+04 weight:  1.6026e+12
+[17:57:57] info: New position: x:     -1.263, y:     0.3567, theta:  3.835e+04 weight:  1.35745e+12
+[17:57:57] info: New position: x:     -1.263, y:     0.3567, theta:  3.835e+04 weight:  1.35745e+12
+[17:57:57] info: New position: x:      1.092, y:     0.2941, theta:  3.836e+04 weight:  1.37581e+12
+[17:57:57] info: New position: x:      1.092, y:     0.2941, theta:  3.836e+04 weight:  1.37581e+12
+[17:57:58] info: New position: x:     0.6078, y:    0.09539, theta:  3.838e+04 weight:  2.31472e+12
+[17:57:58] info: New position: x:     0.6078, y:    0.09539, theta:  3.838e+04 weight:  2.31472e+12
+[17:57:58] info: New position: x:    -0.3918, y:    -0.4724, theta:  3.834e+04 weight:  8.75879e+12
+[17:57:58] info: New position: x:    -0.3918, y:    -0.4724, theta:  3.834e+04 weight:  8.75879e+12
+[17:57:58] info: New position: x:      1.001, y:     0.0548, theta:  3.847e+04 weight:  3.27677e+12
+[17:57:58] info: New position: x:      1.001, y:     0.0548, theta:  3.847e+04 weight:  3.27677e+12
+[17:57:58] info: New position: x:     0.3992, y:      1.169, theta:   3.84e+04 weight:  3.69142e+12
+[17:57:58] info: New position: x:     0.3992, y:      1.169, theta:   3.84e+04 weight:  3.69142e+12
+[17:57:58] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:58] info: New position: x:      2.444, y:    -0.4477, theta:  3.839e+04 weight:  4.12072e+12
+[17:57:58] info: New position: x:      2.444, y:    -0.4477, theta:  3.839e+04 weight:  4.12072e+12
+[17:57:58] info: Outbox next point, x: 0 y: 0
+[17:57:58] info: New position: x:   -0.06094, y:     0.2051, theta:  3.845e+04 weight:  3.62904e+12
+[17:57:58] info: New position: x:   -0.06094, y:     0.2051, theta:  3.845e+04 weight:  3.62904e+12
+[17:57:58] info: New position: x:     -1.824, y:    -0.2721, theta:  3.847e+04 weight:  2.19412e+12
+[17:57:58] info: New position: x:     -1.824, y:    -0.2721, theta:  3.847e+04 weight:  2.19412e+12
+[17:57:58] info: New position: x:     0.3221, y:     0.7744, theta:  3.821e+04 weight:  2.94808e+12
+[17:57:58] info: New position: x:     0.3221, y:     0.7744, theta:  3.821e+04 weight:  2.94808e+12
+[17:57:58] info: New position: x:     -1.567, y:      1.147, theta:  3.835e+04 weight:  3.07813e+12
+[17:57:58] info: New position: x:     -1.567, y:      1.147, theta:  3.835e+04 weight:  3.07813e+12
+[17:57:58] info: New position: x:     -1.433, y:    -0.4308, theta:  3.827e+04 weight:  2.8544e+12
+[17:57:58] info: New position: x:     -1.433, y:    -0.4308, theta:  3.827e+04 weight:  2.8544e+12
+[17:57:58] info: New position: x:     0.3799, y:     0.5452, theta:  3.856e+04 weight:  1.77621e+13
+[17:57:58] info: New position: x:     0.3799, y:     0.5452, theta:  3.856e+04 weight:  1.77621e+13
+[17:57:58] info: New position: x:    -0.3445, y: -0.0006969, theta:   3.84e+04 weight:  3.175e+12
+[17:57:58] info: New position: x:    -0.3445, y: -0.0006969, theta:   3.84e+04 weight:  3.175e+12
+[17:57:58] info: New position: x:    -0.7245, y:    -0.6039, theta:  3.838e+04 weight:  5.24567e+12
+[17:57:58] info: New position: x:    -0.7245, y:    -0.6039, theta:  3.838e+04 weight:  5.24567e+12
+[17:57:58] info: New position: x:    -0.5576, y:     0.2231, theta:  3.816e+04 weight:  1.16252e+13
+[17:57:58] info: New position: x:    -0.5576, y:     0.2231, theta:  3.816e+04 weight:  1.16252e+13
+[17:57:58] info: New position: x:     -0.817, y:      1.303, theta:  3.845e+04 weight:  1.13887e+12
+[17:57:58] info: New position: x:     -0.817, y:      1.303, theta:  3.845e+04 weight:  1.13887e+12
+[17:57:58] info: New position: x:      2.524, y:     0.3404, theta:  3.846e+04 weight:  1.95916e+12
+[17:57:58] info: New position: x:      2.524, y:     0.3404, theta:  3.846e+04 weight:  1.95916e+12
+[17:57:58] info: New position: x:       1.49, y:    -0.6408, theta:  3.845e+04 weight:  3.01094e+12
+[17:57:58] info: New position: x:       1.49, y:    -0.6408, theta:  3.845e+04 weight:  3.01094e+12
+[17:57:58] info: Outbox next point, x: 0 y: 0
+[17:57:58] info: New position: x:      1.856, y:     -0.802, theta:  3.837e+04 weight:  2.6084e+12
+[17:57:58] info: New position: x:      1.856, y:     -0.802, theta:  3.837e+04 weight:  2.6084e+12
+[17:57:58] info: New position: x:    -0.8213, y:      1.167, theta:  3.844e+04 weight:  2.2679e+12
+[17:57:58] info: New position: x:    -0.8213, y:      1.167, theta:  3.844e+04 weight:  2.2679e+12
+[17:57:58] info: New position: x:    -0.6543, y:    0.05497, theta:  3.823e+04 weight:  5.31419e+12
+[17:57:58] info: New position: x:    -0.6543, y:    0.05497, theta:  3.823e+04 weight:  5.31419e+12
+[17:57:59] info: New position: x:      -1.11, y:     -1.507, theta:  3.861e+04 weight:  2.93393e+12
+[17:57:59] info: New position: x:      -1.11, y:     -1.507, theta:  3.861e+04 weight:  2.93393e+12
+[17:57:59] info: New position: x:    -0.3301, y:    -0.4031, theta:  3.827e+04 weight:  2.1292e+12
+[17:57:59] info: New position: x:    -0.3301, y:    -0.4031, theta:  3.827e+04 weight:  2.1292e+12
+[17:57:59] info: New position: x:    -0.9773, y:     -0.192, theta:  3.851e+04 weight:  2.6313e+12
+[17:57:59] info: New position: x:    -0.9773, y:     -0.192, theta:  3.851e+04 weight:  2.6313e+12
+[17:57:59] info: New position: x:    -0.7758, y:    -0.2674, theta:  3.842e+04 weight:  2.34432e+12
+[17:57:59] info: New position: x:    -0.7758, y:    -0.2674, theta:  3.842e+04 weight:  2.34432e+12
+[17:57:59] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:57:59] info: New mean pose: x:     0.1904, y:    0.09031, theta:  3.839e+04
+[17:57:59] info: Average raster array size: 8
+[17:57:59] info: Time of update: 1
+[17:57:59] info: Outbox next point, x: 0 y: 0
+[17:57:59] info: x: 0, y: 0, theta: 134
+[17:57:59] info: x: 0, y: 0, theta: 268
+[17:57:59] info: x: 0, y: 0, theta: 402
+[17:57:59] info: x: 0, y: 0, theta: 536
+[17:57:59] info: x: 0, y: 0, theta: 670
+[17:57:59] info: x: 0, y: 0, theta: 804
+[17:57:59] info: x: 0, y: 0, theta: 938
+[17:57:59] info: x: 0, y: 0, theta: 1072
+[17:57:59] info: x: 0, y: 0, theta: 1206
+[17:57:59] info: x: 0, y: 0, theta: 1340
+[17:57:59] info: x: 0, y: 0, theta: 1474
+[17:57:59] info: x: 0, y: 0, theta: 1608
+[17:57:59] info: x: 0, y: 0, theta: 1742
+[17:57:59] info: x: 0, y: 0, theta: 1876
+[17:57:59] info: x: 0, y: 0, theta: 2010
+[17:57:59] info: x: 0, y: 0, theta: 2144
+[17:57:59] info: x: 0, y: 0, theta: 2278
+[17:57:59] info: x: 0, y: 0, theta: 2412
+[17:57:59] info: x: 0, y: 0, theta: 2546
+[17:57:59] info: x: 0, y: 0, theta: 2680
+[17:57:59] info: x: 0, y: 0, theta: 2814
+[17:57:59] info: x: 0, y: 0, theta: 2948
+[17:57:59] info: x: 0, y: 0, theta: 3082
+[17:58:00] info: x: 0, y: 0, theta: 3216
+[17:58:00] info: Outbox next point, x: 0 y: 0
+[17:58:00] info: x: 0, y: 0, theta: 3350
+[17:58:00] info: x: 0, y: 0, theta: 3484
+[17:58:00] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:00] info: x: 0, y: 0, theta: 3618
+[17:58:00] info: x: 0, y: 0, theta: 3752
+[17:58:00] info: x: 0, y: 0, theta: 3886
+[17:58:00] info: x: 0, y: 0, theta: 4020
+[17:58:00] info: x: 0, y: 0, theta: 4154
+[17:58:00] info: Outbox next point, x: 0 y: 0
+[17:58:00] info: x: 0, y: 0, theta: 4288
+[17:58:00] info: x: 0, y: 0, theta: 4422
+[17:58:00] info: x: 0, y: 0, theta: 4556
+[17:58:01] info: x: 0, y: 0, theta: 4690
+[17:58:01] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:01] info: x: 0, y: 0, theta: 4824
+[17:58:01] info: Outbox next point, x: 0 y: 0
+[17:58:01] info: x: 0, y: 0, theta: 4958
+[17:58:01] info: x: 0, y: 0, theta: 5092
+[17:58:01] info: x: 0, y: 0, theta: 5226
+[17:58:01] info: x: 0, y: 0, theta: 5360
+[17:58:01] info: x: 0, y: 0, theta: 5494
+[17:58:01] info: x: 0, y: 0, theta: 5628
+[17:58:01] info: Outbox next point, x: 0 y: 0
+[17:58:01] info: x: 0, y: 0, theta: 5762
+[17:58:02] info: x: 0, y: 0, theta: 5896
+[17:58:02] info: x: 0, y: 0, theta: 6030
+[17:58:02] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:02] info: x: 0, y: 0, theta: 6164
+[17:58:02] info: x: 0, y: 0, theta: 6298
+[17:58:02] info: x: 0, y: 0, theta: 6432
+[17:58:02] info: Outbox next point, x: 0 y: 0
+[17:58:02] info: x: 0, y: 0, theta: 6566
+[17:58:02] info: x: 0, y: 0, theta: 6700
+[17:58:02] info: x: 0, y: 0, theta: 6834
+[17:58:02] info: x: 0, y: 0, theta: 6968
+[17:58:02] info: x: 0, y: 0, theta: 7102
+[17:58:03] info: x: 0, y: 0, theta: 7236
+[17:58:03] info: x: 0, y: 0, theta: 7370
+[17:58:03] info: Outbox next point, x: 0 y: 0
+[17:58:03] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:03] info: x: 0, y: 0, theta: 7504
+[17:58:03] info: x: 0, y: 0, theta: 7638
+[17:58:03] info: x: 0, y: 0, theta: 7772
+[17:58:03] info: x: 0, y: 0, theta: 7906
+[17:58:03] info: x: 0, y: 0, theta: 8040
+[17:58:03] info: x: 0, y: 0, theta: 8174
+[17:58:03] info: Outbox next point, x: 0 y: 0
+[17:58:03] info: x: 0, y: 0, theta: 8308
+[17:58:03] info: x: 0, y: 0, theta: 8442
+[17:58:04] info: x: 0, y: 0, theta: 8576
+[17:58:04] info: x: 0, y: 0, theta: 8710
+[17:58:04] info: x: 0, y: 0, theta: 8844
+[17:58:04] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:04] info: x: 0, y: 0, theta: 8978
+[17:58:04] info: Outbox next point, x: 0 y: 0
+[17:58:04] info: x: 0, y: 0, theta: 9112
+[17:58:04] info: x: 0, y: 0, theta: 9246
+[17:58:04] info: x: 0, y: 0, theta: 9380
+[17:58:04] info: x: 0, y: 0, theta: 9514
+[17:58:04] info: x: 0, y: 0, theta: 9648
+[17:58:04] info: x: 0, y: 0, theta: 9782
+[17:58:05] info: Outbox next point, x: 0 y: 0
+[17:58:05] info: x: 0, y: 0, theta: 9916
+[17:58:05] info: x: 0, y: 0, theta: 10050
+[17:58:05] info: x: 0, y: 0, theta: 10184
+[17:58:05] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:05] info: x: 0, y: 0, theta: 10318
+[17:58:05] info: x: 0, y: 0, theta: 10452
+[17:58:05] info: x: 0, y: 0, theta: 10586
+[17:58:05] info: x: 0, y: 0, theta: 10720
+[17:58:05] info: Outbox next point, x: 0 y: 0
+[17:58:05] info: x: 0, y: 0, theta: 10854
+[17:58:05] info: x: 0, y: 0, theta: 10988
+[17:58:05] info: x: 0, y: 0, theta: 11122
+[17:58:06] info: x: 0, y: 0, theta: 11256
+[17:58:06] info: x: 0, y: 0, theta: 11390
+[17:58:06] info: x: 0, y: 0, theta: 11524
+[17:58:06] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:06] info: Outbox next point, x: 0 y: 0
+[17:58:06] info: x: 0, y: 0, theta: 11658
+[17:58:06] info: x: 0, y: 0, theta: 11792
+[17:58:06] info: x: 0, y: 0, theta: 11926
+[17:58:06] info: Odom        : x:          0, y:          0, theta:      11926
+[17:58:06] info: New position: x:     0.7026, y:   -0.07188, theta:   5.02e+04 weight:  5.06271e+14
+[17:58:06] info: New position: x:     0.7026, y:   -0.07188, theta:   5.02e+04 weight:  5.06271e+14
+[17:58:06] info: New position: x:    -0.7146, y:     0.3377, theta:  5.051e+04 weight:  1.34678e+14
+[17:58:06] info: New position: x:    -0.7146, y:     0.3377, theta:  5.051e+04 weight:  1.34678e+14
+[17:58:06] info: New position: x:       5.31, y:     0.2396, theta:  5.041e+04 weight:  1.58233e+14
+[17:58:06] info: New position: x:       5.31, y:     0.2396, theta:  5.041e+04 weight:  1.58233e+14
+[17:58:06] info: New position: x:      1.516, y:    0.02183, theta:  5.009e+04 weight:  1.36221e+14
+[17:58:06] info: New position: x:      1.516, y:    0.02183, theta:  5.009e+04 weight:  1.36221e+14
+[17:58:06] info: New position: x:     -1.917, y:      1.217, theta:  5.012e+04 weight:  1.11311e+14
+[17:58:06] info: New position: x:     -1.917, y:      1.217, theta:  5.012e+04 weight:  1.11311e+14
+[17:58:06] info: New position: x:      1.374, y:     0.7089, theta:  5.028e+04 weight:  1.40332e+14
+[17:58:06] info: New position: x:      1.374, y:     0.7089, theta:  5.028e+04 weight:  1.40332e+14
+[17:58:06] info: Outbox next point, x: 0 y: 0
+[17:58:06] info: New position: x:       1.72, y:    -0.7239, theta:  5.031e+04 weight:  2.4536e+14
+[17:58:06] info: New position: x:       1.72, y:    -0.7239, theta:  5.031e+04 weight:  2.4536e+14
+[17:58:06] info: New position: x:    -0.3616, y:    -0.4643, theta:  5.026e+04 weight:  6.21874e+14
+[17:58:06] info: New position: x:    -0.3616, y:    -0.4643, theta:  5.026e+04 weight:  6.21874e+14
+[17:58:07] info: New position: x:      1.568, y:     -0.774, theta:  5.036e+04 weight:  3.50614e+14
+[17:58:07] info: New position: x:      1.568, y:     -0.774, theta:  5.036e+04 weight:  3.50614e+14
+[17:58:07] info: New position: x:    0.02122, y:     0.1682, theta:  5.045e+04 weight:  2.17794e+14
+[17:58:07] info: New position: x:    0.02122, y:     0.1682, theta:  5.045e+04 weight:  2.17794e+14
+[17:58:07] info: New position: x:      4.353, y:      1.659, theta:  5.041e+04 weight:  3.37899e+14
+[17:58:07] info: New position: x:      4.353, y:      1.659, theta:  5.041e+04 weight:  3.37899e+14
+[17:58:07] info: New position: x:    -0.5527, y:      1.418, theta:  5.056e+04 weight:  3.88307e+14
+[17:58:07] info: New position: x:    -0.5527, y:      1.418, theta:  5.056e+04 weight:  3.88307e+14
+[17:58:07] info: New position: x:     -2.118, y:    0.02478, theta:  5.047e+04 weight:  1.51394e+14
+[17:58:07] info: New position: x:     -2.118, y:    0.02478, theta:  5.047e+04 weight:  1.51394e+14
+[17:58:07] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:07] info: New position: x:      1.968, y:     -1.932, theta:   5.01e+04 weight:  4.21576e+14
+[17:58:07] info: New position: x:      1.968, y:     -1.932, theta:   5.01e+04 weight:  4.21576e+14
+[17:58:07] info: New position: x:     -3.916, y:     0.8089, theta:  5.028e+04 weight:  2.18547e+14
+[17:58:07] info: New position: x:     -3.916, y:     0.8089, theta:  5.028e+04 weight:  2.18547e+14
+[17:58:07] info: New position: x:      0.463, y:     0.9889, theta:  5.028e+04 weight:  2.19789e+14
+[17:58:07] info: New position: x:      0.463, y:     0.9889, theta:  5.028e+04 weight:  2.19789e+14
+[17:58:07] info: New position: x:     -1.922, y:   -0.02048, theta:  5.046e+04 weight:  1.5453e+15
+[17:58:07] info: New position: x:     -1.922, y:   -0.02048, theta:  5.046e+04 weight:  1.5453e+15
+[17:58:07] info: Outbox next point, x: 0 y: 0
+[17:58:07] info: New position: x:     0.1415, y:    0.02661, theta:  5.033e+04 weight:  2.50825e+14
+[17:58:07] info: New position: x:     0.1415, y:    0.02661, theta:  5.033e+04 weight:  2.50825e+14
+[17:58:07] info: New position: x:     0.6393, y:     0.3822, theta:  5.035e+04 weight:  3.25232e+14
+[17:58:07] info: New position: x:     0.6393, y:     0.3822, theta:  5.035e+04 weight:  3.25232e+14
+[17:58:07] info: New position: x:    -0.4695, y:     0.3443, theta:  5.012e+04 weight:  8.25391e+14
+[17:58:07] info: New position: x:    -0.4695, y:     0.3443, theta:  5.012e+04 weight:  8.25391e+14
+[17:58:07] info: New position: x:    0.09232, y:      2.074, theta:  5.042e+04 weight:  1.03637e+14
+[17:58:07] info: New position: x:    0.09232, y:      2.074, theta:  5.042e+04 weight:  1.03637e+14
+[17:58:07] info: New position: x:      3.173, y:     0.3072, theta:   5.03e+04 weight:  2.01794e+14
+[17:58:07] info: New position: x:      3.173, y:     0.3072, theta:   5.03e+04 weight:  2.01794e+14
+[17:58:07] info: New position: x:      1.524, y:    -0.6352, theta:  5.036e+04 weight:  2.92061e+14
+[17:58:07] info: New position: x:      1.524, y:    -0.6352, theta:  5.036e+04 weight:  2.92061e+14
+[17:58:07] info: New position: x:      1.868, y:    -0.7965, theta:  5.021e+04 weight:  2.58231e+14
+[17:58:07] info: New position: x:      1.868, y:    -0.7965, theta:  5.021e+04 weight:  2.58231e+14
+[17:58:07] info: New position: x:       -1.9, y:      1.254, theta:  5.028e+04 weight:  1.76896e+14
+[17:58:07] info: New position: x:       -1.9, y:      1.254, theta:  5.028e+04 weight:  1.76896e+14
+[17:58:07] info: New position: x:     -1.697, y:      1.144, theta:  5.006e+04 weight:  6.32389e+14
+[17:58:07] info: New position: x:     -1.697, y:      1.144, theta:  5.006e+04 weight:  6.32389e+14
+[17:58:08] info: New position: x:     -1.396, y:     -1.906, theta:  5.061e+04 weight:  2.81657e+14
+[17:58:08] info: New position: x:     -1.396, y:     -1.906, theta:  5.061e+04 weight:  2.81657e+14
+[17:58:08] info: New position: x:     0.5876, y:     -1.422, theta:  5.003e+04 weight:  2.53375e+14
+[17:58:08] info: New position: x:     0.5876, y:     -1.422, theta:  5.003e+04 weight:  2.53375e+14
+[17:58:08] info: Outbox next point, x: 0 y: 0
+[17:58:08] info: New position: x:    -0.2554, y:     0.3818, theta:  5.052e+04 weight:  2.49974e+14
+[17:58:08] info: New position: x:    -0.2554, y:     0.3818, theta:  5.052e+04 weight:  2.49974e+14
+[17:58:08] info: New position: x:      0.839, y:     0.3823, theta:  5.032e+04 weight:  2.90696e+14
+[17:58:08] info: New position: x:      0.839, y:     0.3823, theta:  5.032e+04 weight:  2.90696e+14
+[17:58:08] info: New mean pose: x:     0.3547, y:     0.1714, theta:  5.031e+04
+[17:58:08] info: Average raster array size: 7
+[17:58:08] info: Time of update: 1
+[17:58:08] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:08] info: Outbox next point, x: 0 y: 0
+[17:58:08] info: x: 0, y: 0, theta: 134
+[17:58:08] info: x: 0, y: 0, theta: 268
+[17:58:08] info: x: 0, y: 0, theta: 402
+[17:58:08] info: x: 0, y: 0, theta: 536
+[17:58:08] info: x: 0, y: 0, theta: 670
+[17:58:08] info: x: 0, y: 0, theta: 804
+[17:58:08] info: x: 0, y: 0, theta: 938
+[17:58:08] info: x: 0, y: 0, theta: 1072
+[17:58:08] info: x: 0, y: 0, theta: 1206
+[17:58:08] info: x: 0, y: 0, theta: 1340
+[17:58:08] info: x: 0, y: 0, theta: 1474
+[17:58:08] info: x: 0, y: 0, theta: 1608
+[17:58:08] info: x: 0, y: 0, theta: 1742
+[17:58:08] info: x: 0, y: 0, theta: 1876
+[17:58:08] info: x: 0, y: 0, theta: 2010
+[17:58:08] info: x: 0, y: 0, theta: 2144
+[17:58:08] info: x: 0, y: 0, theta: 2278
+[17:58:08] info: x: 0, y: 0, theta: 2412
+[17:58:08] info: x: 0, y: 0, theta: 2546
+[17:58:08] info: x: 0, y: 0, theta: 2680
+[17:58:08] info: x: 0, y: 0, theta: 2814
+[17:58:08] info: x: 0, y: 0, theta: 2948
+[17:58:08] info: x: 0, y: 0, theta: 3082
+[17:58:08] info: x: 0, y: 0, theta: 3216
+[17:58:08] info: x: 0, y: 0, theta: 3350
+[17:58:09] info: x: 0, y: 0, theta: 3484
+[17:58:09] info: x: 0, y: 0, theta: 3618
+[17:58:09] info: x: 0, y: 0, theta: 3752
+[17:58:09] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:09] info: x: 0, y: 0, theta: 3886
+[17:58:09] info: Outbox next point, x: 0 y: 0
+[17:58:09] info: x: 0, y: 0, theta: 4020
+[17:58:09] info: x: 0, y: 0, theta: 4154
+[17:58:09] info: x: 0, y: 0, theta: 4288
+[17:58:09] info: x: 0, y: 0, theta: 4422
+[17:58:09] info: x: 0, y: 0, theta: 4556
+[17:58:09] info: x: 0, y: 0, theta: 4690
+[17:58:09] info: Outbox next point, x: 0 y: 0
+[17:58:09] info: x: 0, y: 0, theta: 4824
+[17:58:10] info: x: 0, y: 0, theta: 4958
+[17:58:10] info: x: 0, y: 0, theta: 5092
+[17:58:10] info: x: 0, y: 0, theta: 5226
+[17:58:10] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:10] info: x: 0, y: 0, theta: 5360
+[17:58:10] info: x: 0, y: 0, theta: 5494
+[17:58:10] info: x: 0, y: 0, theta: 5628
+[17:58:10] info: x: 0, y: 0, theta: 5762
+[17:58:10] info: x: 0, y: 0, theta: 5896
+[17:58:10] info: x: 0, y: 0, theta: 6030
+[17:58:10] info: Outbox next point, x: 0 y: 0
+[17:58:10] info: x: 0, y: 0, theta: 6164
+[17:58:11] info: x: 0, y: 0, theta: 6298
+[17:58:11] info: x: 0, y: 0, theta: 6432
+[17:58:11] info: x: 0, y: 0, theta: 6566
+[17:58:11] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:11] info: x: 0, y: 0, theta: 6700
+[17:58:11] info: x: 0, y: 0, theta: 6834
+[17:58:11] info: x: 0, y: 0, theta: 6968
+[17:58:11] info: x: 0, y: 0, theta: 7102
+[17:58:11] info: x: 0, y: 0, theta: 7236
+[17:58:11] info: x: 0, y: 0, theta: 7370
+[17:58:11] info: Outbox next point, x: 0 y: 0
+[17:58:11] info: x: 0, y: 0, theta: 7504
+[17:58:12] info: x: 0, y: 0, theta: 7638
+[17:58:12] info: x: 0, y: 0, theta: 7772
+[17:58:12] info: x: 0, y: 0, theta: 7906
+[17:58:12] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:12] info: x: 0, y: 0, theta: 8040
+[17:58:12] info: x: 0, y: 0, theta: 8174
+[17:58:12] info: x: 0, y: 0, theta: 8308
+[17:58:12] info: x: 0, y: 0, theta: 8442
+[17:58:12] info: x: 0, y: 0, theta: 8576
+[17:58:12] info: x: 0, y: 0, theta: 8710
+[17:58:12] info: Outbox next point, x: 0 y: 0
+[17:58:12] info: x: 0, y: 0, theta: 8844
+[17:58:13] info: x: 0, y: 0, theta: 8978
+[17:58:13] info: x: 0, y: 0, theta: 9112
+[17:58:13] info: x: 0, y: 0, theta: 9246
+[17:58:13] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:13] info: x: 0, y: 0, theta: 9380
+[17:58:13] info: x: 0, y: 0, theta: 9514
+[17:58:13] info: x: 0, y: 0, theta: 9648
+[17:58:13] info: x: 0, y: 0, theta: 9782
+[17:58:13] info: x: 0, y: 0, theta: 9916
+[17:58:13] info: x: 0, y: 0, theta: 10050
+[17:58:13] info: x: 0, y: 0, theta: 10184
+[17:58:13] info: Outbox next point, x: 0 y: 0
+[17:58:14] info: x: 0, y: 0, theta: 10318
+[17:58:14] info: x: 0, y: 0, theta: 10452
+[17:58:14] info: x: 0, y: 0, theta: 10586
+[17:58:14] info: x: 0, y: 0, theta: 10720
+[17:58:14] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:14] info: x: 0, y: 0, theta: 10854
+[17:58:14] info: x: 0, y: 0, theta: 10988
+[17:58:14] info: x: 0, y: 0, theta: 11122
+[17:58:14] info: x: 0, y: 0, theta: 11256
+[17:58:14] info: x: 0, y: 0, theta: 11390
+[17:58:14] info: x: 0, y: 0, theta: 11524
+[17:58:14] info: Outbox next point, x: 0 y: 0
+[17:58:15] info: x: 0, y: 0, theta: 11658
+[17:58:15] info: x: 0, y: 0, theta: 11792
+[17:58:15] info: x: 0, y: 0, theta: 11926
+[17:58:15] info: x: 0, y: 0, theta: 12060
+[17:58:15] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:15] info: x: 0, y: 0, theta: 12194
+[17:58:15] info: Odom        : x:          0, y:          0, theta:      12194
+[17:58:15] info: New position: x:      1.013, y:     0.1947, theta:  6.239e+04 weight:  5.974e+16
+[17:58:15] info: New position: x:      1.013, y:     0.1947, theta:  6.239e+04 weight:  5.974e+16
+[17:58:15] info: New position: x:    -0.8344, y:     0.1258, theta:  6.273e+04 weight:  1.65653e+16
+[17:58:15] info: New position: x:    -0.8344, y:     0.1258, theta:  6.273e+04 weight:  1.65653e+16
+[17:58:15] info: New position: x:      6.366, y:      1.848, theta:  6.263e+04 weight:  1.53486e+16
+[17:58:15] info: New position: x:      6.366, y:      1.848, theta:  6.263e+04 weight:  1.53486e+16
+[17:58:15] info: New position: x:      2.124, y:     0.6578, theta:  6.238e+04 weight:  1.44394e+16
+[17:58:15] info: New position: x:      2.124, y:     0.6578, theta:  6.238e+04 weight:  1.44394e+16
+[17:58:15] info: New position: x:     -3.703, y:    -0.5184, theta:  6.234e+04 weight:  1.19103e+16
+[17:58:15] info: New position: x:     -3.703, y:    -0.5184, theta:  6.234e+04 weight:  1.19103e+16
+[17:58:15] info: New position: x:      1.373, y:     0.7513, theta:  6.262e+04 weight:  9.96358e+15
+[17:58:15] info: New position: x:      1.373, y:     0.7513, theta:  6.262e+04 weight:  9.96358e+15
+[17:58:15] info: New position: x:     0.9791, y:    -0.3935, theta:  6.247e+04 weight:  2.28185e+16
+[17:58:15] info: New position: x:     0.9791, y:    -0.3935, theta:  6.247e+04 weight:  2.28185e+16
+[17:58:15] info: New position: x:    -0.6332, y:    -0.9841, theta:  6.253e+04 weight:  5.47249e+16
+[17:58:15] info: New position: x:    -0.6332, y:    -0.9841, theta:  6.253e+04 weight:  5.47249e+16
+[17:58:15] info: New position: x:      1.678, y:    -0.9303, theta:  6.253e+04 weight:  4.24243e+16
+[17:58:15] info: New position: x:      1.678, y:    -0.9303, theta:  6.253e+04 weight:  4.24243e+16
+[17:58:15] info: New position: x:    -0.5313, y:      0.609, theta:  6.252e+04 weight:  3.37581e+16
+[17:58:15] info: New position: x:    -0.5313, y:      0.609, theta:  6.252e+04 weight:  3.37581e+16
+[17:58:15] info: New position: x:      4.435, y:     0.4467, theta:  6.269e+04 weight:  3.95341e+16
+[17:58:15] info: New position: x:      4.435, y:     0.4467, theta:  6.269e+04 weight:  3.95341e+16
+[17:58:15] info: New position: x:    -0.7377, y:       1.38, theta:  6.271e+04 weight:  2.9123e+16
+[17:58:15] info: New position: x:    -0.7377, y:       1.38, theta:  6.271e+04 weight:  2.9123e+16
+[17:58:15] info: Outbox next point, x: 0 y: 0
+[17:58:15] info: New position: x:     -2.052, y:     0.8593, theta:  6.291e+04 weight:  1.72589e+16
+[17:58:15] info: New position: x:     -2.052, y:     0.8593, theta:  6.291e+04 weight:  1.72589e+16
+[17:58:16] info: New position: x:      1.796, y:     -2.018, theta:  6.217e+04 weight:  3.79418e+16
+[17:58:16] info: New position: x:      1.796, y:     -2.018, theta:  6.217e+04 weight:  3.79418e+16
+[17:58:16] info: New position: x:     -3.965, y:      2.438, theta:  6.254e+04 weight:  2.05434e+16
+[17:58:16] info: New position: x:     -3.965, y:      2.438, theta:  6.254e+04 weight:  2.05434e+16
+[17:58:16] info: New position: x:    0.04531, y:      1.466, theta:  6.244e+04 weight:  3.18694e+16
+[17:58:16] info: New position: x:    0.04531, y:      1.466, theta:  6.244e+04 weight:  3.18694e+16
+[17:58:16] info: New position: x:       -4.2, y:    -0.0831, theta:  6.256e+04 weight:  1.29805e+17
+[17:58:16] info: New position: x:       -4.2, y:    -0.0831, theta:  6.256e+04 weight:  1.29805e+17
+[17:58:16] info: New position: x:   0.009962, y:      0.565, theta:  6.249e+04 weight:  2.10693e+16
+[17:58:16] info: New position: x:   0.009962, y:      0.565, theta:  6.249e+04 weight:  2.10693e+16
+[17:58:16] info: New position: x:      2.434, y:     0.8806, theta:  6.251e+04 weight:  3.70764e+16
+[17:58:16] info: New position: x:      2.434, y:     0.8806, theta:  6.251e+04 weight:  3.70764e+16
+[17:58:16] info: New position: x:     -0.803, y:      0.217, theta:   6.24e+04 weight:  9.73962e+16
+[17:58:16] info: New position: x:     -0.803, y:      0.217, theta:   6.24e+04 weight:  9.73962e+16
+[17:58:16] info: New position: x:   -0.08969, y:      2.381, theta:  6.258e+04 weight:  1.26438e+16
+[17:58:16] info: New position: x:   -0.08969, y:      2.381, theta:  6.258e+04 weight:  1.26438e+16
+[17:58:16] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:16] info: New position: x:      3.413, y:    -0.5592, theta:  6.267e+04 weight:  2.03812e+16
+[17:58:16] info: New position: x:      3.413, y:    -0.5592, theta:  6.267e+04 weight:  2.03812e+16
+[17:58:16] info: New position: x:      1.629, y:     0.5273, theta:   6.26e+04 weight:  5.05265e+16
+[17:58:16] info: New position: x:      1.629, y:     0.5273, theta:   6.26e+04 weight:  5.05265e+16
+[17:58:16] info: New position: x:      3.987, y:    -0.5979, theta:  6.223e+04 weight:  2.91802e+16
+[17:58:16] info: New position: x:      3.987, y:    -0.5979, theta:  6.223e+04 weight:  2.91802e+16
+[17:58:16] info: New position: x:     -1.995, y:      2.955, theta:  6.257e+04 weight:  1.75127e+16
+[17:58:16] info: New position: x:     -1.995, y:      2.955, theta:  6.257e+04 weight:  1.75127e+16
+[17:58:16] info: New position: x:     -1.875, y:      1.212, theta:  6.223e+04 weight:  4.80615e+16
+[17:58:16] info: New position: x:     -1.875, y:      1.212, theta:  6.223e+04 weight:  4.80615e+16
+[17:58:16] info: New position: x:     -2.754, y:     -2.432, theta:  6.277e+04 weight:  3.83053e+16
+[17:58:16] info: New position: x:     -2.754, y:     -2.432, theta:  6.277e+04 weight:  3.83053e+16
+[17:58:16] info: New position: x:    -0.9971, y:     -2.491, theta:  6.235e+04 weight:  2.45773e+16
+[17:58:16] info: New position: x:    -0.9971, y:     -2.491, theta:  6.235e+04 weight:  2.45773e+16
+[17:58:16] info: New position: x:     -1.571, y:    -0.5203, theta:  6.283e+04 weight:  2.74971e+16
+[17:58:16] info: New position: x:     -1.571, y:    -0.5203, theta:  6.283e+04 weight:  2.74971e+16
+[17:58:16] info: New position: x:      1.794, y:      1.137, theta:   6.26e+04 weight:  2.64533e+16
+[17:58:16] info: New position: x:      1.794, y:      1.137, theta:   6.26e+04 weight:  2.64533e+16
+[17:58:16] info: New mean pose: x:     0.2112, y:     0.3041, theta:  6.253e+04
+[17:58:16] info: Average raster array size: 8
+[17:58:16] info: Time of update: 1
+[17:58:16] info: Outbox next point, x: 0 y: 0
+[17:58:17] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:17] info: x: 0, y: 0, theta: 134
+[17:58:17] info: x: 0, y: 0, theta: 268
+[17:58:17] info: x: 0, y: 0, theta: 402
+[17:58:17] info: x: 0, y: 0, theta: 536
+[17:58:17] info: x: 0, y: 0, theta: 670
+[17:58:17] info: x: 0, y: 0, theta: 804
+[17:58:17] info: x: 0, y: 0, theta: 938
+[17:58:17] info: x: 0, y: 0, theta: 1072
+[17:58:17] info: x: 0, y: 0, theta: 1206
+[17:58:17] info: x: 0, y: 0, theta: 1340
+[17:58:17] info: x: 0, y: 0, theta: 1474
+[17:58:17] info: x: 0, y: 0, theta: 1608
+[17:58:17] info: x: 0, y: 0, theta: 1742
+[17:58:17] info: x: 0, y: 0, theta: 1876
+[17:58:17] info: x: 0, y: 0, theta: 2010
+[17:58:17] info: x: 0, y: 0, theta: 2144
+[17:58:17] info: x: 0, y: 0, theta: 2278
+[17:58:17] info: x: 0, y: 0, theta: 2412
+[17:58:17] info: x: 0, y: 0, theta: 2546
+[17:58:17] info: x: 0, y: 0, theta: 2680
+[17:58:17] info: x: 0, y: 0, theta: 2814
+[17:58:17] info: x: 0, y: 0, theta: 2948
+[17:58:17] info: x: 0, y: 0, theta: 3082
+[17:58:17] info: x: 0, y: 0, theta: 3216
+[17:58:17] info: x: 0, y: 0, theta: 3350
+[17:58:17] info: Outbox next point, x: 0 y: 0
+[17:58:17] info: x: 0, y: 0, theta: 3484
+[17:58:18] info: x: 0, y: 0, theta: 3618
+[17:58:18] info: x: 0, y: 0, theta: 3752
+[17:58:18] info: x: 0, y: 0, theta: 3886
+[17:58:18] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:18] info: x: 0, y: 0, theta: 4020
+[17:58:18] info: x: 0, y: 0, theta: 4154
+[17:58:18] info: x: 0, y: 0, theta: 4288
+[17:58:18] info: x: 0, y: 0, theta: 4422
+[17:58:18] info: x: 0, y: 0, theta: 4556
+[17:58:18] info: x: 0, y: 0, theta: 4690
+[17:58:18] info: x: 0, y: 0, theta: 4824
+[17:58:18] info: Outbox next point, x: 0 y: 0
+[17:58:19] info: x: 0, y: 0, theta: 4958
+[17:58:19] info: x: 0, y: 0, theta: 5092
+[17:58:19] info: x: 0, y: 0, theta: 5226
+[17:58:19] info: x: 0, y: 0, theta: 5360
+[17:58:19] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:19] info: x: 0, y: 0, theta: 5494
+[17:58:19] info: x: 0, y: 0, theta: 5628
+[17:58:19] info: x: 0, y: 0, theta: 5762
+[17:58:19] info: x: 0, y: 0, theta: 5896
+[17:58:19] info: x: 0, y: 0, theta: 6030
+[17:58:19] info: x: 0, y: 0, theta: 6164
+[17:58:19] info: Outbox next point, x: 0 y: 0
+[17:58:20] info: x: 0, y: 0, theta: 6298
+[17:58:20] info: x: 0, y: 0, theta: 6432
+[17:58:20] info: x: 0, y: 0, theta: 6566
+[17:58:20] info: x: 0, y: 0, theta: 6700
+[17:58:20] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:20] info: x: 0, y: 0, theta: 6834
+[17:58:20] info: x: 0, y: 0, theta: 6968
+[17:58:20] info: x: 0, y: 0, theta: 7102
+[17:58:20] info: x: 0, y: 0, theta: 7236
+[17:58:20] info: x: 0, y: 0, theta: 7370
+[17:58:20] info: x: 0, y: 0, theta: 7504
+[17:58:20] info: Outbox next point, x: 0 y: 0
+[17:58:21] info: x: 0, y: 0, theta: 7638
+[17:58:21] info: x: 0, y: 0, theta: 7772
+[17:58:21] info: x: 0, y: 0, theta: 7906
+[17:58:21] info: x: 0, y: 0, theta: 8040
+[17:58:21] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:21] info: x: 0, y: 0, theta: 8174
+[17:58:21] info: x: 0, y: 0, theta: 8308
+[17:58:21] info: x: 0, y: 0, theta: 8442
+[17:58:21] info: x: 0, y: 0, theta: 8576
+[17:58:21] info: x: 0, y: 0, theta: 8710
+[17:58:21] info: x: 0, y: 0, theta: 8844
+[17:58:21] info: Outbox next point, x: 0 y: 0
+[17:58:22] info: x: 0, y: 0, theta: 8978
+[17:58:22] info: x: 0, y: 0, theta: 9112
+[17:58:22] info: x: 0, y: 0, theta: 9246
+[17:58:22] info: x: 0, y: 0, theta: 9380
+[17:58:22] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:22] info: x: 0, y: 0, theta: 9514
+[17:58:22] info: x: 0, y: 0, theta: 9648
+[17:58:22] info: x: 0, y: 0, theta: 9782
+[17:58:22] info: x: 0, y: 0, theta: 9916
+[17:58:22] info: x: 0, y: 0, theta: 10050
+[17:58:22] info: x: 0, y: 0, theta: 10184
+[17:58:22] info: Outbox next point, x: 0 y: 0
+[17:58:22] info: x: 0, y: 0, theta: 10318
+[17:58:23] info: x: 0, y: 0, theta: 10452
+[17:58:23] info: x: 0, y: 0, theta: 10586
+[17:58:23] info: x: 0, y: 0, theta: 10720
+[17:58:23] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:23] info: x: 0, y: 0, theta: 10854
+[17:58:23] info: x: 0, y: 0, theta: 10988
+[17:58:23] info: x: 0, y: 0, theta: 11122
+[17:58:23] info: x: 0, y: 0, theta: 11256
+[17:58:23] info: x: 0, y: 0, theta: 11390
+[17:58:23] info: x: 0, y: 0, theta: 11524
+[17:58:23] info: x: 0, y: 0, theta: 11658
+[17:58:23] info: Outbox next point, x: 0 y: 0
+[17:58:24] info: x: 0, y: 0, theta: 11792
+[17:58:24] info: x: 0, y: 0, theta: 11926
+[17:58:24] info: x: 0, y: 0, theta: 12060
+[17:58:24] info: Odom        : x:          0, y:          0, theta:      12060
+[17:58:24] info: New position: x:     0.5363, y:    -0.3484, theta:  7.438e+04 weight:  4.54024e+18
+[17:58:24] info: New position: x:     0.5363, y:    -0.3484, theta:  7.438e+04 weight:  4.54024e+18
+[17:58:24] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:24] info: New position: x:    -0.9971, y:     0.5529, theta:  7.496e+04 weight:  2.56763e+18
+[17:58:24] info: New position: x:    -0.9971, y:     0.5529, theta:  7.496e+04 weight:  2.56763e+18
+[17:58:24] info: New position: x:      7.291, y:      2.228, theta:  7.467e+04 weight:  1.93392e+18
+[17:58:24] info: New position: x:      7.291, y:      2.228, theta:  7.467e+04 weight:  1.93392e+18
+[17:58:24] info: New position: x:      1.908, y:     0.5397, theta:  7.445e+04 weight:  1.27067e+18
+[17:58:24] info: New position: x:      1.908, y:     0.5397, theta:  7.445e+04 weight:  1.27067e+18
+[17:58:24] info: New position: x:     -2.946, y:     -1.408, theta:  7.432e+04 weight:  1.14339e+18
+[17:58:24] info: New position: x:     -2.946, y:     -1.408, theta:  7.432e+04 weight:  1.14339e+18
+[17:58:24] info: New position: x:    -0.8432, y:      1.848, theta:  7.466e+04 weight:  1.67388e+18
+[17:58:24] info: New position: x:    -0.8432, y:      1.848, theta:  7.466e+04 weight:  1.67388e+18
+[17:58:24] info: New position: x:     0.6573, y:    -0.2473, theta:  7.468e+04 weight:  3.49123e+18
+[17:58:24] info: New position: x:     0.6573, y:    -0.2473, theta:  7.468e+04 weight:  3.49123e+18
+[17:58:24] info: New position: x:     -1.229, y:      -2.16, theta:   7.45e+04 weight:  5.19887e+18
+[17:58:24] info: New position: x:     -1.229, y:      -2.16, theta:   7.45e+04 weight:  5.19887e+18
+[17:58:24] info: New position: x:     0.4044, y:      -1.37, theta:  7.465e+04 weight:  3.90304e+18
+[17:58:24] info: New position: x:     0.4044, y:      -1.37, theta:  7.465e+04 weight:  3.90304e+18
+[17:58:24] info: New position: x:     0.9473, y:    -0.9542, theta:  7.455e+04 weight:  3.84842e+18
+[17:58:24] info: New position: x:     0.9473, y:    -0.9542, theta:  7.455e+04 weight:  3.84842e+18
+[17:58:24] info: New position: x:      4.562, y:       0.88, theta:  7.462e+04 weight:  3.43947e+18
+[17:58:24] info: New position: x:      4.562, y:       0.88, theta:  7.462e+04 weight:  3.43947e+18
+[17:58:24] info: New position: x:    -0.6499, y:      1.413, theta:  7.476e+04 weight:  3.69862e+18
+[17:58:24] info: New position: x:    -0.6499, y:      1.413, theta:  7.476e+04 weight:  3.69862e+18
+[17:58:24] info: Outbox next point, x: 0 y: 0
+[17:58:25] info: New position: x:     0.6716, y:      2.228, theta:  7.509e+04 weight:  1.27716e+18
+[17:58:25] info: New position: x:     0.6716, y:      2.228, theta:  7.509e+04 weight:  1.27716e+18
+[17:58:25] info: New position: x:    -0.0516, y:    -0.7634, theta:  7.423e+04 weight:  6.22246e+18
+[17:58:25] info: New position: x:    -0.0516, y:    -0.7634, theta:  7.423e+04 weight:  6.22246e+18
+[17:58:25] info: New position: x:     -4.022, y:      2.508, theta:  7.447e+04 weight:  2.25978e+18
+[17:58:25] info: New position: x:     -4.022, y:      2.508, theta:  7.447e+04 weight:  2.25978e+18
+[17:58:25] info: New position: x:     -1.472, y:      2.475, theta:  7.437e+04 weight:  2.96385e+18
+[17:58:25] info: New position: x:     -1.472, y:      2.475, theta:  7.437e+04 weight:  2.96385e+18
+[17:58:25] info: New position: x:       -4.4, y:     0.1667, theta:  7.453e+04 weight:  1.0644e+19
+[17:58:25] info: New position: x:       -4.4, y:     0.1667, theta:  7.453e+04 weight:  1.0644e+19
+[17:58:25] info: New position: x:      1.575, y:      2.064, theta:  7.453e+04 weight:  1.45378e+18
+[17:58:25] info: New position: x:      1.575, y:      2.064, theta:  7.453e+04 weight:  1.45378e+18
+[17:58:25] info: New position: x:      2.849, y:     0.8041, theta:  7.453e+04 weight:  3.22565e+18
+[17:58:25] info: New position: x:      2.849, y:     0.8041, theta:  7.453e+04 weight:  3.22565e+18
+[17:58:25] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:25] info: New position: x:      0.214, y:     -0.951, theta:  7.426e+04 weight:  1.25641e+19
+[17:58:25] info: New position: x:      0.214, y:     -0.951, theta:  7.426e+04 weight:  1.25641e+19
+[17:58:25] info: New position: x:       1.77, y:      1.976, theta:  7.464e+04 weight:  1.20116e+18
+[17:58:25] info: New position: x:       1.77, y:      1.976, theta:  7.464e+04 weight:  1.20116e+18
+[17:58:25] info: New position: x:      2.665, y:     -1.874, theta:  7.477e+04 weight:  2.73108e+18
+[17:58:25] info: New position: x:      2.665, y:     -1.874, theta:  7.477e+04 weight:  2.73108e+18
+[17:58:25] info: New position: x:      1.482, y:   -0.02899, theta:  7.476e+04 weight:  4.85055e+18
+[17:58:25] info: New position: x:      1.482, y:   -0.02899, theta:  7.476e+04 weight:  4.85055e+18
+[17:58:25] info: New position: x:      4.367, y:     0.3126, theta:  7.441e+04 weight:  3.0931e+18
+[17:58:25] info: New position: x:      4.367, y:     0.3126, theta:  7.441e+04 weight:  3.0931e+18
+[17:58:25] info: New position: x:    -0.6984, y:      5.765, theta:  7.466e+04 weight:  3.15229e+18
+[17:58:25] info: New position: x:    -0.6984, y:      5.765, theta:  7.466e+04 weight:  3.15229e+18
+[17:58:25] info: New position: x:     -1.888, y:      2.482, theta:  7.435e+04 weight:  2.4992e+18
+[17:58:25] info: New position: x:     -1.888, y:      2.482, theta:  7.435e+04 weight:  2.4992e+18
+[17:58:25] info: New position: x:     -2.507, y:     -3.535, theta:  7.475e+04 weight:  4.2902e+18
+[17:58:25] info: New position: x:     -2.507, y:     -3.535, theta:  7.475e+04 weight:  4.2902e+18
+[17:58:25] info: New position: x:     -1.034, y:     -2.815, theta:  7.456e+04 weight:  3.78491e+18
+[17:58:25] info: New position: x:     -1.034, y:     -2.815, theta:  7.456e+04 weight:  3.78491e+18
+[17:58:25] info: New position: x:     -1.192, y:    -0.3044, theta:  7.487e+04 weight:  4.53702e+18
+[17:58:25] info: New position: x:     -1.192, y:    -0.3044, theta:  7.487e+04 weight:  4.53702e+18
+[17:58:25] info: New position: x:      2.066, y:       4.45, theta:  7.481e+04 weight:  4.47061e+18
+[17:58:25] info: New position: x:      2.066, y:       4.45, theta:  7.481e+04 weight:  4.47061e+18
+[17:58:26] info: Outbox next point, x: 0 y: 0
+[17:58:26] info: New mean pose: x:     0.3345, y:     0.5311, theta:  7.459e+04
+[17:58:26] info: Average raster array size: 10
+[17:58:26] info: Time of update: 1
+[17:58:26] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:26] info: x: 0, y: 0, theta: 134
+[17:58:26] info: x: 0, y: 0, theta: 268
+[17:58:26] info: x: 0, y: 0, theta: 402
+[17:58:26] info: x: 0, y: 0, theta: 536
+[17:58:26] info: x: 0, y: 0, theta: 670
+[17:58:26] info: x: 0, y: 0, theta: 804
+[17:58:26] info: x: 0, y: 0, theta: 938
+[17:58:26] info: x: 0, y: 0, theta: 1072
+[17:58:26] info: x: 0, y: 0, theta: 1206
+[17:58:26] info: x: 0, y: 0, theta: 1340
+[17:58:26] info: x: 0, y: 0, theta: 1474
+[17:58:26] info: x: 0, y: 0, theta: 1608
+[17:58:26] info: x: 0, y: 0, theta: 1742
+[17:58:26] info: x: 0, y: 0, theta: 1876
+[17:58:26] info: x: 0, y: 0, theta: 2010
+[17:58:26] info: x: 0, y: 0, theta: 2144
+[17:58:26] info: x: 0, y: 0, theta: 2278
+[17:58:26] info: x: 0, y: 0, theta: 2412
+[17:58:26] info: x: 0, y: 0, theta: 2546
+[17:58:26] info: x: 0, y: 0, theta: 2680
+[17:58:26] info: x: 0, y: 0, theta: 2814
+[17:58:26] info: x: 0, y: 0, theta: 2948
+[17:58:26] info: x: 0, y: 0, theta: 3082
+[17:58:26] info: x: 0, y: 0, theta: 3216
+[17:58:26] info: x: 0, y: 0, theta: 3350
+[17:58:26] info: x: 0, y: 0, theta: 3484
+[17:58:26] info: x: 0, y: 0, theta: 3618
+[17:58:27] info: Outbox next point, x: 0 y: 0
+[17:58:27] info: x: 0, y: 0, theta: 3752
+[17:58:27] info: x: 0, y: 0, theta: 3886
+[17:58:27] info: x: 0, y: 0, theta: 4020
+[17:58:27] info: x: 0, y: 0, theta: 4154
+[17:58:27] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:27] info: x: 0, y: 0, theta: 4288
+[17:58:27] info: x: 0, y: 0, theta: 4422
+[17:58:27] info: x: 0, y: 0, theta: 4556
+[17:58:27] info: x: 0, y: 0, theta: 4690
+[17:58:27] info: x: 0, y: 0, theta: 4824
+[17:58:27] info: x: 0, y: 0, theta: 4958
+[17:58:28] info: x: 0, y: 0, theta: 5092
+[17:58:28] info: Outbox next point, x: 0 y: 0
+[17:58:28] info: x: 0, y: 0, theta: 5226
+[17:58:28] info: x: 0, y: 0, theta: 5360
+[17:58:28] info: x: 0, y: 0, theta: 5494
+[17:58:28] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:28] info: x: 0, y: 0, theta: 5628
+[17:58:28] info: x: 0, y: 0, theta: 5762
+[17:58:28] info: x: 0, y: 0, theta: 5896
+[17:58:28] info: x: 0, y: 0, theta: 6030
+[17:58:28] info: x: 0, y: 0, theta: 6164
+[17:58:28] info: x: 0, y: 0, theta: 6298
+[17:58:29] info: x: 0, y: 0, theta: 6432
+[17:58:29] info: Outbox next point, x: 0 y: 0
+[17:58:29] info: x: 0, y: 0, theta: 6566
+[17:58:29] info: x: 0, y: 0, theta: 6700
+[17:58:29] info: x: 0, y: 0, theta: 6834
+[17:58:29] info: x: 0, y: 0, theta: 6968
+[17:58:29] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:29] info: x: 0, y: 0, theta: 7102
+[17:58:29] info: x: 0, y: 0, theta: 7236
+[17:58:29] info: x: 0, y: 0, theta: 7370
+[17:58:29] info: x: 0, y: 0, theta: 7504
+[17:58:29] info: x: 0, y: 0, theta: 7638
+[17:58:29] info: x: 0, y: 0, theta: 7772
+[17:58:30] info: Outbox next point, x: 0 y: 0
+[17:58:30] info: x: 0, y: 0, theta: 7906
+[17:58:30] info: x: 0, y: 0, theta: 8040
+[17:58:30] info: x: 0, y: 0, theta: 8174
+[17:58:30] info: x: 0, y: 0, theta: 8308
+[17:58:30] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:30] info: x: 0, y: 0, theta: 8442
+[17:58:30] info: x: 0, y: 0, theta: 8576
+[17:58:31] info: Outbox next point, x: 0 y: 0
+[17:58:31] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:32] info: Outbox next point, x: 0 y: 0
+[17:58:32] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:33] info: Outbox next point, x: 0 y: 0
+[17:58:33] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:34] info: Outbox next point, x: 0 y: 0
+[17:58:34] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:35] info: Outbox next point, x: 0 y: 0
+[17:58:35] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:36] info: Outbox next point, x: 0 y: 0
+[17:58:36] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:37] info: Outbox next point, x: 0 y: 0
+[17:58:37] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:38] info: Outbox next point, x: 0 y: 0
+[17:58:38] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:39] info: Outbox next point, x: 0 y: 0
+[17:58:39] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:40] info: Outbox next point, x: 0 y: 0
+[17:58:40] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:41] info: Outbox next point, x: 0 y: 0
+[17:58:41] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:42] info: Outbox next point, x: 0 y: 0
+[17:58:42] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:43] info: Outbox next point, x: 0 y: 0
+[17:58:43] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:44] info: Outbox next point, x: 0 y: 0
+[17:58:44] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:45] info: Outbox next point, x: 0 y: 0
+[17:58:45] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:46] info: Outbox next point, x: 0 y: 0
+[17:58:46] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:47] info: Outbox next point, x: 0 y: 0
+[17:58:47] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:48] info: Outbox next point, x: 0 y: 0
+[17:58:48] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:49] info: Outbox next point, x: 0 y: 0
+[17:58:49] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:50] info: Outbox next point, x: 0 y: 0
+[17:58:50] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:51] info: Outbox next point, x: 0 y: 0
+[17:58:51] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:52] info: Outbox next point, x: 0 y: 0
+[17:58:52] info: Got a request to publish to: v2/server/NRF_5/cmd
+[17:58:53] info: Outbox next point, x: 0 y: 0
