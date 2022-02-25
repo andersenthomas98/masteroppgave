@@ -302,10 +302,7 @@ static void searchgw_timeout_callback(mqttsn_event_t * p_event)
     switch(p_event->event_data.discovery) {
       
       case MQTTSN_SEARCH_GATEWAY_FINISHED:
-        err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
-        if (err_code != NRF_SUCCESS) {
-          NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
-        }
+        // TODO
         break;
       
       case MQTTSN_SEARCH_GATEWAY_NO_GATEWAY_FOUND:
@@ -337,6 +334,10 @@ void mqttsn_evt_handler(mqttsn_client_t * p_client, mqttsn_event_t * p_event)
         case MQTTSN_EVENT_GATEWAY_FOUND:
             NRF_LOG_INFO("MQTT-SN event: Client has found an active gateway.\r\n");
             gateway_info_callback(p_event);
+            err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
+            if (err_code != NRF_SUCCESS) {
+              NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
+            }
             break;
 
         case MQTTSN_EVENT_CONNECTED:

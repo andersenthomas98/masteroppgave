@@ -47,9 +47,9 @@ int oldTime = 0;
 char irAnalogReading[20];
 int calibrationCounter = 0;
 int distance = 125;
-int16_t lastPublishedX = 0;
-int16_t lastPublishedY = 0;
-int16_t lastPublishedTheta = 0;
+float lastPublishedX = 0;
+float lastPublishedY = 0;
+float lastPublishedTheta = 0;
 
 void vMainSensorTowerTask(void * pvParameters) {
 
@@ -164,9 +164,9 @@ void vMainSensorTowerTask(void * pvParameters) {
             update_msg.xdelta = (xhat - lastPublishedX);
             update_msg.ydelta = (yhat - lastPublishedY);
             update_msg.thetadelta = (thetahat - lastPublishedTheta)*RAD2DEG;
-            lastPublishedX = update_msg.xdelta;
-            lastPublishedY = update_msg.ydelta;
-            lastPublishedTheta = update_msg.thetadelta;
+            lastPublishedX = xhat;
+            lastPublishedY = yhat;
+            lastPublishedTheta = thetahat;
             update_msg.ir1 = (coordinate_t){.x = distObjectXlocal(thetahat, servoAngle, sensorDataMM, 0), .y = distObjectYlocal(thetahat, servoAngle, sensorDataMM, 0)};
             update_msg.ir2 = (coordinate_t){.x = distObjectXlocal(thetahat, servoAngle, sensorDataMM, 1), .y = distObjectYlocal(thetahat, servoAngle, sensorDataMM, 1)};
             update_msg.ir3 = (coordinate_t){.x = distObjectXlocal(thetahat, servoAngle, sensorDataMM, 2), .y = distObjectYlocal(thetahat, servoAngle, sensorDataMM, 2)};
@@ -177,9 +177,10 @@ void vMainSensorTowerTask(void * pvParameters) {
                 update_msg.valid |= (1 << ((NUM_DIST_SENSORS-i)-1));
               }
             }
-            NRF_LOG_INFO("x:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.xdelta));
-            NRF_LOG_INFO("y:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.ydelta));
-            NRF_LOG_INFO("theta:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.thetadelta));
+            //NRF_LOG_INFO("x:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.xdelta));
+            //NRF_LOG_INFO("y:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.ydelta));
+            //NRF_LOG_INFO("theta:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.thetadelta));
+           
             publish("v2/robot/NRF_5/adv", &update_msg, sizeof(update_msg), 0, 0);
 
 

@@ -90,11 +90,11 @@ NRF_LOG_MODULE_REGISTER();
 #define THREAD_STACK_TASK_PRIORITY            2
 #define MQTTSN_TASK_PRIORITY                  2
 #define SENSOR_TOWER_TASK_PRIORITY            3
-#define NEW_ESTIMATOR_TASK_PRIORITY           3
+#define NEW_ESTIMATOR_TASK_PRIORITY           4
 #define MOTOR_SPEED_CONTROLLER_TASK_PRIORITY  3
 #define POSE_CONTROLLER_TASK_PRIORITY         3
 #define EXAMPLE_TASK_PRIORITY                 1
-#define LOG_TASK_PRIORITY                     1
+#define LOG_TASK_PRIORITY                     4
 
 #define LOG_TASK_INTERVAL                     10
 
