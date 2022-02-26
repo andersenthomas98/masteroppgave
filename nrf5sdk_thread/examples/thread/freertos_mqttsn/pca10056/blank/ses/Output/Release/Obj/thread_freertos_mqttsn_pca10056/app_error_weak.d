@@ -1,10 +1,10 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_error_weak.o: \
  C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error_weak.c \
  C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \
@@ -24,14 +24,14 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_error_weak.o: \
  C:\masteroppgave\nrf5sdk_thread\components\libraries\util\app_error_weak.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/sdk_os.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/libraries/util/app_util.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
@@ -47,7 +47,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_error_weak.o: \
  ../../../../../../components/libraries/log/src/nrf_log_ctrl_internal.h \
  ../../../../../../components/libraries/log/nrf_log_backend_interface.h \
  ../../../../../../components/libraries/memobj/nrf_memobj.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
  ../../../../../../components/libraries/balloc/nrf_balloc.h \
  ../../../../../../components/libraries/util/app_util_platform.h \
  ../../../../../../components/libraries/util/app_error.h \

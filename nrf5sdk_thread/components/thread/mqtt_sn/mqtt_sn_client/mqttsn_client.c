@@ -578,6 +578,7 @@ uint32_t mqttsn_client_publish(mqttsn_client_t * p_client,
                                uint16_t          topic_id,
                                const uint8_t   * p_payload,
                                uint16_t          payload_len,
+                               uint8_t           qos,
                                uint16_t        * p_msg_id)
 {
     NULL_PARAM_CHECK(p_client);
@@ -595,7 +596,7 @@ uint32_t mqttsn_client_publish(mqttsn_client_t * p_client,
 
     mqttsn_topic_t topic = { .topic_id = topic_id };
 
-    uint32_t err_code = mqttsn_packet_sender_publish(p_client, &topic, p_payload, payload_len);
+    uint32_t err_code = mqttsn_packet_sender_publish(p_client, &topic, p_payload, payload_len, qos);
     if (p_msg_id)
     {
         *p_msg_id = p_client->message_id;
@@ -852,7 +853,7 @@ void mqttsn_client_timeout_handle(mqttsn_client_t * p_client)
     {
         if (is_earlier(p_client->keep_alive.timeout, timer_value))
         {
-            NRF_LOG_INFO("Sending keep alive");
+            NRF_LOG_INFO("Sending PINGREQ");
             keep_alive_transmission_attempt(p_client);
         }
     }

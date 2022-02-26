@@ -2,14 +2,14 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_utils.o: \
  C:\masteroppgave\nrf5sdk_thread\components\thread\utils\thread_utils.c \
  C:\masteroppgave\nrf5sdk_thread\components\thread\utils\thread_utils.h \
  ../../../../../../external/openthread/include/openthread/instance.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  ../../../../../../external/openthread/include/openthread/error.h \
  ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  ../../../../../../components/libraries/util/app_util_platform.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
@@ -27,7 +27,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_utils.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
  ../../../../../../components/libraries/util/app_error.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  ../../../../../../components/libraries/util/nordic_common.h \
@@ -37,7 +37,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_utils.o: \
  ../../../../../../modules/nrfx/nrfx.h \
  ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \
  ../../../../../../modules/nrfx/drivers/nrfx_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  ../../../../../../modules/nrfx/mdk/nrf_peripherals.h \
  ../../../../../../modules/nrfx/mdk/nrf52840_peripherals.h \
  ../../../../../../integration/nrfx/nrfx_glue.h \
@@ -53,7 +53,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_utils.o: \
  ../../../../../../modules/nrfx/drivers/nrfx_errors.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
  ../../../../../../components/libraries/util/sdk_os.h \
  ../../../../../../components/libraries/util/app_util.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
@@ -86,7 +86,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_utils.o: \
  ../../../../../../external/openthread/project/config/openthread-config-wrap.h \
  ../../../../../../external/openthread/project/nrf52840/openthread-config-generic.h \
  ../../../../../../external/nrf_security/include/mbedtls/check_config.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/limits.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/limits.h \
  ../../../../../../external/nrf_security/include/mbedtls/platform_alt.h \
  ../../../../../../external/openthread/include/openthread/heap.h \
  ../../../../../../external/freertos/source/include/FreeRTOS.h \

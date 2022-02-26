@@ -1,24 +1,24 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_coap_utils.o: \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\app_utils\thread_coap_utils.c \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\app_utils\thread_coap_utils.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../external/openthread/include/openthread/coap.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  ../../../../../../external/openthread/include/openthread/ip6.h \
  ../../../../../../external/openthread/include/openthread/message.h \
  ../../../../../../external/openthread/include/openthread/instance.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  ../../../../../../external/openthread/include/openthread/error.h \
  ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
  ../../../../../../external/openthread/include/openthread/platform/radio.h \
  ../../../../../../components/thread/utils/thread_utils.h \
  ../../../../../../components/libraries/timer/app_timer.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/app_error.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \
@@ -37,7 +37,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_coap_utils.o: \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/app_error_weak.h \
  ../../../../../../components/libraries/util/app_util.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../config/FreeRTOSConfig.h \
@@ -67,7 +67,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_coap_utils.o: \
  ../../../../../../components/libraries/button/app_button.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
  ../../../../../../components/libraries/util/sdk_os.h \
  ../../../../../../components/libraries/util/app_util.h \
  ../../../../../../components/libraries/util/sdk_macros.h \

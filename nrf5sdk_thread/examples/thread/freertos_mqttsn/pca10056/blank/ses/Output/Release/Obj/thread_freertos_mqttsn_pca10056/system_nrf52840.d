@@ -1,7 +1,7 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/system_nrf52840.o: \
  C:\masteroppgave\nrf5sdk_thread\modules\nrfx\mdk\system_nrf52840.c \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  C:\masteroppgave\nrf5sdk_thread\modules\nrfx\mdk\nrf.h \
  C:\masteroppgave\nrf5sdk_thread\modules\nrfx\mdk\nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \

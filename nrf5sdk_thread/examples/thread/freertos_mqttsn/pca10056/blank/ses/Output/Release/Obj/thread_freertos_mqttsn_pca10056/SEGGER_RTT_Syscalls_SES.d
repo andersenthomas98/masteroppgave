@@ -5,7 +5,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/SEGGER_RTT_Syscalls_SES.o: \
  C:\masteroppgave\nrf5sdk_thread\external\segger_rtt\SEGGER_RTT_Conf.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/app_util_platform.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
@@ -22,15 +22,15 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/SEGGER_RTT_Syscalls_SES.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
  ../../../../../../components/libraries/util/app_error.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/app_error_weak.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/limits.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__libc.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__vfprintf.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__argtype.h
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/limits.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__libc.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__vfprintf.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__argtype.h

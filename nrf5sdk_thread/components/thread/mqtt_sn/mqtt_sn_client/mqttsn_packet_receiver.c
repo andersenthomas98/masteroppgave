@@ -926,7 +926,7 @@ static uint32_t message_handle(mqttsn_client_t        * p_client,
             break;
 
         case MQTTSN_PUBACK:
-            //NRF_LOG_INFO("mqttsn_packet_receiver: Recv PUBACK");
+            NRF_LOG_INFO("Received PUBACK");
             err_code = puback_handle(p_client, p_data, datalen);
             break;
 
@@ -939,6 +939,7 @@ static uint32_t message_handle(mqttsn_client_t        * p_client,
             break;
 
         case MQTTSN_PINGRESP:
+            NRF_LOG_INFO("Received PINGRESP");
             err_code = pingresp_handle(p_client);
             break;
 

@@ -1,10 +1,10 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_timer_freertos.o: \
  C:\masteroppgave\nrf5sdk_thread\components\libraries\timer\app_timer_freertos.c \
  ../../../../../../components/libraries/util/sdk_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
@@ -12,7 +12,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_timer_freertos.o: \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  ../../../../../../components/libraries/util/app_util.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \
@@ -32,7 +32,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_timer_freertos.o: \
  ../../../config/FreeRTOSConfig.h \
  ../../../../../../components/libraries/util/app_util_platform.h \
  ../../../../../../components/libraries/util/app_error.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
  ../../../../../../components/libraries/util/app_error_weak.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
  ../../../../../../external/freertos/source/include/projdefs.h \
@@ -49,4 +49,4 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/app_timer_freertos.o: \
  C:\masteroppgave\nrf5sdk_thread\components\libraries\timer\app_timer.h \
  ../../../../../../components/libraries/util/app_error.h \
  ../../../../../../components/libraries/util/nordic_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h

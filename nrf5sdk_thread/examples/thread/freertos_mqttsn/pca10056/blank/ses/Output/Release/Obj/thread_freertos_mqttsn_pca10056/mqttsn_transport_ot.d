@@ -2,13 +2,13 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/mqttsn_transport_ot.o: \
  C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport_ot.c \
  C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_transport.h \
  C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_client.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  C:\masteroppgave\nrf5sdk_thread\components\thread\mqtt_sn\mqtt_sn_client\mqttsn_packet_internal.h \
  ../../../../../../components/libraries/mem_manager/mem_manager.h \
  ../../../../../../components/libraries/util/sdk_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
@@ -16,7 +16,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/mqttsn_transport_ot.o: \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  ../../../../../../components/libraries/util/app_util.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \
@@ -46,9 +46,9 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/mqttsn_transport_ot.o: \
  ../../../../../../external/openthread/include/openthread/ip6.h \
  ../../../../../../external/openthread/include/openthread/message.h \
  ../../../../../../external/openthread/include/openthread/instance.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
  ../../../../../../external/openthread/include/openthread/error.h \
  ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
  ../../../../../../external/openthread/include/openthread/platform/logging.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
  ../../../../../../external/openthread/include/openthread/platform/radio.h

@@ -1,7 +1,7 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/assert.o: \
  C:\masteroppgave\nrf5sdk_thread\components\libraries\assert\assert.c \
  ../../../../../../components/libraries/util/nrf_assert.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \

@@ -334,7 +334,7 @@ void mqttsn_evt_handler(mqttsn_client_t * p_client, mqttsn_event_t * p_event)
         case MQTTSN_EVENT_GATEWAY_FOUND:
             NRF_LOG_INFO("MQTT-SN event: Client has found an active gateway.\r\n");
             gateway_info_callback(p_event);
-            err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
+            uint32_t err_code = mqttsn_client_connect(&m_client, &m_gateway_addr, m_gateway_id, &m_connect_opt);
             if (err_code != NRF_SUCCESS) {
               NRF_LOG_ERROR("CONNECT message could not be sent. Error: 0x%x\r\n", err_code);
             }
@@ -573,7 +573,7 @@ uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_
   }
   msg.payload = p_payload;
   msg.payload_size = payload_size;
-  msg.qos = 0;
+  msg.qos = qos;
   msg.msg_id = msg_id;
 
   if (mqttsn_outgoing_message_queue != NULL && xQueueSend(mqttsn_outgoing_message_queue, &msg, 0) != pdPASS) {
@@ -669,7 +669,7 @@ void mqttsn_task(void *arg) {
     
     while (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
 
-      uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic_id, rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
+      uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic_id, rx_msg.payload, rx_msg.payload_size, rx_msg.qos, &rx_msg.msg_id);
     
       if (err_code != NRF_SUCCESS) {
         NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)

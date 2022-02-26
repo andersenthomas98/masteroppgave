@@ -7,6 +7,6 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/MQTTSNSerializePublish.o: \
  C:\masteroppgave\nrf5sdk_thread\external\paho\mqtt-sn\mqttsn_packet\MQTTSNUnsubscribe.h \
  C:\masteroppgave\nrf5sdk_thread\external\paho\mqtt-sn\mqttsn_packet\MQTTSNSearch.h \
  C:\masteroppgave\nrf5sdk_thread\external\paho\mqtt-sn\mqttsn_packet\StackTrace.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/string.h

@@ -261,7 +261,8 @@ uint32_t mqttsn_packet_sender_regack(mqttsn_client_t * p_client,
 uint32_t mqttsn_packet_sender_publish(mqttsn_client_t * p_client,
                                       mqttsn_topic_t  * p_topic,
                                       const uint8_t   * p_payload,
-                                      uint16_t          payloadlen);
+                                      uint16_t          payloadlen,
+                                      uint8_t           qos);
 
 /**@brief Sends PUBACK message.
  *

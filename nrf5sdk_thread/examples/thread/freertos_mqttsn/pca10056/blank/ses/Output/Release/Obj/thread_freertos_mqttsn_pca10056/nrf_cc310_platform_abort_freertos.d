@@ -1,8 +1,8 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_cc310_platform_abort_freertos.o: \
  C:\masteroppgave\nrf5sdk_thread\external\nrf_security\nrf_cc310_plat\src\nrf_cc310_platform_abort_freertos.c \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
  ../../../../../../external/nrf_security/nrf_cc310_plat/include/nrf_cc310_platform_abort.h \
  ../../../../../../external/freertos/source/include/FreeRTOS.h \
  ../../../config/FreeRTOSConfig.h \
@@ -23,8 +23,8 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/nrf_cc310_platform_abort_free
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
  ../../../../../../components/libraries/util/app_error.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
  ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  ../../../../../../components/libraries/util/nordic_common.h \

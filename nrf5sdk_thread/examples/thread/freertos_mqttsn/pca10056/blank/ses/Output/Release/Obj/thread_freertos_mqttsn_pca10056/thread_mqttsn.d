@@ -1,25 +1,15 @@
 Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\thread_mqttsn.c \
  C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\thread_mqttsn.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdint.h \
  ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
- ../../../../../../components/thread/utils/thread_utils.h \
- ../../../../../../external/openthread/include/openthread/instance.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
- ../../../../../../external/openthread/include/openthread/error.h \
- ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
- ../../../../../../external/openthread/include/openthread/platform/logging.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
- ../../../../../../components/libraries/bsp/bsp_thread.h \
- ../../../../../../components/libraries/bsp/bsp.h \
- ../../../../../../components/boards/boards.h \
- ../../../../../../modules/nrfx/hal/nrf_gpio.h \
- ../../../../../../modules/nrfx/nrfx.h \
- ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \
- ../../../../../../modules/nrfx/drivers/nrfx_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdbool.h \
+ ../../../../../../external/freertos/source/include/FreeRTOS.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stddef.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/__crossworks.h \
+ ../../../config/FreeRTOSConfig.h \
+ ../../../../../../components/libraries/util/app_util_platform.h \
+ ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../modules/nrfx/mdk/nrf.h \
  ../../../../../../modules/nrfx/mdk/nrf52840.h \
  ../../../../../../components/toolchain/cmsis/include/core_cm4.h \
@@ -33,24 +23,43 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  ../../../../../../modules/nrfx/mdk/nrf51_to_nrf52840.h \
  ../../../../../../modules/nrfx/mdk/nrf52_to_nrf52840.h \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
+ ../../../../../../components/libraries/util/nrf_assert.h \
+ ../../../../../../components/libraries/util/app_error.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
+ ../../../../../../components/libraries/util/sdk_errors.h \
+ ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
+ ../../../../../../components/libraries/util/nordic_common.h \
+ ../../../../../../components/libraries/util/app_error_weak.h \
+ ../../../../../../components/libraries/util/nrf_assert.h \
+ ../../../../../../external/freertos/source/include/projdefs.h \
+ ../../../../../../external/freertos/source/include/portable.h \
+ ../../../../../../external/freertos/source/include/deprecated_definitions.h \
+ ../../../../../../external/freertos/portable/GCC/nrf52/portmacro.h \
+ ../../../../../../external/freertos/portable/CMSIS/nrf52/portmacro_cmsis.h \
+ ../../../../../../components/libraries/util/app_util.h \
+ ../../../../../../external/freertos/source/include/mpu_wrappers.h \
+ ../../../../../../external/freertos/source/include/queue.h \
+ ../../../../../../components/thread/utils/thread_utils.h \
+ ../../../../../../external/openthread/include/openthread/instance.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdlib.h \
+ ../../../../../../external/openthread/include/openthread/error.h \
+ ../../../../../../external/openthread/include/openthread/platform/toolchain.h \
+ ../../../../../../external/openthread/include/openthread/platform/logging.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/stdarg.h \
+ ../../../../../../components/libraries/bsp/bsp_thread.h \
+ ../../../../../../components/libraries/bsp/bsp.h \
+ ../../../../../../components/boards/boards.h \
+ ../../../../../../modules/nrfx/hal/nrf_gpio.h \
+ ../../../../../../modules/nrfx/nrfx.h \
+ ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \
+ ../../../../../../modules/nrfx/drivers/nrfx_common.h \
  ../../../../../../modules/nrfx/mdk/nrf_peripherals.h \
  ../../../../../../modules/nrfx/mdk/nrf52840_peripherals.h \
  ../../../../../../integration/nrfx/nrfx_glue.h \
  ../../../../../../integration/nrfx/legacy/apply_old_config.h \
  ../../../../../../modules/nrfx/soc/nrfx_irqs.h \
  ../../../../../../modules/nrfx/soc/nrfx_irqs_nrf52840.h \
- ../../../../../../components/libraries/util/nrf_assert.h \
- ../../../../../../components/libraries/util/app_util.h \
- ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/libraries/util/nordic_common.h \
- ../../../../../../components/libraries/util/nordic_common.h \
- ../../../../../../components/libraries/util/app_util_platform.h \
- ../../../../../../components/libraries/util/nrf_assert.h \
- ../../../../../../components/libraries/util/app_error.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/stdio.h \
- ../../../../../../components/libraries/util/sdk_errors.h \
- ../../../../../../components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
- ../../../../../../components/libraries/util/app_error_weak.h \
  ../../../../../../modules/nrfx/soc/nrfx_coredep.h \
  ../../../../../../modules/nrfx/soc/nrfx_atomic.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
@@ -59,19 +68,16 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  ../../../../../../components/boards/pca10056.h \
  ../../../../../../components/libraries/button/app_button.h \
  ../../../../../../components/libraries/util/app_error.h \
- ../../../../../../external/freertos/source/include/FreeRTOS.h \
- ../../../config/FreeRTOSConfig.h \
- ../../../../../../external/freertos/source/include/projdefs.h \
- ../../../../../../external/freertos/source/include/portable.h \
- ../../../../../../external/freertos/source/include/deprecated_definitions.h \
- ../../../../../../external/freertos/portable/GCC/nrf52/portmacro.h \
- ../../../../../../external/freertos/portable/CMSIS/nrf52/portmacro_cmsis.h \
- ../../../../../../external/freertos/source/include/mpu_wrappers.h \
  ../../../../../../external/freertos/source/include/task.h \
  ../../../../../../external/freertos/source/include/list.h \
+ ../../../../../../external/freertos/source/include/semphr.h \
+ ../../../../../../external/freertos/source/include/queue.h \
+ ../../../../../../external/freertos/source/include/event_groups.h \
+ ../../../../../../external/freertos/source/include/timers.h \
+ ../../../../../../external/freertos/source/include/task.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/string.h \
  ../../../../../../components/libraries/util/sdk_os.h \
  ../../../../../../components/libraries/util/app_util.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
@@ -94,4 +100,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/thread_mqttsn.o: \
  ../../../../../../external/openthread/include/openthread/commissioner.h \
  ../../../../../../external/freertos/source/include/message_buffer.h \
  ../../../../../../external/freertos/source/include/stream_buffer.h \
- C:/v1.8.0/toolchain/segger_embedded_studio/include/inttypes.h
+ C:/Users/ThomasAndersen/ncs/v1.8.0/toolchain/segger_embedded_studio/include/inttypes.h \
+ C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\robot_config.h \
+ ../../../../../../modules/nrfx/drivers/include/nrfx_saadc.h \
+ ../../../../../../modules/nrfx/hal/nrf_saadc.h

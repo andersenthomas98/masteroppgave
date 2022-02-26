@@ -400,6 +400,7 @@ uint32_t mqttsn_client_publish(mqttsn_client_t * p_client,
                                uint16_t          topic_id,
                                const uint8_t   * p_payload,
                                uint16_t          payload_len,
+                               uint8_t           qos,
                                uint16_t        * msg_id);
 
 

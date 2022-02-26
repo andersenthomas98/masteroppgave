@@ -14,8 +14,35 @@ typedef struct example_rx_msg {
 } __attribute__((packed)) example_rx_msg_t;
 
 void example_task(void *arg) {
-  
+
+
+  NRF_LOG_INFO("example task setup");
   TickType_t lastWakeTime;
+  const TickType_t delay = 5;
+
+  uint8_t payload = 0x01;
+  mqttsn_target_msg_t rx_msg;
+  
+  mqttsn_update_msg_t msg;
+  msg.identifier = UPDATE_IDENTIFIER;
+  msg.xdelta = 0;
+  msg.ydelta = 0;
+  msg.thetadelta = 0;
+  msg.ir1 = (coordinate_t) {.x = 400, .y = 400};
+  msg.ir2 = (coordinate_t) {.x = 400, .y = 400};
+  msg.ir3 = (coordinate_t) {.x = 400, .y = 400};
+  msg.ir4 = (coordinate_t) {.x = 400, .y = 400};
+  msg.valid = 0x0F;
+
+  while(1) {
+    publish("v2/robot/NRF_5/adv", &msg, sizeof(msg), 0, 0);
+    
+    NRF_LOG_INFO("example task loop");
+    lastWakeTime = xTaskGetTickCount();
+    vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
+  }
+  
+  /*TickType_t lastWakeTime;
   const TickType_t delay = 5;
 
   uint8_t payload = 0x01;
@@ -46,7 +73,7 @@ void example_task(void *arg) {
 
       lastWakeTime = xTaskGetTickCount();
       vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
-  }
+  }*/
   
 }
 

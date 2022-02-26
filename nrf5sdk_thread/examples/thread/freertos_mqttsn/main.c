@@ -93,7 +93,7 @@ NRF_LOG_MODULE_REGISTER();
 #define NEW_ESTIMATOR_TASK_PRIORITY           4
 #define MOTOR_SPEED_CONTROLLER_TASK_PRIORITY  3
 #define POSE_CONTROLLER_TASK_PRIORITY         3
-#define EXAMPLE_TASK_PRIORITY                 1
+#define EXAMPLE_TASK_PRIORITY                 3
 #define LOG_TASK_PRIORITY                     4
 
 #define LOG_TASK_INTERVAL                     10
@@ -203,7 +203,7 @@ int main(void)
 {
     
     // Initialize global queues
-    poseControllerQ = xQueueCreate(1, sizeof(struct sCartesian));       // For setpoints to controller
+    /*poseControllerQ = xQueueCreate(1, sizeof(struct sCartesian));       // For setpoints to controller
     scanStatusQ = xQueueCreate(1, sizeof(uint8_t));                     // For robot status
     encoderTicksToMotorSpeedControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
     encoderTicksToMotorPositionControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
@@ -217,7 +217,7 @@ int main(void)
     xCommandReadyBSem = xSemaphoreCreateBinary();
 
     position_estimate_t pos_est = {0,0,0};
-    set_position_estimate(&pos_est);
+    set_position_estimate(&pos_est); */
     
     log_init();
     //scheduler_init();
@@ -236,17 +236,17 @@ int main(void)
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
-    /*if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
+    if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
-    if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
+    /*if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
     
-    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    /*if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -264,7 +264,7 @@ int main(void)
     if (pdPASS != xTaskCreate(vMainPoseControllerTask, "POSC", POSE_CONTROLLER_TASK_STACK_SIZE, NULL, POSE_CONTROLLER_TASK_PRIORITY, &pose_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
 
 #if NRF_LOG_ENABLED

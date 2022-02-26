@@ -398,15 +398,12 @@ uint32_t mqttsn_packet_sender_regack(mqttsn_client_t * p_client,
 }
 
 // TODO: Add qos as parameter to function
-uint32_t mqttsn_packet_sender_publish(mqttsn_client_t * p_client,
-  mqttsn_topic_t * p_topic,
-  const uint8_t * payload,
-    uint16_t payload_len) {
+uint32_t mqttsn_packet_sender_publish(mqttsn_client_t * p_client, mqttsn_topic_t * p_topic, const uint8_t * payload, uint16_t payload_len, uint8_t qos) {
   uint32_t err_code = NRF_SUCCESS;
 
   unsigned char dup = 0;
   unsigned char retained = 0;
-  uint8_t qos = 1; // qos=-1 and qos=2 is not supported
+  //uint8_t qos = 1; // qos=-1 and qos=2 is not supported
 
   uint32_t packet_len = MQTTSN_PACKET_PUBLISH_LENGTH + payload_len;
   uint8_t * p_data = nrf_malloc(packet_len);
