@@ -9,6 +9,7 @@ namespace NTNU::application::SLAM
 
 using position = message::position;
 using pose = message::pose;
+using line = message::line;
 
 message::message(std::string sender) :
 	valid_(false),
@@ -99,6 +100,31 @@ void message::set_payload(std::string payload)
 
 		target_.y = utility::from_byte_ptr(&(*it));
 		it += 2;
+	}
+	else if (msg_type_in_ == msg_type_in::LINE) {
+		// LOG_INFO("Received line");
+		robot_pose_.x = utility::from_byte_ptr(&(*it));
+		it += 2;
+
+		robot_pose_.y = utility::from_byte_ptr(&(*it));
+		it += 2;
+
+		robot_pose_.theta = utility::from_byte_ptr(&(*it));
+		it += 2;
+
+		line_.startPoint.x = utility::from_byte_ptr(&(*it));
+		it += 2;
+
+		line_.startPoint.y = utility::from_byte_ptr(&(*it));
+		it += 2;
+
+		line_.endPoint.x = utility::from_byte_ptr(&(*it));
+		it += 2;
+
+		line_.endPoint.y = utility::from_byte_ptr(&(*it));
+		it += 2;
+
+		//LOG_INFO("({},{}) --- ({},{})", line_.startPoint.x, line_.startPoint.y, line_.endPoint.x, line_.endPoint.y);
 	}
 }
 
@@ -217,6 +243,11 @@ position message::target() const
 	return target_;
 }
 
+line message::get_line() const
+{
+	return line_;
+}
+
 std::vector<bool> message::is_object() const
 {
 	return is_object_;
@@ -226,6 +257,7 @@ std::vector<position> message::obstacles() const
 {
 	return obstacles_;
 }
+
 /*For simulation and after fixed message from robot*/
 
 message::msg_type_in message::type() const
@@ -264,6 +296,8 @@ bool message::sanity_check(msg_type_in msg_type, int size)
 		return (size == (identifier_size + pose_size));
 	else if (msg_type == msg_type_in::SIM_TARGET)
 		return (size == (identifier_size + position_size));
+	else if (msg_type == msg_type_in::LINE)
+		return (size == (identifier_size + pose_size + 2 * position_size));
 	else
 		return false;
 }

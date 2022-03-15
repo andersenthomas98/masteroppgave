@@ -81,6 +81,7 @@ void vMainPoseControllerTask(void * pvParameters) {
   uint8_t lastMovement = 0;
 
   mqttsn_target_msg_t target_msg;
+  mqttsn_controller_msg_t controller_msg;
 
   //uint8_t maxDriveActuation = 90; //The max speed the motors will run at during drive max is 100, check also MAX_DUTY in motor.c.
 
@@ -366,11 +367,18 @@ void vMainPoseControllerTask(void * pvParameters) {
         /************************************************
          * Set output
          *************************************************/
-        if (LOG_ROBOT_POSITION_CONTROLLER) {
+        if (PUBLISH_POSITION_CONTROLLER) {
           double time_since_startup = ticks_since_startup * 1.0 / configTICK_RATE_HZ;
-          NRF_LOG_INFO("Pose controller");
+          //NRF_LOG_INFO("Pose controller");
           //NRF_LOG_INFO(""NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER ";"NRF_LOG_FLOAT_MARKER, time_since_startup, xTargt, yTargt, thetaTargt, (double) xhat, (double) yhat, thetahat, left_u, right_u, theta_correction, thetaError);
-
+          controller_msg.time = time_since_startup;
+          controller_msg.x = xhat;
+          controller_msg.y = yhat;
+          controller_msg.theta = thetahat;
+          controller_msg.left_u = left_u;
+          controller_msg.right_u = right_u;
+          NRF_LOG_INFO("Publish size %d", sizeof(controller_msg))
+          publish("v2/robot/NRF_5/controller", &controller_msg, sizeof(controller_msg), 0, 0);
         }
 
         if (USE_SPEED_CONTROLLER) {

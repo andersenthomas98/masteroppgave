@@ -186,6 +186,7 @@
       <AdditionalIncludeDirectories>C:\vcpkg\packages\imgui_x64-windows\include;C:\vcpkg\packages\paho-mqtt_x64-windows\include\paho-mqtt;./Include;C:\vcpkg\packages\eigen3_x64-windows\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\vcpkg\packages\openssl-windows_x64-windows\lib;%(AdditionalLibraryDirectories);C:\packages\paho-mqtt_x64-windows\lib;C:\vcpkg\packages\sfml_x64-windows\debug\lib\manual-link;C:\vcpkg\packages\imgui_x64-windows\lib</AdditionalLibraryDirectories>

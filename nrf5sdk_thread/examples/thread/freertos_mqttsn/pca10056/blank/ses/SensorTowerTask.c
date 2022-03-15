@@ -113,7 +113,7 @@ void vMainSensorTowerTask(void * pvParameters) {
         }
       }
 
-      vServo_setAngle(servoAngle);
+      //vServo_setAngle(servoAngle);
       if (PRINT_DEBUG_IR) NRF_LOG_INFO("Servo angle: %d", servoAngle);
       vTaskDelayUntil( & xLastWakeTime, ROBOT_DEADLINE_MS);
 
@@ -180,6 +180,10 @@ void vMainSensorTowerTask(void * pvParameters) {
             //NRF_LOG_INFO("x:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.xdelta));
             //NRF_LOG_INFO("y:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.ydelta));
             //NRF_LOG_INFO("theta:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.thetadelta));
+            //NRF_LOG_INFO("ir 1: %d", sensorDataMM[0])
+            //NRF_LOG_INFO("ir 2: %d", sensorDataMM[1])
+            //NRF_LOG_INFO("ir 3: %d", sensorDataMM[2])
+            //NRF_LOG_INFO("ir 4: %d", sensorDataMM[3])
            
             publish("v2/robot/NRF_5/adv", &update_msg, sizeof(update_msg), 0, 0);
 

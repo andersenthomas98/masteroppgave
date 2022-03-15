@@ -56,6 +56,7 @@ public:
 
 	void update(pose_t new_pose, std::vector<message::position> obs, std::vector<bool> is_object);
 	void update();
+	void update(pose_t new_pose, message::line new_line);
 	void update(sf::Time delta) override;
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
 

@@ -2,7 +2,7 @@
 
 //const std::string MQTT_ADDRESS{ "tcp://188.166.100.22:1883" };
 
-const std::string MQTT_ADDRESS{ "tcp://10.53.51.12:1883" };
+const std::string MQTT_ADDRESS{ "tcp://192.168.0.109:1883" };
 
 
 /*

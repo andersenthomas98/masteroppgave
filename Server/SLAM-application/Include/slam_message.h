@@ -21,6 +21,7 @@ public:
 		SCAN_BORDER,
 		UPDATE,
 		COL_DET,
+		LINE,
 		SIM_INIT = 8,
 		SIM_TARGET = 9
 	};
@@ -42,6 +43,11 @@ public:
 		int16_t theta;
 	};
 
+	struct line {
+		position startPoint;
+		position endPoint;
+	};
+
 	message(std::string sender = "");
 
 	void set_payload(std::string payload);
@@ -58,6 +64,7 @@ public:
 	std::vector<bool> is_object() const;
 	pose robot_pos() const;
 	position target() const;
+	line get_line() const;
 	msg_type_in type() const;
 	std::vector<position> obstacles() const;
 
@@ -72,6 +79,7 @@ private:
 	int8_t object_;
 	pose robot_pose_;
 	position target_;
+	line line_;
 	std::vector<position> obstacles_;
 	msg_type_in msg_type_in_;
 	msg_type_out msg_type_out_;

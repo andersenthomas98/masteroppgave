@@ -49,6 +49,7 @@ public:
 
 	void update(std::string robot_id, pose_t pose, std::vector<message::position> obs, std::vector<bool> is_object);
 	void update(std::string robot_id);
+	void update(std::string robot_id, pose_t pose, message::line line);
 	void update(sf::Time delta) override;
 	
 	bool navigate_obstacle() const;

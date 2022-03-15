@@ -21,9 +21,11 @@
 #define SCHED_EVENT_DATA_SIZE  APP_TIMER_SCHED_EVENT_DATA_SIZE              /**< Maximum app_scheduler event size. */
 
 #define ROBOT_TOPIC_NAME              "v2/robot/NRF_5/adv"
+#define ROBOT_LINE_TOPIC_NAME         "v2/robot/NRF_5/line"
+#define ROBOT_CTRL_TOPIC_NAME         "v2/robot/NRF_5/controller"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
-#define NUM_TOPICS                    3
+#define NUM_TOPICS                    5
 #define NUM_SUB_TOPICS                2
 
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
@@ -33,6 +35,7 @@ extern TaskHandle_t thread_stack_task_handle, mqttsn_task_handle;
 
 SemaphoreHandle_t registerTopicSemaphore;
 EventGroupHandle_t connectEventGroup;
+uint8_t has_finished_connected_callback = 0;
 
 static mqttsn_client_t      m_client;                                       /**< An MQTT-SN client instance. */
 static mqttsn_remote_t      m_gateway_addr;                                 /**< A gateway address. */
@@ -53,6 +56,14 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =
   }, 
   {
     .p_topic_name = SERVER_INIT_TOPIC_NAME,
+    .topic_id     = NULL
+  }, 
+  {
+    .p_topic_name = ROBOT_CTRL_TOPIC_NAME,
+    .topic_id     = NULL
+  },
+  {
+    .p_topic_name = ROBOT_LINE_TOPIC_NAME,
     .topic_id     = NULL
   }
 };
@@ -163,6 +174,8 @@ static void connected_callback(void)
         NRF_LOG_ERROR("SUBSCRIBE message could not be sent.\r\n");
       }
     }
+
+    has_finished_connected_callback = 1;
 
 }
 
@@ -544,7 +557,7 @@ void thread_stack_task(void * arg)
 {
     UNUSED_PARAMETER(arg);
 
-    scheduler_init();
+    scheduler_init(); // Is the scheduler needed?
     thread_instance_init();
 
     // Notify MQTT task
@@ -586,7 +599,7 @@ uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_
 
 uint8_t mqttsn_client_is_connected() {
   mqttsn_client_state_t state = mqttsn_client_state_get(&m_client);
-  if (state == MQTTSN_CLIENT_CONNECTED) {
+  if (state == MQTTSN_CLIENT_CONNECTED && has_finished_connected_callback) {
     return 1;
   }
   return 0;

@@ -63,7 +63,7 @@ using std::chrono::seconds;
 
 //const std::string MQTT_ADDRESS{ " tcp://198.41.30.241:1883" };
 
-const std::string MQTT_ADDRESS{ "tcp://10.53.51.12:1883" };
+const std::string MQTT_ADDRESS{ "tcp://192.168.0.109:1883" };
 
 
 int main()

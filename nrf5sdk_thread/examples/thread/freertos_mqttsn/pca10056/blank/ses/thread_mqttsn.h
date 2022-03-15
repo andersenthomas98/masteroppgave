@@ -19,6 +19,7 @@
 #define SCAN_BORDER_IDENTIFIER          0x01
 #define UPDATE_IDENTIFIER               0x02
 #define COLLISION_DETECTED_IDENTIFIER   0x03
+#define LINE_IDENTIFIER                 0x04
 
 typedef struct mqttsn_init_msg {
   uint8_t identifier;
@@ -43,21 +44,39 @@ typedef struct mqttsn_collision_detection_msg {
 
 
 typedef struct coordinate {
-  uint16_t x;
-  uint16_t y;
+  int16_t x; // was uint16_t
+  int16_t y; // was uint16_t
 } __attribute__((packed)) coordinate_t; // __attribute__((packed)) to explicitly tell the compiler to not add any padding
 
 typedef struct mqttsn_update_msg { // 24 bytes
   uint8_t identifier;
-  int16_t xdelta;     // Change in x-position relative to global frame [mm]
-  int16_t ydelta;     // Change in y-position relative to global frame [mm]
-  int16_t thetadelta; // Change in heading relative to global frame [deg]
-  coordinate_t ir1;   // Coordinates of obstacle detected by ir sensor 1 [mm]
-  coordinate_t ir2;   // Coordinates of obstacle detected by ir sensor 2 [mm]
-  coordinate_t ir3;   // Coordinates of obstacle detected by ir sensor 3 [mm]
-  coordinate_t ir4;   // Coordinates of obstacle detected by ir sensor 4 [mm]
+  int16_t xdelta;      // Change in x-position relative to global frame [mm]
+  int16_t ydelta;      // Change in y-position relative to global frame [mm]
+  int16_t thetadelta;  // Change in heading relative to global frame [deg]
+  coordinate_t ir1;    // Coordinates of obstacle detected by ir sensor 1 [mm]
+  coordinate_t ir2;    // Coordinates of obstacle detected by ir sensor 2 [mm]
+  coordinate_t ir3;    // Coordinates of obstacle detected by ir sensor 3 [mm]
+  coordinate_t ir4;    // Coordinates of obstacle detected by ir sensor 4 [mm]
   uint8_t valid;       // 4 LSBs signify if corresponding ir sensor is a valid detection
 } __attribute__((packed)) mqttsn_update_msg_t; // __attribute__((packed)) to explicitly tell the compiler to not add any padding
+
+typedef struct mqttsn_controller_msg {
+  float time;
+  float x;
+  float y;
+  float theta;
+  float left_u;
+  float right_u;
+} __attribute__((packed)) mqttsn_controller_msg_t;
+
+typedef struct mqttsn_line_msg {
+  uint8_t identifier;      // 1 byte
+  int16_t xdelta;          // 2 bytes
+  int16_t ydelta;          // 2 bytes
+  int16_t thetadelta;      // 2 bytes
+  coordinate_t startPoint; // 4 bytes
+  coordinate_t endPoint;   // 4 bytes
+} __attribute__((packed)) mqttsn_line_msg_t;
 
 
 typedef struct mqttsn_msg_queue_element {

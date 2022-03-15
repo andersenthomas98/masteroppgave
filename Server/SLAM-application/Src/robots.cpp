@@ -45,8 +45,16 @@ void robots::feed_message(const message& msg)
 			if (target)
 				if (auto result = NTNU::application::SLAM::utility::coord_to_row_col({ grid_.rows() , grid_.cols() }, grid_.separation(), target.value().first, target.value().second); result)
 					update_path_for_robot(robot_id, result.value());
-		}
+		} 
+		else if (msg.type() == message::msg_type_in::LINE) {
+			LOG_INFO("Received line in robot.cpp");
+			auto [msg_x, msg_y, msg_theta] = msg.robot_pos();
+			pose_t new_pose = { msg_x , msg_y , msg_theta };
+			auto new_line = msg.get_line();
+			update(robot_id, new_pose, new_line);
+			LOG_INFO("({},{}) --- ({},{})", new_line.startPoint.x, new_line.startPoint.y, new_line.endPoint.x, new_line.endPoint.y);
 
+		}
 
 		set_fun([&]() {
 			const ImVec2 btn_size{ 200, 0 };
@@ -234,6 +242,17 @@ void robots::update(std::string robot_id) {
 		if (robot->getName() == robot_id)
 			robot->update();
 	}
+}
+
+void robots::update(std::string robot_id, pose_t new_pose, message::line new_line) {
+	for (const auto& entry : robots_) {
+		const auto& [_, robot] = entry;
+		if (robot->getName() == robot_id) {
+			robot->update(new_pose, new_line);
+		}
+		
+	}
+
 }
 
 //Not sure why, but this seems to be necessary

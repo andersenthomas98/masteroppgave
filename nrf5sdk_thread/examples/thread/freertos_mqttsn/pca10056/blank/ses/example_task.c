@@ -34,8 +34,42 @@ void example_task(void *arg) {
   msg.ir4 = (coordinate_t) {.x = 400, .y = 400};
   msg.valid = 0x0F;
 
+  mqttsn_line_msg_t line_msg;
+  line_msg.identifier = LINE_IDENTIFIER;
+  line_msg.xdelta = 0;
+  line_msg.ydelta = 0;
+  line_msg.thetadelta = 0;
+  line_msg.startPoint = (coordinate_t) {.x = -500, .y = 500};
+  line_msg.endPoint = (coordinate_t) {.x = 500, .y = 500};
+
+  mqttsn_line_msg_t line_msg_list[4];
+  line_msg_list[0] = line_msg;
+  
+  line_msg.startPoint = (coordinate_t) {.x = 500, .y = 500};
+  line_msg.endPoint = (coordinate_t) {.x = 500, .y = -500};
+  line_msg_list[1] = line_msg;
+
+  line_msg.startPoint = (coordinate_t) {.x = 500, .y = -500};
+  line_msg.endPoint = (coordinate_t) {.x = -500, .y = -500};
+  line_msg_list[2] = line_msg;
+
+  while(!mqttsn_client_is_connected()) {
+    NRF_LOG_INFO("example task is waiting for mqttsn client to connect...")
+    lastWakeTime = xTaskGetTickCount();
+    vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ);
+  }
+
   while(1) {
-    publish("v2/robot/NRF_5/adv", &msg, sizeof(msg), 0, 0);
+    
+    for (int i=0; i<3; i++) {
+      mqttsn_line_msg_t line = line_msg_list[i];
+      NRF_LOG_INFO("Publish (%d, %d) --- (%d, %d)", line.startPoint.x, line.startPoint.y, line.endPoint.x, line.endPoint.y);
+      publish("v2/robot/NRF_5/line", &line, sizeof(line), 0, 0);
+      
+      lastWakeTime = xTaskGetTickCount();
+      vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
+    
+    }
     
     NRF_LOG_INFO("example task loop");
     lastWakeTime = xTaskGetTickCount();

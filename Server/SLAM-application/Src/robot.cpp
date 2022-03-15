@@ -164,6 +164,53 @@ void robot::update() {
 
 }
 
+void robot::update(pose_t odom, message::line new_line) {
+	odom_ = odom_ + odom;
+
+	std::pair<int, int> start = { new_line.startPoint.x , new_line.startPoint.y };
+	std::pair<int, int> end = { new_line.endPoint.x , new_line.endPoint.y };
+
+	auto [length, wall] = NTNU::application::SLAM::utility::get_line_between_pts(start, end);
+
+	std::vector<message::position> obs;
+	std::vector<bool> is_object;
+
+	for (auto i = 0; i < length; i++) {
+		message::position point_position;
+		point_position.x = wall[i].first;
+		point_position.y = wall[i].second;
+		obs.push_back(point_position);
+		is_object.push_back(true);
+	}
+	
+	scan_points_.insert(scan_points_.end(), obs.begin(), obs.end());
+	is_object_list_.insert(is_object_list_.end(), is_object.begin(), is_object.end());
+
+	particles_.update_particle(odom_, scan_points_, is_object_list_);
+	odom_ = { 0,0,0 };
+	scan_points_.clear();
+	is_object_list_.clear();
+
+	scanning_ = true;
+
+	prev_pose_ = particles_.getPose();
+
+	//std::cout << "New Mean Pose: X: " << prev_pose_.x << " Y: " << prev_pose_.y << " Th: " << prev_pose_.theta << std::endl;
+
+	LOG_FILE("New mean pose: x: {: 10.4g}, y: {: 10.4g}, theta: {: 10.4g}", prev_pose_.x, prev_pose_.y, prev_pose_.theta);
+
+	setPosition(sf::Vector2f(static_cast<float>(prev_pose_.x), static_cast<float>(prev_pose_.y)));
+	setRotation(static_cast<float>(prev_pose_.theta));
+
+	auto map = particles_.getBestMap();
+
+	particles_.cleanRaster();
+
+	call_callback(robot_events::OBSTACLE, map);
+
+
+}
+
 //This seems to be necessary for some reason
 void robot::update(sf::Time delta) {
 

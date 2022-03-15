@@ -203,7 +203,7 @@ int main(void)
 {
     
     // Initialize global queues
-    /*poseControllerQ = xQueueCreate(1, sizeof(struct sCartesian));       // For setpoints to controller
+    poseControllerQ = xQueueCreate(1, sizeof(struct sCartesian));       // For setpoints to controller
     scanStatusQ = xQueueCreate(1, sizeof(uint8_t));                     // For robot status
     encoderTicksToMotorSpeedControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
     encoderTicksToMotorPositionControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
@@ -217,7 +217,7 @@ int main(void)
     xCommandReadyBSem = xSemaphoreCreateBinary();
 
     position_estimate_t pos_est = {0,0,0};
-    set_position_estimate(&pos_est); */
+    set_position_estimate(&pos_est);
     
     log_init();
     //scheduler_init();
@@ -264,7 +264,7 @@ int main(void)
     if (pdPASS != xTaskCreate(vMainPoseControllerTask, "POSC", POSE_CONTROLLER_TASK_STACK_SIZE, NULL, POSE_CONTROLLER_TASK_PRIORITY, &pose_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }*/
+    } */
 
 
 #if NRF_LOG_ENABLED

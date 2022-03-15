@@ -16,6 +16,8 @@
 //TODO Add more config parameters to this file from other files
 
 
+#define PUBLISH_POSITION_CONTROLLER 1
+
 /* **************************************************************************************************************
  * Robot selection
  *
