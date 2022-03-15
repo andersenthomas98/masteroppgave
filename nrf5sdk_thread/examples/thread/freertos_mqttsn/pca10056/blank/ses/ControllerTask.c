@@ -219,7 +219,7 @@ void vMainPoseControllerTask(void * pvParameters) {
         /************************************************
          * Update waypoint if new waypoint is given
          *************************************************/
-        if (xQueueReceive(get_queue_handle("v2/server/NRF_5/cmd"), &target_msg, (TickType_t) 0) == pdTRUE) {
+        if (USE_NEW_SERVER && xQueueReceive(get_queue_handle("v2/server/NRF_5/cmd"), &target_msg, (TickType_t) 0) == pdTRUE) {
           xTargt = target_msg.target_x / 1000.0; //Distance is received in mm, convert to m for continuity
           yTargt = target_msg.target_y / 1000.0; //Distance is received in mm, convert to m for continuity
           xhatStart = xhat;

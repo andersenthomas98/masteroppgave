@@ -69,6 +69,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "NewEstimatorTask.h"
 #include "ControllerTask.h"
 #include "MotorSpeedControllerTask.h"
+#include "mapping.h"
 
 #include "globals.h"
 #include "encoder.h"
@@ -80,11 +81,12 @@ NRF_LOG_MODULE_REGISTER();
 
 #define THREAD_STACK_TASK_STACK_SIZE            (( 1024 * 6 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define LOG_TASK_STACK_SIZE                     ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
-#define MQTTSN_TASK_STACK_SIZE                  ((1024 * 4) / sizeof(StackType_t))
+#define MQTTSN_TASK_STACK_SIZE                  ((1024 * 6) / sizeof(StackType_t))
 #define SENSOR_TOWER_TASK_STACK_SIZE            ( 1024 / sizeof(StackType_t))
 #define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 6 / sizeof(StackType_t))
 #define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
 #define POSE_CONTROLLER_TASK_STACK_SIZE         ((1024 * 2) / sizeof(StackType_t))
+#define MAPPING_TASK_STACK_SIZE                 ((1024 * 2) / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE                 ( 1024 / sizeof(StackType_t))
 
 #define THREAD_STACK_TASK_PRIORITY            2
@@ -93,6 +95,7 @@ NRF_LOG_MODULE_REGISTER();
 #define NEW_ESTIMATOR_TASK_PRIORITY           4
 #define MOTOR_SPEED_CONTROLLER_TASK_PRIORITY  3
 #define POSE_CONTROLLER_TASK_PRIORITY         3
+#define MAPPING_TASK_PRIORITY                 3
 #define EXAMPLE_TASK_PRIORITY                 3
 #define LOG_TASK_PRIORITY                     4
 
@@ -107,6 +110,7 @@ TaskHandle_t sensor_tower_task_handle           = NULL;
 TaskHandle_t new_estimator_task_handle          = NULL;
 TaskHandle_t motor_speed_controller_task_handle = NULL;
 TaskHandle_t pose_controller_task_handle        = NULL;
+TaskHandle_t mapping_task_handle                = NULL;
 #if NRF_LOG_ENABLED
   TaskHandle_t logger_task_handle = NULL;         /**< Definition of Logger thread. */
 #endif
@@ -130,6 +134,8 @@ QueueHandle_t queue_display = 0;
 QueueHandle_t encoderTicksToMotorSpeedControllerQ = 0;
 QueueHandle_t encoderTicksToMotorPositionControllerQ = 0;
 QueueHandle_t encoderTicksToEstimatorTaskQ = 0;
+
+QueueHandle_t ir_measurement_queue = 0;
 
 
 
@@ -207,7 +213,8 @@ int main(void)
     scanStatusQ = xQueueCreate(1, sizeof(uint8_t));                     // For robot status
     encoderTicksToMotorSpeedControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
     encoderTicksToMotorPositionControllerQ = xQueueCreate(100, sizeof(encoderTicks)); 
-    encoderTicksToEstimatorTaskQ = xQueueCreate(100, sizeof(encoderTicks)); 
+    encoderTicksToEstimatorTaskQ = xQueueCreate(100, sizeof(encoderTicks));
+    ir_measurement_queue = xQueueCreate(100, sizeof(ir_measurement_t));
 
     // Initialize global semaphores
     xPoseMutex = xSemaphoreCreateMutex();         // Global variables for robot pose. Only updated from estimator, accessed from many
@@ -225,7 +232,7 @@ int main(void)
     timer_init();
 
     // Start thread stack execution.
-    if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &thread_stack_task_handle))
+    /*if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &thread_stack_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -234,19 +241,19 @@ int main(void)
     if (pdPASS != xTaskCreate(mqttsn_task, "MQTT", MQTTSN_TASK_STACK_SIZE, NULL, MQTTSN_TASK_PRIORITY, &mqttsn_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
-    if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
+    /*if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
     /*if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
     
-    /*if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -264,7 +271,12 @@ int main(void)
     if (pdPASS != xTaskCreate(vMainPoseControllerTask, "POSC", POSE_CONTROLLER_TASK_STACK_SIZE, NULL, POSE_CONTROLLER_TASK_PRIORITY, &pose_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    } */
+    }
+
+    if (pdPASS != xTaskCreate(mapping_task, "MAP", MAPPING_TASK_STACK_SIZE, NULL, MAPPING_TASK_PRIORITY, &mapping_task_handle)) 
+    {
+      APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
 
 
 #if NRF_LOG_ENABLED

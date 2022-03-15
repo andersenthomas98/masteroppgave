@@ -16,7 +16,7 @@
 //TODO Add more config parameters to this file from other files
 
 
-#define PUBLISH_POSITION_CONTROLLER 1
+#define PUBLISH_POSITION_CONTROLLER 0
 
 /* **************************************************************************************************************
  * Robot selection
@@ -55,7 +55,7 @@
  ****************************************************************************************************************/
 
 #define USEBLUETOOTH 0 			// For switching between nRF51 bluetooth dongle and NRF52840 Thread dongle
-#define USE_NEW_SERVER 1		// For switching between Grindvik and Mullins' server versions
+#define USE_NEW_SERVER 0		// For switching between Grindvik and Mullins' server versions
 #define VALIDATE_WAYPOINT 0		// If false, all waypoints are processed. If true, waypoints inside collision sectors are discarded.
 
 #define CONNECT_TO_SERVER 1 	// Set to 0 if you do not want robot to connect to server, 1 if you want to.
@@ -537,6 +537,9 @@ typedef enum {
 #define SENSOR2_HEADING_DEG			90//0
 #define SENSOR3_HEADING_DEG			180//90
 #define SENSOR4_HEADING_DEG			270//180
+
+
+#define USE_MAPPING 1
 
 
 #endif //ROBOT_CONFIG_H

@@ -179,6 +179,10 @@
         <file file_name="PID_controller.c" />
         <file file_name="PID_controller.h" />
       </folder>
+      <folder Name="Mapping">
+        <file file_name="mapping.c" />
+        <file file_name="mapping.h" />
+      </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">
       <file file_name="../../../../../../external/segger_rtt/SEGGER_RTT.c" />

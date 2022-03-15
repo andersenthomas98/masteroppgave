@@ -617,6 +617,9 @@ void mqttsn_task(void *arg) {
 
   if (mqttsn_outgoing_message_queue == NULL) {
     NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
+    while(1) {
+      // do nothing
+    }
   }
 
   for (uint8_t i=0; i<NUM_SUB_TOPICS; i++) {
@@ -631,6 +634,9 @@ void mqttsn_task(void *arg) {
 
     if (p_sub_topic->queue == NULL) {
        NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
+       while(1) {
+        // do nothing
+       }
     } else {
       vQueueAddToRegistry(p_sub_topic->queue, p_sub_topic->p_topic->p_topic_name);
     }

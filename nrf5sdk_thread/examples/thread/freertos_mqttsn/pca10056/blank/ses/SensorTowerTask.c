@@ -51,19 +51,22 @@ float lastPublishedX = 0;
 float lastPublishedY = 0;
 float lastPublishedTheta = 0;
 
+extern TaskHandle_t mapping_task_handle;
+extern QueueHandle_t ir_measurement_queue;
+
 void vMainSensorTowerTask(void * pvParameters) {
 
   /* Task init */
   float thetahat = 0;
-  int16_t xhat = 0;
-  int16_t yhat = 0;
+  float xhat = 0;
+  float yhat = 0;
   uint8_t servoDirection = moveCounterClockwise;
   uint8_t servoAngle = 0;
   uint8_t robotMovement = moveStop;
   uint8_t idleCounter = 0;
   int8_t sensorDataCM[NUM_DIST_SENSORS];
   int16_t sensorDataMM[NUM_DIST_SENSORS];
-  (void) sensorDataMM;
+  (void) sensorDataMM;  
 
   // Initialize the xLastWakeTime variable with the current time.
   TickType_t xLastWakeTime;
@@ -82,6 +85,9 @@ void vMainSensorTowerTask(void * pvParameters) {
   update_msg.identifier = UPDATE_IDENTIFIER;
   mqttsn_scan_border_msg_t scan_msg;
   scan_msg.identifier = SCAN_BORDER_IDENTIFIER;
+  
+  // Notify mapping task
+  xTaskNotifyGive(mapping_task_handle);
 
   while (true) {
     calibrationCounter++;
@@ -144,6 +150,22 @@ void vMainSensorTowerTask(void * pvParameters) {
           }
         }
       }
+      
+      /* Send IR measurements to mapping task */
+      if (USE_MAPPING) {
+        ir_measurement_t new_measurement;
+        new_measurement.servo_angle = servoAngle;
+        new_measurement.x = xhat;
+        new_measurement.y = yhat;
+        new_measurement.theta = thetahat;
+        for (int i=0; i<NUM_DIST_SENSORS; i++) {
+          new_measurement.measurements[i] = sensorDataMM[i];
+        }
+
+        // Send measurements to mapping task
+        xQueueSendToBack(ir_measurement_queue, (void*) &new_measurement, (TickType_t) 0);
+      }
+      
 
       /*  Send update to server  */
       // Java server message
