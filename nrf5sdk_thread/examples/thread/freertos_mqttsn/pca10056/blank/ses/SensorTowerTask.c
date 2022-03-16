@@ -63,6 +63,7 @@ void vMainSensorTowerTask(void * pvParameters) {
   uint8_t servoDirection = moveCounterClockwise;
   uint8_t servoAngle = 0;
   uint8_t robotMovement = moveStop;
+  uint8_t lastRobotMovement = robotMovement;
   uint8_t idleCounter = 0;
   int8_t sensorDataCM[NUM_DIST_SENSORS];
   int16_t sensorDataMM[NUM_DIST_SENSORS];
@@ -96,6 +97,15 @@ void vMainSensorTowerTask(void * pvParameters) {
       xLastWakeTime = xTaskGetTickCount(); // xLastWakeTime variable with the current time.
 
       if (xQueueReceive(scanStatusQ, & robotMovement, 150) == pdTRUE) {
+
+        /*if (robotMovement != lastRobotMovement) {
+          if (USE_MAPPING) {
+            // Notify mapping task about change in robot movement
+            xTaskNotify(mapping_task_handle);
+          }
+          lastRobotMovement = robotMovement;
+        }*/
+
         // Note that the iterations are skipped while robot is rotating (see further downbelow)
         switch (robotMovement) {
         case moveStop:
@@ -119,7 +129,7 @@ void vMainSensorTowerTask(void * pvParameters) {
         }
       }
 
-      //vServo_setAngle(servoAngle);
+      vServo_setAngle(servoAngle);
       if (PRINT_DEBUG_IR) NRF_LOG_INFO("Servo angle: %d", servoAngle);
       vTaskDelayUntil( & xLastWakeTime, ROBOT_DEADLINE_MS);
 
@@ -237,6 +247,9 @@ void vMainSensorTowerTask(void * pvParameters) {
 
       if ((servoAngle >= 90) && (servoDirection == moveCounterClockwise)) {
         servoDirection = moveClockwise;
+        if (USE_MAPPING) {
+           xTaskNotifyGive(mapping_task_handle); // Notify mapping task to start line extraction
+        }
         if (USE_NEW_SERVER) {
           //sendScanBorder(); // Sends a 1 to the server to indicate that one 90 degree scan is finished
           NRF_LOG_INFO("Sending scan border message");
@@ -245,6 +258,9 @@ void vMainSensorTowerTask(void * pvParameters) {
 
       } else if ((servoAngle <= 0) && (servoDirection == moveClockwise)) {
         servoDirection = moveCounterClockwise;
+        if (USE_MAPPING) {
+          xTaskNotifyGive(mapping_task_handle); // Notify mapping task to start line extraction
+        }
         if (USE_NEW_SERVER) {
           //sendScanBorder(); // Sends a 1 to the server to indicate that one 90 degree scan is starting
           NRF_LOG_INFO("Sending scan border message");

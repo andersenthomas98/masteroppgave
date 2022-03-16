@@ -6,11 +6,20 @@ typedef struct point {
   float y;
 } point_t;
 
+typedef struct polar {
+  float r;
+  float theta;
+} polar_t;
+
 typedef struct point_buffer {
   uint8_t len;
   point_t buffer[PB_MAX_SIZE]
 } point_buffer_t;
 
+typedef struct common_point_buffer {
+  uint8_t len;
+  point_t buffer[4*PB_MAX_SIZE];
+} common_point_buffer_t;
 
 
 
