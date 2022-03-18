@@ -55,7 +55,7 @@ int16_t distObjectX(int16_t x, float theta, int8_t servoAngle, int16_t * sensorD
 
 /* Returns the distance to object in local robot coordinate system */
 int16_t distObjectXlocal(float theta, int8_t servoAngle, int16_t * sensorData, uint8_t sensorNumber) {
-  int16_t xDist = cos((servoAngle + sensorNumber * 90) * DEG2RAD) * (sensorData[sensorNumber]);
+  int16_t xDist = cos((servoAngle + sensorNumber * 90 + 180) * DEG2RAD) * (sensorData[sensorNumber]);
 
   return xDist;
 }

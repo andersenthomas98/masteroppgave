@@ -182,6 +182,9 @@
       <folder Name="Mapping">
         <file file_name="mapping.c" />
         <file file_name="mapping.h" />
+        <file file_name="DBSCAN.c" />
+        <file file_name="DBSCAN.h" />
+        <file file_name="mapping_types.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

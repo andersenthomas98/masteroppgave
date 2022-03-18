@@ -80,6 +80,7 @@
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/MotorSpeedControllerTask.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/PID_controller.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/mapping.o"
+"Output/thread_freertos_mqttsn_pca10056 Release/Obj/DBSCAN.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/SEGGER_RTT.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/SEGGER_RTT_Syscalls_SES.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/SEGGER_RTT_printf.o"

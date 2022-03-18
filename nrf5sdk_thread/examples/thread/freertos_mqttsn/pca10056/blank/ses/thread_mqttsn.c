@@ -23,9 +23,10 @@
 #define ROBOT_TOPIC_NAME              "v2/robot/NRF_5/adv"
 #define ROBOT_LINE_TOPIC_NAME         "v2/robot/NRF_5/line"
 #define ROBOT_CTRL_TOPIC_NAME         "v2/robot/NRF_5/controller"
+#define ROBOT_COORDINATE_TOPIC_NAME   "v2/robot/NRF_5/coordinate"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
-#define NUM_TOPICS                    5
+#define NUM_TOPICS                    6
 #define NUM_SUB_TOPICS                2
 
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
@@ -64,6 +65,10 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =
   },
   {
     .p_topic_name = ROBOT_LINE_TOPIC_NAME,
+    .topic_id     = NULL
+  },
+  {
+    .p_topic_name = ROBOT_COORDINATE_TOPIC_NAME,
     .topic_id     = NULL
   }
 };
@@ -589,7 +594,7 @@ uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_
   msg.qos = qos;
   msg.msg_id = msg_id;
 
-  if (mqttsn_outgoing_message_queue != NULL && xQueueSend(mqttsn_outgoing_message_queue, &msg, 0) != pdPASS) {
+  if (mqttsn_outgoing_message_queue != NULL && xQueueSend(mqttsn_outgoing_message_queue, &msg, 10) != pdPASS) {
     
     NRF_LOG_ERROR("Failed to post mqttsn message to outgoing message queue");
   
