@@ -3,7 +3,7 @@ import struct
 
 TARGET_IDENTIFIER = 2
 
-ip_addr = "192.168.0.109"
+ip_addr = "10.53.51.12"
 port = 1883
 keepalive = 60
 
@@ -22,7 +22,8 @@ client.on_connect = on_connect
 client.loop_start()
 
 while(True):
-    cmd = input()
-    payload = struct.pack('<Bhh', TARGET_IDENTIFIER, int(cmd), 0)
+    cmd_x = input("X: ")
+    cmd_y = input("Y: ")
+    payload = struct.pack('<Bhh', TARGET_IDENTIFIER, int(cmd_x), int(cmd_y))
     print(struct.unpack('<Bhh', payload))
     client.publish("v2/server/NRF_5/cmd", payload)
