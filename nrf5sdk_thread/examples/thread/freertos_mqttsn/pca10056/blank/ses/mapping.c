@@ -108,10 +108,24 @@ void mapping_task(void *arg) {
       if (xQueueReceive(ir_measurement_queue, &(new_measurement), (TickType_t) 10) == pdPASS) {
           update_point_buffers(&point_buffers, new_measurement);
 
+
       }
       
       /* Start line extraction */
       if (ulTaskNotifyTake(pdTRUE, (TickType_t) 0) == pdPASS) {
+        
+        // For testing add fake points
+        /*point_buffers[0].len = 4;
+        point_buffers[0].buffer[0] = (point_t){.x = 0, .y=0, .label=LABEL_UNDEFINED};
+        point_buffers[1].buffer[0] = (point_t){.x = 1, .y=0, .label=LABEL_UNDEFINED};
+        point_buffers[2].buffer[0] = (point_t){.x = 0, .y=1, .label=LABEL_UNDEFINED};
+        point_buffers[3].buffer[0] = (point_t){.x = 1, .y=1, .label=LABEL_UNDEFINED};
+
+        point_buffers[1].len = 0;
+        point_buffers[2].len = 0;
+        point_buffers[3].len = 0;*/
+
+        
         NRF_LOG_INFO("Start line extraction");
 
         // Verify the points are stored sorted by bearing
@@ -122,8 +136,13 @@ void mapping_task(void *arg) {
           NRF_LOG_INFO("polar theta: " NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(polar.theta));
         }*/
         
+        //uint8_t max_len = 3;
         for (int i=0; i<NUM_DIST_SENSORS; i++) {
-          DBSCAN(&point_buffers[i], euclidean_distance, 1000, 3);
+          NRF_LOG_INFO("DBSCAN #%d", i);
+          //if (point_buffers[i].len > max_len) {
+          //  point_buffers[i].len = max_len;
+          //}
+          DBSCAN(&point_buffers[i], euclidean_distance, 50, 3);
           point_buffers[i].len = 0;
         }
         

@@ -45,11 +45,6 @@
     <folder Name="Board Definition">
       <file file_name="../../../../../../components/boards/boards.c" />
     </folder>
-    <folder Name="None">
-      <file file_name="../../../../../../modules/nrfx/mdk/ses_startup_nrf52840.s" />
-      <file file_name="../../../../../../modules/nrfx/mdk/ses_startup_nrf_common.s" />
-      <file file_name="../../../../../../modules/nrfx/mdk/system_nrf52840.c" />
-    </folder>
     <folder Name="Third Parties">
       <file file_name="../../../../../../external/freertos/source/croutine.c" />
       <file file_name="../../../../../../external/freertos/source/event_groups.c" />
@@ -108,6 +103,11 @@
     <folder Name="Board Support">
       <file file_name="../../../../../../components/libraries/bsp/bsp.c" />
       <file file_name="../../../../../../components/libraries/bsp/bsp_thread.c" />
+      <folder Name="None">
+        <file file_name="../../../../../../modules/nrfx/mdk/ses_startup_nrf52840.s" />
+        <file file_name="../../../../../../modules/nrfx/mdk/ses_startup_nrf_common.s" />
+        <file file_name="../../../../../../modules/nrfx/mdk/system_nrf52840.c" />
+      </folder>
     </folder>
     <folder Name="Application">
       <file file_name="../../../main.c" />

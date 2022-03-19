@@ -86,7 +86,7 @@ NRF_LOG_MODULE_REGISTER();
 #define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 6 / sizeof(StackType_t))
 #define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
 #define POSE_CONTROLLER_TASK_STACK_SIZE         ((1024 * 2) / sizeof(StackType_t))
-#define MAPPING_TASK_STACK_SIZE                 ((1024 * 4) / sizeof(StackType_t))
+#define MAPPING_TASK_STACK_SIZE                 ((1024 * 26) / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE                 ( 1024 / sizeof(StackType_t))
 
 #define THREAD_STACK_TASK_PRIORITY            2
@@ -201,6 +201,12 @@ static void logger_thread(void * pvParameter)
 }
 #endif //NRF_LOG_ENABLED
 
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char* pcTaskName) {
+  
+  NRF_LOG_ERROR("STACK OVERFLOW: %s", pcTaskName);
+
+}
+
 /***************************************************************************************************
  * @section Main
  **************************************************************************************************/
@@ -232,7 +238,7 @@ int main(void)
     timer_init();
 
     // Start thread stack execution.
-    if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &thread_stack_task_handle))
+    /*if (pdPASS != xTaskCreate(thread_stack_task, "THR", THREAD_STACK_TASK_STACK_SIZE, NULL, THREAD_STACK_TASK_PRIORITY, &thread_stack_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -241,7 +247,7 @@ int main(void)
     if (pdPASS != xTaskCreate(mqttsn_task, "MQTT", MQTTSN_TASK_STACK_SIZE, NULL, MQTTSN_TASK_PRIORITY, &mqttsn_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
     /*if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
@@ -263,7 +269,7 @@ int main(void)
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
-    if (pdPASS != xTaskCreate(vMotorSpeedControllerTask, "SPDC", MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE, NULL, MOTOR_SPEED_CONTROLLER_TASK_PRIORITY, &motor_speed_controller_task_handle)) 
+    /*if (pdPASS != xTaskCreate(vMotorSpeedControllerTask, "SPDC", MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE, NULL, MOTOR_SPEED_CONTROLLER_TASK_PRIORITY, &motor_speed_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -271,7 +277,7 @@ int main(void)
     if (pdPASS != xTaskCreate(vMainPoseControllerTask, "POSC", POSE_CONTROLLER_TASK_STACK_SIZE, NULL, POSE_CONTROLLER_TASK_PRIORITY, &pose_controller_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
     if (pdPASS != xTaskCreate(mapping_task, "MAP", MAPPING_TASK_STACK_SIZE, NULL, MAPPING_TASK_PRIORITY, &mapping_task_handle)) 
     {
