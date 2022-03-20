@@ -86,7 +86,7 @@ NRF_LOG_MODULE_REGISTER();
 #define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 6 / sizeof(StackType_t))
 #define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
 #define POSE_CONTROLLER_TASK_STACK_SIZE         ((1024 * 2) / sizeof(StackType_t))
-#define MAPPING_TASK_STACK_SIZE                 ((1024 * 26) / sizeof(StackType_t))
+#define MAPPING_TASK_STACK_SIZE                 ((1024 * 16) / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE                 ( 1024 / sizeof(StackType_t))
 
 #define THREAD_STACK_TASK_PRIORITY            2

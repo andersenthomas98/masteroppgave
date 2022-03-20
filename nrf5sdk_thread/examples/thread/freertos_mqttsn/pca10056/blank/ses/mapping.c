@@ -14,12 +14,8 @@
 #include "mapping_types.h"
 #include "DBSCAN.h"
 
-#define PB_SIZE 100
-
 extern QueueHandle_t ir_measurement_queue;
 extern TaskHandle_t mapping_task_handle;
-
-static point_buffer_t point_buffers[NUM_DIST_SENSORS];
 
 /* Wrap any angle in radians into the interval [0,2pi) */
 void wrap_to_2pi(float *angle_in_radians) {
@@ -88,6 +84,9 @@ void mapping_task(void *arg) {
 
   TickType_t lastWakeTime;
   const TickType_t delay = 0.1;
+  
+
+  point_buffer_t point_buffers[NUM_DIST_SENSORS];
 
   for (int i=0; i<NUM_DIST_SENSORS; i++) {
     point_buffers[i].len = 0;
@@ -117,9 +116,9 @@ void mapping_task(void *arg) {
         // For testing add fake points
         /*point_buffers[0].len = 4;
         point_buffers[0].buffer[0] = (point_t){.x = 0, .y=0, .label=LABEL_UNDEFINED};
-        point_buffers[1].buffer[0] = (point_t){.x = 1, .y=0, .label=LABEL_UNDEFINED};
-        point_buffers[2].buffer[0] = (point_t){.x = 0, .y=1, .label=LABEL_UNDEFINED};
-        point_buffers[3].buffer[0] = (point_t){.x = 1, .y=1, .label=LABEL_UNDEFINED};
+        point_buffers[0].buffer[1] = (point_t){.x = 1, .y=0, .label=LABEL_UNDEFINED};
+        point_buffers[0].buffer[2] = (point_t){.x = 0, .y=1, .label=LABEL_UNDEFINED};
+        point_buffers[0].buffer[3] = (point_t){.x = 1, .y=1, .label=LABEL_UNDEFINED};
 
         point_buffers[1].len = 0;
         point_buffers[2].len = 0;
@@ -142,7 +141,7 @@ void mapping_task(void *arg) {
           //if (point_buffers[i].len > max_len) {
           //  point_buffers[i].len = max_len;
           //}
-          DBSCAN(&point_buffers[i], euclidean_distance, 50, 3);
+          DBSCAN(&point_buffers[i], euclidean_distance, 5, 2);
           point_buffers[i].len = 0;
         }
         

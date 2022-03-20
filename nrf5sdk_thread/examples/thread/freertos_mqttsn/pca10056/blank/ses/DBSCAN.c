@@ -35,9 +35,7 @@ void append_to_set(point_reference_buffer_t *p_point_reference_buffer, point_t* 
       return;
     }
   }
-  p_point_reference_buffer->buffer[len]->x = p_point->x;
-  p_point_reference_buffer->buffer[len]->y = p_point->y;
-  p_point_reference_buffer->buffer[len]->label = p_point->label;
+  p_point_reference_buffer->buffer[len] = p_point;
   p_point_reference_buffer->len++;
 
 }
@@ -57,10 +55,10 @@ void expand_cluster(uint8_t num_clusters,
       get_neighbors(&neighbors_neighbor_buffer, p_point_buffer, dist_func, *(p_neighbor_buffer->buffer[i]), epsilon);
 
       if (neighbors_neighbor_buffer.len >= min_points) {
-        for (int j = p_neighbor_buffer->len; j<p_neighbor_buffer->len + neighbors_neighbor_buffer.len; j++) {
+        for (int j = 0; j<neighbors_neighbor_buffer.len; j++) {
           //p_neighbor_buffer->buffer[j] = neighbors_neighbor_buffer.buffer[j - neighbors_neighbor_buffer.len];
           //p_neighbor_buffer->len++;
-          append_to_set(p_neighbor_buffer, neighbors_neighbor_buffer.buffer[j - p_neighbor_buffer->len]);
+          append_to_set(p_neighbor_buffer, neighbors_neighbor_buffer.buffer[j]);
         }
         NRF_LOG_INFO("neighbor buffer len: %d", p_neighbor_buffer->len);
       }
