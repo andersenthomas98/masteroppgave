@@ -178,6 +178,7 @@ void mapping_task(void *arg) {
           NRF_LOG_INFO("Free heap before: %d", freeHeap);
           NRF_LOG_INFO("DBSCAN #%d", i);
           
+          // First filtering - Find points near each other
           cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2); // Allocates memory on heap
           point_buffers[i].len = 0;
 
@@ -185,10 +186,21 @@ void mapping_task(void *arg) {
             cluster_buffer_t line_clusters;
             line_clusters.len = 0;
             line_clusters.buffer = NULL;
+            // Second filtering - Find clusters of points which make up line segments
             IEPF(clusters.buffer[j], &line_clusters, 1.0);
             for (int k=0; k<line_clusters.len; k++) {
               NRF_LOG_INFO("Points in line segment %d: %d", k, line_clusters.buffer[k].len);
             }
+            
+            
+            // TODO: Third filtering - Least-square line fitting using point clusters found in previous step
+
+            // TODO: Fourth filtering - Constrained Hough Transform
+
+            // TODO: Append lines extracted from one ir sensor to common buffer
+
+            // TODO: Merge lines together weighted by their covariances.
+
             deallocate_cluster_buffer(line_clusters);
           
           }
