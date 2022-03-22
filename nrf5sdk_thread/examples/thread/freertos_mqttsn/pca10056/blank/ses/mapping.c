@@ -81,7 +81,7 @@ void mapping_task(void *arg) {
   NRF_LOG_INFO("mapping task initialized");
 
   // Testing
-  point_buffer_dynamic_t points;
+  /*point_buffer_dynamic_t points;
   points.len = 5;
   points.buffer = pvPortMalloc(sizeof(point_t)*points.len);
 
@@ -145,7 +145,7 @@ void mapping_task(void *arg) {
 
   while(1) {
     NRF_LOG_INFO("testing");
-  }
+  }*/
 
   
 
@@ -188,8 +188,8 @@ void mapping_task(void *arg) {
             IEPF(clusters.buffer[j], &line_clusters, 1.0);
             for (int k=0; k<line_clusters.len; k++) {
               NRF_LOG_INFO("Points in line segment %d: %d", k, line_clusters.buffer[k].len);
-              
             }
+            deallocate_cluster_buffer(line_clusters);
           
           }
 
