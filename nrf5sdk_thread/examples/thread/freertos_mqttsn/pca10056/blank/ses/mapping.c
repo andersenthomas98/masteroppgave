@@ -12,35 +12,13 @@
 #include "math.h"
 #include "defines.h"
 #include "mapping_types.h"
+#include "mapping_utils.h"
 #include "DBSCAN.h"
+#include "IEPF.h"
 
 extern QueueHandle_t ir_measurement_queue;
 extern TaskHandle_t mapping_task_handle;
 
-/* Wrap any angle in radians into the interval [0,2pi) */
-void wrap_to_2pi(float *angle_in_radians) {
-    do {
-        if (*angle_in_radians >= 2*M_PI) *angle_in_radians -= 2*M_PI;
-        else if (*angle_in_radians < 0) *angle_in_radians += 2*M_PI;
-    } while (fabs(*angle_in_radians) >= 2*M_PI);
-}
-
-/* Convert from polar to cartesian coordinates */
-point_t polar2cartesian(float theta, float r) {
-    float x = r * cos(theta);
-    float y = r * sin(theta);
-    return (point_t) { x, y };
-}
-
-polar_t cartesian2polar(float x, float y) {
-  float r = sqrt(x*x+y*y);
-  float theta = atan2(y, x);
-  return (polar_t) {r, theta};
-}
-
-float euclidean_distance(point_t P, point_t Q) {
-  return sqrtf((P.x - Q.x)*(P.x - Q.x) + (P.y - Q.y)*(P.y - Q.y));
-}
 
 void update_point_buffers(point_buffer_t* point_buffers, ir_measurement_t measurement) {
 
@@ -85,11 +63,12 @@ void mapping_task(void *arg) {
   TickType_t lastWakeTime;
   const TickType_t delay = 0.1;
   
-
   point_buffer_t point_buffers[NUM_DIST_SENSORS];
+  cluster_buffer_t cluster_buffers[NUM_DIST_SENSORS];
 
   for (int i=0; i<NUM_DIST_SENSORS; i++) {
     point_buffers[i].len = 0;
+    cluster_buffers[i].len = 0;
   }
 
   mqttsn_init_msg_t rx_msg;
@@ -113,18 +92,6 @@ void mapping_task(void *arg) {
       /* Start line extraction */
       if (ulTaskNotifyTake(pdTRUE, (TickType_t) 0) == pdPASS) {
         
-        // For testing add fake points
-        /*point_buffers[0].len = 4;
-        point_buffers[0].buffer[0] = (point_t){.x = 0, .y=0, .label=LABEL_UNDEFINED};
-        point_buffers[0].buffer[1] = (point_t){.x = 1, .y=0, .label=LABEL_UNDEFINED};
-        point_buffers[0].buffer[2] = (point_t){.x = 0, .y=1, .label=LABEL_UNDEFINED};
-        point_buffers[0].buffer[3] = (point_t){.x = 1, .y=1, .label=LABEL_UNDEFINED};
-
-        point_buffers[1].len = 0;
-        point_buffers[2].len = 0;
-        point_buffers[3].len = 0;*/
-
-        
         NRF_LOG_INFO("Start line extraction");
 
         // Verify the points are stored sorted by bearing
@@ -141,12 +108,33 @@ void mapping_task(void *arg) {
           //if (point_buffers[i].len > max_len) {
           //  point_buffers[i].len = max_len;
           //}
-          DBSCAN(&point_buffers[i], euclidean_distance, 5, 2);
-          point_buffers[i].len = 0;
+          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2);
+
+          // Verify cluster
+          /*for (int j=0; j<clusters.len; j++) {
+            NRF_LOG_INFO("--------- Cluster %d --------", j);
+            for (int k=0; k<clusters.buffer[j].len; k++) {
+              point_t point = clusters.buffer[j].buffer[k];
+              NRF_LOG_INFO("label: %d", point.label);
+            }
+          }/*
         }
+
+        /*for (int i=0; i<NUM_DIST_SENSORS; i++) {
+          append_cluster(&cluster_buffers[i], &point_buffers[i]);
+
+        }*/
+
+        // Group point buffers into clusters given label
+            // 1. Find number of clusters in each point buffer
+            // 2. Find number of points in each cluster in each point buffer
+            // 3. Allocate sufficient memory for each initial cluster from dbscan
+
+        /*for (int i=0; i<NUM_DIST_SENSORS; i++) {
+          IEPF(point_buffers[i], &cluster_buffers[i], 0.5);
+          point_buffers[i].len = 0;
         
-
-
+        }*/
         
       } // ulTaskNotify [end]
 

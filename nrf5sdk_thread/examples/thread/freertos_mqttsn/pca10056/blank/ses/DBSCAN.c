@@ -7,7 +7,7 @@
 #include "thread_mqttsn.h"
 
 #include "DBSCAN.h"
-
+#include "mapping_utils.h"
 
 void get_neighbors(point_reference_buffer_t* p_neighbor_buffer, 
                    point_buffer_t* p_point_buffer, 
@@ -75,7 +75,7 @@ void expand_cluster(uint8_t num_clusters,
 
 }
 
-void DBSCAN(point_buffer_t* p_point_buffer, float(*dist_func)(point_t, point_t), float epsilon, uint8_t min_points) {
+cluster_buffer_t DBSCAN(point_buffer_t* p_point_buffer, float(*dist_func)(point_t, point_t), float epsilon, uint8_t min_points) {
   uint8_t num_clusters = 0;
   uint8_t pb_len = p_point_buffer->len;
   NRF_LOG_INFO("len pb: %d", pb_len);
@@ -96,5 +96,36 @@ void DBSCAN(point_buffer_t* p_point_buffer, float(*dist_func)(point_t, point_t),
       }
     }
   }
+  // DBSCAN finished
+
+  // Group points in point buffer based on cluster label
+  cluster_buffer_t clusters;
+  clusters.buffer = pvPortMalloc(sizeof(point_buffer_dynamic_t)*num_clusters);
+  clusters.len = num_clusters;
+  uint8_t cluster_index = 0;
+  for (int cluster_id=1; cluster_id<=num_clusters; cluster_id++) {
+    uint8_t num_points_in_cluster = 0;
+    for (int j=0; j<p_point_buffer->len; j++) {
+      if (p_point_buffer->buffer[j].label == cluster_id) {
+        num_points_in_cluster++;
+      }
+    }
+    
+    point_buffer_dynamic_t cluster;
+    cluster.len = num_points_in_cluster;
+    cluster.buffer = pvPortMalloc(sizeof(point_t)*cluster.len);
+    uint8_t buffer_index = 0;
+    for (int i=0; i<p_point_buffer->len; i++) {
+      if (p_point_buffer->buffer[i].label == cluster_id) {
+        cluster.buffer[buffer_index] = p_point_buffer->buffer[i];
+        buffer_index++;
+      }
+    }
+    clusters.buffer[cluster_index] = cluster;
+    cluster_index++;
+  
+  }
+
+  return clusters;
   
 }

@@ -185,6 +185,10 @@
         <file file_name="DBSCAN.c" />
         <file file_name="DBSCAN.h" />
         <file file_name="mapping_types.h" />
+        <file file_name="IEPF.c" />
+        <file file_name="IEPF.h" />
+        <file file_name="mapping_utils.c" />
+        <file file_name="mapping_utils.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

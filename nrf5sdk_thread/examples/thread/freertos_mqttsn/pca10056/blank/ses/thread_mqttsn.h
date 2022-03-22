@@ -78,6 +78,14 @@ typedef struct mqttsn_line_msg {
   coordinate_t endPoint;   // 4 bytes
 } __attribute__((packed)) mqttsn_line_msg_t;
 
+typedef struct mqttsn_test_msg {
+  uint8_t point_buffer;    // 1 byte
+  uint8_t point_buffer_len;// 1 byte
+  int16_t label;           // 2 bytes
+  coordinate_t point;      // 2+2 bytes
+} __attribute__((packed)) mqttsn_test_msg_t;
+
+
 
 typedef struct mqttsn_msg_queue_element {
   uint16_t topic_id;

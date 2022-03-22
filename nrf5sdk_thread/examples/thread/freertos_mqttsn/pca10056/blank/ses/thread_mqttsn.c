@@ -23,7 +23,7 @@
 #define ROBOT_TOPIC_NAME              "v2/robot/NRF_5/adv"
 #define ROBOT_LINE_TOPIC_NAME         "v2/robot/NRF_5/line"
 #define ROBOT_CTRL_TOPIC_NAME         "v2/robot/NRF_5/controller"
-#define ROBOT_COORDINATE_TOPIC_NAME   "v2/robot/NRF_5/coordinate"
+#define ROBOT_TEST_TOPIC_NAME         "v2/robot/NRF_5/test"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
 #define NUM_TOPICS                    6
@@ -68,7 +68,7 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =
     .topic_id     = NULL
   },
   {
-    .p_topic_name = ROBOT_COORDINATE_TOPIC_NAME,
+    .p_topic_name = ROBOT_TEST_TOPIC_NAME,
     .topic_id     = NULL
   }
 };
