@@ -79,9 +79,79 @@ void mapping_task(void *arg) {
   ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
   NRF_LOG_INFO("mapping task initialized");
+
+  // Testing
+  point_buffer_dynamic_t points;
+  points.len = 5;
+  points.buffer = pvPortMalloc(sizeof(point_t)*points.len);
+
+  point_t test_points[5] = {
+    {
+      .x = 2,
+      .y = -2
+    },
+    {
+      .x = 2,
+      .y = 0
+    },
+    {
+      .x = 2,
+      .y = 2
+    },
+    {
+      .x = 0,
+      .y = 2
+    },
+    {
+      .x = -2,
+      .y = 2
+    }
+  
+  };
+
+  for (int i=0; i<points.len; i++) {
+    points.buffer[i] = test_points[i];
+  
+  }
+
+  NRF_LOG_INFO("Size of float: %d", sizeof(float));
+  NRF_LOG_INFO("Size of int16_t: %d", sizeof(int16_t));
+  NRF_LOG_INFO("Size of point_t: %d", sizeof(point_t));
+
+  cluster_buffer_t output;
+  output.len = 0;
+  output.buffer = NULL;
+  int freeHeap = xPortGetFreeHeapSize();
+  NRF_LOG_INFO("Free heap before: %d", freeHeap);
+  IEPF(points, &output, 0.1);
+  freeHeap = xPortGetFreeHeapSize();
+  NRF_LOG_INFO("Free heap after IEPF: %d", freeHeap);
+
+  NRF_LOG_INFO("output len %d", output.len);
+
+  for (int i=0; i<output.len; i++) {
+    NRF_LOG_INFO("Line cluster %d", i);
+    for (int j=0; j<output.buffer[i].len; j++) {
+      volatile point_t point = output.buffer[i].buffer[j];
+      NRF_LOG_INFO("("NRF_LOG_FLOAT_MARKER","NRF_LOG_FLOAT_MARKER")", NRF_LOG_FLOAT(point.x), NRF_LOG_FLOAT(point.y));
+    }
+  
+  }
+  deallocate_cluster_buffer(output);
+
+  freeHeap = xPortGetFreeHeapSize();
+  NRF_LOG_INFO("Free heap after deallocation: %d", freeHeap);
+
+
+  while(1) {
+    NRF_LOG_INFO("testing");
+  }
+
   
 
   while(1) {
+      
+      
       /* Receive ir sensor measurement + robot pose from sensor tower task */
       if (xQueueReceive(ir_measurement_queue, &(new_measurement), (TickType_t) 10) == pdPASS) {
           update_point_buffers(&point_buffers, new_measurement);
@@ -104,11 +174,37 @@ void mapping_task(void *arg) {
         
         //uint8_t max_len = 3;
         for (int i=0; i<NUM_DIST_SENSORS; i++) {
+          int freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap before: %d", freeHeap);
           NRF_LOG_INFO("DBSCAN #%d", i);
-          //if (point_buffers[i].len > max_len) {
-          //  point_buffers[i].len = max_len;
-          //}
-          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2);
+          
+          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2); // Allocates memory on heap
+          point_buffers[i].len = 0;
+
+          for (int j=0; j<clusters.len; j++) {
+            cluster_buffer_t line_clusters;
+            line_clusters.len = 0;
+            line_clusters.buffer = NULL;
+            IEPF(clusters.buffer[j], &line_clusters, 1.0);
+            for (int k=0; k<line_clusters.len; k++) {
+              NRF_LOG_INFO("Points in line segment %d: %d", k, line_clusters.buffer[k].len);
+              
+            }
+          
+          }
+
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap after DBSCAN: %d", freeHeap);
+          if (clusters.len == 0) {
+            continue;
+          } 
+          else {
+            deallocate_cluster_buffer(clusters);
+            freeHeap = xPortGetFreeHeapSize();
+            NRF_LOG_INFO("Free heap after deallocation: %d", freeHeap);
+          }
+
+  
 
           // Verify cluster
           /*for (int j=0; j<clusters.len; j++) {
@@ -117,18 +213,10 @@ void mapping_task(void *arg) {
               point_t point = clusters.buffer[j].buffer[k];
               NRF_LOG_INFO("label: %d", point.label);
             }
-          }/*
+          }*/
+
+
         }
-
-        /*for (int i=0; i<NUM_DIST_SENSORS; i++) {
-          append_cluster(&cluster_buffers[i], &point_buffers[i]);
-
-        }*/
-
-        // Group point buffers into clusters given label
-            // 1. Find number of clusters in each point buffer
-            // 2. Find number of points in each cluster in each point buffer
-            // 3. Allocate sufficient memory for each initial cluster from dbscan
 
         /*for (int i=0; i<NUM_DIST_SENSORS; i++) {
           IEPF(point_buffers[i], &cluster_buffers[i], 0.5);

@@ -2,6 +2,7 @@
 #include "mapping_types.h"
 #include "mapping_utils.h"
 #include "math.h"
+#include "nrf_log.h"
 
 /* Wrap any angle in radians into the interval [0,2pi) */
 void wrap_to_2pi(float *angle_in_radians) {
@@ -26,4 +27,18 @@ polar_t cartesian2polar(float x, float y) {
 
 float euclidean_distance(point_t P, point_t Q) {
   return sqrtf((P.x - Q.x)*(P.x - Q.x) + (P.y - Q.y)*(P.y - Q.y));
+}
+
+void deallocate_cluster_buffer(cluster_buffer_t cluster_buffer) {
+  for (int i=0; i<cluster_buffer.len; i++) {
+    cluster_buffer.buffer[i].len = 0;
+    // Free each cluster
+    NRF_LOG_INFO("Deallocating (bytes %d)", sizeof(cluster_buffer.buffer[i].buffer));
+    vPortFree(cluster_buffer.buffer[i].buffer);
+  }
+  cluster_buffer.len = 0;
+  // Free collection of clusters
+  NRF_LOG_INFO("Deallocating (bytes %d)", sizeof(cluster_buffer.buffer));
+  vPortFree(cluster_buffer.buffer);
+
 }

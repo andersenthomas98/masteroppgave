@@ -8,4 +8,4 @@ polar_t cartesian2polar(float x, float y);
 
 float euclidean_distance(point_t P, point_t Q);
 
-void append_cluster(cluster_buffer_t* cluster_buffer, point_buffer_t* p_point_buffer);
+void deallocate_cluster_buffer(cluster_buffer_t cluster_buffer);

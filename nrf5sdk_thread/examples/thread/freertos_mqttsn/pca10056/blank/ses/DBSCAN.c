@@ -60,12 +60,12 @@ void expand_cluster(uint8_t num_clusters,
           //p_neighbor_buffer->len++;
           append_to_set(p_neighbor_buffer, neighbors_neighbor_buffer.buffer[j]);
         }
-        NRF_LOG_INFO("neighbor buffer len: %d", p_neighbor_buffer->len);
+        //NRF_LOG_INFO("neighbor buffer len: %d", p_neighbor_buffer->len);
       }
 
     }
     if (p_neighbor_buffer->buffer[i]->label == LABEL_UNDEFINED || p_neighbor_buffer->buffer[i]->label == LABEL_NOISE) {
-      NRF_LOG_INFO("%d: Add to cluster %d", i, num_clusters);
+      //NRF_LOG_INFO("%d: Add to cluster %d", i, num_clusters);
       p_neighbor_buffer->buffer[i]->label = num_clusters;
     }
     
@@ -78,7 +78,7 @@ void expand_cluster(uint8_t num_clusters,
 cluster_buffer_t DBSCAN(point_buffer_t* p_point_buffer, float(*dist_func)(point_t, point_t), float epsilon, uint8_t min_points) {
   uint8_t num_clusters = 0;
   uint8_t pb_len = p_point_buffer->len;
-  NRF_LOG_INFO("len pb: %d", pb_len);
+  //NRF_LOG_INFO("len pb: %d", pb_len);
   for (int i=0; i<p_point_buffer->len; i++) {
     point_t* p_point = &(p_point_buffer->buffer[i]);
     if (p_point->label == LABEL_UNDEFINED) {
@@ -91,16 +91,24 @@ cluster_buffer_t DBSCAN(point_buffer_t* p_point_buffer, float(*dist_func)(point_
       else {
         num_clusters++;
         p_point->label = num_clusters;
-        NRF_LOG_INFO("Expand cluster %d", num_clusters);
+        //NRF_LOG_INFO("Expand cluster %d", num_clusters);
         expand_cluster(num_clusters, &neighbor_buffer, p_point_buffer, dist_func, epsilon, min_points); 
       }
     }
   }
   // DBSCAN finished
+  if (num_clusters <= 0) {
+    return (cluster_buffer_t){.len = 0, .buffer = NULL};
+  }
 
   // Group points in point buffer based on cluster label
   cluster_buffer_t clusters;
+  NRF_LOG_INFO("Allocating (bytes %d) cluster buffer for %d clusters", sizeof(point_buffer_dynamic_t)*num_clusters, num_clusters);
   clusters.buffer = pvPortMalloc(sizeof(point_buffer_dynamic_t)*num_clusters);
+  if (clusters.buffer == NULL) {
+    NRF_LOG_ERROR("Failed to allocate memory for cluster");
+    return (cluster_buffer_t){.len = 0, .buffer = NULL};
+  }
   clusters.len = num_clusters;
   uint8_t cluster_index = 0;
   for (int cluster_id=1; cluster_id<=num_clusters; cluster_id++) {
@@ -113,7 +121,12 @@ cluster_buffer_t DBSCAN(point_buffer_t* p_point_buffer, float(*dist_func)(point_
     
     point_buffer_dynamic_t cluster;
     cluster.len = num_points_in_cluster;
+    NRF_LOG_INFO("Allocating (bytes %d) cluster for %d points", sizeof(point_t)*cluster.len, cluster.len);
     cluster.buffer = pvPortMalloc(sizeof(point_t)*cluster.len);
+    if (cluster.buffer == NULL) {
+      NRF_LOG_ERROR("Failed to allocate memory for cluster");
+      return (cluster_buffer_t){.len = 0, .buffer = NULL};
+    }
     uint8_t buffer_index = 0;
     for (int i=0; i<p_point_buffer->len; i++) {
       if (p_point_buffer->buffer[i].label == cluster_id) {
