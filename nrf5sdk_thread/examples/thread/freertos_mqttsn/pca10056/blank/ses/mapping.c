@@ -81,11 +81,13 @@ void mapping_task(void *arg) {
   NRF_LOG_INFO("mapping task initialized");
 
   // Testing
-  /*point_buffer_dynamic_t points;
-  points.len = 5;
+  int freeHeap = xPortGetFreeHeapSize();
+  NRF_LOG_INFO("Free heap before: %d", freeHeap);
+  point_buffer_dynamic_t points;
+  points.len = 6;
   points.buffer = pvPortMalloc(sizeof(point_t)*points.len);
 
-  point_t test_points[5] = {
+  point_t test_points[6] = {
     {
       .x = 2,
       .y = -2
@@ -105,6 +107,10 @@ void mapping_task(void *arg) {
     {
       .x = -2,
       .y = 2
+    }, 
+    {
+      .x = -3,
+      .y = 2
     }
   
   };
@@ -121,8 +127,7 @@ void mapping_task(void *arg) {
   cluster_buffer_t output;
   output.len = 0;
   output.buffer = NULL;
-  int freeHeap = xPortGetFreeHeapSize();
-  NRF_LOG_INFO("Free heap before: %d", freeHeap);
+
   IEPF(points, &output, 0.1);
   freeHeap = xPortGetFreeHeapSize();
   NRF_LOG_INFO("Free heap after IEPF: %d", freeHeap);
@@ -140,12 +145,12 @@ void mapping_task(void *arg) {
   deallocate_cluster_buffer(output);
 
   freeHeap = xPortGetFreeHeapSize();
-  NRF_LOG_INFO("Free heap after deallocation: %d", freeHeap);
+  NRF_LOG_INFO("Free heap after deallocation in mapping: %d", freeHeap);
 
 
   while(1) {
     NRF_LOG_INFO("testing");
-  }*/
+  }
 
   
 
@@ -173,24 +178,25 @@ void mapping_task(void *arg) {
         }*/
         
         //uint8_t max_len = 3;
+        int freeHeap = xPortGetFreeHeapSize();
+        NRF_LOG_INFO("Free heap before: %d", freeHeap);
         for (int i=0; i<NUM_DIST_SENSORS; i++) {
-          int freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap before: %d", freeHeap);
-          NRF_LOG_INFO("DBSCAN #%d", i);
+          //NRF_LOG_INFO("DBSCAN #%d", i);
           
           // First filtering - Find points near each other
-          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2); // Allocates memory on heap
+          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 10, 5); // Allocates memory on heap
           point_buffers[i].len = 0;
-
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap before IEPF: %d", freeHeap);
           for (int j=0; j<clusters.len; j++) {
             cluster_buffer_t line_clusters;
             line_clusters.len = 0;
             line_clusters.buffer = NULL;
             // Second filtering - Find clusters of points which make up line segments
             IEPF(clusters.buffer[j], &line_clusters, 1.0);
-            for (int k=0; k<line_clusters.len; k++) {
-              NRF_LOG_INFO("Points in line segment %d: %d", k, line_clusters.buffer[k].len);
-            }
+            //for (int k=0; k<line_clusters.len; k++) {
+              //NRF_LOG_INFO("Points in line segment %d: %d", k, line_clusters.buffer[k].len);
+            //}
             
             
             // TODO: Third filtering - Least-square line fitting using point clusters found in previous step
@@ -204,16 +210,14 @@ void mapping_task(void *arg) {
             deallocate_cluster_buffer(line_clusters);
           
           }
-
           freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after DBSCAN: %d", freeHeap);
+          NRF_LOG_INFO("Free heap after IEPF: %d", freeHeap);
+
           if (clusters.len == 0) {
             continue;
           } 
           else {
             deallocate_cluster_buffer(clusters);
-            freeHeap = xPortGetFreeHeapSize();
-            NRF_LOG_INFO("Free heap after deallocation: %d", freeHeap);
           }
 
   
@@ -229,6 +233,9 @@ void mapping_task(void *arg) {
 
 
         }
+
+        freeHeap = xPortGetFreeHeapSize();
+        NRF_LOG_INFO("Free heap after: %d", freeHeap);
 
         /*for (int i=0; i<NUM_DIST_SENSORS; i++) {
           IEPF(point_buffers[i], &cluster_buffers[i], 0.5);

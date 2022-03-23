@@ -111,6 +111,8 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
       }
 
       // Free old memory location
+      NRF_LOG_INFO("Free old cluster buffer");
+
       deallocate_cluster_buffer(*p_output_buffer);
 
       // Append new cluster to reallocated cluster buffer
@@ -148,6 +150,8 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
     }
     IEPF(right_points, p_output_buffer, T);
     
+    // Free memory of input buffer (we have allocated memory for each split)
+    vPortFree(input_buffer.buffer);
 
   }
 
