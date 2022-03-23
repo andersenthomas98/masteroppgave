@@ -1,4 +1,5 @@
 #define PB_MAX_SIZE 100
+#define LB_MAX_SIZE 100
 
 #include <stdint.h>
 
@@ -17,6 +18,11 @@ typedef struct line {
   point_t P;
   point_t Q;
 } line_t;
+
+typedef struct line_buffer {
+  uint8_t len;
+  line_t buffer[LB_MAX_SIZE];
+} line_buffer_t;
 
 typedef struct point_buffer {
   uint8_t len;

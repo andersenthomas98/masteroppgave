@@ -42,3 +42,21 @@ void deallocate_cluster_buffer(cluster_buffer_t cluster_buffer) {
   cluster_buffer.len = 0;
 
 }
+
+float get_length(line_t line) {
+  return (sqrtf((line.P.x - line.Q.x)*(line.P.x - line.Q.x) + (line.P.y - line.Q.y)*(line.P.y - line.Q.y)));
+}
+
+float dot_product(point_t v1, point_t v2) {
+  return (v1.x*v2.x + v1.y*v2.y);
+}
+
+point_t get_projected_point_on_line(line_t line, point_t point) {
+  point_t e1 = (point_t) {.x = line.Q.x - line.P.x, .y = line.Q.y - line.P.y};
+  point_t e2 = (point_t) {.x = point.x - line.P.x, .y = point.y - line.P.y};
+  float dp = dot_product(e1, e2);
+  float len2 = e1.x*e1.x + e1.y*e1.y;
+  point_t proj_point = (point_t) {.x = (line.P.x + (dp * e1.x) / len2), .y = (line.P.y + (dp*e1.y) / len2)}; // TODO: Check for division by zero
+  return proj_point;
+  
+}

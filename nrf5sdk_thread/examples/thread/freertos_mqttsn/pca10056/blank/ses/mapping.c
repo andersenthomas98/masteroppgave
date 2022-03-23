@@ -15,6 +15,7 @@
 #include "mapping_utils.h"
 #include "DBSCAN.h"
 #include "IEPF.h"
+#include "float.h"
 
 extern QueueHandle_t ir_measurement_queue;
 extern TaskHandle_t mapping_task_handle;
@@ -66,12 +67,18 @@ void mapping_task(void *arg) {
   point_buffer_t point_buffers[NUM_DIST_SENSORS];
   cluster_buffer_t cluster_buffers[NUM_DIST_SENSORS];
 
+  volatile line_buffer_t line_buffer;
+  line_buffer.len = 0;
+
   for (int i=0; i<NUM_DIST_SENSORS; i++) {
     point_buffers[i].len = 0;
     cluster_buffers[i].len = 0;
   }
 
-  mqttsn_init_msg_t rx_msg;
+  mqttsn_line_msg_t msg;
+  msg.identifier = LINE_IDENTIFIER;
+  int16_t test_x = 0;
+  int16_t test_y = 0;
 
   ir_measurement_t new_measurement;
 
@@ -197,7 +204,68 @@ void mapping_task(void *arg) {
             //}
             
             
-            // TODO: Third filtering - Least-square line fitting using point clusters found in previous step
+            // Third filtering - Least-square line fitting using point clusters found in previous step
+            // Line model: ax + by + c = 0
+            for (int k=0; k<line_clusters.len; k++) {
+              if (line_clusters.buffer[k].len >= 2) {
+                float sum_x = 0;
+                float sum_yy = 0;
+                float sum_y = 0;
+                float sum_xy = 0;
+                float sum_xx = 0;
+                for (int l=0; l<line_clusters.buffer[k].len; l++) {
+                  point_t point = line_clusters.buffer[k].buffer[l];
+                  sum_x += point.x;
+                  sum_y += point.y;
+                  sum_xx += point.x * point.x;
+                  sum_yy += point.y*point.y;
+                  sum_xy += point.x * point.y;
+                }
+                float a_hat = sum_x*sum_yy - sum_y*sum_xy;
+                float b_hat = sum_y*sum_xx - sum_x*sum_xy;
+                float c_hat = sum_xy*sum_xy - sum_xx*sum_yy;
+                if (b_hat == 0) {
+                  a_hat = FLT_MAX;
+                  b_hat = FLT_MAX;
+                  b_hat = 1.0;
+                }
+                point_t p = {
+                  .x = line_clusters.buffer[k].buffer[0].x,
+                  .y = -(a_hat / b_hat)*(line_clusters.buffer[k].buffer[0].x) - (c_hat / b_hat)
+                };
+                point_t q = {
+                  .x = line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1].x,
+                  .y = -(a_hat / b_hat)*(line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1].x) - (c_hat / b_hat)
+                };
+                line_t line = {.P = p, .Q = q};
+                point_t proj_point_start = get_projected_point_on_line(line, line_clusters.buffer[k].buffer[0]);
+                point_t proj_point_end = get_projected_point_on_line(line, line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1]);
+                line_t ls_fit_line = {.P = proj_point_start, .Q = proj_point_end};
+                line_buffer.buffer[line_buffer.len] = ls_fit_line;
+                line_buffer.len++;
+
+                if (line_buffer.len == LB_MAX_SIZE) {
+                  line_buffer.len = 0;
+                }
+                
+                // Publish line
+                if (mqttsn_client_is_connected()) {
+                  //msg.startPoint = (coordinate_t) {.x = ls_fit_line.P.x, .y = ls_fit_line.P.y};
+                  //msg.endPoint = (coordinate_t) {.x = ls_fit_line.Q.x, .y = ls_fit_line.Q.y };
+                  test_x++;
+                  test_y++;
+                  msg.startPoint = (coordinate_t) {.x = test_x, .y = test_y};
+                  msg.endPoint = (coordinate_t) {.x = test_x, .y = test_y};
+                  msg.xdelta = 0;
+                  msg.ydelta = 0;
+                  msg.thetadelta = 0;
+                  publish("v2/robot/NRF_5/line", &msg, sizeof(mqttsn_line_msg_t), 0, 0);
+                }
+
+              }
+            
+            }
+
 
             // TODO: Fourth filtering - Constrained Hough Transform
 
