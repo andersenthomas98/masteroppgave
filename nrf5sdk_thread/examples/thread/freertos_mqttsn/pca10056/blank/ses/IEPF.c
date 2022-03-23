@@ -71,7 +71,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
     
     // *********** Append input buffer to output cluster buffer ***************
     if (p_output_buffer->len <= 0) {
-      NRF_LOG_INFO("Allocating (bytes %d)", sizeof(point_buffer_dynamic_t));
+      //NRF_LOG_INFO("Allocating (bytes %d)", sizeof(point_buffer_dynamic_t));
       p_output_buffer->buffer = pvPortMalloc(sizeof(point_buffer_dynamic_t));
       if (p_output_buffer->buffer == NULL) {
         NRF_LOG_ERROR("Failed to allocate memory for output buffer");
@@ -83,7 +83,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
       // Reallocate memory for output buffer (TODO: optimize memory reallocation scheme... implement pvPortRealloc?)
       cluster_buffer_t reallocated_clusters;
       reallocated_clusters.len = p_output_buffer->len + 1;
-      NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_buffer_dynamic_t), reallocated_clusters.len);
+      //NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_buffer_dynamic_t), reallocated_clusters.len);
       reallocated_clusters.buffer = pvPortMalloc(sizeof(point_buffer_dynamic_t)*reallocated_clusters.len);
       if (reallocated_clusters.buffer == NULL) {
         NRF_LOG_ERROR("Failed to reallocate memory for output buffer");
@@ -96,7 +96,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
         if (points.len <= 0) {
           continue;
         }
-        NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_t), points.len);
+        //NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_t), points.len);
         points.buffer = pvPortMalloc(sizeof(point_t)*points.len);
         if (points.buffer == NULL) {
           NRF_LOG_ERROR("Failed to reallocate memory for output buffer");
@@ -111,7 +111,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
       }
 
       // Free old memory location
-      NRF_LOG_INFO("Free old cluster buffer");
+      //NRF_LOG_INFO("Free old cluster buffer");
 
       deallocate_cluster_buffer(*p_output_buffer);
 
@@ -125,7 +125,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
     // Left side of split
     point_buffer_dynamic_t left_points;
     left_points.len = (int)(input_buffer.len / 2 + 1);
-    NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_t), left_points.len);
+    //NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_t), left_points.len);
     left_points.buffer = pvPortMalloc(sizeof(point_t)*left_points.len);
     if (left_points.buffer == NULL) {
       NRF_LOG_ERROR("Failed to allocate left points buffer");
@@ -139,7 +139,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
     // Right side of split
     point_buffer_dynamic_t right_points;
     right_points.len = input_buffer.len - (int)(input_buffer.len / 2);
-    NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_t), right_points.len);
+    //NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_t), right_points.len);
     right_points.buffer = pvPortMalloc(sizeof(point_t)*right_points.len);
     if (right_points.buffer == NULL) {
       NRF_LOG_ERROR("Failed to allocate right points buffer");

@@ -81,7 +81,7 @@ void mapping_task(void *arg) {
   NRF_LOG_INFO("mapping task initialized");
 
   // Testing
-  int freeHeap = xPortGetFreeHeapSize();
+  /*int freeHeap = xPortGetFreeHeapSize();
   NRF_LOG_INFO("Free heap before: %d", freeHeap);
   point_buffer_dynamic_t points;
   points.len = 6;
@@ -150,7 +150,7 @@ void mapping_task(void *arg) {
 
   while(1) {
     NRF_LOG_INFO("testing");
-  }
+  }*/
 
   
 
@@ -186,8 +186,6 @@ void mapping_task(void *arg) {
           // First filtering - Find points near each other
           cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 10, 5); // Allocates memory on heap
           point_buffers[i].len = 0;
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap before IEPF: %d", freeHeap);
           for (int j=0; j<clusters.len; j++) {
             cluster_buffer_t line_clusters;
             line_clusters.len = 0;
@@ -210,8 +208,6 @@ void mapping_task(void *arg) {
             deallocate_cluster_buffer(line_clusters);
           
           }
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after IEPF: %d", freeHeap);
 
           if (clusters.len == 0) {
             continue;

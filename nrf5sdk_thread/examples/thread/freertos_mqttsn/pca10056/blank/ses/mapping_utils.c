@@ -32,12 +32,12 @@ float euclidean_distance(point_t P, point_t Q) {
 void deallocate_cluster_buffer(cluster_buffer_t cluster_buffer) {
   for (int i=0; i<cluster_buffer.len; i++) {
     // Free each cluster
-    NRF_LOG_INFO("Deallocating (bytes %d*%d)", sizeof(cluster_buffer.buffer[i].buffer), cluster_buffer.buffer[i].len);
+    //NRF_LOG_INFO("Deallocating (bytes %d*%d)", sizeof(cluster_buffer.buffer[i].buffer), cluster_buffer.buffer[i].len);
     vPortFree(cluster_buffer.buffer[i].buffer);
     cluster_buffer.buffer[i].len = 0;
   }
   // Free collection of clusters
-  NRF_LOG_INFO("Deallocating (bytes %d*%d)", sizeof(cluster_buffer.buffer), cluster_buffer.len);
+  //NRF_LOG_INFO("Deallocating (bytes %d*%d)", sizeof(cluster_buffer.buffer), cluster_buffer.len);
   vPortFree(cluster_buffer.buffer);
   cluster_buffer.len = 0;
 
