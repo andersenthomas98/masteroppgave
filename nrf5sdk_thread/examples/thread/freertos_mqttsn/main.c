@@ -249,17 +249,17 @@ int main(void)
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
 
-    /*if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
+    if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }*/
+    }
 
     /*if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
     
-    if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
+    /*if (pdPASS != xTaskCreate(vMainSensorTowerTask, "SnsT", SENSOR_TOWER_TASK_STACK_SIZE, NULL, SENSOR_TOWER_TASK_PRIORITY, &sensor_tower_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
@@ -267,7 +267,7 @@ int main(void)
     if (pdPASS != xTaskCreate(vNewMainPoseEstimatorTask, "POSE", NEW_ESTIMATOR_TASK_STACK_SIZE, NULL, NEW_ESTIMATOR_TASK_PRIORITY, &new_estimator_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
     /*if (pdPASS != xTaskCreate(vMotorSpeedControllerTask, "SPDC", MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE, NULL, MOTOR_SPEED_CONTROLLER_TASK_PRIORITY, &motor_speed_controller_task_handle)) 
     {
@@ -279,10 +279,10 @@ int main(void)
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
 
-    if (pdPASS != xTaskCreate(mapping_task, "MAP", MAPPING_TASK_STACK_SIZE, NULL, MAPPING_TASK_PRIORITY, &mapping_task_handle)) 
+    /*if (pdPASS != xTaskCreate(mapping_task, "MAP", MAPPING_TASK_STACK_SIZE, NULL, MAPPING_TASK_PRIORITY, &mapping_task_handle)) 
     {
       APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
 
 #if NRF_LOG_ENABLED

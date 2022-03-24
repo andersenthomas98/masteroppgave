@@ -64,10 +64,10 @@ void example_task(void *arg) {
     for (int i=0; i<3; i++) {
       mqttsn_line_msg_t line = line_msg_list[i];
       NRF_LOG_INFO("Publish (%d, %d) --- (%d, %d)", line.startPoint.x, line.startPoint.y, line.endPoint.x, line.endPoint.y);
-      publish("v2/robot/NRF_5/line", &line, sizeof(line), 0, 0);
+      publish_line("v2/robot/NRF_5/line", line, sizeof(line), 0, 0);
       
-      lastWakeTime = xTaskGetTickCount();
-      vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
+      //lastWakeTime = xTaskGetTickCount();
+      //vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*delay);
     
     }
     

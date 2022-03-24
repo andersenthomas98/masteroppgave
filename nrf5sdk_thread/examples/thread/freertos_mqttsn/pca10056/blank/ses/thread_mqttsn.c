@@ -96,7 +96,7 @@ static mqttsn_subscribe_topic_t sub_topic_arr[NUM_SUB_TOPICS] = {
   }
 };
 
-QueueHandle_t mqttsn_outgoing_message_queue;
+QueueHandle_t mqttsn_outgoing_message_queue, mqttsn_outgoing_line_message_queue;
 SemaphoreHandle_t publish_semaphore;
 
 QueueHandle_t get_queue_handle(char* topic_name) {
@@ -577,6 +577,30 @@ void thread_stack_task(void * arg)
     }
 }
 
+uint32_t publish_line(char* topic_name, mqttsn_line_msg_t payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id) {
+  if (!mqttsn_client_is_connected()) {
+    return NRF_ERROR_BUSY;
+  }
+  
+  mqttsn_line_msg_queue_element_t queue_element;
+  queue_element.msg_id = msg_id;
+  queue_element.qos = qos;
+  queue_element.payload_size = payload_size;
+  queue_element.payload = payload;
+  queue_element.topic_id = get_topic_id(topic_name);
+  if (queue_element.topic_id == NULL) {
+    return NRF_ERROR_NULL;
+  }
+
+  if (mqttsn_outgoing_line_message_queue != NULL && xQueueSend(mqttsn_outgoing_line_message_queue, &queue_element, 10) != pdPASS) {
+    
+    NRF_LOG_ERROR("Failed to post mqttsn message to outgoing message queue");
+  
+  }
+  return NRF_SUCCESS;
+
+}
+
 uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id) {
 
   if (!mqttsn_client_is_connected()) {
@@ -619,8 +643,9 @@ void mqttsn_task(void *arg) {
   UNUSED_RETURN_VALUE(ulTaskNotifyTake(pdTRUE, portMAX_DELAY));
 
   mqttsn_outgoing_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_msg_queue_element_t));
+  mqttsn_outgoing_line_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_line_msg_queue_element_t));
 
-  if (mqttsn_outgoing_message_queue == NULL) {
+  if (mqttsn_outgoing_message_queue == NULL || mqttsn_outgoing_line_message_queue == NULL) {
     NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
     while(1) {
       // do nothing
@@ -679,6 +704,7 @@ void mqttsn_task(void *arg) {
       state = mqttsn_client_state_get(&m_client);
     }
     mqttsn_msg_queue_element_t rx_msg;
+    mqttsn_line_msg_queue_element_t rx_line_msg;
     /*if (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
       
       uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic_id, rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
@@ -699,6 +725,15 @@ void mqttsn_task(void *arg) {
         NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
       }
 
+    }
+
+    while (mqttsn_outgoing_line_message_queue != NULL && xQueueReceive(mqttsn_outgoing_line_message_queue, &rx_line_msg, 0) == pdPASS) {
+
+      uint32_t err_code = mqttsn_client_publish(&m_client, rx_line_msg.topic_id, &rx_line_msg.payload, rx_line_msg.payload_size, rx_line_msg.qos, &rx_line_msg.msg_id);
+
+      if (err_code != NRF_SUCCESS) {
+        NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
+      }
     }
     
     //lastWakeTime = xTaskGetTickCount();
