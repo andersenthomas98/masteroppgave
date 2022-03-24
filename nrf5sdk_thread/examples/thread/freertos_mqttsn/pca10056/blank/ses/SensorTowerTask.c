@@ -218,7 +218,7 @@ void vMainSensorTowerTask(void * pvParameters) {
             //NRF_LOG_INFO("ir 4: %d", sensorDataMM[3])
             
             //NRF_LOG_INFO("Publish from sensor tower task");
-            //publish("v2/robot/NRF_5/adv", &update_msg, sizeof(update_msg), 0, 0);
+            //publish_update("v2/robot/NRF_5/adv", update_msg, sizeof(update_msg), 0, 0);
 
 
           }
@@ -253,8 +253,8 @@ void vMainSensorTowerTask(void * pvParameters) {
         }
         if (USE_NEW_SERVER) {
           //sendScanBorder(); // Sends a 1 to the server to indicate that one 90 degree scan is finished
-          NRF_LOG_INFO("Sending scan border message");
-          publish("v2/robot/NRF_5/adv", &scan_msg, sizeof(scan_msg), 0, 0);
+          //NRF_LOG_INFO("Sending scan border message");
+          //publish("v2/robot/NRF_5/adv", &scan_msg, sizeof(scan_msg), 0, 0);
         }
 
       } else if ((servoAngle <= 0) && (servoDirection == moveClockwise)) {
@@ -264,8 +264,8 @@ void vMainSensorTowerTask(void * pvParameters) {
         }
         if (USE_NEW_SERVER) {
           //sendScanBorder(); // Sends a 1 to the server to indicate that one 90 degree scan is starting
-          NRF_LOG_INFO("Sending scan border message");
-          publish("v2/robot/NRF_5/adv", &scan_msg, sizeof(scan_msg), 0, 0);
+          //NRF_LOG_INFO("Sending scan border message");
+          //publish("v2/robot/NRF_5/adv", &scan_msg, sizeof(scan_msg), 0, 0);
         }
 
       }

@@ -85,6 +85,18 @@ typedef struct mqttsn_test_msg {
   coordinate_t point;      // 2+2 bytes
 } __attribute__((packed)) mqttsn_test_msg_t;
 
+typedef struct mqttsn_cluster_msg_t {
+  int8_t cluster_id;
+  coordinate_t point;
+} mqttsn_cluster_msg_t;
+
+typedef struct mqttsn_cluster_msg_queue_element {
+  uint16_t topic_id;
+  uint16_t msg_id;
+  uint16_t payload_size;
+  uint8_t qos;
+  mqttsn_cluster_msg_t payload;
+} mqttsn_cluster_msg_queue_element_t;
 
 
 typedef struct mqttsn_msg_queue_element {
@@ -103,6 +115,15 @@ typedef struct mqttsn_line_msg_queue_element {
   mqttsn_line_msg_t payload;
 } mqttsn_line_msg_queue_element_t;
 
+typedef struct mqttsn_update_msg_queue_element {
+  uint16_t topic_id;
+  uint16_t msg_id;
+  uint16_t payload_size;
+  uint8_t qos;
+  mqttsn_update_msg_t payload;
+} mqttsn_update_msg_queue_element_t;
+
+
 
 void thread_stack_task(void * arg);
 
@@ -110,7 +131,11 @@ void mqttsn_task(void * arg);
 
 uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
 
+uint32_t publish_update(char* topic_name, mqttsn_update_msg_t payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
+
 uint32_t publish_line(char* topic_name, mqttsn_line_msg_t payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
+
+uint32_t publish_cluster_point(char* topic_name, mqttsn_cluster_msg_t payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id);
 
 uint8_t mqttsn_client_is_connected(void);
 

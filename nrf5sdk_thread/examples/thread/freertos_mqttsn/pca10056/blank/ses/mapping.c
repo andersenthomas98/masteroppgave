@@ -77,8 +77,8 @@ void mapping_task(void *arg) {
 
   mqttsn_line_msg_t msg;
   msg.identifier = LINE_IDENTIFIER;
-  int16_t test_x = 0;
-  int16_t test_y = 0;
+  
+  mqttsn_cluster_msg_t dbscan_msg;
 
   ir_measurement_t new_measurement;
 
@@ -191,121 +191,120 @@ void mapping_task(void *arg) {
           //NRF_LOG_INFO("DBSCAN #%d", i);
           
           // First filtering - Find points near each other
-          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 10, 5); // Allocates memory on heap
+          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2); // Allocates memory on heap
+
+          if (clusters.len <= 0) {
+            deallocate_cluster_buffer(clusters); // Free allocated heap
+            continue; // Go to next ir sensor readings
+          }
+
           point_buffers[i].len = 0;
+          
+          point_buffer_dynamic_t cluster_means;
+          cluster_means.len = clusters.len;
+          cluster_means.buffer = pvPortMalloc(sizeof(point_t)*cluster_means.len);
+
           for (int j=0; j<clusters.len; j++) {
-            cluster_buffer_t line_clusters;
-            line_clusters.len = 0;
-            line_clusters.buffer = NULL;
-            // Second filtering - Find clusters of points which make up line segments
-            IEPF(clusters.buffer[j], &line_clusters, 1.0);
-            //for (int k=0; k<line_clusters.len; k++) {
-              //NRF_LOG_INFO("Points in line segment %d: %d", k, line_clusters.buffer[k].len);
-            //}
             
+            // Find cluster means
+            float mean_x = 0;
+            float mean_y = 0;
+            for (int k=0; k<clusters.buffer[j].len; k++) {
+              mean_x += clusters.buffer[j].buffer[k].x / clusters.buffer[j].len;
+              mean_y += clusters.buffer[j].buffer[k].y / clusters.buffer[j].len;
+            }
+
+            cluster_means.buffer[j] = (point_t){.x = mean_x, .y = mean_y};
+          }
+
+          deallocate_cluster_buffer(clusters); // Free allocated heap
+
+        
+          // Second filtering - Find clusters of points which make up line segments
+
+          cluster_buffer_t line_clusters;
+          line_clusters.len = 0;
+          line_clusters.buffer = NULL;
+
+          if (cluster_means.len < 2) {
+            continue;
+          }
+          
+          IEPF(cluster_means, &line_clusters, 0.2); // Allocates memory on heap
             
-            // Third filtering - Least-square line fitting using point clusters found in previous step
-            // Line model: ax + by + c = 0
-            for (int k=0; k<line_clusters.len; k++) {
-              if (line_clusters.buffer[k].len >= 2) {
-                float sum_x = 0;
-                float sum_yy = 0;
-                float sum_y = 0;
-                float sum_xy = 0;
-                float sum_xx = 0;
-                for (int l=0; l<line_clusters.buffer[k].len; l++) {
-                  point_t point = line_clusters.buffer[k].buffer[l];
-                  sum_x += point.x;
-                  sum_y += point.y;
-                  sum_xx += point.x * point.x;
-                  sum_yy += point.y*point.y;
-                  sum_xy += point.x * point.y;
-                }
-                float a_hat = sum_x*sum_yy - sum_y*sum_xy;
-                float b_hat = sum_y*sum_xx - sum_x*sum_xy;
-                float c_hat = sum_xy*sum_xy - sum_xx*sum_yy;
-                if (b_hat == 0) {
-                  a_hat = FLT_MAX;
-                  b_hat = FLT_MAX;
-                  b_hat = 1.0;
-                }
-                point_t p = {
-                  .x = line_clusters.buffer[k].buffer[0].x,
-                  .y = -(a_hat / b_hat)*(line_clusters.buffer[k].buffer[0].x) - (c_hat / b_hat)
-                };
-                point_t q = {
-                  .x = line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1].x,
-                  .y = -(a_hat / b_hat)*(line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1].x) - (c_hat / b_hat)
-                };
-                line_t line = {.P = p, .Q = q};
-                point_t proj_point_start = get_projected_point_on_line(line, line_clusters.buffer[k].buffer[0]);
-                point_t proj_point_end = get_projected_point_on_line(line, line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1]);
-                line_t ls_fit_line = {.P = proj_point_start, .Q = proj_point_end};
-                line_buffer.buffer[line_buffer.len] = ls_fit_line;
-                line_buffer.len++;
+          // Third filtering - Least-square line fitting using point clusters found in previous step
+          // Line model: ax + by + c = 0
+          for (int k=0; k<line_clusters.len; k++) {
+            if (line_clusters.buffer[k].len >= 2) {
+              float sum_x = 0;
+              float sum_yy = 0;
+              float sum_y = 0;
+              float sum_xy = 0;
+              float sum_xx = 0;
+              for (int l=0; l<line_clusters.buffer[k].len; l++) {
+                point_t point = line_clusters.buffer[k].buffer[l];
+                sum_x += point.x;
+                sum_y += point.y;
+                sum_xx += point.x * point.x;
+                sum_yy += point.y*point.y;
+                sum_xy += point.x * point.y;
+              }
+              float a_hat = sum_x*sum_yy - sum_y*sum_xy;
+              float b_hat = sum_y*sum_xx - sum_x*sum_xy;
+              float c_hat = sum_xy*sum_xy - sum_xx*sum_yy;
+              if (b_hat == 0) {
+                a_hat = FLT_MAX;
+                b_hat = FLT_MAX;
+                b_hat = 1.0;
+              }
+              point_t p = {
+                .x = line_clusters.buffer[k].buffer[0].x,
+                .y = -(a_hat / b_hat)*(line_clusters.buffer[k].buffer[0].x) - (c_hat / b_hat)
+              };
+              point_t q = {
+                .x = line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1].x,
+                .y = -(a_hat / b_hat)*(line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1].x) - (c_hat / b_hat)
+              };
+              line_t line = {.P = p, .Q = q};
+              point_t proj_point_start = get_projected_point_on_line(line, line_clusters.buffer[k].buffer[0]);
+              point_t proj_point_end = get_projected_point_on_line(line, line_clusters.buffer[k].buffer[line_clusters.buffer[k].len-1]);
+              line_t ls_fit_line = {.P = proj_point_start, .Q = proj_point_end};
+              line_buffer.buffer[line_buffer.len] = ls_fit_line;
+              line_buffer.len++;
 
-                if (line_buffer.len == LB_MAX_SIZE) {
-                  line_buffer.len = 0;
-                }
-                
-                // Publish line
-                if (mqttsn_client_is_connected()) {
-                  //msg.startPoint = (coordinate_t) {.x = ls_fit_line.P.x, .y = ls_fit_line.P.y};
-                  //msg.endPoint = (coordinate_t) {.x = ls_fit_line.Q.x, .y = ls_fit_line.Q.y };
-                  test_x++;
-                  test_y++;
-                  msg.startPoint = (coordinate_t) {.x = test_x, .y = test_y};
-                  msg.endPoint = (coordinate_t) {.x = test_x, .y = test_y};
-                  msg.xdelta = 0;
-                  msg.ydelta = 0;
-                  msg.thetadelta = 0;
-                  publish("v2/robot/NRF_5/line", &msg, sizeof(mqttsn_line_msg_t), 0, 0);
-                }
-
+              if (line_buffer.len == LB_MAX_SIZE) {
+                line_buffer.len = 0;
               }
             
+              // Publish line
+              if (mqttsn_client_is_connected()) {
+                msg.startPoint = (coordinate_t) {.x = ls_fit_line.P.x, .y = ls_fit_line.P.y};
+                msg.endPoint = (coordinate_t) {.x = ls_fit_line.Q.x, .y = ls_fit_line.Q.y };
+                msg.xdelta = 0;
+                msg.ydelta = 0;
+                msg.thetadelta = 0;
+                publish_line("v2/robot/NRF_5/line", msg, sizeof(mqttsn_line_msg_t), 0, 0);
+              }
+
             }
+        
+          }
+
+          deallocate_cluster_buffer(line_clusters); // Free heap memory
+          vPortFree(cluster_means.buffer);
+          cluster_means.len = 0;
 
 
-            // TODO: Fourth filtering - Constrained Hough Transform
+          // TODO: Fourth filtering - Constrained Hough Transform
 
-            // TODO: Append lines extracted from one ir sensor to common buffer
+          // TODO: Append lines extracted from one ir sensor to common buffer
 
-            // TODO: Merge lines together weighted by their covariances.
-
-            deallocate_cluster_buffer(line_clusters);
+          // TODO: Merge lines together weighted by their covariances.
           
-          }
-
-          if (clusters.len == 0) {
-            continue;
-          } 
-          else {
-            deallocate_cluster_buffer(clusters);
-          }
-
-  
-
-          // Verify cluster
-          /*for (int j=0; j<clusters.len; j++) {
-            NRF_LOG_INFO("--------- Cluster %d --------", j);
-            for (int k=0; k<clusters.buffer[j].len; k++) {
-              point_t point = clusters.buffer[j].buffer[k];
-              NRF_LOG_INFO("label: %d", point.label);
-            }
-          }*/
-
-
         }
 
         freeHeap = xPortGetFreeHeapSize();
         NRF_LOG_INFO("Free heap after: %d", freeHeap);
-
-        /*for (int i=0; i<NUM_DIST_SENSORS; i++) {
-          IEPF(point_buffers[i], &cluster_buffers[i], 0.5);
-          point_buffers[i].len = 0;
-        
-        }*/
         
       } // ulTaskNotify [end]
 
