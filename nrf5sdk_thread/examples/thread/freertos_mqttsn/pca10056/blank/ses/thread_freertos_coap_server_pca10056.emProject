@@ -189,6 +189,8 @@
         <file file_name="IEPF.h" />
         <file file_name="mapping_utils.c" />
         <file file_name="mapping_utils.h" />
+        <file file_name="LS_line_fit.c" />
+        <file file_name="LS_line_fit.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

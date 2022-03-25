@@ -83,6 +83,7 @@
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/DBSCAN.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/IEPF.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/mapping_utils.o"
+"Output/thread_freertos_mqttsn_pca10056 Release/Obj/LS_line_fit.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/SEGGER_RTT.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/SEGGER_RTT_Syscalls_SES.o"
 "Output/thread_freertos_mqttsn_pca10056 Release/Obj/SEGGER_RTT_printf.o"
