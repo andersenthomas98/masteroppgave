@@ -186,15 +186,16 @@ void mapping_task(void *arg) {
         
         //uint8_t max_len = 3;
         int freeHeap = xPortGetFreeHeapSize();
-        NRF_LOG_INFO("Free heap before: %d", freeHeap);
+        NRF_LOG_INFO("Free heap before line extraction: %d", freeHeap);
         for (int i=0; i<NUM_DIST_SENSORS; i++) {
           //NRF_LOG_INFO("DBSCAN #%d", i);
           
           // First filtering - Find points near each other
           cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2); // Allocates memory on heap
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap after DBSCAN: %d", freeHeap);
 
           if (clusters.len <= 0) {
-            deallocate_cluster_buffer(clusters); // Free allocated heap
             continue; // Go to next ir sensor readings
           }
 
@@ -203,6 +204,8 @@ void mapping_task(void *arg) {
           point_buffer_dynamic_t cluster_means;
           cluster_means.len = clusters.len;
           cluster_means.buffer = pvPortMalloc(sizeof(point_t)*cluster_means.len);
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap after cluster means: %d", freeHeap);
 
           for (int j=0; j<clusters.len; j++) {
             
@@ -218,6 +221,8 @@ void mapping_task(void *arg) {
           }
 
           deallocate_cluster_buffer(clusters); // Free allocated heap
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap after deallocating clusters: %d", freeHeap);
 
         
           // Second filtering - Find clusters of points which make up line segments
@@ -227,6 +232,8 @@ void mapping_task(void *arg) {
           line_clusters.buffer = NULL;
 
           if (cluster_means.len < 2) {
+            vPortFree(cluster_means.buffer);
+            cluster_means.len = 0;
             continue;
           }
           
@@ -291,8 +298,12 @@ void mapping_task(void *arg) {
           }
 
           deallocate_cluster_buffer(line_clusters); // Free heap memory
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap after deallocating line clusters: %d", freeHeap);
           vPortFree(cluster_means.buffer);
           cluster_means.len = 0;
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap after deallocating cluster_means: %d", freeHeap);
 
 
           // TODO: Fourth filtering - Constrained Hough Transform
