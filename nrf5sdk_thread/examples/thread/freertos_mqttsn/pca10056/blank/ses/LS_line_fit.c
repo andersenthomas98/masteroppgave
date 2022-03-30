@@ -24,7 +24,7 @@ line_t LS_line_fit(point_buffer_dynamic_t points) {
   float c_hat = sum_xy*sum_xy - sum_xx*sum_yy;
   if (b_hat == 0) {
     a_hat = FLT_MAX;
-    b_hat = FLT_MAX;
+    c_hat = FLT_MAX;
     b_hat = 1.0;
   }
   point_t p = {

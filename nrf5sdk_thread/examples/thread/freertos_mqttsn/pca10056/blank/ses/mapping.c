@@ -252,14 +252,14 @@ void mapping_task(void *arg) {
               }
             
               // Publish line
-              if (mqttsn_client_is_connected()) {
+              /*if (mqttsn_client_is_connected()) {
                 msg.startPoint = (coordinate_t) {.x = ls_fit_line.P.x, .y = ls_fit_line.P.y};
                 msg.endPoint = (coordinate_t) {.x = ls_fit_line.Q.x, .y = ls_fit_line.Q.y };
                 msg.xdelta = 0;
                 msg.ydelta = 0;
                 msg.thetadelta = 0;
                 publish_line("v2/robot/NRF_5/line", msg, sizeof(mqttsn_line_msg_t), 0, 0);
-              }
+              }*/
 
             }
         
