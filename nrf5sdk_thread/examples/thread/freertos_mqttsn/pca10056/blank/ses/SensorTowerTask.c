@@ -90,6 +90,11 @@ void vMainSensorTowerTask(void * pvParameters) {
   // Notify mapping task
   xTaskNotifyGive(mapping_task_handle);
 
+  while(!mqttsn_client_is_connected()) {
+    // wait
+  
+  }
+
   while (true) {
     calibrationCounter++;
     //if ((gHandshook == true || !CONNECT_TO_SERVER) && (gPaused == false)) {

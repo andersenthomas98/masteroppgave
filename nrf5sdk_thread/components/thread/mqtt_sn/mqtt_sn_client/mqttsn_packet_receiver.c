@@ -922,6 +922,7 @@ static uint32_t message_handle(mqttsn_client_t        * p_client,
             break;
 
         case MQTTSN_PUBLISH:
+            NRF_LOG_INFO("Received PUBLISH");
             err_code = publish_handle(p_client, p_data, datalen);
             break;
 

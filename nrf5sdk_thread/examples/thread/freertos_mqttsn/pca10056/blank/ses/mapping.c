@@ -16,6 +16,7 @@
 #include "DBSCAN.h"
 #include "IEPF.h"
 #include "LS_line_fit.h"
+#include "MSE_line_fit.h"
 
 extern QueueHandle_t ir_measurement_queue;
 extern TaskHandle_t mapping_task_handle;
@@ -77,6 +78,14 @@ void mapping_task(void *arg) {
 
   mqttsn_line_msg_t msg;
   msg.identifier = LINE_IDENTIFIER;
+
+  mqttsn_update_msg_t update_msg;
+  update_msg.identifier = UPDATE_IDENTIFIER;
+
+  float lastPublishedX = 0;
+  float lastPublishedY = 0;
+  float lastPublishedTheta = 0;
+
   
   mqttsn_cluster_msg_t dbscan_msg;
 
@@ -159,6 +168,11 @@ void mapping_task(void *arg) {
     NRF_LOG_INFO("testing");
   }*/
 
+  while(!mqttsn_client_is_connected()) {
+    // wait
+  
+  }
+
   
 
   while(1) {
@@ -167,6 +181,28 @@ void mapping_task(void *arg) {
       /* Receive ir sensor measurement + robot pose from sensor tower task */
       if (xQueueReceive(ir_measurement_queue, &(new_measurement), (TickType_t) 10) == pdPASS) {
           update_point_buffers(&point_buffers, new_measurement);
+          
+          update_msg.xdelta = new_measurement.x;
+          update_msg.ydelta = new_measurement.y;
+          update_msg.thetadelta = new_measurement.theta;
+          update_msg.ir1 = (coordinate_t) {
+            .x = point_buffers[0].buffer[point_buffers[0].len-1].x,
+            .y = point_buffers[0].buffer[point_buffers[0].len-1].y
+          };
+          update_msg.ir2 = (coordinate_t) {
+            .x = point_buffers[1].buffer[point_buffers[1].len-1].x,
+            .y = point_buffers[1].buffer[point_buffers[1].len-1].y
+          };
+          update_msg.ir3 = (coordinate_t) {
+            .x = point_buffers[2].buffer[point_buffers[2].len-1].x,
+            .y = point_buffers[2].buffer[point_buffers[2].len-1].y
+          };
+          update_msg.ir4 = (coordinate_t) {
+            .x = point_buffers[3].buffer[point_buffers[3].len-1].x,
+            .y = point_buffers[3].buffer[point_buffers[3].len-1].y
+          };
+          update_msg.valid = 0x0f;
+          publish_update("v2/robot/NRF_5/adv", update_msg, sizeof(update_msg), 0, 0);
 
 
       }
@@ -192,6 +228,16 @@ void mapping_task(void *arg) {
           
           // First filtering - Find points near each other
           cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2); // Allocates memory on heap
+          for (int j = 0; j < clusters.len; j++) {
+            for (int k=0; k < clusters.buffer[j].len; k++) {
+              dbscan_msg.cluster_id = j;
+              dbscan_msg.point = (coordinate_t) {.x = clusters.buffer[j].buffer[k].x, .y = clusters.buffer[j].buffer[k].y};
+              publish_cluster_point("v2/robot/NRF_5/cluster", dbscan_msg, sizeof(dbscan_msg), 0, 0);
+              TickType_t lastWakeTime = xTaskGetTickCount();
+              vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+            }
+          
+          }
           freeHeap = xPortGetFreeHeapSize();
           NRF_LOG_INFO("Free heap after DBSCAN: %d", freeHeap);
 
@@ -217,7 +263,7 @@ void mapping_task(void *arg) {
               mean_y += clusters.buffer[j].buffer[k].y / clusters.buffer[j].len;
             }
 
-            cluster_means.buffer[j] = (point_t){.x = mean_x, .y = mean_y};
+            cluster_means.buffer[j] = (point_t){.x = mean_x, .y = mean_y, .label = clusters.buffer[j].len};
           }
 
           deallocate_cluster_buffer(clusters); // Free allocated heap
@@ -243,7 +289,7 @@ void mapping_task(void *arg) {
           // Line model: ax + by + c = 0
           for (int k=0; k<line_clusters.len; k++) {
             if (line_clusters.buffer[k].len >= 2) {
-              line_t ls_fit_line = LS_line_fit(line_clusters.buffer[k]);
+              line_t ls_fit_line = MSE_line_fit(line_clusters.buffer[k]);
               line_buffer.buffer[line_buffer.len] = ls_fit_line;
               line_buffer.len++;
 
@@ -252,18 +298,22 @@ void mapping_task(void *arg) {
               }
             
               // Publish line
-              /*if (mqttsn_client_is_connected()) {
+              if (mqttsn_client_is_connected()) {
                 msg.startPoint = (coordinate_t) {.x = ls_fit_line.P.x, .y = ls_fit_line.P.y};
                 msg.endPoint = (coordinate_t) {.x = ls_fit_line.Q.x, .y = ls_fit_line.Q.y };
                 msg.xdelta = 0;
                 msg.ydelta = 0;
                 msg.thetadelta = 0;
                 publish_line("v2/robot/NRF_5/line", msg, sizeof(mqttsn_line_msg_t), 0, 0);
-              }*/
+                TickType_t lastWakeTime = xTaskGetTickCount();
+                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+              }
 
             }
         
           }
+
+
 
           deallocate_cluster_buffer(line_clusters); // Free heap memory
           freeHeap = xPortGetFreeHeapSize();
@@ -284,6 +334,8 @@ void mapping_task(void *arg) {
 
         freeHeap = xPortGetFreeHeapSize();
         NRF_LOG_INFO("Free heap after: %d", freeHeap);
+
+        vTaskSuspend(NULL);
         
       } // ulTaskNotify [end]
 

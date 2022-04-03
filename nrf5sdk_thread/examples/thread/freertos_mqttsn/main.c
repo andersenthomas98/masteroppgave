@@ -81,7 +81,7 @@ NRF_LOG_MODULE_REGISTER();
 
 #define THREAD_STACK_TASK_STACK_SIZE            (( 1024 * 6 ) / sizeof(StackType_t))   /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
 #define LOG_TASK_STACK_SIZE                     ( 1024 / sizeof(StackType_t))          /**< FreeRTOS task stack size is determined in multiples of StackType_t. */
-#define MQTTSN_TASK_STACK_SIZE                  ((1024 * 6) / sizeof(StackType_t))
+#define MQTTSN_TASK_STACK_SIZE                  ((1024 * 16) / sizeof(StackType_t))
 #define SENSOR_TOWER_TASK_STACK_SIZE            ( 1024 / sizeof(StackType_t))
 #define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 6 / sizeof(StackType_t))
 #define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
@@ -89,7 +89,7 @@ NRF_LOG_MODULE_REGISTER();
 #define MAPPING_TASK_STACK_SIZE                 ((1024 * 16) / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE                 ( 1024 / sizeof(StackType_t))
 
-#define THREAD_STACK_TASK_PRIORITY            2
+#define THREAD_STACK_TASK_PRIORITY            4
 #define MQTTSN_TASK_PRIORITY                  2
 #define SENSOR_TOWER_TASK_PRIORITY            3
 #define NEW_ESTIMATOR_TASK_PRIORITY           4
@@ -252,9 +252,9 @@ int main(void)
     /*if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }
+    }*/
 
-    if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
+    /*if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/

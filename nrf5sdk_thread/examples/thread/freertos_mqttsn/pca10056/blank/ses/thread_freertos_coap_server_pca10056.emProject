@@ -50,13 +50,13 @@
       <file file_name="../../../../../../external/freertos/source/event_groups.c" />
       <file file_name="../../../../../../external/freertos/source/portable/MemMang/heap_4.c" />
       <file file_name="../../../../../../external/freertos/source/list.c" />
-      <file file_name="../../../../../../external/freertos/portable/GCC/nrf52/port.c" />
       <file file_name="../../../../../../external/freertos/portable/CMSIS/nrf52/port_cmsis.c" />
       <file file_name="../../../../../../external/freertos/portable/CMSIS/nrf52/port_cmsis_systick.c" />
       <file file_name="../../../../../../external/freertos/source/queue.c" />
       <file file_name="../../../../../../external/freertos/source/stream_buffer.c" />
       <file file_name="../../../../../../external/freertos/source/tasks.c" />
       <file file_name="../../../../../../external/freertos/source/timers.c" />
+      <file file_name="../../../../../../external/freertos/portable/GCC/nrf52/port.c" />
     </folder>
     <folder Name="nRF_Libraries">
       <file file_name="../../../../../../components/libraries/button/app_button.c" />
@@ -191,6 +191,8 @@
         <file file_name="mapping_utils.h" />
         <file file_name="LS_line_fit.c" />
         <file file_name="LS_line_fit.h" />
+        <file file_name="MSE_line_fit.c" />
+        <file file_name="MSE_line_fit.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

@@ -23,7 +23,7 @@
 #define ROBOT_TOPIC_NAME              "v2/robot/NRF_5/adv"
 #define ROBOT_LINE_TOPIC_NAME         "v2/robot/NRF_5/line"
 #define ROBOT_CTRL_TOPIC_NAME         "v2/robot/NRF_5/controller"
-#define ROBOT_TEST_TOPIC_NAME         "v2/robot/NRF_5/test"
+#define ROBOT_CLUSTER_TOPIC_NAME      "v2/robot/NRF_5/cluster"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
 #define NUM_TOPICS                    6
@@ -68,7 +68,7 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =
     .topic_id     = NULL
   },
   {
-    .p_topic_name = ROBOT_TEST_TOPIC_NAME,
+    .p_topic_name = ROBOT_CLUSTER_TOPIC_NAME,
     .topic_id     = NULL
   }
 };
@@ -680,8 +680,11 @@ uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_
 }
 
 uint8_t mqttsn_client_is_connected() {
-  mqttsn_client_state_t state = mqttsn_client_state_get(&m_client);
-  if (state == MQTTSN_CLIENT_CONNECTED && has_finished_connected_callback) {
+  if (!has_finished_connected_callback) {
+    return 0;
+  }
+  mqttsn_client_state_t state = mqttsn_client_state_get(&m_client); // Calling mqttsn_client_state_get() before init will cause hardfault
+  if (state == MQTTSN_CLIENT_CONNECTED) {
     return 1;
   }
   return 0;
@@ -802,8 +805,8 @@ void mqttsn_task(void *arg) {
       }
     }
 
-    while(mqttsn_outgoing_update_message_queue != NULL && xQueueReceive(mqttsn_outgoing_cluster_message_queue, &rx_cluster_msg, 0) == pdPASS) {
-
+    while(mqttsn_outgoing_cluster_message_queue != NULL && xQueueReceive(mqttsn_outgoing_cluster_message_queue, &rx_cluster_msg, 0) == pdPASS) {
+      
       uint32_t err_code = mqttsn_client_publish(&m_client, rx_cluster_msg.topic_id, &rx_cluster_msg.payload, rx_cluster_msg.payload_size, rx_cluster_msg.qos, &rx_cluster_msg.msg_id);
 
       if (err_code != NRF_SUCCESS) {

@@ -43,3 +43,8 @@ typedef struct cluster_buffer {
   uint8_t len;
   point_buffer_dynamic_t* buffer;
 } cluster_buffer_t;
+
+typedef struct hesse_normal_form {
+  float r;
+  float theta;
+} hesse_normal_form_t;
