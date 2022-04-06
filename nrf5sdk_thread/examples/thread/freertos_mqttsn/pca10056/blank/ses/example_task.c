@@ -36,9 +36,9 @@ void example_task(void *arg) {
 
   mqttsn_line_msg_t line_msg;
   line_msg.identifier = LINE_IDENTIFIER;
-  line_msg.xdelta = 0;
-  line_msg.ydelta = 0;
-  line_msg.thetadelta = 0;
+  //line_msg.xdelta = 0;
+  //line_msg.ydelta = 0;
+  //line_msg.thetadelta = 0;
   line_msg.startPoint = (coordinate_t) {.x = -500, .y = 500};
   line_msg.endPoint = (coordinate_t) {.x = 500, .y = 500};
 

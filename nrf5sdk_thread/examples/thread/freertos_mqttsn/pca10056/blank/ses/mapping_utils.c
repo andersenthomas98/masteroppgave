@@ -60,3 +60,53 @@ point_t get_projected_point_on_line(line_t line, point_t point) {
   return proj_point;
   
 }
+
+point_t get_projected_point_on_line_hesse(float r, float theta, point_t point) {
+  float r_p = point.x*cos(theta) + point.y*sin(theta);
+  float d_x = fabs(r_p - r)*cos(theta);
+  float d_y = fabs(r_p - r)*sin(theta);
+  if (r_p - r >= 0) {
+    return (point_t){.x = point.x - d_x, .y = point.y - d_y};
+  } 
+  return (point_t){.x = point.x + d_x, .y = point.y + d_y};
+
+
+}
+
+point_t rotate(point_t point, float theta) {
+	float x = point.x*cos(theta) - point.y*sin(theta);
+	float y = point.x*sin(theta) + point.y*cos(theta);
+	return (point_t) {x, y};
+}
+
+point_t translate(point_t point, point_t delta) {
+	float x = point.x + delta.x;
+	float y = point.y + delta.y;
+	return (point_t) {x, y};
+}
+
+point_t transform(point_t point, point_t origin, float theta) {
+	float x = (point.y - origin.y)*sin(theta) + (point.x - origin.x)*cos(theta);
+	float y = (point.y - origin.y)*cos(theta) - (point.x - origin.x)*sin(theta);
+	return (point_t) {x, y};
+}
+
+// Returns shortest distance from a point to a line passing through two points https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line#Line_defined_by_two_points
+float distance_from_point_to_line(point_t point, line_t line) {
+    return fabs((line.Q.x - line.P.x)*(line.P.y - point.y) - (line.P.x - point.x)*(line.Q.y - line.P.y))/get_length(line);
+}
+
+// Returns shortest distance from a point to a line segment https://math.stackexchange.com/questions/2248617/shortest-distance-between-a-point-and-a-line-segment
+float distance_from_point_to_line_segment(point_t point, line_t line) {
+    float t = -((line.P.x - point.x)*(line.Q.x - line.P.x) + (line.P.y - point.y)*(line.Q.y - line.P.y)) / (pow(get_length(line), 2));
+    if (t >= 0 && t <= 1) {
+        // The point is perpendicular to the line segment
+        return distance_from_point_to_line(point, line);
+    }
+    float d1 = get_length((line_t){.P = point, .Q = line.P});
+    float d2 = get_length((line_t){.P = point, .Q = line.Q});
+    if (d1 < d2) {
+        return d1;
+    }
+    return d2;
+}

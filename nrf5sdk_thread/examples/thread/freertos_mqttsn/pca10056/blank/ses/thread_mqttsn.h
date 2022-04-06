@@ -71,11 +71,14 @@ typedef struct mqttsn_controller_msg {
 
 typedef struct mqttsn_line_msg {
   uint8_t identifier;      // 1 byte
-  int16_t xdelta;          // 2 bytes
-  int16_t ydelta;          // 2 bytes
-  int16_t thetadelta;      // 2 bytes
+  //int16_t xdelta;          // 2 bytes
+  //int16_t ydelta;          // 2 bytes
+  //int16_t thetadelta;      // 2 bytes
   coordinate_t startPoint; // 4 bytes
   coordinate_t endPoint;   // 4 bytes
+  float sigma_r2;          // 4 bytes
+  float sigma_theta2;      // 4 bytes
+  float sigma_rtheta;      // 4 bytes
 } __attribute__((packed)) mqttsn_line_msg_t;
 
 typedef struct mqttsn_test_msg {

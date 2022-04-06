@@ -15,3 +15,15 @@ float get_length(line_t line);
 float dot_product(point_t v1, point_t v2);
 
 point_t get_projected_point_on_line(line_t line, point_t point);
+
+point_t get_projected_point_on_line_hesse(float r, float theta, point_t point);
+
+point_t rotate(point_t point, float theta);
+
+point_t translate(point_t point, point_t delta);
+
+point_t transform(point_t point, point_t origin, float theta);
+
+float distance_from_point_to_line_segment(point_t point, line_t line);
+
+float distance_from_point_to_line(point_t point, line_t line);

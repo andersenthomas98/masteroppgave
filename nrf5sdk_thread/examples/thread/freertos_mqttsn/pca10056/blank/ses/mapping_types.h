@@ -44,7 +44,18 @@ typedef struct cluster_buffer {
   point_buffer_dynamic_t* buffer;
 } cluster_buffer_t;
 
-typedef struct hesse_normal_form {
+typedef struct line_segment {
   float r;
   float theta;
-} hesse_normal_form_t;
+  point_t start;
+  point_t end;
+  float sigma_r2;
+  float sigma_theta2;
+  float sigma_rtheta;
+  point_buffer_dynamic_t points;
+} line_segment_t;
+
+typedef  struct line_segment_buffer {
+  uint8_t len;
+  line_segment_t buffer[LB_MAX_SIZE];
+} line_segment_buffer_t;

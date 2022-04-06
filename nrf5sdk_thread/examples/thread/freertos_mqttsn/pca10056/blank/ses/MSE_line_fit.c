@@ -7,7 +7,7 @@
 #include "FreeRTOS.h"
 #include "float.h"
 
-line_t MSE_line_fit(point_buffer_dynamic_t point_buffer) {
+line_segment_t MSE_line_fit(point_buffer_dynamic_t point_buffer) {
   float mean_x = 0;
   float mean_y = 0;
   float mean_ss = 0;
@@ -50,36 +50,15 @@ line_t MSE_line_fit(point_buffer_dynamic_t point_buffer) {
   theta_hat = 0.5*atan2(-2*sigma_xy, sigma_yy - sigma_xx);
   r_hat = mean_x*cos(theta_hat) + mean_y*sin(theta_hat);
 
+  if (r_hat < 0) {
+    r_hat = fabs(r_hat);
+    theta_hat += M_PI;
+  }
+
   // Find endpoints of line segment r = x*cos(theta) + y*sin(theta)
-
-  point_t p, q;
-  if (sin(theta_hat) <= 0.0001 && sin(theta_hat) >= -0.0001) {
-    p = (point_t){
-      .x = point_buffer.buffer[0].x,
-      .y = -FLT_MAX * point_buffer.buffer[0].x + FLT_MAX
-    };
-
-    q = (point_t){
-      .x = point_buffer.buffer[point_buffer.len-1].x,
-      .y = -FLT_MAX * point_buffer.buffer[point_buffer.len-1].x + FLT_MAX
-    
-    };
-  }
-  else {
-    p = (point_t){
-      .x = point_buffer.buffer[0].x,
-      .y = -(cos(theta_hat) / sin(theta_hat))*(point_buffer.buffer[0].x) + (r_hat / sin(theta_hat))
-    };
-
-    q = (point_t){
-      .x = point_buffer.buffer[point_buffer.len-1].x,
-      .y = -(cos(theta_hat) / sin(theta_hat))*(point_buffer.buffer[point_buffer.len-1].x) + (r_hat / sin(theta_hat))
-    };
-  }
-  line_t line = {.P = p, .Q = q};
-  point_t proj_point_start = get_projected_point_on_line(line, point_buffer.buffer[0]);
-  point_t proj_point_end = get_projected_point_on_line(line, point_buffer.buffer[point_buffer.len-1]);
-  line_t line_segment = {.P = proj_point_start, .Q = proj_point_end};
+  point_t proj_point_start = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[0]);
+  point_t proj_point_end = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[point_buffer.len-1]);
+  line_segment_t line_segment = {.r = r_hat, .theta = theta_hat, .start = proj_point_start, .end = proj_point_end};
   
   return line_segment;
 

@@ -193,6 +193,8 @@
         <file file_name="LS_line_fit.h" />
         <file file_name="MSE_line_fit.c" />
         <file file_name="MSE_line_fit.h" />
+        <file file_name="line_merging.c" />
+        <file file_name="line_merging.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">
