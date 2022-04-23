@@ -29,6 +29,12 @@ typedef struct point_buffer {
   point_t buffer[PB_MAX_SIZE];
 } point_buffer_t;
 
+typedef struct point_buffer_common {
+  uint16_t len;
+  point_t buffer[PB_MAX_SIZE*4];
+} point_buffer_common_t;
+
+
 typedef struct point_reference_buffer {
   uint8_t len;
   point_t* buffer[PB_MAX_SIZE];

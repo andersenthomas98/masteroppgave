@@ -55,7 +55,7 @@ line_segment_t MSE_line_fit(point_buffer_dynamic_t point_buffer) {
     theta_hat += M_PI;
   }
 
-  // Find endpoints of line segment r = x*cos(theta) + y*sin(theta)
+  // Find endpoints of line r = x*cos(theta) + y*sin(theta)
   point_t proj_point_start = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[0]);
   point_t proj_point_end = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[point_buffer.len-1]);
   line_segment_t line_segment = {.r = r_hat, .theta = theta_hat, .start = proj_point_start, .end = proj_point_end};

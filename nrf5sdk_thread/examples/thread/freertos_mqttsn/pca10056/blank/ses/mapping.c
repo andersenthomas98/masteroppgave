@@ -86,6 +86,8 @@ void mapping_task(void *arg) {
   const TickType_t delay = 0.1;
   
   point_buffer_t point_buffers[NUM_DIST_SENSORS];
+  point_buffer_common_t point_buffer_common;
+  point_buffer_common.len = 0;
   cluster_buffer_t cluster_buffers[NUM_DIST_SENSORS];
 
   line_segment_buffer_t line_buffer;
@@ -110,76 +112,59 @@ void mapping_task(void *arg) {
   mqttsn_cluster_msg_t dbscan_msg;
 
   ir_measurement_t new_measurement;
+  
+  /*while(1) {
+     point_t p1 = {.x = 0, .y = 0};
+     point_t p2 = {.x = 0, .y = 0.5};
+     point_t p3 = {.x = 0, .y = 1};
+     point_t p4 = {.x = 0.5, .y = 1};
+     point_t p5 = {.x = 1, .y = 1};
+     point_t p6 = {.x = 1.5, .y = 1};
+     point_t p7 = {.x = 2, .y = 1};
+     point_t p8 = {.x = 2, .y = 0.5};
+     point_t p9 = {.x = 2, .y = 0};
+
+     point_buffer_dynamic_t buffer;
+     buffer.len = 9;
+     buffer.buffer = pvPortMalloc(sizeof(point_t)*buffer.len);
+     buffer.buffer[0] = p1;
+     buffer.buffer[1] = p2;
+     buffer.buffer[2] = p3;
+     buffer.buffer[3] = p4;
+     buffer.buffer[4] = p5;
+     buffer.buffer[5] = p6;
+     buffer.buffer[6] = p7;
+     buffer.buffer[7] = p8;
+     buffer.buffer[8] = p9;
+
+     cluster_buffer_t output;
+     output.len = 0;
+     output.buffer = NULL;
+
+     IEPF(buffer, &output, 0.1);
+
+     for (int i = 0; i<output.len; i++) {
+      NRF_LOG_INFO("cluster %d", i);
+      for (int j=0; j<output.buffer[i].len; j++) {
+        point_t point = output.buffer[i].buffer[j];
+        NRF_LOG_INFO("point %d", j);
+        NRF_LOG_INFO("x: " NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(point.x))
+        NRF_LOG_INFO("y: " NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(point.y))
+      }
+
+     }
+  }*/
+
+
 
   // Block until sensor tower task has initialized ir measurement queue
   ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
   NRF_LOG_INFO("mapping task initialized");
 
-  /*while(1) {
-    // Testing
-    
-    int freeHeap = xPortGetFreeHeapSize();
-    NRF_LOG_INFO("Free heap before: %d", freeHeap);
-
-    point_buffer_dynamic_t pb1;
-    pb1.len = 2;
-    pb1.buffer = pvPortMalloc(sizeof(point_t)*pb1.len);
-    pb1.buffer[0] = (point_t){.x = -1, .y = 0, .label = 1};
-    pb1.buffer[1] = (point_t){.x = 0, .y = 0.5, .label = 1};
-
-    point_buffer_dynamic_t pb2;
-    pb2.len = 2;
-    pb2.buffer = pvPortMalloc(sizeof(point_t)*pb1.len);
-    pb2.buffer[0] = (point_t){.x = 0, .y = 0.5, .label = 1};
-    pb2.buffer[1] = (point_t){.x = 1, .y = 0, .label = 1};
-
-    point_buffer_dynamic_t pb3;
-    pb3.len = 2;
-    pb3.buffer = pvPortMalloc(sizeof(point_t)*pb1.len);
-    pb3.buffer[0] = (point_t){.x = 1, .y = 0.25, .label = 1};
-    pb3.buffer[1] = (point_t){.x = 2, .y = 0.25, .label = 1};
-
-    point_buffer_dynamic_t pb4;
-    pb4.len = 2;
-    pb4.buffer = pvPortMalloc(sizeof(point_t)*pb1.len);
-    pb4.buffer[0] = (point_t){.x = 2, .y = 0.25, .label = 1};
-    pb4.buffer[1] = (point_t){.x = 2, .y = -1, .label = 1};
-
-    line_segment_t l1 = MSE_line_fit(pb1);
-    l1.points = pb1;
-    line_segment_t l2 = MSE_line_fit(pb2);
-    l2.points = pb2;
-    line_segment_t l3 = MSE_line_fit(pb3);
-    l3.points = pb3;
-    line_segment_t l4 = MSE_line_fit(pb4);
-    l4.points = pb4;
-
-    line_segment_buffer_t lb;
-    lb.len = 4;
-    lb.buffer[0] = l1;
-    lb.buffer[1] = l2;
-    lb.buffer[2] = l3;
-    lb.buffer[3] = l4;
-
-    merge_linebuffer(&lb, 55*DEG2RAD, 10);
-
-    
-    for (int i=0; i<lb.len; i++) {
-      vPortFree(lb.buffer[i].points.buffer);
-      lb.buffer[i].points.len = 0;
-    }
-
-    freeHeap = xPortGetFreeHeapSize();
-    NRF_LOG_INFO("Free heap after: %d", freeHeap);
-
-    vTaskSuspend(NULL);
-  } */
-
 
   while(!mqttsn_client_is_connected()) {
     // wait
-  
   }
 
   
@@ -220,14 +205,16 @@ void mapping_task(void *arg) {
       if (ulTaskNotifyTake(pdTRUE, (TickType_t) 0) == pdPASS) {
         
         NRF_LOG_INFO("Start line extraction");
-        
+
         int freeHeap = xPortGetFreeHeapSize();
         NRF_LOG_INFO("Free heap before line extraction: %d", freeHeap);
+
+
         for (int i=0; i<NUM_DIST_SENSORS; i++) {
           //NRF_LOG_INFO("DBSCAN #%d", i);
           
           // First filtering - Find points near each other
-          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 5, 2); // Allocates memory on heap
+          cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 20, 5); // Allocates memory on heap
           for (int j = 0; j < clusters.len; j++) {
             for (int k=0; k < clusters.buffer[j].len; k++) {
               dbscan_msg.cluster_id = j;
@@ -246,73 +233,46 @@ void mapping_task(void *arg) {
           }
 
           point_buffers[i].len = 0;
-          
-          point_buffer_dynamic_t cluster_means;
-          cluster_means.len = clusters.len;
-          cluster_means.buffer = pvPortMalloc(sizeof(point_t)*cluster_means.len);
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after cluster means: %d", freeHeap);
-
-          for (int j=0; j<clusters.len; j++) {
-            
-            // Find cluster means
-            float mean_x = 0;
-            float mean_y = 0;
-            for (int k=0; k<clusters.buffer[j].len; k++) {
-              mean_x += clusters.buffer[j].buffer[k].x / clusters.buffer[j].len;
-              mean_y += clusters.buffer[j].buffer[k].y / clusters.buffer[j].len;
-            }
-
-            cluster_means.buffer[j] = (point_t){.x = mean_x, .y = mean_y, .label = 1/*clusters.buffer[j].len*/};
-          }
-
-          deallocate_cluster_buffer(clusters); // Free allocated heap
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after deallocating clusters: %d", freeHeap);
-
         
           // Second filtering - Find clusters of points which make up line segments
-
-          cluster_buffer_t line_clusters;
-          line_clusters.len = 0;
-          line_clusters.buffer = NULL;
-
-          if (cluster_means.len < 2) {
-            vPortFree(cluster_means.buffer);
-            cluster_means.len = 0;
-            continue;
-          }
-          
-          IEPF(cluster_means, &line_clusters, 10); // Allocates memory on heap
-            
-          // Third filtering - Least-square line fitting using line clusters found in previous step
-          // Line model: ax + by + c = 0
-          for (int k=0; k<line_clusters.len; k++) {
-            if (line_clusters.buffer[k].len >= 2 && line_buffer.len < LB_MAX_SIZE) {
-              line_segment_t fitted_line = MSE_line_fit(line_clusters.buffer[k]);
-              copy_points_to_line_segment(&fitted_line, line_clusters.buffer[k]);
-              line_buffer.buffer[line_buffer.len] = fitted_line;
-              line_buffer.len++;
-
+          for (int j=0; j<clusters.len; j++) {
+            cluster_buffer_t line_clusters;
+            line_clusters.len = 0;
+            line_clusters.buffer = NULL;
+            if (clusters.buffer[j].len < 2) {
+              continue;
             }
+          
+            // No need for cluster means, use the DBSCAN clusters directly
+            IEPF(clusters.buffer[j], &line_clusters, 10); // Allocates memory on heap
+            
+            // Third filtering - Least-square line fitting using line clusters found in previous step
+            for (int k=0; k<line_clusters.len; k++) {
+              if (line_clusters.buffer[k].len >= 2 && line_buffer.len < LB_MAX_SIZE) {
+                line_segment_t fitted_line = MSE_line_fit(line_clusters.buffer[k]);
+                copy_points_to_line_segment(&fitted_line, line_clusters.buffer[k]);
+                line_buffer.buffer[line_buffer.len] = fitted_line;
+                line_buffer.len++;
+
+              }
         
+            }
+
+
+
+            deallocate_cluster_buffer(line_clusters); // Free heap memory
+            line_clusters.len = 0;
+            freeHeap = xPortGetFreeHeapSize();
+            NRF_LOG_INFO("Free heap after deallocating line clusters: %d", freeHeap);
+
           }
 
-
-
-          deallocate_cluster_buffer(line_clusters); // Free heap memory
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after deallocating line clusters: %d", freeHeap);
-          vPortFree(cluster_means.buffer);
-          cluster_means.len = 0;
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after deallocating cluster_means: %d", freeHeap);
+          deallocate_cluster_buffer(clusters);
           
         }
 
 
         // Merge lines of line_buffer
-
         merge_linebuffer(&line_buffer, 45*DEG2RAD, 60);
 
         for (int i=0; i<line_buffer.len; i++) {
