@@ -111,8 +111,6 @@
     </folder>
     <folder Name="Application">
       <file file_name="../../../main.c" />
-      <file file_name="thread_mqttsn.c" />
-      <file file_name="thread_mqttsn.h" />
       <folder Name="SensorTower">
         <file file_name="SensorTowerTask.c" />
         <file file_name="SensorTowerTask.h" />
@@ -195,6 +193,10 @@
         <file file_name="MSE_line_fit.h" />
         <file file_name="line_merging.c" />
         <file file_name="line_merging.h" />
+      </folder>
+      <folder Name="mqtt-sn">
+        <file file_name="thread_mqttsn.c" />
+        <file file_name="thread_mqttsn.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

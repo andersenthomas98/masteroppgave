@@ -170,6 +170,7 @@ void vMainSensorTowerTask(void * pvParameters) {
       if (USE_MAPPING) {
         ir_measurement_t new_measurement;
         new_measurement.servo_angle = servoAngle;
+        new_measurement.servo_dir = servoDirection;
         new_measurement.x = xhat;
         new_measurement.y = yhat;
         new_measurement.theta = thetahat;
@@ -218,6 +219,7 @@ void vMainSensorTowerTask(void * pvParameters) {
             //NRF_LOG_INFO("y:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.ydelta));
             //NRF_LOG_INFO("theta:"NRF_LOG_FLOAT_MARKER, NRF_LOG_FLOAT(update_msg.thetadelta));
             //NRF_LOG_INFO("x: %d, y: %d", update_msg.ir4.x, update_msg.ir4.y)
+            //NRF_LOG_INFO("ir 1: %d", sensorDataMM[0])
             //NRF_LOG_INFO("ir 2: %d", sensorDataMM[1])
             //NRF_LOG_INFO("ir 3: %d", sensorDataMM[2])
             //NRF_LOG_INFO("ir 4: %d", sensorDataMM[3])

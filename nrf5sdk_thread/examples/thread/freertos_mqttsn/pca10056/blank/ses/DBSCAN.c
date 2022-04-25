@@ -204,6 +204,8 @@ cluster_buffer_t DBSCAN2(point_buffer_common_t* p_point_buffer, float(*dist_func
         expand_cluster2(num_clusters, &neighbor_buffer, p_point_buffer, dist_func, epsilon, min_points); 
       }
     }
+    UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
+    NRF_LOG_INFO("stack: %ld", uxHighWaterMark);
   }
   // DBSCAN finished
   if (num_clusters <= 0) {
@@ -247,6 +249,8 @@ cluster_buffer_t DBSCAN2(point_buffer_common_t* p_point_buffer, float(*dist_func
     cluster_index++;
   
   }
+  UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
+  NRF_LOG_INFO("stack: %ld", uxHighWaterMark);
 
   return clusters;
   

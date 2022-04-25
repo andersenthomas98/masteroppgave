@@ -10,6 +10,7 @@
 
 typedef struct ir_measurement {
   uint8_t servo_angle;
+  int8_t servo_dir;
   uint16_t measurements[4];
   float x;
   float y;

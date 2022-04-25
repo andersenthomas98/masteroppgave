@@ -20,6 +20,8 @@
 #include "line_merging.h"
 #include "float.h"
 
+#define UNDEFINED -1
+
 extern QueueHandle_t ir_measurement_queue;
 extern TaskHandle_t mapping_task_handle;
 
@@ -88,14 +90,12 @@ void mapping_task(void *arg) {
   point_buffer_t point_buffers[NUM_DIST_SENSORS];
   point_buffer_common_t point_buffer_common;
   point_buffer_common.len = 0;
-  cluster_buffer_t cluster_buffers[NUM_DIST_SENSORS];
 
   line_segment_buffer_t line_buffer;
   line_buffer.len = 0;
 
   for (int i=0; i<NUM_DIST_SENSORS; i++) {
     point_buffers[i].len = 0;
-    cluster_buffers[i].len = 0;
   }
 
   mqttsn_line_msg_t msg;
@@ -108,8 +108,10 @@ void mapping_task(void *arg) {
   float lastPublishedY = 0;
   float lastPublishedTheta = 0;
 
+  int servoDir = UNDEFINED;
   
   mqttsn_cluster_msg_t dbscan_msg;
+  mqttsn_cluster_msg_t iepf_msg;
 
   ir_measurement_t new_measurement;
   
@@ -156,6 +158,60 @@ void mapping_task(void *arg) {
   }*/
 
 
+  /*while(1) {
+    point_t p1 = (point_t) {.x = 200, .y = 200, .label = 1};
+    point_t p2 = (point_t) {.x = 210, .y = 0, .label = 1};
+    point_t p3 = (point_t) {.x = 220, .y = -10, .label = 1};
+    point_t p4 =(point_t) {.x = 240, .y = -200, .label = 1};
+
+    line_buffer.len = 2;
+
+    line_buffer.buffer[0].start = p1;
+    line_buffer.buffer[0].end = p2;
+    line_buffer.buffer[0].points.len = 2;
+    line_buffer.buffer[0].points.buffer = pvPortMalloc(sizeof(point_t)*2);
+    line_buffer.buffer[0].points.buffer[0] = p1;
+    line_buffer.buffer[0].points.buffer[1] = p2;
+
+
+    line_buffer.buffer[1].start = p3;
+    line_buffer.buffer[1].end = p4;
+    line_buffer.buffer[1].points.len = 2;
+    line_buffer.buffer[1].points.buffer = pvPortMalloc(sizeof(point_t)*2);
+    line_buffer.buffer[1].points.buffer[0] = p3;
+    line_buffer.buffer[1].points.buffer[1] = p4;
+    
+    merge_linebuffer(&line_buffer, 45*DEG2RAD, 60);
+
+  }*/
+  
+  while(1) {
+
+    point_t p1 = (point_t) {.x = 200, .y = 200, .label = 1};
+    point_t p2 = (point_t) {.x = 210, .y = 0, .label = 1};
+    point_t p3 = (point_t) {.x = 220, .y = -10, .label = 1};
+    point_t p4 =(point_t) {.x = 240, .y = -200, .label = 1};
+    line_segment_t l1;
+    l1.points.len = 0;
+    l1.points.buffer = NULL;
+    
+    line_segment_t l2;
+    l2.points.len = 2;
+    l2.points.buffer = pvPortMalloc(sizeof(point_t)*l2.points.len);
+    l2.start = p1;
+    l2.end = p2;
+
+    line_segment_t l3;
+    l3.points.len = 2;
+    l3.points.buffer = pvPortMalloc(sizeof(point_t)*l3.points.len);
+    l3.start = p3;
+    l3.end = p4;
+
+    join_line_segments(&l1, &l2, &l3);
+  
+  
+  }
+
 
   // Block until sensor tower task has initialized ir measurement queue
   ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -175,7 +231,6 @@ void mapping_task(void *arg) {
       /* Receive ir sensor measurement + robot pose from sensor tower task */
       if (xQueueReceive(ir_measurement_queue, &(new_measurement), (TickType_t) 10) == pdPASS) {
           update_point_buffers(&point_buffers, new_measurement);
-          
           update_msg.xdelta = new_measurement.x;
           update_msg.ydelta = new_measurement.y;
           update_msg.thetadelta = new_measurement.theta;
@@ -209,7 +264,8 @@ void mapping_task(void *arg) {
         int freeHeap = xPortGetFreeHeapSize();
         NRF_LOG_INFO("Free heap before line extraction: %d", freeHeap);
 
-
+        int dbscan_msg_cluster_id = 0;
+        int iepf_msg_cluster_id = 0;
         for (int i=0; i<NUM_DIST_SENSORS; i++) {
           //NRF_LOG_INFO("DBSCAN #%d", i);
           
@@ -217,12 +273,13 @@ void mapping_task(void *arg) {
           cluster_buffer_t clusters = DBSCAN(&point_buffers[i], euclidean_distance, 20, 5); // Allocates memory on heap
           for (int j = 0; j < clusters.len; j++) {
             for (int k=0; k < clusters.buffer[j].len; k++) {
-              dbscan_msg.cluster_id = j;
+              dbscan_msg.cluster_id = dbscan_msg_cluster_id;
               dbscan_msg.point = (coordinate_t) {.x = clusters.buffer[j].buffer[k].x, .y = clusters.buffer[j].buffer[k].y};
-              publish_cluster_point("v2/robot/NRF_5/cluster", dbscan_msg, sizeof(dbscan_msg), 0, 0);
+              publish_cluster_point("v2/robot/NRF_5/DBSCAN", dbscan_msg, sizeof(dbscan_msg), 0, 0);
               TickType_t lastWakeTime = xTaskGetTickCount();
               vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
             }
+            dbscan_msg_cluster_id++;
           
           }
           freeHeap = xPortGetFreeHeapSize();
@@ -245,6 +302,19 @@ void mapping_task(void *arg) {
           
             // No need for cluster means, use the DBSCAN clusters directly
             IEPF(clusters.buffer[j], &line_clusters, 10); // Allocates memory on heap
+
+            for (int k=0; k<line_clusters.len; k++) {
+              for (int l=0; l<line_clusters.buffer[k].len; l++) {
+                // Publish IEPF-based clustered points
+                iepf_msg.cluster_id = iepf_msg_cluster_id;
+                iepf_msg.point = (coordinate_t) {.x = line_clusters.buffer[k].buffer[l].x, .y = line_clusters.buffer[k].buffer[l].y};
+                publish_cluster_point("v2/robot/NRF_5/IEPF", iepf_msg, sizeof(iepf_msg), 0, 0);
+                TickType_t lastWakeTime = xTaskGetTickCount();
+                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+              }
+              iepf_msg_cluster_id++;
+            
+            }
             
             // Third filtering - Least-square line fitting using line clusters found in previous step
             for (int k=0; k<line_clusters.len; k++) {
@@ -253,6 +323,16 @@ void mapping_task(void *arg) {
                 copy_points_to_line_segment(&fitted_line, line_clusters.buffer[k]);
                 line_buffer.buffer[line_buffer.len] = fitted_line;
                 line_buffer.len++;
+
+                msg.startPoint = (coordinate_t) {.x = fitted_line.start.x, .y = fitted_line.start.y};
+                msg.endPoint = (coordinate_t) {.x = fitted_line.end.x, .y = fitted_line.end.y};
+                msg.sigma_r2 = 0;
+                msg.sigma_theta2 = 0;
+                msg.sigma_rtheta = 0;
+                publish_line("v2/robot/NRF_5/MSE", msg, sizeof(mqttsn_line_msg_t), 0, 0);
+                TickType_t lastWakeTime = xTaskGetTickCount();
+                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+
 
               }
         

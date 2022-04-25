@@ -23,10 +23,13 @@
 #define ROBOT_TOPIC_NAME              "v2/robot/NRF_5/adv"
 #define ROBOT_LINE_TOPIC_NAME         "v2/robot/NRF_5/line"
 #define ROBOT_CTRL_TOPIC_NAME         "v2/robot/NRF_5/controller"
-#define ROBOT_CLUSTER_TOPIC_NAME      "v2/robot/NRF_5/cluster"
+#define ROBOT_DBSCAN_TOPIC_NAME       "v2/robot/NRF_5/DBSCAN"
+#define ROBOT_IEPF_TOPIC_NAME         "v2/robot/NRF_5/IEPF"
+#define ROBOT_MSE_TOPIC_NAME          "v2/robot/NRF_5/MSE"
+#define ROBOT_POINT_TOPIC_NAME        "v2/robot/NRF_5/point"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
-#define NUM_TOPICS                    6
+#define NUM_TOPICS                    9
 #define NUM_SUB_TOPICS                2
 
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
@@ -68,9 +71,21 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =
     .topic_id     = NULL
   },
   {
-    .p_topic_name = ROBOT_CLUSTER_TOPIC_NAME,
+    .p_topic_name = ROBOT_DBSCAN_TOPIC_NAME,
     .topic_id     = NULL
-  }
+  },
+  {
+    .p_topic_name = ROBOT_IEPF_TOPIC_NAME,
+    .topic_id     = NULL
+  },
+  {
+    .p_topic_name = ROBOT_POINT_TOPIC_NAME,
+    .topic_id     = NULL
+  },
+  {
+    .p_topic_name = ROBOT_MSE_TOPIC_NAME,
+    .topic_id     = NULL
+  },
 };
 
 typedef struct mqttsn_subscribe_topic {
