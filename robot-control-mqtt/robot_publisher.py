@@ -3,7 +3,7 @@ import struct
 
 TARGET_IDENTIFIER = 2
 
-ip_addr = "10.53.50.158"
+ip_addr = "10.53.51.58"
 port = 1883
 keepalive = 60
 
