@@ -43,6 +43,15 @@ void deallocate_cluster_buffer(cluster_buffer_t cluster_buffer) {
 
 }
 
+void copy_points_to_line_segment(line_segment_t* line, point_buffer_dynamic_t points) {
+  line->points.buffer = pvPortMalloc(sizeof(point_t)*points.len);
+  line->points.len = points.len;
+  
+  for (int i=0; i<points.len; i++) {
+    line->points.buffer[i] = points.buffer[i];
+  }
+}
+
 float get_length(line_t line) {
   return (sqrtf((line.P.x - line.Q.x)*(line.P.x - line.Q.x) + (line.P.y - line.Q.y)*(line.P.y - line.Q.y)));
 }

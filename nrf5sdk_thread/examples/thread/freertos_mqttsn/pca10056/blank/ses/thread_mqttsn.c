@@ -26,10 +26,12 @@
 #define ROBOT_DBSCAN_TOPIC_NAME       "v2/robot/NRF_5/DBSCAN"
 #define ROBOT_IEPF_TOPIC_NAME         "v2/robot/NRF_5/IEPF"
 #define ROBOT_MSE_TOPIC_NAME          "v2/robot/NRF_5/MSE"
+#define ROBOT_MERGE_TOPIC_NAME        "v2/robot/NRF_5/merge"
+#define ROBOT_JOIN_TOPIC_NAME         "v2/robot/NRF_5/join"
 #define ROBOT_POINT_TOPIC_NAME        "v2/robot/NRF_5/point"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
-#define NUM_TOPICS                    9
+#define NUM_TOPICS                    11                                    /** Publish topics + subscribe topics need to be registered by gateway*/
 #define NUM_SUB_TOPICS                2
 
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
@@ -48,7 +50,7 @@ static mqttsn_connect_opt_t m_connect_opt;                                  /**<
 static uint16_t             m_msg_id           = 0;                         /**< Message ID thrown with MQTTSN_EVENT_TIMEOUT. */
 static char                 m_client_id[]      = ROBOT_NAME;                /**< The MQTT-SN Client's ID. */
 
-static mqttsn_topic_t topic_arr[NUM_TOPICS] = 
+static mqttsn_topic_t topic_arr[NUM_TOPICS] =                               /** Publish topics + subscribe topics need to be registered by gateway*/
 {
   {
     .p_topic_name = ROBOT_TOPIC_NAME, 
@@ -86,6 +88,14 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =
     .p_topic_name = ROBOT_MSE_TOPIC_NAME,
     .topic_id     = NULL
   },
+  {
+    .p_topic_name = ROBOT_MERGE_TOPIC_NAME,
+    .topic_id     = NULL
+  },
+  {
+    .p_topic_name = ROBOT_JOIN_TOPIC_NAME,
+    .topic_id     = NULL
+  }
 };
 
 typedef struct mqttsn_subscribe_topic {
@@ -832,7 +842,9 @@ void mqttsn_task(void *arg) {
     
     //lastWakeTime = xTaskGetTickCount();
     //vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*1);
-    taskYIELD();
+    //taskYIELD();
+    TickType_t lastWakeTime = xTaskGetTickCount();
+    vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
   
   }
 

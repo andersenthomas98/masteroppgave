@@ -35,15 +35,6 @@ int sgn(float val) {
   return 0;
 }
 
-void copy_points_to_line_segment(line_segment_t* line, point_buffer_dynamic_t points) {
-  line->points.buffer = pvPortMalloc(sizeof(point_t)*points.len);
-  line->points.len = points.len;
-  
-  for (int i=0; i<points.len; i++) {
-    line->points.buffer[i] = points.buffer[i];
-  }
-}
-
 void update_point_buffers(point_buffer_t* point_buffers, ir_measurement_t measurement) {
 
   /*Convert range-bearing measurement to obstacle position in global reference frame and update point buffers with obstacle positions */
@@ -158,11 +149,14 @@ void mapping_task(void *arg) {
   }*/
 
 
-  /*while(1) {
-    point_t p1 = (point_t) {.x = 200, .y = 200, .label = 1};
-    point_t p2 = (point_t) {.x = 210, .y = 0, .label = 1};
-    point_t p3 = (point_t) {.x = 220, .y = -10, .label = 1};
-    point_t p4 =(point_t) {.x = 240, .y = -200, .label = 1};
+ /* while(1) {
+    int freeHeap = xPortGetFreeHeapSize();
+    NRF_LOG_INFO("Free heap before line extraction: %d", freeHeap);
+
+    point_t p1 = (point_t) {.x = 100, .y = -200, .label = 1};
+    point_t p2 = (point_t) {.x = 200, .y = -200, .label = 1};
+    point_t p3 = (point_t) {.x = 200, .y = -100, .label = 1};
+    point_t p4 =(point_t) {.x = 200, .y = -200, .label = 1};
 
     line_buffer.len = 2;
 
@@ -173,7 +167,6 @@ void mapping_task(void *arg) {
     line_buffer.buffer[0].points.buffer[0] = p1;
     line_buffer.buffer[0].points.buffer[1] = p2;
 
-
     line_buffer.buffer[1].start = p3;
     line_buffer.buffer[1].end = p4;
     line_buffer.buffer[1].points.len = 2;
@@ -183,9 +176,17 @@ void mapping_task(void *arg) {
     
     merge_linebuffer(&line_buffer, 45*DEG2RAD, 60);
 
+    for (int i=0; i<line_buffer.len; i++) {
+      NRF_LOG_INFO("Free");
+      vPortFree(line_buffer.buffer[i].points.buffer);
+    }
+
+    freeHeap = xPortGetFreeHeapSize();
+    NRF_LOG_INFO("Free heap after line extraction: %d", freeHeap);
+
   }*/
   
-  while(1) {
+  /*while(1) {
 
     point_t p1 = (point_t) {.x = 200, .y = 200, .label = 1};
     point_t p2 = (point_t) {.x = 210, .y = 0, .label = 1};
@@ -198,19 +199,23 @@ void mapping_task(void *arg) {
     line_segment_t l2;
     l2.points.len = 2;
     l2.points.buffer = pvPortMalloc(sizeof(point_t)*l2.points.len);
+    l2.points.buffer[0] = p1;
+    l2.points.buffer[1] = p2;
     l2.start = p1;
     l2.end = p2;
 
     line_segment_t l3;
     l3.points.len = 2;
     l3.points.buffer = pvPortMalloc(sizeof(point_t)*l3.points.len);
+    l3.points.buffer[0] = p3;
+    l3.points.buffer[1] = p4;
     l3.start = p3;
     l3.end = p4;
 
     join_line_segments(&l1, &l2, &l3);
   
   
-  }
+  }*/
 
 
   // Block until sensor tower task has initialized ir measurement queue
@@ -320,8 +325,11 @@ void mapping_task(void *arg) {
             for (int k=0; k<line_clusters.len; k++) {
               if (line_clusters.buffer[k].len >= 2 && line_buffer.len < LB_MAX_SIZE) {
                 line_segment_t fitted_line = MSE_line_fit(line_clusters.buffer[k]);
-                copy_points_to_line_segment(&fitted_line, line_clusters.buffer[k]);
-                line_buffer.buffer[line_buffer.len] = fitted_line;
+                copy_points_to_line_segment(&(line_buffer.buffer[line_buffer.len]), line_clusters.buffer[k]);
+                line_buffer.buffer[line_buffer.len].start = fitted_line.start;
+                line_buffer.buffer[line_buffer.len].end = fitted_line.end;
+                line_buffer.buffer[line_buffer.len].r = fitted_line.r;
+                line_buffer.buffer[line_buffer.len].theta = fitted_line.theta;
                 line_buffer.len++;
 
                 msg.startPoint = (coordinate_t) {.x = fitted_line.start.x, .y = fitted_line.start.y};

@@ -10,6 +10,8 @@ float euclidean_distance(point_t P, point_t Q);
 
 void deallocate_cluster_buffer(cluster_buffer_t cluster_buffer);
 
+void copy_points_to_line_segment(line_segment_t* line, point_buffer_dynamic_t points);
+
 float get_length(line_t line);
 
 float dot_product(point_t v1, point_t v2);
