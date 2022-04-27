@@ -155,24 +155,57 @@ void mapping_task(void *arg) {
 
     point_t p1 = (point_t) {.x = 100, .y = -200, .label = 1};
     point_t p2 = (point_t) {.x = 200, .y = -200, .label = 1};
-    point_t p3 = (point_t) {.x = 200, .y = -100, .label = 1};
-    point_t p4 =(point_t) {.x = 200, .y = -200, .label = 1};
+    point_t p3 = (point_t) {.x = 300, .y = -200, .label = 1};
+    point_t p4 = (point_t) {.x = 200, .y = -200, .label = 1};
+    point_t p5 = (point_t) {.x = 350, .y = -200, .label = 1};
+    point_t p6 = (point_t) {.x = 450, .y = -200, .label = 1};
 
-    line_buffer.len = 2;
+    point_buffer_dynamic_t pb1;
+    pb1.len = 2;
+    pb1.buffer = pvPortMalloc(sizeof(point_t)*pb1.len);
+    pb1.buffer[0] = p1;
+    pb1.buffer[1] = p2;
+    line_segment_t l1 = MSE_line_fit(pb1);
 
-    line_buffer.buffer[0].start = p1;
-    line_buffer.buffer[0].end = p2;
+    point_buffer_dynamic_t pb2;
+    pb2.len = 2;
+    pb2.buffer = pvPortMalloc(sizeof(point_t)*pb2.len);
+    pb2.buffer[0] = p3;
+    pb2.buffer[1] = p4;
+    line_segment_t l2 = MSE_line_fit(pb2);
+
+    point_buffer_dynamic_t pb3;
+    pb3.len = 2;
+    pb3.buffer = pvPortMalloc(sizeof(point_t)*pb3.len);
+    pb3.buffer[0] = p5;
+    pb3.buffer[1] = p6;
+    line_segment_t l3 = MSE_line_fit(pb3);
+
+    line_buffer.len = 3;
+
+    line_buffer.buffer[0] = l1;
     line_buffer.buffer[0].points.len = 2;
     line_buffer.buffer[0].points.buffer = pvPortMalloc(sizeof(point_t)*2);
     line_buffer.buffer[0].points.buffer[0] = p1;
     line_buffer.buffer[0].points.buffer[1] = p2;
 
-    line_buffer.buffer[1].start = p3;
-    line_buffer.buffer[1].end = p4;
+    vPortFree(pb1.buffer);
+
+    line_buffer.buffer[1] = l2;
     line_buffer.buffer[1].points.len = 2;
     line_buffer.buffer[1].points.buffer = pvPortMalloc(sizeof(point_t)*2);
     line_buffer.buffer[1].points.buffer[0] = p3;
     line_buffer.buffer[1].points.buffer[1] = p4;
+
+    vPortFree(pb2.buffer);
+
+    line_buffer.buffer[2] = l3;
+    line_buffer.buffer[2].points.len = 2;
+    line_buffer.buffer[2].points.buffer = pvPortMalloc(sizeof(point_t)*2);
+    line_buffer.buffer[2].points.buffer[0] = p5;
+    line_buffer.buffer[2].points.buffer[1] = p6;
+
+    vPortFree(pb3.buffer);
     
     merge_linebuffer(&line_buffer, 45*DEG2RAD, 60);
 
@@ -356,11 +389,13 @@ void mapping_task(void *arg) {
           }
 
           deallocate_cluster_buffer(clusters);
+          freeHeap = xPortGetFreeHeapSize();
+          NRF_LOG_INFO("Free heap after deallocating DBSCAN clusters: %d", freeHeap);
           
         }
 
 
-        // Merge lines of line_buffer
+        // Recursively merge lines of line_buffer
         merge_linebuffer(&line_buffer, 45*DEG2RAD, 60);
 
         for (int i=0; i<line_buffer.len; i++) {

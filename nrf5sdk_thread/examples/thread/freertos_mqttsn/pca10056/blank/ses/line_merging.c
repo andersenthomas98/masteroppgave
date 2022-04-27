@@ -4,6 +4,7 @@
 #include "line_merging.h"
 #include "math.h"
 #include "FreeRTOS.h"
+#include "task.h"
 #include "MSE_line_fit.h"
 #include "nrf_log.h"
 #include "thread_mqttsn.h"
@@ -87,7 +88,9 @@ void join_line_segments(int8_t cluster_id, line_segment_t* output_line, line_seg
     msg.point.y = output_line->points.buffer[i].y;
     msg.cluster_id = cluster_id;
     publish_cluster_point("v2/robot/NRF_5/join", msg, sizeof(mqttsn_cluster_msg_t), 0, 0);
-  
+    TickType_t lastWakeTime = xTaskGetTickCount();
+    vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+   
   }
 
   vPortFree(line1->points.buffer);
@@ -144,6 +147,7 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 joint_line_segment.points.len = 0;
                                 join_line_segments(msg_identifier, &joint_line_segment, line, nextLine);
                                 
+                                
                                 mqttsn_line_msg_t msg_line;
                                 msg_line.identifier = msg_identifier;
                                 msg_line.startPoint = (coordinate_t){.x = line->start.x, .y = line->start.y};
@@ -152,6 +156,8 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 msg_line.sigma_rtheta = 0;
                                 msg_line.sigma_theta2 = 0;
                                 publish_line("v2/robot/NRF_5/merge", msg_line, sizeof(mqttsn_line_msg_t), 0, 0);
+                                TickType_t lastWakeTime = xTaskGetTickCount();
+                                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
 
                                 mqttsn_line_msg_t msg_nextLine;
                                 msg_nextLine.identifier = msg_identifier;
@@ -161,6 +167,8 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 msg_nextLine.sigma_rtheta = 0;
                                 msg_nextLine.sigma_theta2 = 0;
                                 publish_line("v2/robot/NRF_5/merge", msg_nextLine, sizeof(mqttsn_line_msg_t), 0, 0);
+                                lastWakeTime = xTaskGetTickCount();
+                                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
 
                                 mqttsn_line_msg_t msg_joint;
                                 msg_joint.identifier = msg_identifier;
@@ -170,11 +178,14 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 msg_joint.sigma_rtheta = 1;
                                 msg_joint.sigma_theta2 = 1;
                                 publish_line("v2/robot/NRF_5/merge", msg_joint, sizeof(mqttsn_line_msg_t), 0, 0);
+                                lastWakeTime = xTaskGetTickCount();
+                                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
 
                                 msg_identifier++;
 
-				lb->buffer[i].start = joint_line_segment.start;
-                                lb->buffer[i].end = joint_line_segment.end;
+
+				lb->buffer[i].start = (point_t){.x = joint_line_segment.start.x, .y = joint_line_segment.start.y, .label = 1};
+                                lb->buffer[i].end = (point_t){.x = joint_line_segment.end.x, .y = joint_line_segment.end.y, .label = 1};
                                 lb->buffer[i].r = joint_line_segment.r;
                                 lb->buffer[i].theta = joint_line_segment.theta;
                                 vPortFree(lb->buffer[i].points.buffer);
@@ -182,20 +193,79 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 vPortFree(joint_line_segment.points.buffer);
 				// Copy next element value to current element to write over element i+1
 				for (int j=i+1; j<lb->len-1; j++) {
-					lb->buffer[j].start = lb->buffer[j+1].start;
-                                        lb->buffer[j].end = lb->buffer[j+1].end;
+					lb->buffer[j].start = (point_t){.x = lb->buffer[j+1].start.x, .y = lb->buffer[j+1].start.y, .label = 1 };
+                                        lb->buffer[j].end = (point_t){.x = lb->buffer[j+1].end.x, .y = lb->buffer[j+1].end.y, .label = 1 };
                                         lb->buffer[j].r = lb->buffer[j+1].r;
                                         lb->buffer[j].theta = lb->buffer[j+1].theta;
                                         vPortFree(lb->buffer[j].points.buffer);
                                         copy_points_to_line_segment(&(lb->buffer[j]), lb->buffer[j+1].points);
-
 				}
+                                vPortFree(lb->buffer[lb->len-1].points.buffer);
 				lb->len -= 1;
 				i = 0;
 				break;
 			}
 		}
 		if (i == lb->len-1) {
+                        // Check if first and last point of line buffer are mergeable
+                        line_segment_t* line = &(lb->buffer[0]);
+			line_segment_t* nextLine = &(lb->buffer[lb->len-1]);
+
+                        if (is_mergeable(*line, *nextLine, angle_threshold, distance_threshold)) {
+                                NRF_LOG_INFO("Mergeable!");
+				line_segment_t joint_line_segment;
+                                joint_line_segment.points.buffer = NULL;
+                                joint_line_segment.points.len = 0;
+                                join_line_segments(msg_identifier, &joint_line_segment, line, nextLine);
+                                
+                                
+                                mqttsn_line_msg_t msg_line;
+                                msg_line.identifier = msg_identifier;
+                                msg_line.startPoint = (coordinate_t){.x = line->start.x, .y = line->start.y};
+                                msg_line.endPoint = (coordinate_t) {.x = line->end.x, .y = line->end.y};
+                                msg_line.sigma_r2 = 0;
+                                msg_line.sigma_rtheta = 0;
+                                msg_line.sigma_theta2 = 0;
+                                publish_line("v2/robot/NRF_5/merge", msg_line, sizeof(mqttsn_line_msg_t), 0, 0);
+                                TickType_t lastWakeTime = xTaskGetTickCount();
+                                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+
+                                mqttsn_line_msg_t msg_nextLine;
+                                msg_nextLine.identifier = msg_identifier;
+                                msg_nextLine.startPoint = (coordinate_t){.x = nextLine->start.x, .y = nextLine->start.y};
+                                msg_nextLine.endPoint = (coordinate_t) {.x = nextLine->end.x, .y = nextLine->end.y};
+                                msg_nextLine.sigma_r2 = 0;
+                                msg_nextLine.sigma_rtheta = 0;
+                                msg_nextLine.sigma_theta2 = 0;
+                                publish_line("v2/robot/NRF_5/merge", msg_nextLine, sizeof(mqttsn_line_msg_t), 0, 0);
+                                lastWakeTime = xTaskGetTickCount();
+                                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+
+                                mqttsn_line_msg_t msg_joint;
+                                msg_joint.identifier = msg_identifier;
+                                msg_joint.startPoint = (coordinate_t){.x = joint_line_segment.start.x, .y = joint_line_segment.start.y};
+                                msg_joint.endPoint = (coordinate_t) {.x = joint_line_segment.end.x, .y = joint_line_segment.end.y};
+                                msg_joint.sigma_r2 = 1;
+                                msg_joint.sigma_rtheta = 1;
+                                msg_joint.sigma_theta2 = 1;
+                                publish_line("v2/robot/NRF_5/merge", msg_joint, sizeof(mqttsn_line_msg_t), 0, 0);
+                                lastWakeTime = xTaskGetTickCount();
+                                vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
+
+                                msg_identifier++;
+
+
+				lb->buffer[0].start = (point_t){.x = joint_line_segment.start.x, .y = joint_line_segment.start.y, .label = 1};
+                                lb->buffer[0].end = (point_t){.x = joint_line_segment.end.x, .y = joint_line_segment.end.y, .label = 1};
+                                lb->buffer[0].r = joint_line_segment.r;
+                                lb->buffer[0].theta = joint_line_segment.theta;
+                                vPortFree(lb->buffer[0].points.buffer);
+                                copy_points_to_line_segment(&(lb->buffer[0]), joint_line_segment.points);
+                                vPortFree(joint_line_segment.points.buffer);
+                                vPortFree(lb->buffer[lb->len-1].points.buffer);
+				lb->len -= 1;
+                        }
+
 			converged = 1;
 		}
 	}

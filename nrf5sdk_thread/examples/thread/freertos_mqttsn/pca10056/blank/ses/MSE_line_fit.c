@@ -56,9 +56,25 @@ line_segment_t MSE_line_fit(point_buffer_dynamic_t point_buffer) {
   }
 
   // Find endpoints of line r = x*cos(theta) + y*sin(theta)
-  point_t proj_point_start = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[0]);
-  point_t proj_point_end = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[point_buffer.len-1]);
+  int start_index = 0;
+  int end_index = 0;
+  float max_dist = 0;
+  for (int i=0; i<point_buffer.len; i++) {
+    for (int j=0; j<point_buffer.len; j++) {
+      float dist = get_length((line_t){.P = (point_t){.x = point_buffer.buffer[i].x, .y = point_buffer.buffer[i].y}, 
+                                        .Q = (point_t){.x = point_buffer.buffer[j].x, .y = point_buffer.buffer[j].y}});
+      if (dist > max_dist) {
+         max_dist = dist;
+         start_index = i;
+         end_index = j;
+      }
+    }
+  
+  }
+  point_t proj_point_start = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[start_index]);
+  point_t proj_point_end = get_projected_point_on_line_hesse(r_hat, theta_hat, point_buffer.buffer[end_index]);
   line_segment_t line_segment = {.r = r_hat, .theta = theta_hat, .start = proj_point_start, .end = proj_point_end};
+
   
   return line_segment;
 
