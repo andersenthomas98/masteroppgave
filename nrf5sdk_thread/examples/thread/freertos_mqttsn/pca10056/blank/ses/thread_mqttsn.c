@@ -30,9 +30,10 @@
 #define ROBOT_MERGE_TOPIC_NAME        "v2/robot/NRF_5/merge"
 #define ROBOT_JOIN_TOPIC_NAME         "v2/robot/NRF_5/join"
 #define ROBOT_POINT_TOPIC_NAME        "v2/robot/NRF_5/point"
+#define ROBOT_DEBUG_TOPIC_NAME        "v2/robot/NRF_5/debug"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
-#define NUM_TOPICS                    12                                    /** Publish topics + subscribe topics need to be registered by gateway*/
+#define NUM_TOPICS                    13                                    /** Publish topics + subscribe topics need to be registered by gateway*/
 #define NUM_SUB_TOPICS                2
 
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
@@ -99,6 +100,10 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =                               /** 
   },
   {
     .p_topic_name = ROBOT_JOIN_TOPIC_NAME,
+    .topic_id     = NULL
+  },
+  {
+    .p_topic_name = ROBOT_DEBUG_TOPIC_NAME,
     .topic_id     = NULL
   }
 };

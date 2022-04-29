@@ -213,20 +213,21 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                         lb->buffer[j].end = (point_t){.x = lb->buffer[j+1].end.x, .y = lb->buffer[j+1].end.y, .label = 1 };
                                         lb->buffer[j].r = lb->buffer[j+1].r;
                                         lb->buffer[j].theta = lb->buffer[j+1].theta;
-                                        vPortFree(lb->buffer[j].points.buffer);
-                                        lb->buffer[j].points.buffer = pvPortMalloc(sizeof(point_t)*lb->buffer[j+1].points.len);
-                                        if (lb->buffer[j].points.buffer == NULL) {
-                                          NRF_LOG_ERROR("Could not allocate heap");
-                                        }
-                                        lb->buffer[j].points.len = lb->buffer[j+1].points.len;
-                                        for (int k=0; k<lb->buffer[j+1].points.len; k++) {
-                                          point_t point = (point_t) lb->buffer[j+1].points.buffer[k];
-                                          lb->buffer[j].points.buffer[k] = point;
-                                        }
-                                        //copy_points_to_line_segment(&(lb->buffer[j]), lb->buffer[j+1].points);
+                                        //vPortFree(lb->buffer[j].points.buffer);
+                                        //lb->buffer[j].points.buffer = pvPortMalloc(sizeof(point_t)*lb->buffer[j+1].points.len);
+                                        //if (lb->buffer[j].points.buffer == NULL) {
+                                        //  NRF_LOG_ERROR("Could not allocate heap");
+                                        //}
+                                        //lb->buffer[j].points.len = lb->buffer[j+1].points.len;
+                                        //for (int k=0; k<lb->buffer[j+1].points.len; k++) {
+                                        //  point_t point = (point_t) lb->buffer[j+1].points.buffer[k];
+                                        //  lb->buffer[j].points.buffer[k] = point;
+                                        //}
+                                        ////copy_points_to_line_segment(&(lb->buffer[j]), lb->buffer[j+1].points);
+                                        lb->buffer[j].points = lb->buffer[j+1].points;
 
 				}
-                                vPortFree(lb->buffer[lb->len-1].points.buffer);
+                                //vPortFree(lb->buffer[lb->len-1].points.buffer);
 				lb->len -= 1;
 				i = 0;
 				break;
