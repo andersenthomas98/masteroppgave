@@ -29,6 +29,10 @@ float euclidean_distance(point_t P, point_t Q) {
   return sqrtf((P.x - Q.x)*(P.x - Q.x) + (P.y - Q.y)*(P.y - Q.y));
 }
 
+float smallest_signed_angle(float rad) {
+  return rad - floorf((rad + M_PI) / (2*M_PI))*(2*M_PI);
+}
+
 void deallocate_cluster_buffer(cluster_buffer_t cluster_buffer) {
   for (int i=0; i<cluster_buffer.len; i++) {
     // Free each cluster
@@ -48,7 +52,7 @@ void copy_points_to_line_segment(line_segment_t* line, point_buffer_dynamic_t po
   line->points.len = points.len;
   
   for (int i=0; i<points.len; i++) {
-    line->points.buffer[i] = points.buffer[i];
+    line->points.buffer[i] = (point_t) {.x = points.buffer[i].x, .y = points.buffer[i].y, .label = points.buffer[i].label};
   }
 }
 

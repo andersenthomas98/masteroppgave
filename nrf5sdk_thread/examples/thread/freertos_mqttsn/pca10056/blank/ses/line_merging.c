@@ -69,23 +69,33 @@ line_segment_t merge_segments(line_segment_t Line1, line_segment_t Line2) {
 }
 
 
-void join_line_segments(int8_t cluster_id, line_segment_t* output_line, line_segment_t* line1, line_segment_t* line2) {
-  output_line->points.len = line1->points.len + line2->points.len;
+void join_line_segments(int8_t cluster_id, line_segment_t* output_line, line_segment_t line1, line_segment_t line2) {
+
+  output_line->points.len = line1.points.len + line2.points.len;
   output_line->points.buffer = pvPortMalloc(sizeof(point_t)*output_line->points.len);
   if (output_line->points.buffer == NULL) {
     NRF_LOG_INFO("Failed to allocate point buffer");
   }
-  for (int i=0; i<line1->points.len; i++) {
-    output_line->points.buffer[i] = (point_t) {.x = line1->points.buffer[i].x, .y = line1->points.buffer[i].y, .label = 1};
+  for (int i=0; i<line1.points.len; i++) {
+    output_line->points.buffer[i].x = line1.points.buffer[i].x;
+    output_line->points.buffer[i].y = line1.points.buffer[i].y;
+    output_line->points.buffer[i].label = 1;
   }
-  for (int i=0; i<line2->points.len; i++) {
-    output_line->points.buffer[i+(line1->points.len)] = (point_t) {.x = line2->points.buffer[i].x, .y = line2->points.buffer[i].y, .label = 1};
+
+
+  for (int i=0; i<line2.points.len; i++) {
+    output_line->points.buffer[i+(line1.points.len)].x = line2.points.buffer[i].x;
+    output_line->points.buffer[i+(line1.points.len)].y = line2.points.buffer[i].y;
+    output_line->points.buffer[i+(line1.points.len)].label = 1;
+  
   }
 
   for (int i=0; i<output_line->points.len; i++) {
     mqttsn_cluster_msg_t msg;
     msg.point.x = output_line->points.buffer[i].x;
     msg.point.y = output_line->points.buffer[i].y;
+    NRF_LOG_INFO("join %d", cluster_id);
+    NRF_LOG_INFO("("NRF_LOG_FLOAT_MARKER"," NRF_LOG_FLOAT_MARKER")", NRF_LOG_FLOAT(output_line->points.buffer[i].x), NRF_LOG_FLOAT(output_line->points.buffer[i].y));
     msg.cluster_id = cluster_id;
     publish_cluster_point("v2/robot/NRF_5/join", msg, sizeof(mqttsn_cluster_msg_t), 0, 0);
     TickType_t lastWakeTime = xTaskGetTickCount();
@@ -93,10 +103,10 @@ void join_line_segments(int8_t cluster_id, line_segment_t* output_line, line_seg
    
   }
 
-  vPortFree(line1->points.buffer);
-  line1->points.len = 0;
-  vPortFree(line2->points.buffer);
-  line2->points.len = 0;
+  //vPortFree(line1->points.buffer);
+  //line1->points.len = 0;
+  //vPortFree(line2->points.buffer);
+  //line2->points.len = 0;
 
   line_segment_t joint_line_segment = MSE_line_fit(output_line->points);
 
@@ -109,7 +119,11 @@ void join_line_segments(int8_t cluster_id, line_segment_t* output_line, line_seg
 
 uint8_t is_mergeable(line_segment_t line1, line_segment_t line2, float angle_threshold, float distance_threshold) {
   // Test angle between line segments
-  if (fabs(line1.theta - line2.theta) > angle_threshold) {
+  float angle1 = line1.theta;
+  float angle2 = line2.theta;
+  float angleDiff = atanf((tanf(angle2)-tanf(angle1)) / (1 + tanf(angle1)*tanf(angle2)));
+
+  if (fabs(angleDiff) > angle_threshold) {
     return 0;
   }
 
@@ -138,31 +152,33 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
 			return;
 		}
 		for (i=0; i<lb->len-1; i++) {
-			line_segment_t* line = &(lb->buffer[i]);
-			line_segment_t* nextLine = &(lb->buffer[i+1]);
-			if (is_mergeable(*line, *nextLine, angle_threshold, distance_threshold)) {
+			line_segment_t line = lb->buffer[i];
+			line_segment_t nextLine = lb->buffer[i+1];
+			if (is_mergeable(line, nextLine, angle_threshold, distance_threshold)) {
                                 NRF_LOG_INFO("Mergeable!");
 				line_segment_t joint_line_segment;
                                 joint_line_segment.points.buffer = NULL;
                                 joint_line_segment.points.len = 0;
                                 join_line_segments(msg_identifier, &joint_line_segment, line, nextLine);
+                                vPortFree(line.points.buffer);
+                                vPortFree(nextLine.points.buffer);
                                 
                                 
                                 mqttsn_line_msg_t msg_line;
                                 msg_line.identifier = msg_identifier;
-                                msg_line.startPoint = (coordinate_t){.x = line->start.x, .y = line->start.y};
-                                msg_line.endPoint = (coordinate_t) {.x = line->end.x, .y = line->end.y};
+                                msg_line.startPoint = (coordinate_t){.x = line.start.x, .y = line.start.y};
+                                msg_line.endPoint = (coordinate_t) {.x = line.end.x, .y = line.end.y};
                                 msg_line.sigma_r2 = 0;
                                 msg_line.sigma_rtheta = 0;
                                 msg_line.sigma_theta2 = 0;
                                 publish_line("v2/robot/NRF_5/merge", msg_line, sizeof(mqttsn_line_msg_t), 0, 0);
                                 TickType_t lastWakeTime = xTaskGetTickCount();
                                 vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
-
+                      
                                 mqttsn_line_msg_t msg_nextLine;
                                 msg_nextLine.identifier = msg_identifier;
-                                msg_nextLine.startPoint = (coordinate_t){.x = nextLine->start.x, .y = nextLine->start.y};
-                                msg_nextLine.endPoint = (coordinate_t) {.x = nextLine->end.x, .y = nextLine->end.y};
+                                msg_nextLine.startPoint = (coordinate_t){.x = nextLine.start.x, .y = nextLine.start.y};
+                                msg_nextLine.endPoint = (coordinate_t) {.x = nextLine.end.x, .y = nextLine.end.y};
                                 msg_nextLine.sigma_r2 = 0;
                                 msg_nextLine.sigma_rtheta = 0;
                                 msg_nextLine.sigma_theta2 = 0;
@@ -198,7 +214,17 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                         lb->buffer[j].r = lb->buffer[j+1].r;
                                         lb->buffer[j].theta = lb->buffer[j+1].theta;
                                         vPortFree(lb->buffer[j].points.buffer);
-                                        copy_points_to_line_segment(&(lb->buffer[j]), lb->buffer[j+1].points);
+                                        lb->buffer[j].points.buffer = pvPortMalloc(sizeof(point_t)*lb->buffer[j+1].points.len);
+                                        if (lb->buffer[j].points.buffer == NULL) {
+                                          NRF_LOG_ERROR("Could not allocate heap");
+                                        }
+                                        lb->buffer[j].points.len = lb->buffer[j+1].points.len;
+                                        for (int k=0; k<lb->buffer[j+1].points.len; k++) {
+                                          point_t point = (point_t) lb->buffer[j+1].points.buffer[k];
+                                          lb->buffer[j].points.buffer[k] = point;
+                                        }
+                                        //copy_points_to_line_segment(&(lb->buffer[j]), lb->buffer[j+1].points);
+
 				}
                                 vPortFree(lb->buffer[lb->len-1].points.buffer);
 				lb->len -= 1;
@@ -206,12 +232,12 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
 				break;
 			}
 		}
-		if (i == lb->len-1) {
+		if (i == lb->len-1 && lb->len > 1) {
                         // Check if first and last point of line buffer are mergeable
-                        line_segment_t* line = &(lb->buffer[0]);
-			line_segment_t* nextLine = &(lb->buffer[lb->len-1]);
+                        line_segment_t line = (lb->buffer[0]);
+			line_segment_t nextLine = (lb->buffer[lb->len-1]);
 
-                        if (is_mergeable(*line, *nextLine, angle_threshold, distance_threshold)) {
+                        if (is_mergeable(line, nextLine, angle_threshold, distance_threshold)) {
                                 NRF_LOG_INFO("Mergeable!");
 				line_segment_t joint_line_segment;
                                 joint_line_segment.points.buffer = NULL;
@@ -221,8 +247,8 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 
                                 mqttsn_line_msg_t msg_line;
                                 msg_line.identifier = msg_identifier;
-                                msg_line.startPoint = (coordinate_t){.x = line->start.x, .y = line->start.y};
-                                msg_line.endPoint = (coordinate_t) {.x = line->end.x, .y = line->end.y};
+                                msg_line.startPoint = (coordinate_t){.x = line.start.x, .y = line.start.y};
+                                msg_line.endPoint = (coordinate_t) {.x = line.end.x, .y = line.end.y};
                                 msg_line.sigma_r2 = 0;
                                 msg_line.sigma_rtheta = 0;
                                 msg_line.sigma_theta2 = 0;
@@ -232,8 +258,8 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
 
                                 mqttsn_line_msg_t msg_nextLine;
                                 msg_nextLine.identifier = msg_identifier;
-                                msg_nextLine.startPoint = (coordinate_t){.x = nextLine->start.x, .y = nextLine->start.y};
-                                msg_nextLine.endPoint = (coordinate_t) {.x = nextLine->end.x, .y = nextLine->end.y};
+                                msg_nextLine.startPoint = (coordinate_t){.x = nextLine.start.x, .y = nextLine.start.y};
+                                msg_nextLine.endPoint = (coordinate_t) {.x = nextLine.end.x, .y = nextLine.end.y};
                                 msg_nextLine.sigma_r2 = 0;
                                 msg_nextLine.sigma_rtheta = 0;
                                 msg_nextLine.sigma_theta2 = 0;

@@ -55,7 +55,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
         }
 
         for (int j=0; j<points.len; j++) {
-          point_t point = p_output_buffer->buffer[i].buffer[j];
+          point_t point = (point_t) {.x = p_output_buffer->buffer[i].buffer[j].x, .y = p_output_buffer->buffer[i].buffer[j].y, .label = p_output_buffer->buffer[i].buffer[j].label};
           points.buffer[j] = point;
         }
         reallocated_clusters.buffer[i] = points;
@@ -75,15 +75,14 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
   } else {
     // Left side of split
     point_buffer_dynamic_t left_points;
-    left_points.len = (int)(input_buffer.len / 2 + 1);
-    //NRF_LOG_INFO("Allocating (bytes %d*%d)", sizeof(point_t), left_points.len);
+    left_points.len = (int)(input_buffer.len / 2);
     left_points.buffer = pvPortMalloc(sizeof(point_t)*left_points.len);
     if (left_points.buffer == NULL) {
       NRF_LOG_ERROR("Failed to allocate left points buffer");
       return;
     }
     for (int i=0; i<left_points.len; i++) {
-      left_points.buffer[i] = input_buffer.buffer[i];
+      left_points.buffer[i] = (point_t) {.x = input_buffer.buffer[i].x, .y = input_buffer.buffer[i].y, .label = input_buffer.buffer[i].label};
     }
     IEPF(left_points, p_output_buffer, T);
 
@@ -97,7 +96,7 @@ void IEPF(point_buffer_dynamic_t input_buffer, cluster_buffer_t* p_output_buffer
       return;
     }
     for (int i=(int)(input_buffer.len / 2); i < input_buffer.len; i++) {
-      right_points.buffer[i-(int)(input_buffer.len / 2)] = input_buffer.buffer[i];
+      right_points.buffer[i-(int)(input_buffer.len / 2)] = (point_t) {.x = input_buffer.buffer[i].x, .y = input_buffer.buffer[i].y, .label = input_buffer.buffer[i].label};
     }
     IEPF(right_points, p_output_buffer, T);
     

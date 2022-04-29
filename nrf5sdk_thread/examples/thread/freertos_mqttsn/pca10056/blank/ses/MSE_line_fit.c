@@ -38,7 +38,7 @@ line_segment_t MSE_line_fit(point_buffer_dynamic_t point_buffer) {
   }
 
   for (int i=0; i<point_buffer.len; i++) {
-    float weight = weights[i];
+    float weight = 1;//weights[i];
     sigma_xx += weight*(point_buffer.buffer[i].x - mean_x)*(point_buffer.buffer[i].x - mean_x) / (float) point_buffer.len;
     sigma_yy += weight*(point_buffer.buffer[i].y - mean_y)*(point_buffer.buffer[i].y - mean_y) / (float) point_buffer.len;
     sigma_xy += weight*(point_buffer.buffer[i].x - mean_x)*(point_buffer.buffer[i].y - mean_y) / (float) point_buffer.len;
