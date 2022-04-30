@@ -1,0 +1,10 @@
+{"start": {"x": 187, "y": 0}, "end": {"x": 165, "y": 206}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 171, "y": 219}, "end": {"x": 165, "y": 254}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 165, "y": 255}, "end": {"x": 133, "y": 241}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 133, "y": 243}, "end": {"x": 88, "y": 241}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 88, "y": 240}, "end": {"x": 3, "y": 223}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 0, "y": 217}, "end": {"x": -204, "y": 196}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": -168, "y": -262}, "end": {"x": -128, "y": -274}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": -111, "y": -256}, "end": {"x": -5, "y": -240}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 0, "y": -254}, "end": {"x": 205, "y": -232}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 245, "y": -233}, "end": {"x": 194, "y": -3}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}

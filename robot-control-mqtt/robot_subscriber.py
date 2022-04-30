@@ -6,7 +6,7 @@ import signal
 
 TARGET_IDENTIFIER = 2
 
-ip_addr = "10.53.50.100"
+ip_addr = "10.53.49.140"
 port = 1883
 keepalive = 60
 
@@ -33,6 +33,10 @@ dbscan_file = open("dbscan_log.txt", "w")
 iepf_file = open("iepf_log.txt", "w")
 common_point_file = open("common_point_log.txt", "w")
 mse_file = open("mse_log.txt", "w")
+mse_point_file = open("mse_point_log.txt", "w")
+merge_file = open("merge_log.txt", "w")
+join_file = open("join_log.txt", "w")
+debug_file = open("debug_log.txt", "w")
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code", rc)
@@ -44,6 +48,10 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("v2/robot/NRF_5/adv", qos=0)
     client.subscribe("v2/robot/NRF_5/point", qos=0)
     client.subscribe("v2/robot/NRF_5/MSE", qos=0)
+    client.subscribe("v2/robot/NRF_5/mse_point", qos=0)
+    client.subscribe("v2/robot/NRF_5/merge", qos=0)
+    client.subscribe("v2/robot/NRF_5/join", qos=0)
+    client.subscribe("v2/robot/NRF_5/debug", qos=0)
 
 
 def on_message(client, userdata, msg):
@@ -69,9 +77,9 @@ def on_message(client, userdata, msg):
     elif (msg.topic == 'v2/robot/NRF_5/point'):
         #print(struct.unpack('<BBhhh'))
         (cluster_id, x, y) = struct.unpack('<bhh', msg.payload)
-        print(" point x: {}, y: {}".format(x, y))
-        entry = json.dumps({"x": x, "y": y}) + '\n'
-        common_point_file.write(entry)
+        print("IR sensor {} point x: {}, y: {}".format(cluster_id, x, y))
+        entry = json.dumps({"id": cluster_id, "x": x, "y": y}) + '\n'
+        point_file.write(entry)
     
     elif (msg.topic == 'v2/robot/NRF_5/IEPF'):
         #print(struct.unpack('<BBhhh'))
@@ -80,21 +88,47 @@ def on_message(client, userdata, msg):
         entry = json.dumps({"id": cluster_id, "x": x, "y": y}) + '\n'
         iepf_file.write(entry)
 
+    elif (msg.topic == 'v2/robot/NRF_5/join'):
+        #print(struct.unpack('<BBhhh'))
+        (cluster_id, x, y) = struct.unpack('<bhh', msg.payload)
+        print("join cluster_id: {}, x: {}, y: {}".format(cluster_id, x, y))
+        entry = json.dumps({"id": cluster_id, "x": x, "y": y}) + '\n'
+        join_file.write(entry)
+
+    elif (msg.topic == 'v2/robot/NRF_5/debug'):
+        #print(struct.unpack('<BBhhh'))
+        (cluster_id, x, y) = struct.unpack('<bhh', msg.payload)
+        print("debug cluster_id: {}, x: {}, y: {}".format(cluster_id, x, y))
+        entry = json.dumps({"id": cluster_id, "x": x, "y": y}) + '\n'
+        debug_file.write(entry)
+
+    elif (msg.topic == 'v2/robot/NRF_5/mse_point'):
+        (cluster_id, x, y) = struct.unpack('<bhh', msg.payload)
+        print("mse point cluster_id: {}, x: {}, y: {}".format(cluster_id, x, y))
+        entry = json.dumps({"id": cluster_id, "x": x, "y": y}) + '\n'
+        mse_point_file.write(entry)
+
 
     elif (msg.topic == 'v2/robot/NRF_5/line'):
         #(id, x, y, theta, start_x, start_y, end_x, end_y) = struct.unpack('<Bhhhhhhh', msg.payload)
         #print("id: {}, x: {}, y: {}, theta: {}, start: ({},{}), end: ({},{})".format(id, x, y, theta, start_x, start_y, end_x, end_y))
         #entry = json.dumps({"x": x, "y": y, "theta": theta, "start": {"x": start_x, "y": start_y}, "end": {"x": end_x, "y": end_y}}) + '\n'
         (id, start_x, start_y, end_x, end_y, sigma_r2, sigma_theta2, sigma_rtheta) = struct.unpack('<Bhhhhfff', msg.payload)
-        print("line start: ({},{}), end: ({},{}), R: [[{}, {}], [{}, {}]]".format(id, start_x, start_y, end_x, end_y, sigma_r2, sigma_rtheta, sigma_rtheta, sigma_theta2))
+        print("line start: ({},{}), end: ({},{}), R: [[{}, {}], [{}, {}]]".format(start_x, start_y, end_x, end_y, sigma_r2, sigma_rtheta, sigma_rtheta, sigma_theta2))
         entry = json.dumps({"start": {"x": start_x, "y": start_y}, "end": {"x": end_x, "y": end_y}, "sigma_r2": sigma_r2, "sigma_theta2": sigma_theta2, "sigma_rtheta": sigma_rtheta}) + '\n'
         line_file.write(entry)
 
     elif (msg.topic == 'v2/robot/NRF_5/MSE'):
         (id, start_x, start_y, end_x, end_y, sigma_r2, sigma_theta2, sigma_rtheta) = struct.unpack('<Bhhhhfff', msg.payload)
-        print("MSE start: ({},{}), end: ({},{}), R: [[{}, {}], [{}, {}]]".format(id, start_x, start_y, end_x, end_y, sigma_r2, sigma_rtheta, sigma_rtheta, sigma_theta2))
+        print("MSE start: ({},{}), end: ({},{}), R: [[{}, {}], [{}, {}]]".format(start_x, start_y, end_x, end_y, sigma_r2, sigma_rtheta, sigma_rtheta, sigma_theta2))
         entry = json.dumps({"start": {"x": start_x, "y": start_y}, "end": {"x": end_x, "y": end_y}, "sigma_r2": sigma_r2, "sigma_theta2": sigma_theta2, "sigma_rtheta": sigma_rtheta}) + '\n'
         mse_file.write(entry)
+    
+    elif (msg.topic == 'v2/robot/NRF_5/merge'):
+        (id, start_x, start_y, end_x, end_y, sigma_r2, sigma_theta2, sigma_rtheta) = struct.unpack('<Bhhhhfff', msg.payload)
+        print("merge {} start: ({},{}), end: ({},{}), R: [[{}, {}], [{}, {}]]".format(id, start_x, start_y, end_x, end_y, sigma_r2, sigma_rtheta, sigma_rtheta, sigma_theta2))
+        entry = json.dumps({"id": id, "start": {"x": start_x, "y": start_y}, "end": {"x": end_x, "y": end_y}, "sigma_r2": sigma_r2, "sigma_theta2": sigma_theta2, "sigma_rtheta": sigma_rtheta}) + '\n'
+        merge_file.write(entry)
 
     elif (msg.topic == 'v2/robot/NRF_5/adv'):
         #print(msg.payload)
@@ -121,5 +155,9 @@ while(True):
         iepf_file.close()
         common_point_file.close()
         mse_file.close()
+        mse_point_file.close()
+        merge_file.close()
+        join_file.close()
+        debug_file.close()
         exit()
 

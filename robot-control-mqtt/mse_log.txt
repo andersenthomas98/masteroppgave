@@ -1,0 +1,15 @@
+{"start": {"x": 206, "y": 0}, "end": {"x": 188, "y": 218}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 188, "y": 239}, "end": {"x": 188, "y": 262}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 180, "y": 272}, "end": {"x": 149, "y": 259}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 145, "y": 260}, "end": {"x": 4, "y": 256}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 0, "y": 249}, "end": {"x": -186, "y": 231}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": -197, "y": -266}, "end": {"x": -148, "y": -268}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": -139, "y": -265}, "end": {"x": -122, "y": -263}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": -114, "y": -263}, "end": {"x": -77, "y": -228}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": -79, "y": -253}, "end": {"x": -4, "y": -255}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 0, "y": -267}, "end": {"x": 79, "y": -257}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 84, "y": -259}, "end": {"x": 130, "y": -252}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 137, "y": -259}, "end": {"x": 178, "y": -243}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 194, "y": -248}, "end": {"x": 239, "y": -249}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 244, "y": -242}, "end": {"x": 241, "y": -194}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
+{"start": {"x": 235, "y": -174}, "end": {"x": 216, "y": -4}, "sigma_r2": 0.0, "sigma_theta2": 0.0, "sigma_rtheta": 0.0}
