@@ -61,7 +61,23 @@ typedef struct line_segment {
   point_buffer_dynamic_t points;
 } line_segment_t;
 
-typedef  struct line_segment_buffer {
+typedef struct line_segment_buffer {
   uint8_t len;
   line_segment_t buffer[LB_MAX_SIZE];
 } line_segment_buffer_t;
+
+typedef struct map_line_segment {
+  float r;
+  float theta;
+  point_t start;
+  point_t end;
+  float sigma_r2;
+  float sigma_theta2;
+  float sigma_rtheta;
+  uint8_t id;
+} map_line_segment_t;
+
+typedef struct map {
+  uint8_t len;
+  map_line_segment_t buffer[LB_MAX_SIZE];
+} map_t;

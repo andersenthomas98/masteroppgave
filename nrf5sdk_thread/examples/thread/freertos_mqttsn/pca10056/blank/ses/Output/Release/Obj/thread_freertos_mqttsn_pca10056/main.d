@@ -101,6 +101,7 @@ Output/Release/Obj/thread_freertos_mqttsn_pca10056/main.o: \
  ../../../../../../external/freertos/source/include/queue.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/MotorSpeedControllerTask.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/globals.h \
+ ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/mapping.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/globals.h \
  ../../../../../../examples/thread/freertos_mqttsn/pca10056/blank/ses/encoder.h \
  ../../../../../../modules/nrfx/drivers/include/nrfx_gpiote.h \

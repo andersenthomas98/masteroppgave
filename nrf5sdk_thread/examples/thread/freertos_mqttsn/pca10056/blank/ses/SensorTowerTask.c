@@ -106,7 +106,7 @@ void vMainSensorTowerTask(void * pvParameters) {
         /*if (robotMovement != lastRobotMovement) {
           if (USE_MAPPING) {
             // Notify mapping task about change in robot movement
-            xTaskNotify(mapping_task_handle);
+            xTaskNotifyGive(mapping_task_handle);
           }
           lastRobotMovement = robotMovement;
         }*/

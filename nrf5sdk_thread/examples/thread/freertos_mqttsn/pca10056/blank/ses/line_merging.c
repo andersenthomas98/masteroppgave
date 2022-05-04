@@ -9,7 +9,7 @@
 #include "nrf_log.h"
 #include "thread_mqttsn.h"
 
-line_segment_t merge_segments(line_segment_t Line1, line_segment_t Line2) {
+map_line_segment_t merge_segments(map_line_segment_t Line1, map_line_segment_t Line2) {
 	
 	//Define the coordinates of the centroid (x_m, y_m) of the set formed by the four endpoints
     //taking the respective segment lengths as the point "masses" 
@@ -65,7 +65,7 @@ line_segment_t merge_segments(line_segment_t Line1, line_segment_t Line2) {
 	start = translate(start, M);
 	end = translate(end, M);
 
-	return (line_segment_t) {.start = start, .end = end};
+	return (map_line_segment_t) {.start = start, .end = end};
 }
 
 
@@ -90,7 +90,7 @@ void join_line_segments(int8_t cluster_id, line_segment_t* output_line, line_seg
   
   }
 
-  for (int i=0; i<output_line->points.len; i++) {
+  /*for (int i=0; i<output_line->points.len; i++) {
     mqttsn_cluster_msg_t msg;
     msg.point.x = output_line->points.buffer[i].x;
     msg.point.y = output_line->points.buffer[i].y;
@@ -101,7 +101,7 @@ void join_line_segments(int8_t cluster_id, line_segment_t* output_line, line_seg
     TickType_t lastWakeTime = xTaskGetTickCount();
     vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
    
-  }
+  }*/
 
   //vPortFree(line1->points.buffer);
   //line1->points.len = 0;
@@ -141,6 +141,31 @@ uint8_t is_mergeable(line_segment_t line1, line_segment_t line2, float angle_thr
 
 }
 
+uint8_t is_map_line_mergeable(map_line_segment_t line1, map_line_segment_t line2, float angle_threshold, float distance_threshold) {
+  // Test angle between line segments
+  float angle1 = line1.theta;
+  float angle2 = line2.theta;
+  float angleDiff = atanf((tanf(angle2)-tanf(angle1)) / (1 + tanf(angle1)*tanf(angle2)));
+
+  if (fabs(angleDiff) > angle_threshold) {
+    return 0;
+  }
+
+  
+  // Test if one of the endpoints of a line-segment is sufficiently near the other line-segment
+  float dist1 = distance_from_point_to_line_segment(line1.start, (line_t){.P = line2.start, .Q = line2.end});
+
+  float dist2 = distance_from_point_to_line_segment(line1.end, (line_t){.P = line2.start, .Q = line2.end});
+
+  if (dist1 < distance_threshold || dist2 < distance_threshold) {
+    return 1;
+  }
+
+  return 0;
+
+}
+
+
 void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float distance_threshold) {
 	int converged = 0;
 	int i = 0;
@@ -164,7 +189,7 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 vPortFree(nextLine.points.buffer);
                                 
                                 
-                                mqttsn_line_msg_t msg_line;
+                                /*mqttsn_line_msg_t msg_line;
                                 msg_line.identifier = msg_identifier;
                                 msg_line.startPoint = (coordinate_t){.x = line.start.x, .y = line.start.y};
                                 msg_line.endPoint = (coordinate_t) {.x = line.end.x, .y = line.end.y};
@@ -197,7 +222,7 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 lastWakeTime = xTaskGetTickCount();
                                 vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
 
-                                msg_identifier++;
+                                msg_identifier++;*/
 
 
 				lb->buffer[i].start = (point_t){.x = joint_line_segment.start.x, .y = joint_line_segment.start.y, .label = 1};
@@ -246,7 +271,7 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 join_line_segments(msg_identifier, &joint_line_segment, line, nextLine);
                                 
                                 
-                                mqttsn_line_msg_t msg_line;
+                                /*mqttsn_line_msg_t msg_line;
                                 msg_line.identifier = msg_identifier;
                                 msg_line.startPoint = (coordinate_t){.x = line.start.x, .y = line.start.y};
                                 msg_line.endPoint = (coordinate_t) {.x = line.end.x, .y = line.end.y};
@@ -279,7 +304,7 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 lastWakeTime = xTaskGetTickCount();
                                 vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);
 
-                                msg_identifier++;
+                                msg_identifier++;*/
 
 
 				lb->buffer[0].start = (point_t){.x = joint_line_segment.start.x, .y = joint_line_segment.start.y, .label = 1};
@@ -289,7 +314,7 @@ void merge_linebuffer(line_segment_buffer_t* lb, float angle_threshold, float di
                                 vPortFree(lb->buffer[0].points.buffer);
                                 copy_points_to_line_segment(&(lb->buffer[0]), joint_line_segment.points);
                                 vPortFree(joint_line_segment.points.buffer);
-                                vPortFree(lb->buffer[lb->len-1].points.buffer);
+                                //vPortFree(lb->buffer[lb->len-1].points.buffer);
 				lb->len -= 1;
                         }
 
