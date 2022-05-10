@@ -28,7 +28,7 @@ u = np.array([
 
 
 # Initial state covariance
-P_ = np.eye(3,3) * np.array([[0.01, 0.01, 0.01]]) # x, y, theta
+P_ = np.eye(3,3) * np.array([[0, 0, 0]]) # x, y, theta
 
 # Process noise covariance
 Q = np.eye(3,3) * np.array([[0.00001, 0.00001, 0.00001]]) # x, y, theta
@@ -76,12 +76,15 @@ def F(nu, u, dt, n):
                        [np.zeros((n*2,3)), np.eye(n*2,n*2)]])
     return matrix
 
-
+# Measurement model: Maps state to predicted measurement - robocentric
+# This is used since we need to find some relationship between measurements and the robot pose 
 def h(nu, i):
-    r = nu[3+i, 0] - (nu[0,0]*np.cos(nu[3+i+1, 0] + nu[1,0]*np.sin(nu[3+i+1, 0])))
-    phi = nu[3+i+1, 0] + nu[2,0]
+    r = nu[3+i*2, 0] - (nu[0,0]*np.cos(nu[3+i*2+1, 0] + nu[1,0]*np.sin(nu[3+i*2+1, 0])))
+    phi = nu[3+i*2+1, 0] - nu[2,0]
     return np.array([[r], 
                      [phi]])
+
+
 
 def transform_measurement_from_global_to_body(z, nu):
     r = z[0,0] - (nu[0,0]*np.cos(z[1,0]) + nu[1,0]*np.sin(z[1,0]))
@@ -145,7 +148,7 @@ n = 0           # num landmarks
 R = np.eye(2,2)*np.array([[0, 0]]) # sigma_r^2, sigma_phi^2
 
 # Prediction
-nu_pred = f(nu, u, dt)
+nu = f(nu, u, dt)
 P_pred = F(nu, u, dt, n) @ P(P_, n) @ F(nu, u, dt, n).T + G(n) @ Q @ G(n).T
 #print(P_pred)
 
@@ -164,25 +167,33 @@ v = transform_measurement_from_global_to_body(z, nu) - h(nu, 0)
 nu = nu + W @ v 
 P_upd = (np.eye(5,5) - W @ H(nu)) @ P(P_pred, n)
 
-print(nu)
-print(R)
+print("#################")
+print(P_upd)
+# OBS! I believe there is an error the covarince predictor, should we not be predicting the covariance for all system states (including line features?)
+
+# Prediction
+nu = f(nu, u, dt)
+P_pred = F(nu, u, dt, n) @ P(P_upd, n) @ F(nu, u, dt, n).T + G(n) @ Q @ G(n).T
+
+#print(nu)
+#print(P_pred)
 
 # Here comes another landmark...
-z2 = np.array([[69], [96]])
+'''z2 = np.array([[69], [96]])
 R2 = np.ones((2,2))*np.array([[69, 69]]) # sigma_r^2, sigma_phi^2
 
 nu, R = add_new_landmark(nu, R, z, R2)
 
 n += 1
 # Update
-S = H(nu) @ P(P_upd, n) @ H(nu).T
+S = H(nu) @ P(P_pred, n) @ H(nu).T
 W = P(P_, n) @ H(nu).T @ inv(S)
 v = transform_measurement_from_global_to_body(z, nu) - h(nu, 0)
 nu = nu + W @ v 
-P_upd = (np.eye(5,5) - W @ H(nu)) @ P(P_upd, n)
+P_upd = (np.eye(5,5) - W @ H(nu)) @ P(P_pred, n)
 
 print(nu)
-print(R)
+print(R)'''
 
 '''
 r1 = nu[3,0]
