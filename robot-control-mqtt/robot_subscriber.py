@@ -6,7 +6,7 @@ import signal
 
 TARGET_IDENTIFIER = 2
 
-ip_addr = "10.53.49.140"
+ip_addr = "10.53.49.161"
 port = 1883
 keepalive = 60
 
@@ -37,6 +37,7 @@ mse_point_file = open("mse_point_log.txt", "w")
 merge_file = open("merge_log.txt", "w")
 join_file = open("join_log.txt", "w")
 debug_file = open("debug_log.txt", "w")
+estimator_file = open("estimator_log.txt", "w")
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code", rc)
@@ -52,6 +53,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("v2/robot/NRF_5/merge", qos=0)
     client.subscribe("v2/robot/NRF_5/join", qos=0)
     client.subscribe("v2/robot/NRF_5/debug", qos=0)
+    client.subscribe("v2/robot/NRF_5/estimator", qos=0)
 
 
 def on_message(client, userdata, msg):
@@ -137,6 +139,12 @@ def on_message(client, userdata, msg):
         entry = json.dumps({"x": x, "y": y, "theta": theta, "ir1": {"x": ir1x, "y": ir1y}, "ir2": {"x": ir2x, "y": ir2y}, "ir3": {"x": ir3x, "y": ir3y}, "ir4": {"x": ir4x, "y": ir4y}}) + '\n'
         point_file.write(entry)
 
+    elif (msg.topic == 'v2/robot/NRF_5/estimator'):
+        (time, x, y, theta, enc, gyro) = struct.unpack('<6f', msg.payload)
+        print("time: {}, x: {}, y: {}, theta: {}, enc: {}, gyro: {}".format(time, x, y, theta, enc, gyro))
+        entry = json.dumps({"time": time, "x": x, "y": y, "theta": theta, "enc": enc, "gyro": gyro})
+        estimator_file.write(entry)
+
 
 
 client = mqtt.Client(client_id="robot-subscriber")
@@ -159,5 +167,6 @@ while(True):
         merge_file.close()
         join_file.close()
         debug_file.close()
+        estimator_file.close()
         exit()
 
