@@ -33,7 +33,8 @@
 #define ROBOT_DEBUG_TOPIC_NAME        "v2/robot/NRF_5/debug"
 #define SERVER_CMD_TOPIC_NAME         "v2/server/NRF_5/cmd"
 #define SERVER_INIT_TOPIC_NAME        "v2/server/NRF_5/init"
-#define NUM_TOPICS                    13                                    /** Publish topics + subscribe topics need to be registered by gateway*/
+#define ROBOT_ESTIMATOR_TOPIC_NAME    "v2/robot/NRF_5/estimator"
+#define NUM_TOPICS                    14                                    /** Publish topics + subscribe topics need to be registered by gateway*/
 #define NUM_SUB_TOPICS                2
 
 #define SEARCH_GATEWAY_TIMEOUT        5                                     /**< MQTT-SN Gateway discovery procedure timeout in [s]. */
@@ -105,6 +106,10 @@ static mqttsn_topic_t topic_arr[NUM_TOPICS] =                               /** 
   {
     .p_topic_name = ROBOT_DEBUG_TOPIC_NAME,
     .topic_id     = NULL
+  },
+  {
+    .p_topic_name = ROBOT_ESTIMATOR_TOPIC_NAME,
+    .topic_id     = NULL
   }
 };
 
@@ -134,7 +139,8 @@ static mqttsn_subscribe_topic_t sub_topic_arr[NUM_SUB_TOPICS] = {
 QueueHandle_t mqttsn_outgoing_message_queue, 
               mqttsn_outgoing_line_message_queue, 
               mqttsn_outgoing_update_message_queue, 
-              mqttsn_outgoing_cluster_message_queue;
+              mqttsn_outgoing_cluster_message_queue,
+              mqttsn_outgoing_estimator_message_queue;
 
 SemaphoreHandle_t publish_semaphore;
 
@@ -144,6 +150,8 @@ QueueHandle_t get_queue_handle(char* topic_name) {
       return sub_topic_arr[i].queue;
     }
   }
+  NRF_LOG_ERROR("Could not get queue handle");
+  return NULL;
 }
 
 /***************************************************************************************************
@@ -303,7 +311,15 @@ static void received_callback(mqttsn_event_t * p_event)
             }
             break;
           }
-        
+          case LINE_IDENTIFIER:
+          {
+            mqttsn_line_msg_t rx_line_msg;
+            memcpy(&rx_line_msg, payload, sizeof(mqttsn_line_msg_t));
+            if (xQueueSend(sub_topic.queue, (void*)&rx_line_msg, 0) != pdPASS) {
+              NRF_LOG_ERROR("Failed to post received payload from topic %s to queue", NRF_LOG_PUSH(sub_topic.p_topic->p_topic_name));
+            }
+            break;
+          }
         }
         break; // exit for-loop
       }
@@ -689,6 +705,30 @@ uint32_t publish_cluster_point(char* topic_name, mqttsn_cluster_msg_t payload, u
 
 }
 
+uint32_t publish_estimator(char* topic_name, mqttsn_estimator_msg_t payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id) {
+  if (!mqttsn_client_is_connected()) {
+    return NRF_ERROR_BUSY;
+  }
+  
+  mqttsn_estimator_msg_queue_element_t queue_element;
+  queue_element.msg_id = msg_id;
+  queue_element.qos = qos;
+  queue_element.payload_size = payload_size;
+  queue_element.payload = payload;
+  queue_element.topic_id = get_topic_id(topic_name);
+  if (queue_element.topic_id == NULL) {
+    return NRF_ERROR_NULL;
+  }
+
+  if (mqttsn_outgoing_cluster_message_queue != NULL && xQueueSend(mqttsn_outgoing_estimator_message_queue, &queue_element, portMAX_DELAY) != pdPASS) {
+    
+    NRF_LOG_ERROR("Failed to post mqttsn message to outgoing message queue");
+  
+  }
+  return NRF_SUCCESS;
+
+}
+
 uint32_t publish(char* topic_name, void* p_payload, uint8_t payload_size, uint8_t qos, uint16_t msg_id) {
 
   if (!mqttsn_client_is_connected()) {
@@ -737,8 +777,15 @@ void mqttsn_task(void *arg) {
   mqttsn_outgoing_line_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_line_msg_queue_element_t));
   mqttsn_outgoing_update_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_update_msg_queue_element_t));
   mqttsn_outgoing_cluster_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_cluster_msg_queue_element_t));
+  mqttsn_outgoing_estimator_message_queue = xQueueCreate(MQTTSN_PACKET_FIFO_MAX_LENGTH, sizeof(mqttsn_estimator_msg_queue_element_t));
 
-  if (mqttsn_outgoing_message_queue == NULL || mqttsn_outgoing_line_message_queue == NULL|| mqttsn_outgoing_update_message_queue == NULL || mqttsn_outgoing_cluster_message_queue == NULL) {
+
+  if (mqttsn_outgoing_message_queue           == NULL || 
+      mqttsn_outgoing_line_message_queue      == NULL || 
+      mqttsn_outgoing_update_message_queue    == NULL || 
+      mqttsn_outgoing_cluster_message_queue   == NULL ||
+      mqttsn_outgoing_estimator_message_queue == NULL
+    ) {
     NRF_LOG_ERROR("Not enough heap memory available for mqttsn task");
     while(1) {
       // do nothing
@@ -753,6 +800,9 @@ void mqttsn_task(void *arg) {
     } 
     else if (p_sub_topic->identifier == TARGET_IDENTIFIER) {
       p_sub_topic->queue = xQueueCreate(p_sub_topic->queue_size, sizeof(mqttsn_target_msg_t));
+    } 
+    else {
+      NRF_LOG_ERROR("Could not create queue for incomming data structure: No identifier");
     }
 
     if (p_sub_topic->queue == NULL) {
@@ -800,6 +850,7 @@ void mqttsn_task(void *arg) {
     mqttsn_line_msg_queue_element_t rx_line_msg;
     mqttsn_update_msg_queue_element_t rx_update_msg;
     mqttsn_cluster_msg_queue_element_t rx_cluster_msg;
+    mqttsn_estimator_msg_queue_element_t rx_estimator_msg;
     /*if (mqttsn_outgoing_message_queue != NULL && xQueueReceive(mqttsn_outgoing_message_queue, &rx_msg, 0) == pdPASS) {
       
       uint32_t err_code = mqttsn_client_publish(&m_client, rx_msg.topic_id, rx_msg.payload, rx_msg.payload_size, &rx_msg.msg_id);
@@ -848,6 +899,15 @@ void mqttsn_task(void *arg) {
         NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
       }
     }
+    while(mqttsn_outgoing_estimator_message_queue != NULL && xQueueReceive(mqttsn_outgoing_estimator_message_queue, &rx_estimator_msg, 0) == pdPASS) {
+      
+      uint32_t err_code = mqttsn_client_publish(&m_client, rx_estimator_msg.topic_id, &rx_estimator_msg.payload, rx_estimator_msg.payload_size, rx_estimator_msg.qos, &rx_estimator_msg.msg_id);
+
+      if (err_code != NRF_SUCCESS) {
+        NRF_LOG_ERROR("PUBLISH message could not be sent. Error code: 0x%x\r\n", err_code)
+      }
+    }
+
 
     
     //lastWakeTime = xTaskGetTickCount();

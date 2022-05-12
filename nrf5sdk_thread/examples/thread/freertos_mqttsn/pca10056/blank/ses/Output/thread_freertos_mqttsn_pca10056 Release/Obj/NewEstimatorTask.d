@@ -92,4 +92,6 @@ Output/thread_freertos_mqttsn_pca10056\ Release/Obj/NewEstimatorTask.o: \
  ../../../../../../modules/nrfx/hal/nrf_gpio.h \
  ../../../../../../modules/nrfx/drivers/include/nrfx_timer.h \
  ../../../../../../modules/nrfx/hal/nrf_timer.h \
- C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\encoder.h
+ C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\encoder.h \
+ C:\masteroppgave\nrf5sdk_thread\examples\thread\freertos_mqttsn\pca10056\blank\ses\thread_mqttsn.h \
+ ../../../../../../components/thread/mqtt_sn/mqtt_sn_client/mqttsn_client.h

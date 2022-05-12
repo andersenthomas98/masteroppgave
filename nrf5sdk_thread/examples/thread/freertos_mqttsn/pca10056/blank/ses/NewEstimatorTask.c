@@ -43,6 +43,8 @@
  //#include "encoder.h"
 #include "positionEstimate.h"
 
+#include "thread_mqttsn.h"
+
 extern SemaphoreHandle_t xControllerBSem;
 
 int8_t gyroCalib = 1;
@@ -220,7 +222,6 @@ void vNewMainPoseEstimatorTask(void * pvParameters) {
       set_position_estimate_y((ekf_state.y));
       xSemaphoreGive(xPoseMutex);
       if (PRINT_DEBUG) {
-        // BUG: Values explode if the robot reverses
         NRF_LOG_INFO("EKF_x: " NRF_LOG_FLOAT_MARKER "\t\r\n", NRF_LOG_FLOAT(1000 * ekf_state.x));
         NRF_LOG_INFO("EKF_y: " NRF_LOG_FLOAT_MARKER "\t\r\n", NRF_LOG_FLOAT(1000 * ekf_state.y));
         NRF_LOG_INFO("EKF_heading: " NRF_LOG_FLOAT_MARKER "\t\r\n", NRF_LOG_FLOAT(ekf_state.heading));
@@ -232,6 +233,19 @@ void vNewMainPoseEstimatorTask(void * pvParameters) {
         ticks_sum.right += encoder_ticks.right;
         //printf("%f;%f;%f;%ld;%ld;%ld;%ld;%f;%f;%f\n\r", time_since_startup, accel.x, gyrZ, encoder_ticks.left, encoder_ticks.right, ticks_sum.left, ticks_sum.right, ekf_state.heading, ekf_state.x, ekf_state.y);
       }*/
+
+      if (PUBLISH_ESTIMATOR) {
+        mqttsn_estimator_msg_t msg;
+        msg.time = ticks_since_startup * 1.0 / configTICK_RATE_HZ;
+        msg.x = ekf_state.x;
+        msg.y = ekf_state.y;
+        msg.theta = ekf_state.heading;
+        msg.enc_speed = Z[0];
+        msg.gyro = Z[3];
+        publish_estimator("v2/robot/NRF_5/estimator", msg, sizeof(mqttsn_estimator_msg_t), 0, 0);
+      
+      }
+
       
       // Send semaphore to controller
       xSemaphoreGive(xControllerBSem);

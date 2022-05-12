@@ -17,6 +17,7 @@
 
 
 #define PUBLISH_POSITION_CONTROLLER 0
+#define PUBLISH_ESTIMATOR 1
 
 /* **************************************************************************************************************
  * Robot selection

@@ -164,9 +164,9 @@ void mapping_task(void *arg) {
       if (xQueueReceive(ir_measurement_queue, &(new_measurement), (TickType_t) 10) == pdPASS) {
           update_point_buffers(&point_buffers, new_measurement);
 
-          line_msg.xdelta = 100*(new_measurement.x - lastPublishedX); // cm
-          line_msg.ydelta = 100*(new_measurement.y - lastPublishedY); // cm
-          line_msg.thetadelta = (new_measurement.theta - lastPublishedTheta)*RAD2DEG;
+          //line_msg.xdelta = 100*(new_measurement.x - lastPublishedX); // cm
+          //line_msg.ydelta = 100*(new_measurement.y - lastPublishedY); // cm
+          //line_msg.thetadelta = (new_measurement.theta - lastPublishedTheta)*RAD2DEG;
           lastPublishedX = new_measurement.x;
           lastPublishedY = new_measurement.y;
           lastPublishedTheta = new_measurement.theta;
@@ -199,7 +199,7 @@ void mapping_task(void *arg) {
       /* Start line extraction */
       if (ulTaskNotifyTake(pdTRUE, (TickType_t) 0) == pdPASS) {
         
-        NRF_LOG_INFO("Start line extraction");
+        //NRF_LOG_INFO("Start line extraction");
 
         /*for (int i=0; i<NUM_DIST_SENSORS; i++) {
           for (int j=0; j<point_buffers[i].len; j++) {
@@ -216,7 +216,7 @@ void mapping_task(void *arg) {
         }*/
 
         int freeHeap = xPortGetFreeHeapSize();
-        NRF_LOG_INFO("Free heap before line extraction: %d", freeHeap);
+        //NRF_LOG_INFO("Free heap before line extraction: %d", freeHeap);
 
         //int dbscan_msg_cluster_id = 0;
         //int iepf_msg_cluster_id = 0;
@@ -237,8 +237,8 @@ void mapping_task(void *arg) {
             dbscan_msg_cluster_id++;
           
           }*/
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after DBSCAN: %d", freeHeap);
+          //freeHeap = xPortGetFreeHeapSize();
+         // NRF_LOG_INFO("Free heap after DBSCAN: %d", freeHeap);
 
           if (clusters.len <= 0) {
             continue; // Go to next ir sensor readings
@@ -309,15 +309,15 @@ void mapping_task(void *arg) {
             }
             vPortFree(line_clusters.buffer);
             line_clusters.len = 0;
-            freeHeap = xPortGetFreeHeapSize();
-            NRF_LOG_INFO("Free heap after deallocating line clusters: %d", freeHeap);
+            //freeHeap = xPortGetFreeHeapSize();
+            //NRF_LOG_INFO("Free heap after deallocating line clusters: %d", freeHeap);
 
           }
 
           vPortFree(clusters.buffer);
           clusters.len = 0;
-          freeHeap = xPortGetFreeHeapSize();
-          NRF_LOG_INFO("Free heap after deallocating DBSCAN clusters: %d", freeHeap);
+          //freeHeap = xPortGetFreeHeapSize();
+          //NRF_LOG_INFO("Free heap after deallocating DBSCAN clusters: %d", freeHeap);
           
         }
 
@@ -366,13 +366,13 @@ void mapping_task(void *arg) {
           //update_map(&map, line_buffer.buffer[i])
         }
 
-        NRF_LOG_INFO("# lines extracted: %d", line_buffer.len);
+        //NRF_LOG_INFO("# lines extracted: %d", line_buffer.len);
         for (int i=0; i<line_buffer.len; i++) {
           line_msg.startPoint = (coordinate_t) {.x = line_buffer.buffer[i].start.x, .y = line_buffer.buffer[i].start.y};
           line_msg.endPoint = (coordinate_t) {.x = line_buffer.buffer[i].end.x, .y = line_buffer.buffer[i].end.y };
-          //msg.sigma_r2 = line_buffer.buffer[i].sigma_r2;
-          //msg.sigma_theta2 = line_buffer.buffer[i].sigma_theta2;
-          //msg.sigma_rtheta = line_buffer.buffer[i].sigma_rtheta;
+          line_msg.sigma_r2 = line_buffer.buffer[i].sigma_r2;
+          line_msg.sigma_theta2 = line_buffer.buffer[i].sigma_theta2;
+          line_msg.sigma_rtheta = line_buffer.buffer[i].sigma_rtheta;
           publish_line("v2/robot/NRF_5/line", line_msg, sizeof(mqttsn_line_msg_t), 0, 0);
           TickType_t lastWakeTime = xTaskGetTickCount();
           vTaskDelayUntil(&lastWakeTime, configTICK_RATE_HZ*0.1);

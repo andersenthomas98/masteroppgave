@@ -86,17 +86,17 @@ NRF_LOG_MODULE_REGISTER();
 #define NEW_ESTIMATOR_TASK_STACK_SIZE           ( 1024 * 6 / sizeof(StackType_t))
 #define MOTOR_SPEED_CONTROLLER_TASK_STACK_SIZE  ( 1024 / sizeof(StackType_t))
 #define POSE_CONTROLLER_TASK_STACK_SIZE         ((1024 * 2) / sizeof(StackType_t))
-#define MAPPING_TASK_STACK_SIZE                 ((1024 * 24) / sizeof(StackType_t))
+#define MAPPING_TASK_STACK_SIZE                 ((1024 * 12) / sizeof(StackType_t))
 #define EXAMPLE_TASK_STACK_SIZE                 ( 1024 / sizeof(StackType_t))
 
 #define THREAD_STACK_TASK_PRIORITY            4
-#define MQTTSN_TASK_PRIORITY                  2
+#define MQTTSN_TASK_PRIORITY                  3
 #define SENSOR_TOWER_TASK_PRIORITY            3
 #define NEW_ESTIMATOR_TASK_PRIORITY           4
 #define MOTOR_SPEED_CONTROLLER_TASK_PRIORITY  3
 #define POSE_CONTROLLER_TASK_PRIORITY         3
 #define MAPPING_TASK_PRIORITY                 3
-#define EXAMPLE_TASK_PRIORITY                 3
+#define EXAMPLE_TASK_PRIORITY                 2
 #define LOG_TASK_PRIORITY                     4
 
 #define LOG_TASK_INTERVAL                     10
@@ -106,6 +106,7 @@ TaskHandle_t thread_stack_task_handle           = NULL;   /**< Thread stack task
 TaskHandle_t mqttsn_task_handle                 = NULL;         /**< MQTT-SN task handle */
 TaskHandle_t example_task_handle                = NULL;
 TaskHandle_t example_task_B_handle              = NULL;
+TaskHandle_t example_task_C_handle              = NULL;
 TaskHandle_t sensor_tower_task_handle           = NULL;
 TaskHandle_t new_estimator_task_handle          = NULL;
 TaskHandle_t motor_speed_controller_task_handle = NULL;
@@ -252,9 +253,14 @@ int main(void)
     /*if (pdPASS != xTaskCreate(example_task, "EX", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
-    }*/
+    }
 
-    /*if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
+    if (pdPASS != xTaskCreate(example_task_B, "EXB", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_B_handle))
+    {
+        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
+    
+    if (pdPASS != xTaskCreate(example_task_C, "EXC", EXAMPLE_TASK_STACK_SIZE, NULL, EXAMPLE_TASK_PRIORITY, &example_task_C_handle))
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }*/
