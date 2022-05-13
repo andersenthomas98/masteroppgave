@@ -79,10 +79,11 @@ typedef struct mqttsn_estimator_msg {
 } __attribute__((packed)) mqttsn_estimator_msg_t;
 
 typedef struct mqttsn_line_msg {
-  uint8_t identifier;      // 1 byte
+  //uint8_t identifier;      // 1 byte
   //int16_t xdelta;          // 2 bytes
   //int16_t ydelta;          // 2 bytes
   //int16_t thetadelta;      // 2 bytes
+  float time;              // 4 bytes
   coordinate_t startPoint; // 4 bytes
   coordinate_t endPoint;   // 4 bytes
   float sigma_r2;          // 4 bytes

@@ -130,7 +130,7 @@ void mapping_task(void *arg) {
   }
 
   mqttsn_line_msg_t line_msg;
-  line_msg.identifier = LINE_IDENTIFIER;
+  //line_msg.identifier = LINE_IDENTIFIER;
 
   mqttsn_update_msg_t update_msg;
   update_msg.identifier = UPDATE_IDENTIFIER;
@@ -367,6 +367,9 @@ void mapping_task(void *arg) {
         }
 
         //NRF_LOG_INFO("# lines extracted: %d", line_buffer.len);
+        TickType_t ticks_since_startup = xTaskGetTickCount();
+        float time = ticks_since_startup * 1.0 / configTICK_RATE_HZ;
+        line_msg.time = time;
         for (int i=0; i<line_buffer.len; i++) {
           line_msg.startPoint = (coordinate_t) {.x = line_buffer.buffer[i].start.x, .y = line_buffer.buffer[i].start.y};
           line_msg.endPoint = (coordinate_t) {.x = line_buffer.buffer[i].end.x, .y = line_buffer.buffer[i].end.y };
