@@ -115,9 +115,9 @@ def on_message(client, userdata, msg):
         #(id, x, y, theta, start_x, start_y, end_x, end_y) = struct.unpack('<Bhhhhhhh', msg.payload)
         #print("id: {}, x: {}, y: {}, theta: {}, start: ({},{}), end: ({},{})".format(id, x, y, theta, start_x, start_y, end_x, end_y))
         #entry = json.dumps({"x": x, "y": y, "theta": theta, "start": {"x": start_x, "y": start_y}, "end": {"x": end_x, "y": end_y}}) + '\n'
-        (id, start_x, start_y, end_x, end_y, sigma_r2, sigma_theta2, sigma_rtheta) = struct.unpack('<Bhhhhfff', msg.payload)
-        print("line start: ({},{}), end: ({},{}), R: [[{}, {}], [{}, {}]]".format(start_x, start_y, end_x, end_y, sigma_r2, sigma_rtheta, sigma_rtheta, sigma_theta2))
-        entry = json.dumps({"start": {"x": start_x, "y": start_y}, "end": {"x": end_x, "y": end_y}, "sigma_r2": sigma_r2, "sigma_theta2": sigma_theta2, "sigma_rtheta": sigma_rtheta}) + '\n'
+        (time, start_x, start_y, end_x, end_y, sigma_r2, sigma_theta2, sigma_rtheta) = struct.unpack('<fhhhhfff', msg.payload)
+        print("time: {}, line start: ({},{}), end: ({},{}), R: [[{}, {}], [{}, {}]]".format(time, start_x, start_y, end_x, end_y, sigma_r2, sigma_rtheta, sigma_rtheta, sigma_theta2))
+        entry = json.dumps({"time": time, "start": {"x": start_x, "y": start_y}, "end": {"x": end_x, "y": end_y}, "sigma_r2": sigma_r2, "sigma_theta2": sigma_theta2, "sigma_rtheta": sigma_rtheta}) + '\n'
         line_file.write(entry)
 
     elif (msg.topic == 'v2/robot/NRF_5/MSE'):
@@ -142,7 +142,7 @@ def on_message(client, userdata, msg):
     elif (msg.topic == 'v2/robot/NRF_5/estimator'):
         (time, x, y, theta, enc, gyro) = struct.unpack('<6f', msg.payload)
         print("time: {}, x: {}, y: {}, theta: {}, enc: {}, gyro: {}".format(time, x, y, theta, enc, gyro))
-        entry = json.dumps({"time": time, "x": x, "y": y, "theta": theta, "enc": enc, "gyro": gyro})
+        entry = json.dumps({"time": time, "x": x, "y": y, "theta": theta, "enc": enc, "gyro": gyro}) + '\n'
         estimator_file.write(entry)
 
 
