@@ -9,7 +9,7 @@ def plot_line(r, phi, start, end, color='red'):
     else:
         y = np.linspace(start[1], end[1], 10)
         x = (r - y*np.sin(phi)) / np.cos(phi)
-    plt.plot(x, y, color = color)
+    #plt.plot(x, y, color = color)
 
 def wrap_to_2pi(phi):
     if (phi >= 2*np.pi):
@@ -85,10 +85,72 @@ def ssa3(rad):
     return (rad+np.pi) - np.floor((rad+np.pi) / (2*np.pi))*(2*np.pi) - np.pi
 
 
+# [[array([-0.21134221]), array([0.12959791])], [array([2.4811827]), array([0.20778711])]]
+# [[1.639, 0.155], [1.328, 0.162]]
+
+def dist_from_point_to_line(point, endpoints):
+    Px = endpoints[0][0]
+    Py = endpoints[0][1]
+    Qx = endpoints[1][0]
+    Qy = endpoints[1][1]
+    x = point[0]
+    y = point[1]
+    return np.abs((Qx - Px)*(Py - y) - (Px - x)*(Qy - Py))/(np.sqrt(np.power(Qx - Px, 2) + np.power(Qy - Py, 2)))
 
 
-phi1 = 0
-phi2 = np.pi / 4
+def dist_from_point_to_line_segment(point, endpoints):
+    Px = endpoints[0][0]
+    Py = endpoints[0][1]
+    Qx = endpoints[1][0]
+    Qy = endpoints[1][1]
+    x = point[0]
+    y = point[1]
+    t = -((Px - x)*(Qx - Px) + (Py - y)*(Qy - Py)) / (np.power(Px - Qx, 2) + np.power(Py - Qy, 2))
+    print(t)
+    if t >= 0 and t <= 1:
+        # Point is perpendicular to the line segment from (Px, Py) to (Qx, Qy)
+        print("point is perp")
+        return dist_from_point_to_line(point, endpoints)
+    d1 = (np.sqrt(np.power(x - Px, 2) + np.power(y - Py, 2)))
+    d2 = (np.sqrt(np.power(x - Qx, 2) + np.power(y - Qy, 2)))
+    # Shortest distance from point to one of the endpoints
+    if (d1 < d2):
+        return d1
+    return d2
 
-print(np.abs(ssa(phi1-phi2)))
-print(np.abs(ssa3(phi1-phi2)))
+def overlap(endpoints1, endpoints2):
+    l1 = get_length(endpoints1)
+    l2 = get_length(endpoints2)
+    e = max_distance_endpoints(endpoints1, endpoints2)
+    len_e = get_length(e)
+    L = l1 + l2 - len_e
+    if L < 0:
+        return 0
+    return 1
+
+#P1 = [-0.21134221, 0.12959791]
+#Q1 = [2.4811827, 0.20778711]
+
+#endpoints = [[1.639, 0.155], [1.328, 0.162]]
+P1 =[0.25, 0]
+Q1 = [0.75, 0]
+endpoints = [[2, 0] , [4, 0] ]
+
+if get_length([P1, Q1]) > get_length(endpoints):
+    tmp_endpoints = endpoints
+    endpoints = [P1, Q1]
+    P1 = tmp_endpoints[0]
+    Q1 = tmp_endpoints[1] 
+    
+
+plt.plot([P1[0], Q1[0]], [P1[1], Q1[1]], "-")
+plt.plot([endpoints[0][0], endpoints[1][0]], [endpoints[0][1], endpoints[1][1]], "-")
+
+#print("does overlap?:", overlap([P1, Q1], endpoints))
+print("dist from point to line segment: ", dist_from_point_to_line_segment(P1, endpoints))
+print("dist from point to line segment: ", dist_from_point_to_line_segment(Q1, endpoints))
+
+plt.axis('equal')
+plt.show()
+
+#  [1.5396832] [0.8438354]

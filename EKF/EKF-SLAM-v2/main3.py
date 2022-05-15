@@ -67,6 +67,9 @@ def convert_measurement_to_robot_frame(nu, y_meas):
     _theta = nu[2,0]
     r_R = r_G - (_x*np.cos(phi_G) + _y*np.sin(phi_G))
     phi_R = phi_G - _theta
+    if r_R < 0:
+        r_R = np.abs(r_R)
+        phi_R += np.pi
     return np.array([[r_R],
                      [phi_R]])
 
@@ -280,7 +283,11 @@ def update(nu, P, R, landmark_index, y_meas, R_meas, endpoints): # We have obser
     K = np.block([[P_xx, P_xli],
                 [P_mr, P_mli]]) @ np.block([[Hx(nu, i).T], 
                                             [Hl(nu, i).T]]) @ inv(Z)
+
+    print("meas in robot frame:", convert_measurement_to_robot_frame(nu, y_meas))
+    print("h_i:", h_i(nu, i))
     z = residual(convert_measurement_to_robot_frame(nu, y_meas), h_i(nu, i))
+    print("z:", z)
 
     nu_ = nu + K @ z    # Update state
     P_ = P - K @ Z @ K.T # Update covariance
@@ -392,20 +399,33 @@ def is_mergeable2(endpoints1, endpoints2, angle, dist):
     alpha = np.arctan(np.abs((m1 - m2) / (1 + m1*m2)))
 
     if (alpha > angle):
-        print("not mergeable angle:", alpha)
+        #print("not mergeable angle:", alpha)
         return 0
 
     
     
-    # Is one of the endpoints of a line segment sifficiently near the other line segment?
-    P1 = endpoints1[0]
-    Q1 = endpoints1[1]
-    dist1 = dist_from_point_to_line_segment(P1, endpoints2)
-    dist2 = dist_from_point_to_line_segment(Q1, endpoints2)
-    if (dist1 < dist or dist2 < dist):
-        return 1
-    print("not mergeable dist:", dist1, dist2)
-    return 0
+    # Is one of the endpoints of a line segment sufficiently near the other line segment?
+    P = endpoints1[0]
+    Q = endpoints1[1]
+    if (get_length(endpoints2[0], endpoints2[1]) < get_length(endpoints1[0], endpoints1[1])):
+        P = endpoints2[0]
+        Q = endpoints2[1]
+
+        dist1 = dist_from_point_to_line_segment(P, endpoints1)
+        dist2 = dist_from_point_to_line_segment(Q, endpoints1)
+        if (dist1 < dist or dist2 < dist):
+            return 1
+        #print("trying to merge with endpoints:", endpoints1)
+        return 0
+    else:
+        dist1 = dist_from_point_to_line_segment(P, endpoints2)
+        dist2 = dist_from_point_to_line_segment(Q, endpoints2)
+        if (dist1 < dist or dist2 < dist):
+            return 1
+        
+        #print("not mergeable dist:", dist1, dist2)
+        #print("trying to merge with endpoints:", endpoints1)
+        return 0
 
 
 def get_projected_point_on_line(r, phi, point):
@@ -519,8 +539,10 @@ P_ = np.eye(3,3) * np.array([[0, 0, 0]]) # sigma_x2, sigma_y2, sigma_theta2
 R_ = None
 
 # Process noise covariance
-Q = np.eye(3,3) * np.array([[0.001, 0.001, 0.0001]]) # sigma_x2, sigma_y2, sigma_theta2
+Q = np.eye(3,3) * np.array([[0.0001, 0.0001, 0.0001]]) # sigma_x2, sigma_y2, sigma_theta2
 
+
+prev_pose = nu
 num_landmarks = 0
 num_features_extracted = 0
 endpoints = []
@@ -536,7 +558,7 @@ track.append(nu)
 ALPHA = 45*np.pi/180
 BETA = 2
 ZETA = 0.1
-ANGLE_THRES = 10*np.pi/180
+ANGLE_THRES = 45*np.pi/180
 DIST_THRES = 0.2
 
 for i in range(1, len(estimator_data)):
@@ -555,10 +577,10 @@ for i in range(1, len(estimator_data)):
         endpoints = np.array([[10, -2], [10, 2]])
         nu, P_, R = update(nu, P_, R, 0, y, R) '''
 
-    for j in range(num_features_extracted, 0):
+    for j in range(num_features_extracted, len(normal_data)):
         if int(estimator_data[i]['time']) == int(normal_data[j]['time']):
             num_features_extracted += 1
-            R = np.eye(2,2)*np.array([[0.001],[0.0001]])
+            R = np.eye(2,2)*np.array([[0.1],[0.1]])
             #R = np.array([[line_data[j]['sigma_r2'], 0],[0, line_data[j]['sigma_theta2']]])
             r = normal_data[j]['r'] / 1000
             phi = normal_data[j]['phi']
@@ -579,11 +601,14 @@ for i in range(1, len(estimator_data)):
                     r_k = nu[idx]
                     phi_k = nu[idx+1]
                     #if (is_mergeable(nu, np.array([[r_k], [phi_k]]), endpoints[k], y, endpoints_line, ALPHA, BETA, ZETA)):
+                    if (endpoints_line == [[1.639, 0.155], [1.328, 0.162]]):
+                        print("endpoints of new line segment:", endpoints_line)
                     if (is_mergeable2(endpoints[k], endpoints_line, ANGLE_THRES, DIST_THRES)):
                         curr_color = (random(), random(), random())
                         #plot_line(r_k, phi_k, endpoints[k][0], endpoints[k][1], color=curr_color, type='--')
                         #plot_line(r, phi, endpoints_line[0], endpoints_line[1], color=curr_color, type='--')
-                        print("merge!")
+                        if (endpoints_line == [[1.639, 0.155], [1.328, 0.162]]):
+                            print("merging lines (r, phi, endpoints): ({},{},{}) ({}, {}, {})".format(r_k, phi_k, endpoints[k], r, phi, endpoints_line))
                        # print("r, phi before update: ", r_k, phi_k)
                         # Perform update
                         nu, P_, R_, endpoints = update(nu, P_, R_, k, y, R, endpoints)
@@ -603,7 +628,9 @@ for i in range(1, len(estimator_data)):
                         endpoints[k] = e
 
                         #plot_line(nu[idx], nu[idx], endpoints[k][0], endpoints[k][1], color=curr_color)
-                        #plt.plot([endpoints[k][0][0], endpoints[k][1][0]], [endpoints[k][0][1], endpoints[k][1][1]], color=curr_color)
+                        #plt.plot([endpoints[k][0][0], endpoints[k][1][0]], [endpoints[k][0][1], endpoints[k][1][1]], "-", color=curr_color)
+                        if (endpoints_line == [[1.639, 0.155], [1.328, 0.162]]):
+                            print("merge after update (r, phi, endpoints): ({}, {}, {})".format(nu[idx], nu[idx+1], endpoints[k]))
 
                         merged = True
 
@@ -624,6 +651,7 @@ for i in range(1, len(estimator_data)):
 
     
     if (i % 20 == 0):
+        prev_pose = nu[0:3]
         track.append(nu[0:3])
         #plot_covariance_ellipse(
         #            (nu[0,0], nu[1,0]), P_[0:2, 0:2], 
@@ -643,6 +671,7 @@ for i in track:
 for i in range(num_landmarks):
     idx = 3+i*2
     #print(endpoints[i][0])
+    
     plot_line(nu[idx,0], nu[idx+1,0], endpoints[i][0], endpoints[i][1])
 
 print("num_landmarks:", num_landmarks)
