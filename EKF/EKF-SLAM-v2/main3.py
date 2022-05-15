@@ -4,17 +4,19 @@ import matplotlib as mpl
 from filterpy.stats import plot_covariance_ellipse
 from numpy.linalg import inv
 from numpy.random import randn
+import json
+from tqdm import tqdm
+from random import random
 
-def plot_line(r, phi, start, end, color='red'):
-    if phi > np.pi/4:
+def plot_line(r, phi, start, end, color='red', type='-'):
+    if (phi > np.pi/4 and phi < (np.pi/4 + np.pi/2)) or (phi > (np.pi + np.pi / 4) and phi < (np.pi + np.pi/2 + np.pi/4)) :
         x = np.linspace(start[0],end[0], 10)
         y = (r - x*np.cos(phi)) / np.sin(phi)
     else:
         y = np.linspace(start[1], end[1], 10)
         x = (r - y*np.sin(phi)) / np.cos(phi)
-    print(x)
-    print(y)
-    plt.plot(x, y, color = color)
+    plt.plot(x, y, type, color = color)
+
 
 
 # Inverse measurement model: Maps measurement to state
@@ -254,7 +256,7 @@ def residual(a, b):
         y[1] -= 2 * np.pi
     return y
 
-def update(nu, P, R, landmark_index, y_meas, R_meas): # We have observed a line feature already part of the map
+def update(nu, P, R, landmark_index, y_meas, R_meas, endpoints): # We have observed a line feature already part of the map
     i = landmark_index
     
     R_ = update_measurement_noise_for_observation(R, R_meas, i)
@@ -282,24 +284,32 @@ def update(nu, P, R, landmark_index, y_meas, R_meas): # We have observed a line 
 
     nu_ = nu + K @ z    # Update state
     P_ = P - K @ Z @ K.T # Update covariance
-    return nu_, P_, R_
+
+    # Update endpoints
+    endpoints_ = []
+    for i in range(len(endpoints)):
+        proj_point_p = get_projected_point_on_line(nu_[3+i*2], nu_[3+i*2+1], endpoints[i][0])
+        proj_point_q = get_projected_point_on_line(nu_[3+i*2], nu_[3+i*2+1], endpoints[i][1])
+        endpoints_.append([proj_point_p, proj_point_q])
+
+    return nu_, P_, R_, endpoints_
 
 def dist_from_point_to_line(point, endpoints):
-    Px = endpoints[0,0]
-    Py = endpoints[0,1]
-    Qx = endpoints[1,0]
-    Qy = endpoints[1,1]
+    Px = endpoints[0][0]
+    Py = endpoints[0][1]
+    Qx = endpoints[1][0]
+    Qy = endpoints[1][1]
     x = point[0]
     y = point[1]
     return np.abs((Qx - Px)*(Py - y) - (Px - x)*(Qy - Py))/(np.sqrt(np.power(Qx - Px, 2) + np.power(Qy - Py, 2)))
 
 def dist_from_point_to_line_segment(point, endpoints):
-    Px = endpoints[0,0]
-    Py = endpoints[0,1]
-    Qx = endpoints[1,0]
-    Qy = endpoints[1,1]
+    Px = endpoints[0][0]
+    Py = endpoints[0][1]
+    Qx = endpoints[1][0]
+    Qy = endpoints[1][1]
     x = point[0]
-    y = point[1,]
+    y = point[1]
     t = -((Px - x)*(Qx - Px) + (Py - y)*(Qy - Py)) / (np.power(Px - Qx, 2) + np.power(Py - Qy, 2))
     if t >= 0 and t <= 1:
         # Point is perpendicular to the line segment from (Px, Py) to (Qx, Qy)
@@ -311,22 +321,92 @@ def dist_from_point_to_line_segment(point, endpoints):
         return d1
     return d2
 
-def is_mergeable(line1, endpoints1, line2, endpoints2, angle_threshold, dist_threshold):
+def get_length(p1, p2):
+    x1 = p1[0]
+    y1 = p1[1]
+    x2 = p2[0]
+    y2 = p2[1]
+    return np.sqrt(np.power(x1-x2, 2) + np.power(y1-y2, 2))
+
+
+def ssa(rad):
+    return (rad+np.pi) - np.floor((rad+np.pi) / (2*np.pi))*(2*np.pi) - np.pi
+
+def is_mergeable(nu, line1, endpoints1, line2, endpoints2, alpha, beta, zeta):
+    line1 = convert_measurement_to_robot_frame(nu, line1)
+    line2 = convert_measurement_to_robot_frame(nu, line2)
+    r1 = line1[0,0]
     phi1 = line1[1,0]
+    r2 = line2[1,0]
     phi2 = line2[1,0]
-    angleDiff = np.arctan((np.tan(phi2) - np.tan(phi1)) / (1 + np.tan(phi1)*np.tan(phi2)))
-    if (np.abs(angleDiff) > angle_threshold):
-        # Not mergeable
+
+    if np.abs(ssa(phi1-phi2)) > alpha:
+        print("no merge alpha:", np.abs(ssa(phi1-phi2)))
         return 0
+    
+    if np.abs(r1 - r2) > beta:
+        print("no merge beta:", np.abs(r1-r2))
+        return 0
+
+    #angleDiff = np.arctan((np.tan(phi2) - np.tan(phi1)) / (1 + np.tan(phi1)*np.tan(phi2)))
+    #if (np.abs(angleDiff) > angle_threshold):
+        # Not mergeable
+    #    return 0
     
     # Is one of the endpoints of a line segment sifficiently near the other line segment?
     P1 = endpoints1[0]
     Q1 = endpoints1[1]
     dist1 = dist_from_point_to_line_segment(P1, endpoints2)
     dist2 = dist_from_point_to_line_segment(Q1, endpoints2)
-    if (dist1 < dist_threshold or dist2 < dist_threshold):
+    if (dist1 < zeta or dist2 < zeta):
         return 1
+    
+    print("no merge dist:", dist1, dist2)
     return 0
+
+def wrap_to_2pi(phi):
+    if (phi >= 2*np.pi):
+        return phi - 2*np.pi
+    elif phi < 0:
+        return phi + 2*np.pi    
+    return phi
+
+def is_mergeable2(endpoints1, endpoints2, angle, dist):
+    P1_x = endpoints1[0][0]
+    P1_y = endpoints1[0][1]
+    Q1_x = endpoints1[1][0]
+    Q1_y = endpoints1[1][1]
+
+    P2_x = endpoints2[0][0]
+    P2_y = endpoints2[0][1]
+    Q2_x = endpoints2[1][0]
+    Q2_y = endpoints2[1][1]
+
+
+    m1 = (Q1_y - P1_y) / (Q1_x - P1_x)
+    m2 = (Q2_y - P2_y) / (Q2_x - P2_x)
+
+    if m1*m2 == -1:
+        return 0
+
+    alpha = np.arctan(np.abs((m1 - m2) / (1 + m1*m2)))
+
+    if (alpha > angle):
+        print("not mergeable angle:", alpha)
+        return 0
+
+    
+    
+    # Is one of the endpoints of a line segment sifficiently near the other line segment?
+    P1 = endpoints1[0]
+    Q1 = endpoints1[1]
+    dist1 = dist_from_point_to_line_segment(P1, endpoints2)
+    dist2 = dist_from_point_to_line_segment(Q1, endpoints2)
+    if (dist1 < dist or dist2 < dist):
+        return 1
+    print("not mergeable dist:", dist1, dist2)
+    return 0
+
 
 def get_projected_point_on_line(r, phi, point):
     point_x = point[0]
@@ -335,12 +415,34 @@ def get_projected_point_on_line(r, phi, point):
     d_x = np.abs(r_p - r)*np.cos(phi)
     d_y = np.abs(r_p- r)*np.sin(phi)
     if r_p - r >= 0:
-        return np.array([[point_x - d_x],[point_y - d_y]])
+        return [point_x - d_x, point_y - d_y]
     else:
-        return np.array([[point_x + d_x],[point_y + d_y]])
+        return [point_x + d_x, point_y + d_y]
+
+def max_distance_endpoints(endpoints):
+    max_dist = 0
+    for i in range(4):
+        for j in range(4):
+            if get_length(endpoints[i], endpoints[j]) > max_dist:
+                max_dist = get_length(endpoints[i], endpoints[j])
+                curr_endpoints = [endpoints[i], endpoints[j]]
+
+    return curr_endpoints
 
 
 
+def get_normal_form_parameters(endpoints):
+    Px = endpoints[0,0] / 1000
+    Py = endpoints[0,1] / 1000
+    Qx = endpoints[1,0] / 1000
+    Qy = endpoints[1,1] / 1000
+    m = (Qy - Py) / (Qx - Px)
+    phi = np.arctan2((Qy - Py), (Qx - Px))
+    r = (Py - m*Px) / np.sqrt(m*m + 1)
+    if (r < 0):
+        r = np.abs(r)
+        phi -= np.pi / 2
+    return r, phi
 
 '''y1 = np.array([[10], [0.0]])
 endpoints1 = np.array([[10, -2], [10, 2]]) 
@@ -364,6 +466,36 @@ plt.axis("equal")
 plt.show()'''
 
 
+# Load data
+estimator_file = open('estimator_log_fourth_run.txt', 'r')
+line_file = open('line_log_fourth_run.txt', 'r')
+normal_file = open('normal_log_fourth_run.txt', 'r')
+
+estimator_data = []
+line_data_ = []
+normal_data_ = []
+
+line_data = []
+normal_data = []
+
+for e in estimator_file.readlines():
+    estimator_data.append(json.loads(e))
+
+for e in line_file.readlines():
+    line_data_.append(json.loads(e))
+
+for e in normal_file.readlines():
+    normal_data_.append(json.loads(e))
+
+
+for i in range(len(list(line_data_))):
+    Px = line_data_[i]['start']['x'] / 1000
+    Qx = line_data_[i]['end']['x'] / 1000
+    Py = line_data_[i]['start']['y'] / 1000
+    Qy = line_data_[i]['end']['y'] / 1000
+    if np.sqrt(np.power(Px-Qx, 2) + np.power(Py-Qy, 2)) > 0.2 and np.sqrt(np.power(Px-Qx, 2) + np.power(Py-Qy, 2)) < 1:
+        line_data.append(line_data_[i])
+        normal_data.append(normal_data_[i])
 
 # State vector, initially only holds robot pose
 nu = np.array([
@@ -375,7 +507,7 @@ nu = np.array([
 
 # Control vector, linear velocity and rotational velocity
 u = np.array([
-        1.0, # v
+        0.0, # v
         0.0 # w
         ])
 
@@ -384,10 +516,14 @@ dt = 1.0 # time-step
 # Initial state covariance
 P_ = np.eye(3,3) * np.array([[0, 0, 0]]) # sigma_x2, sigma_y2, sigma_theta2
 
+R_ = None
+
 # Process noise covariance
 Q = np.eye(3,3) * np.array([[0.001, 0.001, 0.0001]]) # sigma_x2, sigma_y2, sigma_theta2
 
 num_landmarks = 0
+num_features_extracted = 0
+endpoints = []
 
 print("----- Init -------")
 print(nu)
@@ -397,34 +533,14 @@ print("------------------")
 track = []
 track.append(nu)
 
-plot_covariance_ellipse(
-                    (nu[0,0], nu[1,0]), P_[0:2, 0:2], 
-                     std=3, facecolor='k', alpha=0.3)
+ALPHA = 45*np.pi/180
+BETA = 2
+ZETA = 0.1
+ANGLE_THRES = 10*np.pi/180
+DIST_THRES = 0.2
 
-R = np.eye(2,2)*np.array([[0.1],[0.001]]) # measurement noise
-l1 = np.array([[5], [np.pi/2 + np.pi]]) + np.sqrt(R) @ randn(2,1)
-e1 = np.array([[0, -5], [10, -5]])
-l2 = np.array([[10], [0.0]]) + np.sqrt(R) @ randn(2,1)
-e2 = np.array([[10, -5], [10, 6]])
-l3 = np.array([[6], [np.pi/2]])
-e3 = np.array([[10, 6],[0, 6]])
-
-landmarks = [l1, l2, l3]
-endpoints = [e1, e2, e3]
-
-for i in range(3):
-    print(landmarks[i][0])
-    print(landmarks[i][1])
-    print(endpoints[i][0])
-    print(endpoints[i][1])
-    plot_line(landmarks[i][0], landmarks[i][1], endpoints[i][0], endpoints[i][1], color="black")
-
-plt.axis("equal")
-plt.show()
-
-
-for step in range(10):
-    if (step == 1):
+for i in range(1, len(estimator_data)):
+    '''if (step == 1):
         # Observe first landmark
         R = np.eye(2,2)*np.array([[0.1],[0.001]]) # measurement noise
         y = np.array([[10], [0.0]]) + np.sqrt(R) @ randn(2,1) # measurement
@@ -437,15 +553,81 @@ for step in range(10):
         R = np.eye(2,2)*np.array([[0.1],[0.001]]) # measurement noise
         y = np.array([[10], [0.0]]) + np.sqrt(R) @ randn(2,1) # measurement
         endpoints = np.array([[10, -2], [10, 2]])
-        nu, P_, R = update(nu, P_, R, 0, y, R)
-       
+        nu, P_, R = update(nu, P_, R, 0, y, R) '''
+
+    for j in range(num_features_extracted, 0):
+        if int(estimator_data[i]['time']) == int(normal_data[j]['time']):
+            num_features_extracted += 1
+            R = np.eye(2,2)*np.array([[0.001],[0.0001]])
+            #R = np.array([[line_data[j]['sigma_r2'], 0],[0, line_data[j]['sigma_theta2']]])
+            r = normal_data[j]['r'] / 1000
+            phi = normal_data[j]['phi']
+            y = np.array([[r], [phi]])
+            endpoints_line = [[line_data[j]['start']['x'] / 1000, line_data[j]['start']['y'] / 1000], [line_data[j]['end']['x'] / 1000, line_data[j]['end']['y'] / 1000]]
+            
+            if num_landmarks == 0:
+                # First observation of landmark
+                #plot_line(r, phi, endpoints_line[0], endpoints_line[1])
+                endpoints.append(endpoints_line)
+                nu, P_, R_ = add_new_landmark(nu, P_, R_, y, R)
+                num_landmarks += 1
+            else:
+                # Perform data association on landmarks already stored in state vector and new observation
+                merged = False
+                for k in range(num_landmarks):
+                    idx = 3 + k*2 
+                    r_k = nu[idx]
+                    phi_k = nu[idx+1]
+                    #if (is_mergeable(nu, np.array([[r_k], [phi_k]]), endpoints[k], y, endpoints_line, ALPHA, BETA, ZETA)):
+                    if (is_mergeable2(endpoints[k], endpoints_line, ANGLE_THRES, DIST_THRES)):
+                        curr_color = (random(), random(), random())
+                        #plot_line(r_k, phi_k, endpoints[k][0], endpoints[k][1], color=curr_color, type='--')
+                        #plot_line(r, phi, endpoints_line[0], endpoints_line[1], color=curr_color, type='--')
+                        print("merge!")
+                       # print("r, phi before update: ", r_k, phi_k)
+                        # Perform update
+                        nu, P_, R_, endpoints = update(nu, P_, R_, k, y, R, endpoints)
+
+                       # print("r, phi after update: ", nu[idx], nu[idx+1])
+
+                        # Project endpoints onto updated line
+                        p1 = get_projected_point_on_line(nu[idx], nu[idx+1], endpoints[k][0])
+                        p2 = get_projected_point_on_line(nu[idx], nu[idx+1], endpoints[k][1])
+                        p3 = get_projected_point_on_line(nu[idx], nu[idx+1], endpoints_line[0])
+                        p4 = get_projected_point_on_line(nu[idx], nu[idx+1], endpoints_line[1])
+
+                        # Find endpoints that are furthest apart
+                        e = max_distance_endpoints([p1, p2, p3, p4])
+
+                        # Update endpoints list
+                        endpoints[k] = e
+
+                        #plot_line(nu[idx], nu[idx], endpoints[k][0], endpoints[k][1], color=curr_color)
+                        #plt.plot([endpoints[k][0][0], endpoints[k][1][0]], [endpoints[k][0][1], endpoints[k][1][1]], color=curr_color)
+
+                        merged = True
+
+                        break
+                
+                if not merged:
+                    endpoints.append(endpoints_line)
+                    nu, P_, R_ = add_new_landmark(nu, P_, R_, y, R)
+                    num_landmarks += 1
+    
+
+    dt = (estimator_data[i]['time'] - estimator_data[i-1]['time'])
+    enc_speed = estimator_data[i]['enc']
+    gyro = estimator_data[i]['gyro']
+    u = np.array([enc_speed, gyro])
 
     nu, P_ = predict(nu, P_, u, dt, num_landmarks)
 
-    plot_covariance_ellipse(
-                    (nu[0,0], nu[1,0]), P_[0:2, 0:2], 
-                     std=3, facecolor='k', alpha=0.3)
-    track.append(nu[0:3])
+    
+    if (i % 20 == 0):
+        track.append(nu[0:3])
+        #plot_covariance_ellipse(
+        #            (nu[0,0], nu[1,0]), P_[0:2, 0:2], 
+        #             std=0.1, facecolor='k', alpha=0.3)
 
 
 track = np.array(track)
@@ -455,18 +637,19 @@ plt.plot(track[:, 0], track[:,1], '--', lw=1, color='black')
 RAD2DEG = 180/np.pi
 offsetAngle = 32
 for i in track:
-    plt.plot(i[0,0], i[1,0], marker=(3,1, i[2,0]*RAD2DEG+offsetAngle), markersize=15, color='green')
+    #plt.plot(i[0,0], i[1,0], marker=(3,1, i[2,0]*RAD2DEG+offsetAngle), markersize=15, color='green')
+    pass
 
-for i, line in enumerate(lines_global):
-    r = line[0,0]
-    phi = line[1,0]
-    endpoints = endpoints_global[i]
-    plot_line(r, phi, endpoints[0], endpoints[1])
+for i in range(num_landmarks):
+    idx = 3+i*2
+    #print(endpoints[i][0])
+    plot_line(nu[idx,0], nu[idx+1,0], endpoints[i][0], endpoints[i][1])
 
+print("num_landmarks:", num_landmarks)
+print("endpoints:", endpoints)
+print("nu:", nu)
 plt.axis('equal')
 plt.show()
-
-'''
 
 
 
