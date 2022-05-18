@@ -67,9 +67,9 @@ def convert_measurement_to_robot_frame(nu, y_meas):
     _theta = nu[2,0]
     r_R = r_G - (_x*np.cos(phi_G) + _y*np.sin(phi_G))
     phi_R = phi_G - _theta
-    if r_R < 0:
-        r_R = np.abs(r_R)
-        phi_R += np.pi
+    #if r_R < 0:
+    #    r_R = np.abs(r_R)
+    #    phi_R += np.pi
     return np.array([[r_R],
                      [phi_R]])
 
@@ -83,6 +83,9 @@ def h_i(nu, i):
     _theta = nu[2,0]
     r_R = r_G - (_x*np.cos(phi_G) + _y*np.sin(phi_G))
     phi_R = phi_G - _theta
+    #if r_R < 0:
+    #    r_R = np.abs(r_R)
+    #    phi_R += np.pi
     return np.array([[r_R],
                      [phi_R]])
 
@@ -284,20 +287,39 @@ def update(nu, P, R, landmark_index, y_meas, R_meas, endpoints): # We have obser
                 [P_mr, P_mli]]) @ np.block([[Hx(nu, i).T], 
                                             [Hl(nu, i).T]]) @ inv(Z)
 
-    print("meas in robot frame:", convert_measurement_to_robot_frame(nu, y_meas))
-    print("h_i:", h_i(nu, i))
+    #print("meas:", y_meas)
+    #print("meas in robot frame:", convert_measurement_to_robot_frame(nu, y_meas))
+    #print("nu in h_i:", nu[3+i*2], nu[3+i*2+1])
+    #print("h_i:", h_i(nu, i))
     z = residual(convert_measurement_to_robot_frame(nu, y_meas), h_i(nu, i))
-    print("z:", z)
+    #print("z:", z)
 
     nu_ = nu + K @ z    # Update state
     P_ = P - K @ Z @ K.T # Update covariance
 
+    for j in range(len(endpoints)):
+        if (nu_[3+j*2] < 0):
+            nu_[3+j*2] = np.abs(nu_[3+j*2])
+            nu_[3+j*2+1] += np.pi
+
     # Update endpoints
     endpoints_ = []
-    for i in range(len(endpoints)):
-        proj_point_p = get_projected_point_on_line(nu_[3+i*2], nu_[3+i*2+1], endpoints[i][0])
-        proj_point_q = get_projected_point_on_line(nu_[3+i*2], nu_[3+i*2+1], endpoints[i][1])
+    for j in range(len(endpoints)):
+        proj_point_p = get_projected_point_on_line(nu_[3+j*2], nu_[3+j*2+1], endpoints[j][0])
+        proj_point_q = get_projected_point_on_line(nu_[3+j*2], nu_[3+j*2+1], endpoints[j][1])
         endpoints_.append([proj_point_p, proj_point_q])
+
+    # Check if update caused other lines to become mergeable
+    #for j in range(len(endpoints)):
+    #    j_idx = 3+j*2
+    #    r_j = nu[j_idx]
+    #    phi_j = nu[j_idx+1]
+    #    for k in range(len(endpoints)):
+    #        k_idx = 3 + k*2
+    #        r_k = nu[k_idx]
+    #        phi_k = nu[k_idx+1]
+    #        if (is_mergeable(nu, np.array([[r_j],[phi_j]]), endpoints[j], np.array([[r_k], [phi_k]]), endpoints[k], ALPHA, BETA, ZETA) and endpoints[j] != endpoints[k]):
+    #            nu_, P_, R_, endpoints_ = update(nu_, P_, R_, j, np.array([r_k, phi_k]), R_[k*2:k*2+2, k*2:k*2+2], endpoints)
 
     return nu_, P_, R_, endpoints_
 
@@ -340,8 +362,8 @@ def ssa(rad):
     return (rad+np.pi) - np.floor((rad+np.pi) / (2*np.pi))*(2*np.pi) - np.pi
 
 def is_mergeable(nu, line1, endpoints1, line2, endpoints2, alpha, beta, zeta):
-    line1 = convert_measurement_to_robot_frame(nu, line1)
-    line2 = convert_measurement_to_robot_frame(nu, line2)
+    #line1 = convert_measurement_to_robot_frame(nu, line1)
+    #line2 = convert_measurement_to_robot_frame(nu, line2)
     r1 = line1[0,0]
     phi1 = line1[1,0]
     r2 = line2[1,0]
@@ -559,10 +581,6 @@ num_landmarks = 0
 num_features_extracted = 0
 endpoints = []
 
-print("----- Init -------")
-print(nu)
-print(P_)
-print("------------------")
 
 track = []
 track.append(nu)
@@ -598,7 +616,6 @@ for i in range(1, len(estimator_data)):
             phi = normal_data[j]['phi']
             y = np.array([[r], [phi]])
             endpoints_line = [[line_data[j]['start']['x'] / 1000, line_data[j]['start']['y'] / 1000], [line_data[j]['end']['x'] / 1000, line_data[j]['end']['y'] / 1000]]
-            
             if num_landmarks == 0:
                 # First observation of landmark
                 #plot_line(r, phi, endpoints_line[0], endpoints_line[1])
@@ -612,18 +629,27 @@ for i in range(1, len(estimator_data)):
                     idx = 3 + k*2 
                     r_k = nu[idx]
                     phi_k = nu[idx+1]
-                    if (is_mergeable(nu, np.array([[r_k], [phi_k]]), endpoints[k], y, endpoints_line, ALPHA, BETA, ZETA)):
-                        if (endpoints_line == [[1.639, 0.155], [1.328, 0.162]]):
-                            print("endpoints of new line segment:", endpoints_line)
+                    if (is_mergeable(nu, np.array([[r_k], [phi_k]]), endpoints[k], y, endpoints_line, ALPHA, BETA, ZETA) and endpoints[k] != endpoints_line):
                     #if (is_mergeable2(endpoints[k], endpoints_line, ANGLE_THRES, DIST_THRES)):
                         curr_color = (random(), random(), random())
-                        #plot_line(r_k, phi_k, endpoints[k][0], endpoints[k][1], color=curr_color, type='--')
-                        #plot_line(r, phi, endpoints_line[0], endpoints_line[1], color=curr_color, type='--')
-                        if (endpoints_line == [[1.639, 0.155], [1.328, 0.162]]):
-                            print("merging lines (r, phi, endpoints): ({},{},{}) ({}, {}, {})".format(r_k, phi_k, endpoints[k], r, phi, endpoints_line))
-                       # print("r, phi before update: ", r_k, phi_k)
+                        #if (num_features_extracted == 48):
+                            #print(endpoints_line)
+                            #print(endpoints[k])
+                            #print(k)
+                            #print("nu before update:", nu)
+                            #plt.plot([endpoints_line[0][0], endpoints_line[1][0]], [endpoints_line[0][1], endpoints_line[1][1]], '-', color='yellow', lw=6)
+                            #plt.plot([endpoints[k][0][0], endpoints[k][1][0]], [endpoints[k][0][1], endpoints[k][1][1]], '-', color='blue', lw=4)
+                            #for u in range(num_landmarks):
+                            #    if (u != k):
+                            #        plt.plot([endpoints[u][0][0], endpoints[u][1][0]], [endpoints[u][0][1], endpoints[u][1][1]], '-', color='gray', lw=4)
                         # Perform update
                         nu, P_, R_, endpoints = update(nu, P_, R_, k, y, R, endpoints)
+
+                        #if (num_features_extracted == 30):
+                        #    print("nu after update:", nu)
+                        #    for u in range(num_landmarks):
+                        #        if (u != k):
+                        #            plt.plot([endpoints[u][0][0], endpoints[u][1][0]], [endpoints[u][0][1], endpoints[u][1][1]], '-', color='black', lw=4)
 
                        # print("r, phi after update: ", nu[idx], nu[idx+1])
 
@@ -641,12 +667,10 @@ for i in range(1, len(estimator_data)):
 
                         #plot_line(nu[idx], nu[idx], endpoints[k][0], endpoints[k][1], color=curr_color)
                         #plt.plot([endpoints[k][0][0], endpoints[k][1][0]], [endpoints[k][0][1], endpoints[k][1][1]], "-", color=curr_color)
-                        if (endpoints_line == [[1.639, 0.155], [1.328, 0.162]]):
-                            print("merge after update (r, phi, endpoints): ({}, {}, {})".format(nu[idx], nu[idx+1], endpoints[k]))
-
+                        #if (num_features_extracted == 40):
+                        #    print("merge after update (r, phi, endpoints): ({}, {}, {})".format(nu[idx], nu[idx+1], endpoints[k]))
+                        #    plt.plot([endpoints[k][0][0], endpoints[k][1][0]], [endpoints[k][0][1], endpoints[k][1][1]], "-", color='green', lw=4)
                         merged = True
-
-                        break
                 
                 if not merged:
                     endpoints.append(endpoints_line)
@@ -686,110 +710,8 @@ for i in range(num_landmarks):
     
     plot_line(nu[idx,0], nu[idx+1,0], endpoints[i][0], endpoints[i][1])
 
-print("num_landmarks:", num_landmarks)
-print("endpoints:", endpoints)
-print("nu:", nu)
+#print("num_landmarks:", num_landmarks)
+#print("endpoints:", endpoints)
+#print("nu:", nu)
 plt.axis('equal')
 plt.show()
-
-
-
-'''
-######## Prediction #########
-nu, P_ = predict(nu, P_, u, dt, num_landmarks)
-
-print("------ Predict -------")
-print(nu)
-print(P_)
-
-
-######## Update: Line feature observed #########
-y0 = np.array([[10], [0.0]])            # Line feature measurement (NB: global frame is the "sensor frame")
-R = np.eye(2,2)*np.array([[0.1],[0.001]]) # Measurement noise for feature 0
-nu, P_, R = add_new_landmark(nu, P_, R, y0, R)
-num_landmarks += 1
-
-print("------ Observed line feature 0 -------")
-print(nu)
-print(P_)
-
-
-
-######## Correction: Line feature 0 is observed again #########
-i = 0
-y0 = np.array([[11], [0.01]])    # Line feature measurement
-R0 = np.eye(2,2)*np.array([[0.00001],[0.001]]) # Measurement noise for feature 0 this time
-
-nu, P_, R, = update(nu, P_, R, i, y0, R0)
-
-print("------ Observed line feature 0 again -------")
-print(nu)
-print(P_)
-print("line 0 in global frame:", h_i(nu, i))
-
-#S = H(nu) @ P_ @ H(nu).T + R1
-#W = P_ @ H(nu).T @ inv(S)
-#v = z1 - h_i(nu, 0)
-#nu = nu + W @ v
-#P_ = (np.eye(np.shape(P_)[0],np.shape(P_)[1]) - W @ H(nu)) @ P_
-
-
-
-
-
-
-
-
-
-
-####### Update: new landmark, this is line feature 1 #################
-y1 = np.array([[20], [np.pi/2]])    # Line feature
-R1 = np.eye(2,2)*np.array([[0.1],[0.1]]) # Measurement noise for feature 1
-
-nu, P_, R = add_new_landmark(nu, P_, R, y1, R1)
-num_landmarks += 1
-
-print("------ Observed line feature 1 -------")
-print(nu)
-print(P_)
-
-
-
-####### Prediction #########
-nu, P_ = predict(nu, P_, u, dt, num_landmarks)
-
-print("------ Predict -------")
-print(nu)
-print(P_)
-
-
-
-
-###### Prediction #########
-nu, P_ = predict(nu, P_, u, dt, num_landmarks)
-
-print("------ Predict -------")
-print(nu)
-print(P_)
-
-
-###### Correction: Line feature 1 has been observed again #########
-i = 1 # line feature index
-y1 = np.array([[21], [np.pi/2 + 0.001]])    # Line feature
-R3 = np.eye(2,2)*np.array([[0.1],[0.001]]) # Measurement noise for feature 0 this time
-
-nu, P_, R = update(nu, P_, R, i, y1, R3)
-
-#S = H(nu) @ P_ @ H(nu).T + R
-#W = P_ @ H(nu).T @ inv(S)
-#print(W)
-#v = z3 - h_i(nu, 0)
-#V = np.zeros((np.shape(nu)[0]-3, 1))
-#V[0:2,:] = v
-#nu = nu + W @ V
-#P_ = (np.eye(np.shape(P_)[0],np.shape(P_)[1]) - W @ H(nu)) @ P_
-
-print("------ Observed line feature 1 again -------")
-print(nu)
-print(P_)
-print("line 1 in global frame:", h_i(nu, i))'''

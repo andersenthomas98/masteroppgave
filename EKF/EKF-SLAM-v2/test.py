@@ -43,9 +43,9 @@ def load_from_json_log(file):
 
 
 
-estimator_data = load_from_json_log('estimator_log_third_run.txt')
-line_data = load_from_json_log('line_log_third_run.txt')
-normal_data = load_from_json_log('normal_log_third_run.txt')
+estimator_data = load_from_json_log('estimator_log_12.txt')
+line_data = load_from_json_log('line_handmade.txt')
+normal_data = load_from_json_log('normal_handmade.txt')
 
 #for i, d in enumerate(normal_data):
 #    plot_line(d['r'], d['phi'], np.array([line_data[i]['start']['x'], line_data[i]['start']['y']]), np.array([line_data[i]['end']['x'], line_data[i]['end']['y']]))
@@ -131,24 +131,19 @@ def overlap(endpoints1, endpoints2):
 #P1 = [-0.21134221, 0.12959791]
 #Q1 = [2.4811827, 0.20778711]
 
-#endpoints = [[1.639, 0.155], [1.328, 0.162]]
-P1 =[0.25, 0]
-Q1 = [0.75, 0]
-endpoints = [[2, 0] , [4, 0] ]
-
-if get_length([P1, Q1]) > get_length(endpoints):
-    tmp_endpoints = endpoints
-    endpoints = [P1, Q1]
-    P1 = tmp_endpoints[0]
-    Q1 = tmp_endpoints[1] 
+for i in range(len(line_data)):
+    x_s = line_data[i]['start']['x']
+    y_s = line_data[i]['start']['y']
+    x_e = line_data[i]['end']['x']
+    y_e = line_data[i]['end']['y']
+    if (line_data[i]['time'] != normal_data[i]['time']):
+        print(i, "not aligned")
+    if np.sqrt(np.power(x_s-x_e,2) + np.power(y_s - y_e, 2)) > 500 or np.sqrt(np.power(x_s-x_e,2) + np.power(y_s - y_e, 2)) < 100:
+        #print(i)
+        continue
+    plt.plot([x_s, x_e], [y_s, y_e], '-', color='red')
     
 
-plt.plot([P1[0], Q1[0]], [P1[1], Q1[1]], "-")
-plt.plot([endpoints[0][0], endpoints[1][0]], [endpoints[0][1], endpoints[1][1]], "-")
-
-#print("does overlap?:", overlap([P1, Q1], endpoints))
-print("dist from point to line segment: ", dist_from_point_to_line_segment(P1, endpoints))
-print("dist from point to line segment: ", dist_from_point_to_line_segment(Q1, endpoints))
 
 plt.axis('equal')
 plt.show()
